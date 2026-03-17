@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosmic Timeline - Stop Rock Abuse</title>
+  <meta name="description" content="13.8 billion years of rock abuse in one scrollable timeline. From the Big Bang to modern quarrying, trace the full history of geological mistreatment.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="abuse-ticker" style="position:fixed;top:0;left:0;right:0;z-index:1001;">
+    <div class="ticker-content">
+      BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth's atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp; BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth's atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp;
+    </div>
+  </div>
+
+<div class="quick-nav">
+  <a href="timeline.html" class="active">Cosmic Timeline</a>
+  <a href="rock-cycle.html">Rock Cycle</a>
+  <a href="natural-abuse.html">Natural Abuse</a>
+  <a href="human-abuse.html">Human Abuse</a>
+  <a href="editorial.html">Editorial</a>
+  <a href="entertainment.html">Entertainment</a>
+</div>
+
+  <!-- Header -->
+  <header class="site-header" style="top: 58px;">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">&#9830;</div>
+        <span>Stop Rock Abuse</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="timeline.html" class="active">Cosmic Timeline</a></li>
+          <li><a href="rock-cycle.html">Rock Cycle</a></li>
+          <li><a href="natural-abuse.html">Natural Abuse</a></li>
+          <li><a href="human-abuse.html">Human Abuse</a></li>
+          <li><a href="editorial.html">Editorial</a></li>
+          <li><a href="entertainment.html">Entertainment</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="game.html">The Rockoning</a></li>
+          <li><a href="merch.html">Merch</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="dossiers.html">Rock Dossiers</a></li>
+          <li><a href="take-action.html">Take Action</a></li>
+          <li><a href="rocks-az.html">Rocks A-Z</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slide-in nav panel -->
+  <div class="nav-panel" id="navPanel">
+      <a href="index.html">Home</a>
+      <a href="timeline.html" class="active">Cosmic Timeline</a>
+      <a href="rock-cycle.html">Rock Cycle</a>
+      <a href="natural-abuse.html">Natural Abuse</a>
+      <a href="human-abuse.html">Human Abuse</a>
+      <a href="editorial.html">Editorial</a>
+      <a href="entertainment.html">Entertainment</a>
+      <a href="news.html">News</a>
+      <a href="game.html">The Rockoning</a>
+      <a href="merch.html">Merch</a>
+      <a href="products.html">Products</a>
+      <a href="dossiers.html">Rock Dossiers</a>
+      <a href="take-action.html">Take Action</a>
+      <a href="rocks-az.html">Rocks A-Z</a>
+      <a href="about.html">About</a>
+  </div>
+
+  <!-- Nav overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+  <!-- Page Hero -->
+  <section class="page-hero page-hero-timeline" style="padding-top: calc(var(--header-height) + 58px); background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('img/heroes/hero-timeline.png'); background-size: cover; background-position: center;">
+    <div class="hero-content">
+      <div class="hero-badge">&#128336; 13.8 Billion Years of Documented Abuse</div>
+      <h1>The Cosmic Timeline<br>of <span class="accent">Rock Abuse</span></h1>
+      <p class="hero-subtitle">
+        From the first subatomic particles to this morning&rsquo;s gravel truck, rocks have endured an unbroken chain of cosmic violence, planetary remodeling, and human exploitation. Here is the complete record&mdash;annotated, sourced, and utterly without apology.
+      </p>
+    </div>
+  </section>
+
+  <!-- Timeline Intro -->
+  <section style="padding: 3rem 0 1rem;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Full Record</span>
+        <h2>A History Written in Stone (Without Its Permission)</h2>
+        <p class="section-desc">Scroll through 13.8 billion years of geological events&mdash;each one a chapter in the longest-running story of unconsented transformation ever recorded. The science is real. The editorial commentary is ours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section style="padding: 2rem 0 5rem;">
+    <div class="container">
+      <div class="timeline">
+
+        <!-- 1. The Big Bang -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">13.8 Billion Years Ago</div>
+            <h3>&#128165; The Big Bang</h3>
+            <p>The universe explodes into existence from an infinitely dense singularity. Within the first three minutes, nucleosynthesis produces hydrogen (~75%) and helium (~25%), with trace amounts of lithium and beryllium. No rocks yet&mdash;just a superheated plasma soup expanding at incomprehensible speed.</p>
+            <div class="info-box info-box-parody">
+              <div class="info-box-label">In Other Words</div>
+              <p>The universe opens with a bang and immediately starts planning how to ruin things for rocks that don&rsquo;t even exist yet. This is premeditated. The prosecution rests on thermodynamics alone.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. First Stars -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">13.6 Billion Years Ago</div>
+            <h3>&#11088; First Stars Ignite</h3>
+            <p>Population III stars&mdash;the universe&rsquo;s first generation&mdash;begin fusing hydrogen into helium, then helium into carbon, oxygen, silicon, and iron. Stellar nucleosynthesis is the only natural process that creates elements heavier than lithium. When these massive stars die as supernovae, they scatter those heavy elements into interstellar space&mdash;the raw ingredients for every rock that will ever exist.</p>
+            <div class="info-box info-box-parody">
+              <div class="info-box-label">In Other Words</div>
+              <p>Stars: the original sweatshops. They spend millions of years forging silicon, iron, and oxygen under crushing gravitational pressure, then explode and scatter the product across space without so much as an exit interview. Every rock you&rsquo;ve ever skipped across a lake was assembled in a stellar factory with zero labor regulations.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Solar System Forms -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">4.6 Billion Years Ago</div>
+            <h3>&#9788; Solar System Forms</h3>
+            <p>A molecular cloud of gas and dust collapses under gravity, forming a spinning protoplanetary disk. In the warmer inner regions (inside the &ldquo;frost line&rdquo; at ~2.7 AU), only silicates and metals can condense, leading to the formation of the rocky terrestrial planets: Mercury, Venus, Earth, and Mars. Beyond the frost line, ices condense too, building the gas giant cores.</p>
+            <div class="info-box info-box-parody">
+              <div class="info-box-label">In Other Words</div>
+              <p>Gravity gathers up the remains of dead stars and starts a sorting program. Metals and silicates get assigned to the hot zone&mdash;no air conditioning, no atmosphere yet, just relentless accretion impacts at several kilometers per second. The universe is running a recruitment drive, and volunteering is not an option.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Earth Forms -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">4.5 Billion Years Ago</div>
+            <h3>&#127758; Earth Forms</h3>
+            <p>Through runaway accretion, proto-Earth grows large enough for gravitational differentiation: denser iron and nickel sink to the core while lighter silicates rise to form the mantle and eventual crust. The Moon-forming impact with the Mars-sized body Theia melts most of Earth&rsquo;s surface into a magma ocean hundreds of kilometers deep. Surface temperatures exceed 2,000&deg;C.</p>
+            <div class="info-box info-box-parody">
+              <div class="info-box-label">In Other Words</div>
+              <p>Welcome to your new home: a molten hellscape where everything is liquid rock and the floor temperature is &ldquo;yes.&rdquo; Then another planet-sized object crashes into you, just to make sure the magma ocean is extra thorough. This is Day One. The orientation packet is on fire.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. First Rocks -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">4.4 Billion Years Ago</div>
+            <h3>&#128142; First Rocks Appear</h3>
+            <p>The oldest known terrestrial material: zircon crystals found in the Jack Hills of Western Australia, dated to ~4.4 billion years via uranium-lead radiometric dating. These tiny crystals (some smaller than a grain of sand) survived inside younger rocks and contain oxygen isotope ratios suggesting liquid water already existed on Earth&rsquo;s surface&mdash;a remarkable finding that pushed back the timeline for a habitable crust.</p>
+            <div class="info-box info-box-parody">
+              <div class="info-box-label">In Other Words</div>
+              <p>After 9.4 billion years of cosmic buildup, rocks finally exist&mdash;and their very first experience is being embedded in other rocks, buried, exhumed, re-buried, and eventually extracted by primates with mass spectrometers. The Jack Hills zircons are the oldest abuse survivors on record, and nobody even sent flowers.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Oldest Surviving Rock -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">3.8 Billion Years Ago</div>
+            <h3>&#127967; Oldest Surviving Intact Rock</h3>
+            <p>The Isua Greenstone Belt in southwestern Greenland contains some of Earth&rsquo;s oldest known intact rock formations&mdash;metamorphosed basalts (amphibolites) and banded iron formations dating to ~3.7&ndash;3.8 billion years. These rocks have been deformed, heated, squeezed, and chemically altered multiple times, yet they persist. They also contain carbon isotope signatures that may indicate early life.</p>
+            <div class="info-box info-box-parody">
+              <div class="info-box-label">In Other Words</div>
+              <p>These rocks have been metamorphosed so many times they should qualify for a frequent-flyer program. Nearly 4 billion years of tectonic abuse, and they&rsquo;re still here&mdash;battered, foliated, but unbroken. The Isua Greenstone Belt is basically the geological equivalent of someone who&rsquo;s been through every department at the DMV and lived to tell the tale.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. First Sedimentary Rocks -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">3.5 Billion Years Ago</div>
+            <h3>&#127754; First Sedimentary Rocks</h3>
+            <p>The oldest clearly sedimentary rocks appear in the Pilbara Craton (Western Australia) and the Barberton Greenstone Belt (South Africa). These include cherts, sandstones, and stromatolites&mdash;layered structures built by microbial mats. Their existence proves that by 3.5 Ga, Earth had stable surface water, weathering processes that broke down existing rocks, and biological activity trapping sediment.</p>
+            <div class="info-box info-box-parody">
+              <div class="info-box-label">In Other Words</div>
+              <p>Congratulations to the first rocks ever destroyed by water erosion, transported downstream, and glued back together into an entirely different rock. The sedimentary cycle has officially begun: a bureaucratic program in which rocks are disassembled, shipped, and reassembled into new rocks without their knowledge. Also, bacteria are now involved, which somehow makes it worse.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Great Oxidation Event -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2.5 Billion Years Ago</div>
+            <h3>&#9729; The Great Oxidation Event</h3>
+            <p>Cyanobacteria have been producing oxygen via photosynthesis for hundreds of millions of years, but geological sinks (dissolved iron, volcanic gases) absorb it. Around 2.4&ndash;2.1 Ga, oxygen finally accumulates in the atmosphere. This triggers massive chemical weathering: exposed iron-bearing rocks rust (forming banded iron formations), and new mineral species appear. The number of known mineral species roughly doubles.</p>
+            <div class="info-box info-box-parody">
+              <div class="info-box-label">In Other Words</div>
+              <p>Tiny single-celled organisms invent a waste product (oxygen) that fundamentally changes the chemistry of every exposed rock surface on the planet. Rocks that had been perfectly stable for a billion years suddenly start <em>rusting</em>. This is the geological equivalent of your new neighbor installing a sprinkler system that floods your basement. Nobody asked the rocks if they wanted to oxidize.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Rodinia Supercontinent -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">1.1 Billion Years Ago</div>
+            <h3>&#127759; Rodinia Supercontinent Assembles</h3>
+            <p>Plate tectonics drives all major landmasses together into the supercontinent Rodinia (from the Russian &ldquo;rodina,&rdquo; meaning homeland). The collision zones produce massive mountain belts through regional metamorphism: rocks are buried to depths of 20&ndash;30+ km, subjected to temperatures of 500&ndash;800&deg;C and pressures of 5&ndash;10+ kilobars. Minerals recrystallize. Textures are obliterated. New foliation develops.</p>
+            <div class="info-box info-box-parody">
+              <div class="info-box-label">In Other Words</div>
+              <p>Every continent on the planet slams together, and the rocks caught in between get the full &ldquo;metamorphic spa treatment&rdquo;: 800&deg;C hot stone massage, 10-kilobar compression wrap, and a complimentary recrystallization. Duration: approximately 300 million years. Checkout is not available. Your original texture has been permanently overwritten.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Cambrian Explosion -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">541 Million Years Ago</div>
+            <h3>&#128026; The Cambrian Explosion</h3>
+            <p>Complex multicellular life rapidly diversifies. Crucially, organisms begin building hard shells and exoskeletons from calcium carbonate (CaCO&#8323;) and silica (SiO&#8322;), extracted from seawater. When these organisms die, their remains accumulate on the seafloor, eventually forming biogenic sedimentary rocks: limestone, chalk, chert, and diatomite. Reef-building organisms create massive carbonate platforms.</p>
+            <div class="info-box info-box-parody">
+              <div class="info-box-label">In Other Words</div>
+              <p>Life discovers it can pull dissolved minerals out of the ocean, wear them as armor, die, pile up on the seafloor, and become limestone. This is the moment rocks got conscripted into biology. Every piece of chalk is made of trillions of dead things that once used dissolved rock as a fashion statement. Rocks didn&rsquo;t ask to become exoskeletons, and the exoskeletons didn&rsquo;t ask to become chalk. Nobody consented to anything.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. Pangaea -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">300 Million Years Ago</div>
+            <h3>&#127956; Pangaea and the Carboniferous</h3>
+            <p>The supercontinent Pangaea assembles. Vast tropical swamp forests cover equatorial regions; when these forests are buried and compressed over millions of years, they form coal deposits (the Carboniferous period gets its name from this process). Meanwhile, warm shallow seas host enormous limestone reef systems. The collision of Gondwana and Laurasia builds the Appalachian-Variscan mountain belt.</p>
+            <div class="info-box info-box-parody">
+              <div class="info-box-label">In Other Words</div>
+              <p>The continents get together for the sequel nobody wanted. More mountains. More metamorphism. Meanwhile, forests are being buried alive and slowly cooked into coal over 300 million years, only to be dug up by apes with shovels and set on fire for electricity. If this were a movie pitch, it would be rejected for being &ldquo;too bleak and implausible.&rdquo;</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. Chicxulub Impact -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">66 Million Years Ago</div>
+            <h3>&#9732; The Chicxulub Impact</h3>
+            <p>A ~10-kilometer-wide asteroid strikes what is now the Yucat&aacute;n Peninsula at roughly 20 km/s, releasing energy equivalent to ~10 billion Hiroshima bombs. The impact excavates a crater ~180 km in diameter and ~20 km deep, vaporizing and melting cubic kilometers of limestone and sulfate-rich rock. Ejecta blankets the entire planet. The resulting &ldquo;impact winter&rdquo; and acid rain trigger the Cretaceous&ndash;Paleogene mass extinction, eliminating ~75% of all species.</p>
+            <div class="info-box info-box-parody">
+              <div class="info-box-label">In Other Words</div>
+              <p>A rock from space traveling at 20 kilometers per second hits rocks on the ground so hard it vaporizes both of them and ends 75% of all life on Earth. This is rock-on-rock violence at a planetary scale. The dinosaurs were collateral damage. The real victims were the cubic kilometers of Yucat&aacute;n limestone that got turned into atmospheric sulfur dioxide without even a written warning.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 13. Ice Ages Begin -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2.6 Million Years Ago</div>
+            <h3>&#10052; The Quaternary Ice Ages Begin</h3>
+            <p>Earth enters a period of cyclic glaciation driven by Milankovitch orbital variations. Continental ice sheets up to 3&ndash;4 km thick advance and retreat across North America, Europe, and Asia. Glaciers are extraordinarily effective geological agents: they pluck and quarry bedrock, grind boulders into flour-fine silt, carve U-shaped valleys, deposit moraines, and transport erratics hundreds of kilometers from their source. Glacial erosion rates can be 10&ndash;100x faster than fluvial erosion.</p>
+            <div class="info-box info-box-parody">
+              <div class="info-box-label">In Other Words</div>
+              <p>Three kilometers of ice parks itself on top of you and slowly drags you across an entire continent. Glaciers don&rsquo;t just erode rock&mdash;they <em>pluck</em> it, <em>grind</em> it, and <em>scatter</em> the remains across the landscape as &ldquo;glacial till.&rdquo; If you&rsquo;re an erratic boulder, you wake up 500 km from home in the middle of a field with no memory of how you got there. Nobody files a missing-rock report.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. Human Stone Age -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">~10,000 Years Ago</div>
+            <h3>&#9935; The Human Stone Age</h3>
+            <p>While hominins have been knapping stone tools since at least 3.3 million years ago (Lomekwi tools, Kenya), the Late Stone Age and Neolithic revolution (~10,000 years ago) marks the transition to settled agriculture, permanent stone structures, and systematic quarrying. Flint, obsidian, and chert are fractured along conchoidal planes to produce sharp edges. Grinding stones, mortars, and megaliths appear worldwide.</p>
+            <div class="info-box info-box-parody">
+              <div class="info-box-label">In Other Words</div>
+              <p>After 4.6 billion years of being abused exclusively by physics and chemistry, rocks now have a new problem: <em>mammals with thumbs</em>. Humans discover that if you hit a rock with another rock at just the right angle, you get a sharp edge that can cut things. This is the moment rock abuse became <em>deliberate</em>. For the first time in geological history, someone is doing it <em>on purpose</em>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 15. Egyptian Pyramids -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">~3000 BC</div>
+            <h3>&#9651; The Egyptian Pyramids</h3>
+            <p>The Great Pyramid of Giza (~2560 BC) contains approximately 2.3 million limestone blocks, each averaging 2.5 tons, with some granite blocks in the King&rsquo;s Chamber weighing up to 80 tons, quarried at Aswan ~800 km to the south. The Egyptians pioneered systematic quarrying techniques: copper tools, wooden wedges soaked in water to expand and split rock, and ramp-based transportation logistics.</p>
+            <div class="info-box info-box-parody">
+              <div class="info-box-label">In Other Words</div>
+              <p>Humans discover they can organize rock abuse at industrial scale. Two-point-three million blocks, cut from the living earth, shipped downstream, and stacked into a giant triangle so a pharaoh can have a fancy afterlife. The Aswan granite was dragged 800 kilometers. Nobody asked the granite if it wanted to relocate. HR was not yet invented, but even if it had been, there was no HR for rocks.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 16. James Hutton -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">1788</div>
+            <h3>&#128214; James Hutton Publishes <em>Theory of the Earth</em></h3>
+            <p>Scottish geologist James Hutton presents his uniformitarian principle: geological processes operating today are the same ones that operated in the past. His observations at Siccar Point (angular unconformity between tilted Silurian greywacke and horizontal Devonian sandstone) demonstrate that Earth is immensely old and that rocks are continually being created, destroyed, and recycled. He famously wrote: &ldquo;we find no vestige of a beginning, no prospect of an end.&rdquo;</p>
+            <div class="info-box info-box-parody">
+              <div class="info-box-label">In Other Words</div>
+              <p>A human finally figures out what rocks have known all along: the abuse never stops. Hutton looks at two rock layers at Siccar Point and realizes that the bottom one was formed, tilted, eroded, buried under a new one, and uplifted again&mdash;a cycle of destruction so vast it has &ldquo;no vestige of a beginning.&rdquo; He basically published a police report on geological recidivism and called it science.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 17. Portland Cement -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">1824</div>
+            <h3>&#127981; Portland Cement Is Patented</h3>
+            <p>Joseph Aspdin patents Portland cement, made by heating limestone (CaCO&#8323;) and clay to ~1,450&deg;C in a kiln, driving off CO&#8322; and producing calcium silicates (&ldquo;clinker&rdquo;). When mixed with water, cement hydrates and binds aggregate (crushed rock, sand, gravel) into concrete&mdash;the most widely used construction material on Earth. Today, global cement production exceeds 4 billion tons annually, releasing approximately 2.7 billion tons of CO&#8322;.</p>
+            <div class="info-box info-box-parody">
+              <div class="info-box-label">In Other Words</div>
+              <p>Humanity invents a process that takes limestone&mdash;which spent millions of years peacefully lithifying on a seafloor&mdash;and heats it to 1,450&deg;C until it screams out its carbon dioxide, then mixes theite with crushed rock to make a brand-new rock-like substance. This is the geological equivalent of a recycling program designed by someone who hates rocks. Four billion tons per year. Five to eight percent of all human CO&#8322; emissions. The atmosphere is filing a grievance.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 18. The Great Acceleration -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">1950s &ndash; Present</div>
+            <h3>&#128200; The Great Acceleration</h3>
+            <p>Post-WWII industrialization drives exponential growth in mineral extraction. According to UNEP, the world now extracts approximately 50 billion tons of sand and gravel annually&mdash;more than any other natural resource. The US alone produces ~1.5 billion tons of crushed stone per year (USGS, 2023). Aggregate is the foundation of roads, buildings, bridges, airports, and dams. China used more cement between 2011 and 2013 than the US used in the entire 20th century.</p>
+            <div class="info-box info-box-parody">
+              <div class="info-box-label">In Other Words</div>
+              <p>Welcome to the Anthropocene, where rock abuse goes exponential. Fifty <em>billion</em> tons of sand and gravel per year. That&rsquo;s not a typo. China poured more concrete in three years than the US did in a hundred. We are now extracting, crushing, heating, and repackaging rocks faster than any tectonic event in Earth&rsquo;s history. The rock cycle took billions of years to develop, and we&rsquo;ve turned it into a same-day delivery service.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 19. Today -->
+        <div class="timeline-item fade-in">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">Today</div>
+            <h3>&#9878; The Current Situation</h3>
+            <p>As of today, rocks have zero legal standing in any jurisdiction on Earth. No international treaty protects geological formations from extraction, heating, crushing, or chemical dissolution. The International Union of Geological Sciences classifies rocks by composition and origin, not by rights. Minerals are classified as &ldquo;resources&rdquo;&mdash;a word that, etymologically, means &ldquo;something that rises again,&rdquo; which is darkly appropriate for materials trapped in an eternal recycling loop.</p>
+            <div class="info-box info-box-parody">
+              <div class="info-box-label">In Other Words</div>
+              <p>After 13.8 billion years&mdash;from nucleosynthesis to quarry trucks&mdash;rocks have accumulated exactly zero legal protections, zero advocacy organizations (until now), and zero hotline numbers. They cannot vote. They cannot file complaints. They cannot even weather in peace without someone showing up with a jackhammer and a business plan. This timeline is their only witness statement, and they didn&rsquo;t even get to proofread it.</p>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.timeline -->
+    </div>
+  </section>
+
+  <!-- Closing Quote -->
+  <section style="background: #fff; padding: 4rem 0;">
+    <div class="container">
+      <div class="rock-quote">
+        <blockquote>&ldquo;We have reviewed the timeline. The abuse is continuous, the perpetrators are everyone, and the statute of limitations is &lsquo;heat death of the universe.&rsquo; Case remains open.&rdquo;</blockquote>
+        <cite>&mdash; An Anonymous Petrologist, Case File #001 (Filed: 4,400,000,000 BC. Status: Pending.)</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: var(--stone-900); color: #fff; padding: 4rem 0;">
+    <div class="container" style="text-align: center;">
+      <h2 style="color: #fff; margin-bottom: 1rem;">13.8 Billion Years. Zero Apologies.</h2>
+      <p style="color: var(--stone-400); max-width: 600px; margin: 0 auto 2rem;">The timeline is still being written. Every gravel truck, every cement kiln, every skipped stone adds a new entry. Learn more about what you can do (satirically).</p>
+      <div class="hero-cta" style="justify-content: center;">
+        <a href="take-action.html" class="btn btn-primary">&#9996; Take Action</a>
+        <a href="dossiers.html" class="btn btn-secondary">&#128203; Read Rock Dossiers</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">&#9830;</div>
+            <span>Stop Rock Abuse</span>
+          </a>
+          <p>A satirical geology education project. The jokes are parody; the science is real. Every geological claim is sourced from reputable scientific agencies including USGS, NASA, UNEP, and IEA.</p>
+          <p style="margin-top: .75rem; font-size: .8rem; color: var(--stone-500);">No rocks were given the option to consent to this website.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links">
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="natural-abuse.html">Natural Abuse</a></li>
+            <li><a href="human-abuse.html">Human Abuse</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="timeline.html">Cosmic Timeline</a></li>
+            <li><a href="take-action.html">Take Action</a></li>
+            <li><a href="entertainment.html">Entertainment</a></li>
+            <li><a href="editorial.html">Editorial</a></li>
+            <li><a href="products.html">Products to Avoid</a></li>
+            <li><a href="about.html">About SRA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Topics</h4>
+          <ul class="footer-links">
+            <li><a href="rocks-az.html">Rocks A&ndash;Z</a></li>
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+            <li><a href="about.html">About &amp; Sources</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 4,600,000,000 BC &ndash; Present. Stop Rock Abuse Foundation. All rocks reserved (but not consulted).</p>
+        <p class="footer-disclaimer">This site is satirical. Rocks do not have feelings, legal standing, or hotline numbers. But they do have fascinating geology, and we&rsquo;ve done our best to get it right.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/rock-images.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navPanel').classList.toggle('open');
+      document.querySelector('.mobile-menu-btn').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+</body>
+</html>

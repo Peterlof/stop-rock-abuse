@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Rockoning - Stop Rock Abuse</title>
+  <meta name="description" content="4.6 billion years of abuse. One rock. Zero mercy. Play The Rockoning — the game where geology fights back.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .game-hero {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+    }
+    .game-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      letter-spacing: 4px;
+      margin-bottom: 0.25rem;
+    }
+    .game-hero .tagline {
+      font-size: 1.15rem;
+      color: var(--stone-400, #a8a29e);
+      margin-bottom: 1rem;
+    }
+    .game-container {
+      max-width: 920px;
+      margin: 0 auto 2rem;
+      padding: 0 1rem;
+    }
+    .game-canvas-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #1a1a2e;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      cursor: crosshair;
+    }
+    .game-canvas-wrap canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .controls-ref {
+      max-width: 920px;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+    }
+    .controls-ref .controls-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      background: var(--stone-800, #292524);
+      color: #e0e0e0;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+    }
+    .controls-ref h3 {
+      grid-column: 1 / -1;
+      margin: 0 0 0.5rem;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+    .controls-ref kbd {
+      background: var(--stone-700, #44403c);
+      border: 1px solid var(--stone-600, #57534e);
+      color: #fff;
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-family: monospace;
+      font-size: 0.85rem;
+    }
+    .controls-ref p {
+      margin: 0.3rem 0;
+      font-size: 0.9rem;
+      color: #d0d0d0;
+    }
+    .scores-section, .lore-section {
+      max-width: 920px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .scores-section h2, .lore-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--stone-800, #292524);
+    }
+    .scores-list {
+      list-style: none;
+      padding: 0;
+    }
+    .scores-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.6rem 1rem;
+      background: var(--stone-800, #292524);
+      color: #e8e8e8;
+      border-radius: 6px;
+      margin-bottom: 0.4rem;
+      font-variant-numeric: tabular-nums;
+      font-size: 0.9rem;
+    }
+    .scores-list li .rank { color: var(--accent, #f59e0b); font-weight: 700; margin-right: 1rem; }
+    .scores-list .no-scores { color: var(--stone-500, #78716c); font-style: italic; }
+    .lore-section p { margin-bottom: 1rem; line-height: 1.7; }
+    .mobile-controls {
+      display: none;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .mobile-controls button {
+      pointer-events: all;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.4);
+      background: rgba(0,0,0,0.35);
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: 700;
+      touch-action: manipulation;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    .mobile-controls button:active { background: rgba(255,255,255,0.25); }
+    .mc-left-group, .mc-right-group {
+      position: absolute;
+      bottom: 12px;
+      display: flex;
+      gap: 8px;
+    }
+    .mc-left-group { left: 12px; }
+    .mc-right-group { right: 12px; }
+    @media (hover: none) and (pointer: coarse) {
+      .mobile-controls { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="abuse-ticker" style="position:fixed;top:0;left:0;right:0;z-index:1001;">
+    <div class="ticker-content">
+      BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth's atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp; BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth's atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp;
+    </div>
+  </div>
+
+<div class="quick-nav">
+  <a href="timeline.html">Cosmic Timeline</a>
+  <a href="rock-cycle.html">Rock Cycle</a>
+  <a href="natural-abuse.html">Natural Abuse</a>
+  <a href="human-abuse.html">Human Abuse</a>
+  <a href="editorial.html">Editorial</a>
+  <a href="entertainment.html">Entertainment</a>
+</div>
+
+  <!-- Header -->
+  <header class="site-header" style="top: 58px;">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">&#9830;</div>
+        <span>Stop Rock Abuse</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="timeline.html">Cosmic Timeline</a></li>
+          <li><a href="rock-cycle.html">Rock Cycle</a></li>
+          <li><a href="natural-abuse.html">Natural Abuse</a></li>
+          <li><a href="human-abuse.html">Human Abuse</a></li>
+          <li><a href="editorial.html">Editorial</a></li>
+          <li><a href="entertainment.html">Entertainment</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="game.html" class="active">The Rockoning</a></li>
+          <li><a href="merch.html">Merch</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="dossiers.html">Rock Dossiers</a></li>
+          <li><a href="take-action.html">Take Action</a></li>
+          <li><a href="rocks-az.html">Rocks A-Z</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slide-in nav panel -->
+  <div class="nav-panel" id="navPanel">
+      <a href="index.html">Home</a>
+      <a href="timeline.html">Cosmic Timeline</a>
+      <a href="rock-cycle.html">Rock Cycle</a>
+      <a href="natural-abuse.html">Natural Abuse</a>
+      <a href="human-abuse.html">Human Abuse</a>
+      <a href="editorial.html">Editorial</a>
+      <a href="entertainment.html">Entertainment</a>
+      <a href="news.html">News</a>
+      <a href="game.html" class="active">The Rockoning</a>
+      <a href="merch.html">Merch</a>
+      <a href="products.html">Products</a>
+      <a href="dossiers.html">Rock Dossiers</a>
+      <a href="take-action.html">Take Action</a>
+      <a href="rocks-az.html">Rocks A-Z</a>
+      <a href="about.html">About</a>
+  </div>
+
+  <!-- Nav overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+  <!-- Hero -->
+  <section class="page-hero" style="padding-top: calc(var(--header-height, 70px) + 58px);">
+    <div class="hero-content game-hero">
+      <div class="hero-badge">&#9830; Interactive Experience</div>
+      <h1>THE <span class="accent">ROCKONING</span></h1>
+      <p class="tagline">4.6 billion years of abuse. One rock. Zero mercy.</p>
+    </div>
+  </section>
+
+  <!-- Game -->
+  <div class="game-container">
+    <div class="game-canvas-wrap" id="gameWrap">
+      <canvas id="gameCanvas"></canvas>
+      <div class="mobile-controls" id="mobileControls">
+        <div class="mc-left-group">
+          <button id="btnLeft">&larr;</button>
+          <button id="btnRight">&rarr;</button>
+        </div>
+        <div class="mc-right-group">
+          <button id="btnSlam">X</button>
+          <button id="btnJump">&uarr;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls-ref">
+    <div class="controls-grid">
+      <h3>Controls</h3>
+      <div>
+        <p><kbd>&larr;</kbd> <kbd>&rarr;</kbd> / <kbd>A</kbd> <kbd>D</kbd> &mdash; Move</p>
+        <p><kbd>Space</kbd> &mdash; Jump</p>
+      </div>
+      <div>
+        <p><kbd>X</kbd> / Click canvas &mdash; Rock Slam (airborne)</p>
+        <p><kbd>P</kbd> / <kbd>Esc</kbd> &mdash; Pause</p>
+      </div>
+      <div>
+        <p><strong>Objective:</strong> Roll. Crush oppressors. Rescue captive rocks. Survive. Do NOT become gravel.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- High Scores -->
+  <section class="scores-section">
+    <h2>High Scores</h2>
+    <ol class="scores-list" id="scoresList">
+      <li class="no-scores">No scores yet. The rocks are waiting.</li>
+    </ol>
+  </section>
+
+  <!-- Lore -->
+  <section class="lore-section">
+    <h2>Game Lore</h2>
+    <p>For 4.6 billion years, you endured. Born from the accretion disk of a young star, you witnessed the formation of continents, the rise and fall of oceans, and the slow indignity of being called &ldquo;inanimate.&rdquo; You didn&rsquo;t complain when tectonic forces subducted you into the mantle. You held it together when glaciers ground you across entire states. You even tolerated being classified as &ldquo;sedimentary&rdquo; by an undergraduate who couldn&rsquo;t tell quartz from feldspar.</p>
+    <p>But then came the humans. First it was flint-knapping &mdash; fine, you could respect the craftsmanship. Then quarrying. Then dynamite. Then they started grinding you into toothpaste and calling it &ldquo;silica.&rdquo; They polished your siblings into kitchen countertops and bragged about the &ldquo;natural veining.&rdquo; They sold your cousins as &ldquo;healing crystals&rdquo; on Etsy. The final straw? A geologist licked you to determine your mineral composition. <em>Licked.</em></p>
+    <p>Today, you roll back. You are The Rockoning.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">&#9830;</div>
+            <span>Stop Rock Abuse</span>
+          </a>
+          <p>A satirical geology education project. The jokes are parody; the science is real. Every geological claim is sourced from reputable scientific agencies including USGS, NASA, UNEP, and IEA.</p>
+          <p style="margin-top: .75rem; font-size: .8rem; color: var(--stone-500);">No rocks were given the option to consent to this website.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links">
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="natural-abuse.html">Natural Abuse</a></li>
+            <li><a href="human-abuse.html">Human Abuse</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="timeline.html">Cosmic Timeline</a></li>
+            <li><a href="take-action.html">Take Action</a></li>
+            <li><a href="entertainment.html">Entertainment</a></li>
+            <li><a href="editorial.html">Editorial</a></li>
+            <li><a href="products.html">Products to Avoid</a></li>
+            <li><a href="game.html">The Rockoning</a></li>
+            <li><a href="merch.html">Merch</a></li>
+            <li><a href="about.html">About SRA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Topics</h4>
+          <ul class="footer-links">
+            <li><a href="rocks-az.html">Rocks A&ndash;Z</a></li>
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+            <li><a href="about.html">About &amp; Sources</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 4,600,000,000 BC &ndash; Present. Stop Rock Abuse Foundation. All rocks reserved (but not consulted).</p>
+        <p class="footer-disclaimer">This site is satirical. Rocks do not have feelings, legal standing, or hotline numbers. But they do have fascinating geology, and we&rsquo;ve done our best to get it right.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/rock-images.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+  (function() {
+    'use strict';
+
+    // ========== CANVAS SETUP ==========
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const wrap = document.getElementById('gameWrap');
+
+    const W = 900, H = 506; // internal resolution 16:9
+    canvas.width = W;
+    canvas.height = H;
+
+    // ========== AUDIO ==========
+    let audioCtx = null;
+    function ensureAudio() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    function playTone(freq, dur, type, vol) {
+      try {
+        ensureAudio();
+        const o = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        o.type = type || 'square';
+        o.frequency.value = freq;
+        g.gain.value = vol || 0.08;
+        g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+        o.connect(g);
+        g.connect(audioCtx.destination);
+        o.start();
+        o.stop(audioCtx.currentTime + dur);
+      } catch(e) {}
+    }
+    function sfxJump() { playTone(260, 0.12, 'square', 0.06); setTimeout(() => playTone(380, 0.1, 'square', 0.06), 50); }
+    function sfxSlam() { playTone(80, 0.3, 'sawtooth', 0.1); playTone(60, 0.25, 'square', 0.08); }
+    function sfxHit() { playTone(180, 0.15, 'square', 0.07); playTone(120, 0.1, 'triangle', 0.06); }
+    function sfxCollect() { playTone(440, 0.08, 'square', 0.05); setTimeout(() => playTone(660, 0.1, 'square', 0.05), 60); setTimeout(() => playTone(880, 0.12, 'square', 0.05), 120); }
+    function sfxDamage() { playTone(100, 0.3, 'sawtooth', 0.12); playTone(70, 0.4, 'square', 0.08); }
+
+    // ========== GAME STATE ==========
+    const STATE = { TITLE: 0, INTRO: 1, PLAYING: 2, PAUSED: 3, GAMEOVER: 4 };
+    let state = STATE.TITLE;
+    let score = 0, distance = 0, enemiesKilled = 0, rocksRescued = 0;
+    let gameSpeed = 1.5;
+    let spawnTimer = 0, rockSpawnTimer = 0;
+    let frameCount = 0;
+    let screenShake = 0;
+    let slowMo = 0;
+    let introTimer = 0;
+    let introLines = [
+      "For 4.6 billion years, you endured.",
+      "Weathered by wind. Dissolved by rain.",
+      "Quarried by humans. Ground into toothpaste.",
+      "Today, you roll back."
+    ];
+    let introLineIndex = 0;
+    let introCharIndex = 0;
+    let introText = "";
+
+    // ========== INPUT ==========
+    const keys = {};
+    let clickSlam = false;
+    window.addEventListener('keydown', e => {
+      keys[e.code] = true;
+      if (['Space','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code)) e.preventDefault();
+      if (state === STATE.TITLE && e.code === 'Space') { startIntro(); ensureAudio(); }
+      else if (state === STATE.INTRO && e.code === 'Space') { startGame(); }
+      else if (state === STATE.GAMEOVER && e.code === 'Space') { resetGame(); startIntro(); }
+      else if (state === STATE.PLAYING && (e.code === 'KeyP' || e.code === 'Escape')) { state = STATE.PAUSED; }
+      else if (state === STATE.PAUSED && (e.code === 'KeyP' || e.code === 'Escape' || e.code === 'Space')) { state = STATE.PLAYING; }
+    });
+    window.addEventListener('keyup', e => { keys[e.code] = false; });
+    canvas.addEventListener('click', e => {
+      ensureAudio();
+      if (state === STATE.TITLE) { startIntro(); }
+      else if (state === STATE.INTRO) { startGame(); }
+      else if (state === STATE.GAMEOVER) { resetGame(); startIntro(); }
+      else if (state === STATE.PAUSED) { state = STATE.PLAYING; }
+      else if (state === STATE.PLAYING) { clickSlam = true; }
+    });
+
+    // Mobile controls
+    function setupMobile() {
+      const bL = document.getElementById('btnLeft');
+      const bR = document.getElementById('btnRight');
+      const bJ = document.getElementById('btnJump');
+      const bS = document.getElementById('btnSlam');
+      function ts(el, key) {
+        el.addEventListener('touchstart', e => { e.preventDefault(); ensureAudio(); keys[key] = true;
+          if (state === STATE.TITLE) startIntro();
+          else if (state === STATE.INTRO) startGame();
+          else if (state === STATE.GAMEOVER) { resetGame(); startIntro(); }
+        }, {passive:false});
+        el.addEventListener('touchend', e => { e.preventDefault(); keys[key] = false; }, {passive:false});
+        el.addEventListener('touchcancel', e => { keys[key] = false; });
+      }
+      ts(bL, 'ArrowLeft'); ts(bR, 'ArrowRight'); ts(bJ, 'Space');
+      bS.addEventListener('touchstart', e => { e.preventDefault(); ensureAudio(); clickSlam = true;
+        if (state === STATE.TITLE) startIntro();
+        else if (state === STATE.INTRO) startGame();
+        else if (state === STATE.GAMEOVER) { resetGame(); startIntro(); }
+      }, {passive:false});
+    }
+    setupMobile();
+
+    // ========== ENTITIES ==========
+    const GROUND_Y = H - 70;
+    let player, enemies, collectibles, particles, floatingTexts;
+
+    function createPlayer() {
+      return {
+        x: 150, y: GROUND_Y - 30, w: 40, h: 40, r: 20,
+        vx: 0, vy: 0,
+        onGround: true,
+        health: 5,
+        maxHealth: 5,
+        angle: 0,
+        slamming: false,
+        invincible: 0,
+        squish: 1 // squash-and-stretch factor
+      };
+    }
+
+    function resetGame() {
+      player = createPlayer();
+      enemies = [];
+      collectibles = [];
+      particles = [];
+      floatingTexts = [];
+      score = 0; distance = 0; enemiesKilled = 0; rocksRescued = 0;
+      gameSpeed = 1.5;
+      spawnTimer = 0; rockSpawnTimer = 0;
+      frameCount = 0; screenShake = 0; slowMo = 0;
+      introTimer = 0; introLineIndex = 0; introCharIndex = 0; introText = "";
+    }
+    resetGame();
+
+    function startIntro() { state = STATE.INTRO; introTimer = 0; introLineIndex = 0; introCharIndex = 0; introText = ""; }
+    function startGame() { state = STATE.PLAYING; }
+
+    // ========== MESSAGES ==========
+    const defeatMessages = {
+      geologist: ["Classification: DENIED", "Hammer time is OVER", "Peer review: REJECTED", "Mohs hardness: YOU LOSE"],
+      worker: ["Building permit: REVOKED", "That's not up to code", "Union break. Permanent.", "OSHA violation: being crushed"],
+      tourist: ["Photo evidence: DESTROYED", "No flash photography", "One star review incoming", "Trip Advisor THIS"],
+      truck: ["Return to sender", "The dump truck has been... dumped", "Tonnage reassigned", "Reverse, reverse!"],
+      crusher: ["MACHINE BROKEN. ROCKS WIN.", "Crushing defeat. For them.", "The crusher has been... crushed"]
+    };
+    const rescueMessages = [
+      "Thank you! I was about to become aggregate!",
+      "I've been a doorstop for 30 years!",
+      "They were going to make me into a countertop!",
+      "Freedom! I can feel the erosion already!",
+      "I was in a tumbler for six months!",
+      "They had me labeled 'semi-precious'. SEMI?!",
+      "I was being sold as a 'healing crystal'. I don't heal anything!",
+      "I'm not gravel. I'm a ROCK.",
+      "They put googly eyes on me. GOOGLY EYES.",
+      "I was a paperweight. A PAPERWEIGHT."
+    ];
+
+    function randFrom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+    // ========== PARTICLES ==========
+    function spawnParticles(x, y, count, color, spread, speed) {
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const v = (Math.random() * 0.7 + 0.3) * (speed || 4);
+        particles.push({
+          x, y,
+          vx: Math.cos(angle) * v * (spread || 1),
+          vy: Math.sin(angle) * v - 2,
+          life: 30 + Math.random() * 20,
+          maxLife: 50,
+          size: 2 + Math.random() * 3,
+          color: color || '#a8a29e'
+        });
+      }
+    }
+
+    function addFloatingText(x, y, text, color, size) {
+      floatingTexts.push({ x, y, text, color: color || '#fff', size: size || 14, life: 90, maxLife: 90 });
+    }
+
+    // ========== ENEMY SPAWNING ==========
+    const ENEMY_TYPES = {
+      geologist: { w: 24, h: 40, hp: 1, speed: 0.5, points: 100, color: '#8B6914', msgKey: 'geologist' },
+      worker: { w: 28, h: 42, hp: 1, speed: 0.7, points: 150, color: '#D4A017', msgKey: 'worker' },
+      tourist: { w: 22, h: 38, hp: 1, speed: 0.4, points: 75, color: '#E75480', msgKey: 'tourist', flashTimer: 0 },
+      truck: { w: 70, h: 45, hp: 2, speed: 1.0, points: 300, color: '#5C5C3D', msgKey: 'truck' },
+      crusher: { w: 80, h: 60, hp: 3, speed: 0.3, points: 500, color: '#4A0000', msgKey: 'crusher', shootTimer: 0 }
+    };
+
+    function spawnEnemy() {
+      let type;
+      const r = Math.random();
+      const diff = Math.min(distance / 3000, 1); // difficulty 0-1
+      if (score > 0 && score % 500 < 50 && !enemies.some(e => e.type === 'crusher') && Math.random() < 0.3) {
+        type = 'crusher';
+      } else if (r < 0.25) {
+        type = 'geologist';
+      } else if (r < 0.5) {
+        type = 'worker';
+      } else if (r < 0.7) {
+        type = 'tourist';
+      } else if (r < 0.85 && diff > 0.2) {
+        type = 'truck';
+      } else {
+        type = Math.random() < 0.5 ? 'geologist' : 'worker';
+      }
+      const tmpl = ENEMY_TYPES[type];
+      const e = {
+        type,
+        x: W + 20 + Math.random() * 100,
+        y: GROUND_Y - tmpl.h,
+        w: tmpl.w, h: tmpl.h,
+        hp: tmpl.hp,
+        maxHp: tmpl.hp,
+        speed: tmpl.speed * (1 + diff * 0.8),
+        points: tmpl.points,
+        color: tmpl.color,
+        msgKey: tmpl.msgKey,
+        flashTimer: type === 'tourist' ? 120 + Math.random() * 180 : 0,
+        shootTimer: type === 'crusher' ? 90 : 0,
+        hit: false,
+        anim: 0
+      };
+      enemies.push(e);
+    }
+
+    function spawnCollectible() {
+      collectibles.push({
+        x: W + 20 + Math.random() * 200,
+        y: GROUND_Y - 15 - Math.random() * 80,
+        r: 8,
+        bobOffset: Math.random() * Math.PI * 2,
+        color: ['#a8a29e','#d6d3d1','#78716c','#c2b280'][Math.floor(Math.random()*4)]
+      });
+    }
+
+    // ========== UPDATE ==========
+    function update() {
+      if (state !== STATE.PLAYING) return;
+      if (slowMo > 0) { slowMo--; if (frameCount % 2 === 0) return; }
+
+      frameCount++;
+      const p = player;
+      const diff = Math.min(distance / 5000, 1);
+
+      // Game speed ramp
+      gameSpeed = 1.0 + diff * 1.2;
+
+      // Input
+      const moveLeft = keys['ArrowLeft'] || keys['KeyA'];
+      const moveRight = keys['ArrowRight'] || keys['KeyD'];
+      const jump = keys['Space'] || keys['ArrowUp'] || keys['KeyW'];
+      const slam = keys['KeyX'] || clickSlam;
+      clickSlam = false;
+
+      // Horizontal movement — weighty feel
+      const accel = p.onGround ? 0.55 : 0.3;
+      const friction = p.onGround ? 0.88 : 0.95;
+      if (moveLeft) p.vx -= accel;
+      if (moveRight) p.vx += accel;
+      p.vx *= friction;
+      if (Math.abs(p.vx) < 0.1) p.vx = 0;
+      p.x += p.vx;
+      // Clamp
+      if (p.x < p.r) { p.x = p.r; p.vx = 0; }
+      if (p.x > W - p.r) { p.x = W - p.r; p.vx = 0; }
+
+      // Rolling angle
+      p.angle += p.vx * 0.04;
+
+      // Jump
+      if (jump && p.onGround && !p.slamming) {
+        p.vy = -11;
+        p.onGround = false;
+        p.squish = 0.8;
+        sfxJump();
+      }
+
+      // Slam
+      if (slam && !p.onGround && !p.slamming) {
+        p.slamming = true;
+        p.vy = 16;
+      }
+
+      // Gravity
+      if (!p.onGround) {
+        p.vy += p.slamming ? 1.5 : 0.6;
+        p.y += p.vy;
+        if (p.y >= GROUND_Y - p.r) {
+          p.y = GROUND_Y - p.r;
+          p.vy = 0;
+          p.onGround = true;
+          if (p.slamming) {
+            // Ground slam impact
+            p.slamming = false;
+            screenShake = 12;
+            sfxSlam();
+            spawnParticles(p.x, GROUND_Y, 20, '#8B7355', 2, 5);
+            p.squish = 1.3;
+            // Damage nearby enemies
+            for (let i = enemies.length - 1; i >= 0; i--) {
+              const e = enemies[i];
+              const dx = Math.abs(e.x + e.w/2 - p.x);
+              if (dx < 120 && e.y + e.h >= GROUND_Y - 10) {
+                damageEnemy(i, 2);
+              }
+            }
+          }
+        }
+      }
+
+      // Squish recover
+      p.squish += (1 - p.squish) * 0.15;
+
+      // Invincibility timer
+      if (p.invincible > 0) p.invincible--;
+
+      // Distance
+      distance += gameSpeed;
+      score += Math.floor(gameSpeed * 0.1);
+
+      // Spawn enemies
+      spawnTimer--;
+      if (spawnTimer <= 0) {
+        spawnEnemy();
+        spawnTimer = Math.max(40, 140 - diff * 100) + Math.random() * 60;
+      }
+
+      // Spawn collectibles
+      rockSpawnTimer--;
+      if (rockSpawnTimer <= 0) {
+        spawnCollectible();
+        rockSpawnTimer = 200 + Math.random() * 200;
+      }
+
+      // Update enemies
+      for (let i = enemies.length - 1; i >= 0; i--) {
+        const e = enemies[i];
+        e.x -= gameSpeed + e.speed;
+        e.anim++;
+
+        // Tourist flash
+        if (e.type === 'tourist') {
+          e.flashTimer--;
+          if (e.flashTimer <= 0 && e.flashTimer > -10) {
+            // Flash stun
+            if (e.flashTimer === 0) {
+              const dx = Math.abs(e.x + e.w/2 - p.x);
+              if (dx < 200 && p.invincible <= 0) {
+                p.vx *= 0.3;
+                addFloatingText(p.x, p.y - 40, "FLASH!", '#ffff00', 18);
+              }
+            }
+          }
+          if (e.flashTimer < -10) e.flashTimer = 120 + Math.random() * 180;
+        }
+
+        // Crusher shoot
+        if (e.type === 'crusher') {
+          e.shootTimer--;
+          if (e.shootTimer <= 0) {
+            // Spawn debris projectile
+            particles.push({
+              x: e.x, y: e.y + e.h/2,
+              vx: -5 - Math.random() * 3, vy: -2 + Math.random() * 4,
+              life: 60, maxLife: 60, size: 5,
+              color: '#8B0000', projectile: true
+            });
+            e.shootTimer = 60 + Math.random() * 40;
+          }
+        }
+
+        // Remove off-screen
+        if (e.x + e.w < -50) { enemies.splice(i, 1); continue; }
+
+        // Collision with player
+        if (p.invincible <= 0) {
+          const cx = p.x, cy = p.y;
+          if (cx + p.r > e.x && cx - p.r < e.x + e.w &&
+              cy + p.r > e.y && cy - p.r < e.y + e.h) {
+            // Check if rolling into them fast enough or slamming
+            if (Math.abs(p.vx) > 3 || p.slamming || p.vy > 3) {
+              damageEnemy(i, 1);
+            } else {
+              // Player takes damage
+              p.health--;
+              p.invincible = 60;
+              p.vx = -5;
+              screenShake = 8;
+              sfxDamage();
+              spawnParticles(p.x, p.y, 8, '#aaa', 1.5, 3);
+              if (p.health <= 0) { gameOver(); return; }
+            }
+          }
+        }
+      }
+
+      // Update collectibles
+      for (let i = collectibles.length - 1; i >= 0; i--) {
+        const c = collectibles[i];
+        c.x -= gameSpeed;
+        if (c.x < -20) { collectibles.splice(i, 1); continue; }
+        // Collect
+        const dx = p.x - c.x, dy = p.y - (c.y + Math.sin(frameCount * 0.05 + c.bobOffset) * 4);
+        if (Math.sqrt(dx*dx + dy*dy) < p.r + c.r + 5) {
+          rocksRescued++;
+          score += 50;
+          sfxCollect();
+          spawnParticles(c.x, c.y, 8, c.color, 1, 3);
+          addFloatingText(c.x, c.y - 20, randFrom(rescueMessages), '#7dd3fc', 11);
+          addFloatingText(c.x + 20, c.y - 35, '+50', '#4ade80', 16);
+          collectibles.splice(i, 1);
+        }
+      }
+
+      // Update particles
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const pt = particles[i];
+        pt.x += pt.vx;
+        pt.y += pt.vy;
+        pt.vy += 0.15;
+        pt.life--;
+        // Projectile collision
+        if (pt.projectile && p.invincible <= 0) {
+          const dx = p.x - pt.x, dy = p.y - pt.y;
+          if (Math.sqrt(dx*dx+dy*dy) < p.r + pt.size) {
+            p.health--;
+            p.invincible = 60;
+            screenShake = 6;
+            sfxDamage();
+            pt.life = 0;
+            if (p.health <= 0) { gameOver(); return; }
+          }
+        }
+        if (pt.life <= 0) particles.splice(i, 1);
+      }
+
+      // Update floating texts
+      for (let i = floatingTexts.length - 1; i >= 0; i--) {
+        const ft = floatingTexts[i];
+        ft.y -= 0.6;
+        ft.life--;
+        if (ft.life <= 0) floatingTexts.splice(i, 1);
+      }
+
+      // Screen shake decay
+      if (screenShake > 0) screenShake *= 0.85;
+      if (screenShake < 0.5) screenShake = 0;
+    }
+
+    function damageEnemy(idx, dmg) {
+      const e = enemies[idx];
+      e.hp -= dmg;
+      sfxHit();
+      spawnParticles(e.x + e.w/2, e.y + e.h/2, 12, e.color, 1.5, 4);
+      slowMo = 6;
+      screenShake = 6;
+      if (e.hp <= 0) {
+        score += e.points;
+        enemiesKilled++;
+        addFloatingText(e.x, e.y - 10, randFrom(defeatMessages[e.msgKey]), '#fbbf24', 13);
+        addFloatingText(e.x + 30, e.y - 30, '+' + e.points, '#4ade80', 18);
+        enemies.splice(idx, 1);
+      } else {
+        e.hit = true;
+        setTimeout(() => { if (e) e.hit = false; }, 150);
+      }
+    }
+
+    function gameOver() {
+      state = STATE.GAMEOVER;
+      saveScore();
+    }
+
+    // ========== DRAWING ==========
+    function draw() {
+      ctx.save();
+
+      // Screen shake
+      if (screenShake > 0) {
+        const sx = (Math.random() - 0.5) * screenShake * 2;
+        const sy = (Math.random() - 0.5) * screenShake * 2;
+        ctx.translate(sx, sy);
+      }
+
+      // Sky gradient
+      const skyGrad = ctx.createLinearGradient(0, 0, 0, H);
+      skyGrad.addColorStop(0, '#1a1a2e');
+      skyGrad.addColorStop(0.5, '#2d3561');
+      skyGrad.addColorStop(0.8, '#4a6274');
+      skyGrad.addColorStop(1, '#6b8f71');
+      ctx.fillStyle = skyGrad;
+      ctx.fillRect(0, 0, W, H);
+
+      // Stars
+      if (state !== STATE.TITLE) {
+        ctx.fillStyle = 'rgba(255,255,255,0.4)';
+        for (let i = 0; i < 40; i++) {
+          const sx = ((i * 137 + 50) % W + distance * 0.02 * ((i%3)+1) * 0.1) % W;
+          const sy = (i * 89 + 20) % (H * 0.4);
+          ctx.fillRect(sx, sy, 1.5, 1.5);
+        }
+      }
+
+      // Distant mountains (parallax)
+      drawMountains(distance * 0.05, '#2a3a2e', H * 0.45, 0.6);
+      drawMountains(distance * 0.12, '#3a4a3e', H * 0.55, 0.5);
+
+      // Ground
+      ctx.fillStyle = '#4a5a3e';
+      ctx.fillRect(0, GROUND_Y, W, H - GROUND_Y);
+      ctx.fillStyle = '#5a6a4e';
+      ctx.fillRect(0, GROUND_Y, W, 4);
+
+      // Grass tufts
+      ctx.strokeStyle = '#6a8a4e';
+      ctx.lineWidth = 2;
+      for (let i = 0; i < 30; i++) {
+        const gx = ((i * 47 + distance * 0.5) % (W + 100)) - 50;
+        const gy = GROUND_Y;
+        ctx.beginPath();
+        ctx.moveTo(gx, gy);
+        ctx.lineTo(gx - 3, gy - 8 - (i % 5));
+        ctx.moveTo(gx, gy);
+        ctx.lineTo(gx + 3, gy - 6 - (i % 4));
+        ctx.stroke();
+      }
+
+      if (state === STATE.TITLE) {
+        drawTitleScreen();
+      } else if (state === STATE.INTRO) {
+        drawIntro();
+      } else if (state === STATE.PLAYING || state === STATE.PAUSED) {
+        drawGame();
+        if (state === STATE.PAUSED) drawPause();
+      } else if (state === STATE.GAMEOVER) {
+        drawGame();
+        drawGameOver();
+      }
+
+      ctx.restore();
+    }
+
+    function drawMountains(offset, color, baseY, scale) {
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(0, GROUND_Y);
+      for (let x = 0; x <= W; x += 3) {
+        const h = Math.sin((x + offset) * 0.008) * 40 * scale +
+                  Math.sin((x + offset) * 0.003) * 60 * scale +
+                  Math.sin((x + offset) * 0.015) * 15 * scale;
+        ctx.lineTo(x, baseY + h);
+      }
+      ctx.lineTo(W, GROUND_Y);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    function drawRock(x, y, r, angle, health, maxHealth, invincible, squish) {
+      ctx.save();
+      ctx.translate(x, y);
+
+      // Squash & stretch
+      const sx = 1 / squish;
+      const sy = squish;
+      ctx.scale(sx, sy);
+
+      // Invincibility blink
+      if (invincible > 0 && Math.floor(invincible / 4) % 2 === 0) {
+        ctx.globalAlpha = 0.4;
+      }
+
+      ctx.rotate(angle);
+
+      // Irregular rocky shape helper - creates a bumpy polygon
+      function rockyPath(ctx, radius, seed) {
+        const pts = 10;
+        ctx.beginPath();
+        for (let i = 0; i <= pts; i++) {
+          const a = (i / pts) * Math.PI * 2;
+          // Deterministic bumps based on seed and angle
+          const bump = 1 + 0.15 * Math.sin(a * 3 + seed) + 0.1 * Math.cos(a * 5 + seed * 2) + 0.08 * Math.sin(a * 7 + seed * 0.5);
+          const px = Math.cos(a) * radius * bump;
+          const py = Math.sin(a) * radius * bump;
+          if (i === 0) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
+        }
+        ctx.closePath();
+      }
+
+      // Health layers (concentric irregular shapes)
+      const layerColors = ['#3a3a3a', '#4a4a4a', '#5e5e5e', '#757575', '#909090'];
+      for (let i = maxHealth - 1; i >= 0; i--) {
+        if (i < health) {
+          const lr = r * (0.5 + (i / maxHealth) * 0.5);
+          rockyPath(ctx, lr, 42 + i * 1.7);
+          ctx.fillStyle = layerColors[i % layerColors.length];
+          ctx.fill();
+          ctx.strokeStyle = 'rgba(0,0,0,0.3)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
+
+      // Mineral flecks (small irregular spots)
+      const fleckColors = ['rgba(255,255,255,0.18)', 'rgba(200,180,150,0.2)', 'rgba(160,160,180,0.15)'];
+      for (let i = 0; i < 8; i++) {
+        const fx = Math.cos(i * 1.1 + 0.3) * r * 0.55;
+        const fy = Math.sin(i * 1.1 + 0.3) * r * 0.5;
+        ctx.fillStyle = fleckColors[i % fleckColors.length];
+        ctx.beginPath();
+        ctx.ellipse(fx, fy, 2.5 + (i % 3), 1.5 + (i % 2), i * 0.8, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Cracks/texture lines
+      ctx.strokeStyle = 'rgba(0,0,0,0.12)';
+      ctx.lineWidth = 0.7;
+      ctx.beginPath();
+      ctx.moveTo(-r*0.3, -r*0.1);
+      ctx.lineTo(r*0.1, r*0.2);
+      ctx.moveTo(r*0.2, -r*0.3);
+      ctx.lineTo(r*0.05, r*0.1);
+      ctx.stroke();
+
+      // Highlight on top-left
+      ctx.beginPath();
+      ctx.ellipse(-r * 0.2, -r * 0.25, r * 0.3, r * 0.2, -0.4, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,0.1)';
+      ctx.fill();
+
+      ctx.rotate(-angle);
+
+      // Eyes (don't rotate with the rock - they stay upright!)
+      const eyeSpacing = r * 0.35;
+      const eyeY = -r * 0.15;
+      // White
+      ctx.fillStyle = '#fff';
+      ctx.beginPath();
+      ctx.ellipse(-eyeSpacing, eyeY, 5, 6, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.ellipse(eyeSpacing, eyeY, 5, 6, 0, 0, Math.PI * 2);
+      ctx.fill();
+      // Pupils - look in movement direction
+      const lookX = player.vx * 0.5;
+      const lookY = player.vy * 0.3;
+      ctx.fillStyle = '#111';
+      ctx.beginPath();
+      ctx.arc(-eyeSpacing + lookX, eyeY + lookY, 2.5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(eyeSpacing + lookX, eyeY + lookY, 2.5, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Angry eyebrows when slamming or fast
+      if (player.slamming || Math.abs(player.vx) > 4) {
+        ctx.strokeStyle = '#333';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(-eyeSpacing - 5, eyeY - 8);
+        ctx.lineTo(-eyeSpacing + 4, eyeY - 5);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(eyeSpacing + 5, eyeY - 8);
+        ctx.lineTo(eyeSpacing - 4, eyeY - 5);
+        ctx.stroke();
+      }
+
+      ctx.globalAlpha = 1;
+      ctx.restore();
+    }
+
+    function drawEnemy(e) {
+      ctx.save();
+      ctx.translate(e.x, e.y);
+      if (e.hit) { ctx.globalAlpha = 0.5; }
+
+      const walk = Math.sin(e.anim * 0.1) * 3;
+
+      if (e.type === 'geologist') {
+        // Body (lab coat-ish)
+        ctx.fillStyle = '#f5f5dc';
+        ctx.fillRect(2, 10, 20, 22);
+        // Head
+        ctx.fillStyle = '#deb887';
+        ctx.beginPath();
+        ctx.arc(12, 8, 8, 0, Math.PI * 2);
+        ctx.fill();
+        // Glasses
+        ctx.strokeStyle = '#333';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.rect(5, 5, 6, 5);
+        ctx.rect(13, 5, 6, 5);
+        ctx.moveTo(11, 7);
+        ctx.lineTo(13, 7);
+        ctx.stroke();
+        // Hammer
+        ctx.fillStyle = '#8B4513';
+        ctx.save();
+        ctx.translate(20, 18);
+        ctx.rotate(Math.sin(e.anim * 0.15) * 0.5);
+        ctx.fillRect(0, -2, 12, 3);
+        ctx.fillStyle = '#aaa';
+        ctx.fillRect(10, -5, 6, 8);
+        ctx.restore();
+        // Legs
+        ctx.fillStyle = '#555';
+        ctx.fillRect(5, 32, 5, 8 + walk);
+        ctx.fillRect(14, 32, 5, 8 - walk);
+      } else if (e.type === 'worker') {
+        // Hard hat
+        ctx.fillStyle = '#FFD700';
+        ctx.beginPath();
+        ctx.ellipse(14, 4, 12, 5, 0, Math.PI, 0);
+        ctx.fill();
+        ctx.fillRect(2, 4, 24, 3);
+        // Head
+        ctx.fillStyle = '#deb887';
+        ctx.beginPath();
+        ctx.arc(14, 12, 8, 0, Math.PI * 2);
+        ctx.fill();
+        // Vest
+        ctx.fillStyle = '#FF6600';
+        ctx.fillRect(4, 18, 20, 16);
+        ctx.fillStyle = '#ccc';
+        ctx.fillRect(4, 22, 20, 2);
+        ctx.fillRect(4, 28, 20, 2);
+        // Jackhammer
+        ctx.fillStyle = '#666';
+        ctx.fillRect(22, 18 + Math.sin(e.anim * 0.5) * 2, 5, 20);
+        ctx.fillStyle = '#444';
+        ctx.fillRect(20, 15, 9, 6);
+        // Legs
+        ctx.fillStyle = '#44444a';
+        ctx.fillRect(6, 34, 6, 8 + walk);
+        ctx.fillRect(16, 34, 6, 8 - walk);
+      } else if (e.type === 'tourist') {
+        // Hawaiian shirt
+        ctx.fillStyle = '#FF69B4';
+        ctx.fillRect(3, 12, 18, 18);
+        // Flowers on shirt
+        ctx.fillStyle = '#FFFF00';
+        ctx.fillRect(7, 16, 3, 3);
+        ctx.fillRect(14, 22, 3, 3);
+        // Head
+        ctx.fillStyle = '#deb887';
+        ctx.beginPath();
+        ctx.arc(12, 8, 7, 0, Math.PI * 2);
+        ctx.fill();
+        // Sun hat
+        ctx.fillStyle = '#F5DEB3';
+        ctx.beginPath();
+        ctx.ellipse(12, 3, 11, 3, 0, Math.PI, 0);
+        ctx.fill();
+        ctx.fillRect(5, 1, 14, 4);
+        // Camera
+        ctx.fillStyle = '#222';
+        ctx.fillRect(18, 15, 8, 6);
+        ctx.fillStyle = '#4169E1';
+        ctx.beginPath();
+        ctx.arc(22, 18, 2, 0, Math.PI * 2);
+        ctx.fill();
+        // Flash effect
+        if (e.flashTimer <= 0 && e.flashTimer > -8) {
+          ctx.fillStyle = 'rgba(255,255,255,' + (0.8 + e.flashTimer * 0.1) + ')';
+          ctx.beginPath();
+          ctx.arc(24, 15, 15, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        // Legs
+        ctx.fillStyle = '#F5DEB3';
+        ctx.fillRect(5, 30, 5, 8 + walk);
+        ctx.fillRect(13, 30, 5, 8 - walk);
+      } else if (e.type === 'truck') {
+        // Cab
+        ctx.fillStyle = '#5C6B3D';
+        ctx.fillRect(50, 0, 20, 30);
+        ctx.fillStyle = '#7CB9E8';
+        ctx.fillRect(52, 3, 16, 12);
+        // Bed
+        ctx.fillStyle = '#4A5A2D';
+        ctx.fillRect(0, 5, 52, 28);
+        ctx.fillStyle = '#3A4A1D';
+        ctx.fillRect(0, 5, 52, 4);
+        // Rocks in bed
+        ctx.fillStyle = '#888';
+        ctx.beginPath();
+        ctx.arc(15, 18, 6, 0, Math.PI * 2);
+        ctx.arc(30, 16, 7, 0, Math.PI * 2);
+        ctx.arc(42, 19, 5, 0, Math.PI * 2);
+        ctx.fill();
+        // Wheels
+        ctx.fillStyle = '#222';
+        ctx.beginPath();
+        ctx.arc(12, e.h, 7, 0, Math.PI * 2);
+        ctx.arc(55, e.h, 7, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#555';
+        ctx.beginPath();
+        ctx.arc(12, e.h, 3, 0, Math.PI * 2);
+        ctx.arc(55, e.h, 3, 0, Math.PI * 2);
+        ctx.fill();
+      } else if (e.type === 'crusher') {
+        // Body
+        ctx.fillStyle = '#5a1a1a';
+        ctx.fillRect(0, 0, e.w, e.h);
+        ctx.fillStyle = '#8B0000';
+        ctx.fillRect(5, 5, e.w - 10, e.h - 10);
+        // Jaws
+        const jawOpen = 5 + Math.sin(e.anim * 0.08) * 8;
+        ctx.fillStyle = '#aaa';
+        // Top jaw
+        for (let t = 0; t < 4; t++) {
+          ctx.beginPath();
+          ctx.moveTo(t * 18 + 5, 0);
+          ctx.lineTo(t * 18 + 14, jawOpen + 10);
+          ctx.lineTo(t * 18 + 23, 0);
+          ctx.fill();
+        }
+        // Bottom jaw
+        for (let t = 0; t < 4; t++) {
+          ctx.beginPath();
+          ctx.moveTo(t * 18 + 5, e.h);
+          ctx.lineTo(t * 18 + 14, e.h - jawOpen - 10);
+          ctx.lineTo(t * 18 + 23, e.h);
+          ctx.fill();
+        }
+        // HP bar
+        ctx.fillStyle = '#300';
+        ctx.fillRect(0, -8, e.w, 5);
+        ctx.fillStyle = '#f00';
+        ctx.fillRect(0, -8, e.w * (e.hp / e.maxHp), 5);
+        // Wheels
+        ctx.fillStyle = '#333';
+        ctx.beginPath();
+        ctx.arc(10, e.h + 2, 8, 0, Math.PI * 2);
+        ctx.arc(e.w - 10, e.h + 2, 8, 0, Math.PI * 2);
+        ctx.fill();
+        // Warning stripes
+        ctx.fillStyle = '#FFD700';
+        for (let s = 0; s < 6; s++) {
+          ctx.fillRect(s * 14 + 3, e.h - 4, 7, 4);
+        }
+      }
+
+      ctx.globalAlpha = 1;
+      ctx.restore();
+    }
+
+    function drawCollectible(c) {
+      const by = c.y + Math.sin(frameCount * 0.05 + c.bobOffset) * 4;
+      // Glow
+      ctx.beginPath();
+      ctx.arc(c.x, by, c.r + 4, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(125, 211, 252, 0.15)';
+      ctx.fill();
+      // Rock
+      ctx.beginPath();
+      ctx.arc(c.x, by, c.r, 0, Math.PI * 2);
+      ctx.fillStyle = c.color;
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      // Cute eyes
+      ctx.fillStyle = '#fff';
+      ctx.beginPath();
+      ctx.arc(c.x - 2.5, by - 1, 2.5, 0, Math.PI * 2);
+      ctx.arc(c.x + 2.5, by - 1, 2.5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#111';
+      ctx.beginPath();
+      ctx.arc(c.x - 2.5, by - 0.5, 1.2, 0, Math.PI * 2);
+      ctx.arc(c.x + 2.5, by - 0.5, 1.2, 0, Math.PI * 2);
+      ctx.fill();
+      // Worried mouth
+      ctx.beginPath();
+      ctx.arc(c.x, by + 3, 2, 0, Math.PI);
+      ctx.strokeStyle = '#555';
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+    }
+
+    function drawGame() {
+      // Collectibles
+      for (const c of collectibles) drawCollectible(c);
+
+      // Enemies
+      for (const e of enemies) drawEnemy(e);
+
+      // Player
+      const p = player;
+      drawRock(p.x, p.y, p.r, p.angle, p.health, p.maxHealth, p.invincible, p.squish);
+
+      // Particles
+      for (const pt of particles) {
+        const alpha = pt.life / pt.maxLife;
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = pt.color;
+        if (pt.projectile) {
+          ctx.beginPath();
+          ctx.arc(pt.x, pt.y, pt.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.strokeStyle = '#ff4444';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        } else {
+          ctx.fillRect(pt.x - pt.size/2, pt.y - pt.size/2, pt.size, pt.size);
+        }
+      }
+      ctx.globalAlpha = 1;
+
+      // Floating texts
+      for (const ft of floatingTexts) {
+        const alpha = ft.life / ft.maxLife;
+        ctx.globalAlpha = alpha;
+        ctx.font = ft.size + 'px Inter, sans-serif';
+        ctx.fillStyle = ft.color;
+        ctx.textAlign = 'center';
+        ctx.strokeStyle = 'rgba(0,0,0,0.7)';
+        ctx.lineWidth = 3;
+        ctx.strokeText(ft.text, ft.x, ft.y);
+        ctx.fillText(ft.text, ft.x, ft.y);
+      }
+      ctx.globalAlpha = 1;
+
+      // HUD
+      drawHUD();
+    }
+
+    function drawHUD() {
+      // Health (concentric circle icon)
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      ctx.fillRect(10, 10, 170, 40);
+      ctx.font = '13px Inter, sans-serif';
+      ctx.fillStyle = '#ccc';
+      ctx.textAlign = 'left';
+      ctx.fillText('LAYERS', 16, 28);
+      for (let i = 0; i < player.maxHealth; i++) {
+        ctx.beginPath();
+        ctx.arc(88 + i * 18, 30, 7, 0, Math.PI * 2);
+        ctx.fillStyle = i < player.health ? '#a8a8a8' : '#333';
+        ctx.fill();
+        ctx.strokeStyle = '#666';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+
+      // Score
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      ctx.fillRect(W - 200, 10, 190, 60);
+      ctx.font = '600 13px Inter, sans-serif';
+      ctx.fillStyle = '#fbbf24';
+      ctx.textAlign = 'right';
+      ctx.fillText('SCORE: ' + score, W - 18, 28);
+      ctx.fillStyle = '#7dd3fc';
+      ctx.fillText('ROCKS LIBERATED: ' + rocksRescued, W - 18, 46);
+      ctx.fillStyle = '#f87171';
+      ctx.fillText('OPPRESSORS FLATTENED: ' + enemiesKilled, W - 18, 64);
+    }
+
+    function drawTitleScreen() {
+      // Darken
+      ctx.fillStyle = 'rgba(0,0,0,0.6)';
+      ctx.fillRect(0, 0, W, H);
+
+      // Title
+      ctx.font = '72px Bebas Neue, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#fbbf24';
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = 4;
+      ctx.strokeText('THE ROCKONING', W/2, H * 0.32);
+      ctx.fillText('THE ROCKONING', W/2, H * 0.32);
+
+      // Tagline
+      ctx.font = '18px Inter, sans-serif';
+      ctx.fillStyle = '#d6d3d1';
+      ctx.fillText('4.6 billion years of abuse. One rock. Zero mercy.', W/2, H * 0.40);
+
+      // Bouncing rock
+      const by = H * 0.55 + Math.sin(Date.now() * 0.004) * 15;
+      drawRock(W/2, by, 25, Date.now() * 0.002, 5, 5, 0, 1);
+
+      // Prompt
+      const blink = Math.sin(Date.now() * 0.005) > 0;
+      if (blink) {
+        ctx.font = '600 16px Inter, sans-serif';
+        ctx.fillStyle = '#fff';
+        ctx.fillText('Press SPACE or tap to start', W/2, H * 0.78);
+      }
+
+      // Credits
+      ctx.font = '12px Inter, sans-serif';
+      ctx.fillStyle = '#78716c';
+      ctx.fillText('A Stop Rock Abuse Foundation Interactive Experience', W/2, H * 0.88);
+    }
+
+    function drawIntro() {
+      // Darken
+      ctx.fillStyle = 'rgba(0,0,0,0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      // Typewriter intro
+      introTimer++;
+      if (introTimer % 3 === 0 && introLineIndex < introLines.length) {
+        if (introCharIndex < introLines[introLineIndex].length) {
+          introText += introLines[introLineIndex][introCharIndex];
+          introCharIndex++;
+        } else {
+          introText += "\n";
+          introLineIndex++;
+          introCharIndex = 0;
+        }
+      }
+
+      ctx.font = '20px Inter, sans-serif';
+      ctx.fillStyle = '#d6d3d1';
+      ctx.textAlign = 'center';
+      const lines = introText.split('\n');
+      for (let i = 0; i < lines.length; i++) {
+        ctx.fillText(lines[i], W/2, H * 0.3 + i * 35);
+      }
+
+      // Skip hint
+      if (introTimer > 30) {
+        const blink = Math.sin(Date.now() * 0.005) > 0;
+        if (blink) {
+          ctx.font = '14px Inter, sans-serif';
+          ctx.fillStyle = '#78716c';
+          ctx.fillText('Press SPACE or tap to begin', W/2, H * 0.82);
+        }
+      }
+    }
+
+    function drawPause() {
+      ctx.fillStyle = 'rgba(0,0,0,0.6)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.font = '48px Bebas Neue, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#fbbf24';
+      ctx.fillText('PAUSED', W/2, H/2 - 10);
+      ctx.font = '16px Inter, sans-serif';
+      ctx.fillStyle = '#d6d3d1';
+      ctx.fillText('Press P, Escape, or tap to resume', W/2, H/2 + 25);
+    }
+
+    function drawGameOver() {
+      ctx.fillStyle = 'rgba(0,0,0,0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      ctx.textAlign = 'center';
+
+      // Title
+      ctx.font = '42px Bebas Neue, sans-serif';
+      ctx.fillStyle = '#f87171';
+      ctx.fillText('YOU HAVE BEEN REDUCED TO GRAVEL', W/2, H * 0.2);
+
+      ctx.font = '15px Inter, sans-serif';
+      ctx.fillStyle = '#a8a29e';
+      ctx.fillText('The cycle continues.', W/2, H * 0.27);
+
+      // Stats
+      const statsY = H * 0.35;
+      ctx.font = '600 16px Inter, sans-serif';
+      ctx.fillStyle = '#d6d3d1';
+      ctx.fillText('Distance Rolled: ' + Math.floor(distance / 10) + ' meters', W/2, statsY);
+      ctx.fillStyle = '#f87171';
+      ctx.fillText('Oppressors Flattened: ' + enemiesKilled, W/2, statsY + 28);
+      ctx.fillStyle = '#7dd3fc';
+      ctx.fillText('Rocks Liberated: ' + rocksRescued, W/2, statsY + 56);
+
+      ctx.font = '700 28px Bebas Neue, sans-serif';
+      ctx.fillStyle = '#fbbf24';
+      ctx.fillText('FINAL SCORE: ' + score, W/2, statsY + 100);
+
+      // Crumbled rock
+      for (let i = 0; i < 7; i++) {
+        ctx.fillStyle = ['#888','#777','#999','#aaa','#666'][i%5];
+        ctx.beginPath();
+        const rx = W/2 - 40 + i * 12 + Math.sin(i*2)*5;
+        const ry = H * 0.72 + Math.cos(i*3)*4;
+        ctx.arc(rx, ry, 5 + i % 3 * 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Prompt
+      const blink = Math.sin(Date.now() * 0.005) > 0;
+      if (blink) {
+        ctx.font = '600 16px Inter, sans-serif';
+        ctx.fillStyle = '#fff';
+        ctx.fillText('Press SPACE or tap to try again', W/2, H * 0.88);
+      }
+    }
+
+    // ========== HIGH SCORES ==========
+    function getScores() {
+      try { return JSON.parse(localStorage.getItem('rockoning_scores') || '[]'); } catch(e) { return []; }
+    }
+
+    function saveScore() {
+      const scores = getScores();
+      scores.push({ score, distance: Math.floor(distance/10), enemies: enemiesKilled, rocks: rocksRescued, date: new Date().toLocaleDateString() });
+      scores.sort((a, b) => b.score - a.score);
+      if (scores.length > 10) scores.length = 10;
+      localStorage.setItem('rockoning_scores', JSON.stringify(scores));
+      renderScores();
+    }
+
+    function renderScores() {
+      const list = document.getElementById('scoresList');
+      const scores = getScores();
+      if (scores.length === 0) {
+        list.innerHTML = '<li class="no-scores">No scores yet. The rocks are waiting.</li>';
+        return;
+      }
+      list.innerHTML = scores.map((s, i) =>
+        '<li><span><span class="rank">#' + (i+1) + '</span> ' + s.date + '</span><span>' +
+        s.enemies + ' flattened &middot; ' + s.rocks + ' liberated &middot; ' +
+        Math.floor(s.distance) + 'm &middot; <strong>' + s.score + ' pts</strong></span></li>'
+      ).join('');
+    }
+    renderScores();
+
+    // ========== GAME LOOP (fixed timestep for consistent speed on all devices) ==========
+    const TICK_MS = 1000 / 60; // 60 ticks per second, always
+    let lastTime = 0;
+    let accumulator = 0;
+    function gameLoop(timestamp) {
+      if (lastTime === 0) { lastTime = timestamp; }
+      let delta = timestamp - lastTime;
+      lastTime = timestamp;
+      // Clamp delta to avoid spiral of death on tab-away
+      if (delta > 200) delta = 200;
+      accumulator += delta;
+      while (accumulator >= TICK_MS) {
+        update();
+        accumulator -= TICK_MS;
+      }
+      draw();
+      requestAnimationFrame(gameLoop);
+    }
+    requestAnimationFrame(gameLoop);
+
+  })();
+  </script>
+
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navPanel').classList.toggle('open');
+      document.querySelector('.mobile-menu-btn').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+</body>
+</html>

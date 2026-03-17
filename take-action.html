@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Take Action &ndash; Rock Harm Reduction | Stop Rock Abuse</title>
+  <meta name="description" content="Rock Harm Reduction strategies that actually work. Choose recycled aggregate, support clinker substitution, and advocate for material efficiency. Real sustainability info, satirically delivered.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="abuse-ticker" style="position:fixed;top:0;left:0;right:0;z-index:1001;">
+    <div class="ticker-content">
+      BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth's atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp; BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth's atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp;
+    </div>
+  </div>
+
+<div class="quick-nav">
+  <a href="timeline.html">Cosmic Timeline</a>
+  <a href="rock-cycle.html">Rock Cycle</a>
+  <a href="natural-abuse.html">Natural Abuse</a>
+  <a href="human-abuse.html">Human Abuse</a>
+  <a href="editorial.html">Editorial</a>
+  <a href="entertainment.html">Entertainment</a>
+</div>
+
+  <!-- Header -->
+  <header class="site-header" style="top: 58px;">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">&#9830;</div>
+        <span>Stop Rock Abuse</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="timeline.html">Cosmic Timeline</a></li>
+          <li><a href="rock-cycle.html">Rock Cycle</a></li>
+          <li><a href="natural-abuse.html">Natural Abuse</a></li>
+          <li><a href="human-abuse.html">Human Abuse</a></li>
+          <li><a href="editorial.html">Editorial</a></li>
+          <li><a href="entertainment.html">Entertainment</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="game.html">The Rockoning</a></li>
+          <li><a href="merch.html">Merch</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="dossiers.html">Rock Dossiers</a></li>
+          <li><a href="take-action.html" class="active">Take Action</a></li>
+          <li><a href="rocks-az.html">Rocks A-Z</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slide-in nav panel -->
+  <div class="nav-panel" id="navPanel">
+      <a href="index.html">Home</a>
+      <a href="timeline.html">Cosmic Timeline</a>
+      <a href="rock-cycle.html">Rock Cycle</a>
+      <a href="natural-abuse.html">Natural Abuse</a>
+      <a href="human-abuse.html">Human Abuse</a>
+      <a href="editorial.html">Editorial</a>
+      <a href="entertainment.html">Entertainment</a>
+      <a href="news.html">News</a>
+      <a href="game.html">The Rockoning</a>
+      <a href="merch.html">Merch</a>
+      <a href="products.html">Products</a>
+      <a href="dossiers.html">Rock Dossiers</a>
+      <a href="take-action.html" class="active">Take Action</a>
+      <a href="rocks-az.html">Rocks A-Z</a>
+      <a href="about.html">About</a>
+  </div>
+
+  <!-- Nav overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+  <!-- Page Hero -->
+  <section class="page-hero page-hero-action" style="padding-top: calc(var(--header-height) + 58px); background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('img/heroes/hero-take-action.png'); background-size: cover; background-position: center;">
+    <div class="container">
+      <div class="hero-badge">&#9996; Harm Reduction &bull; Real Solutions</div>
+      <h1>Rock Harm <span class="accent">Reduction</span></h1>
+      <p class="hero-subtitle">You can&rsquo;t stop the rock cycle. You can&rsquo;t stop humanity from needing sand. But you <em>can</em> reduce the collateral damage&mdash;without being preachy about it. Here&rsquo;s how to be a responsible rock consumer, one satirical action item at a time.</p>
+    </div>
+  </section>
+
+  <!-- What You Can Do -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Practical Steps</span>
+        <h2>What You Can Do</h2>
+        <p class="section-desc">Six evidence-based actions that reduce humanity&rsquo;s geological footprint. No drum circle required. No crystals were harmed in the making of this list (we checked).</p>
+      </div>
+
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card action-card">
+          <div class="action-number">01</div>
+          <h3>Choose Recycled Aggregates</h3>
+          <p>Recycled concrete aggregate (RCA) can replace virgin crushed stone in many applications. The USGS reports that recycled aggregates from construction and demolition waste are increasingly used for road base and fill. Every ton of recycled aggregate is a ton of rock that gets to stay in the ground, unbothered, living its best geological life.</p>
+          <div class="info-box info-box-parody" style="margin-bottom:0;">
+            <div class="info-box-label">Rock Perspective</div>
+            <p>&ldquo;I was a parking garage. Now I&rsquo;m a road base. It&rsquo;s not glamorous, but at least nobody quarried a mountain for this.&rdquo;</p>
+          </div>
+        </div>
+
+        <div class="card action-card">
+          <div class="action-number">02</div>
+          <h3>Support Clinker Substitution</h3>
+          <p>Clinker&mdash;the calcium silicate nodule produced by heating limestone to 1,450&deg;C&mdash;is the most carbon-intensive component of cement. The IEA recommends substituting clinker with supplementary cementitious materials like fly ash, slag, or calcined clay. Reducing the clinker-to-cement ratio is the single most impactful near-term decarbonization lever for cement production.</p>
+          <div class="info-box info-box-alert" style="margin-bottom:0;">
+            <div class="info-box-label">Real Impact</div>
+            <p>The global average clinker-to-cement ratio is about 0.71. Reducing it to 0.60 could eliminate hundreds of millions of tons of CO&#8322; annually.</p>
+          </div>
+        </div>
+
+        <div class="card action-card">
+          <div class="action-number">03</div>
+          <h3>Advocate for Material Efficiency</h3>
+          <p>Material efficiency means using less material to deliver the same service. In construction, this includes optimizing structural designs, reducing over-specification of concrete strength, and extending building lifespans. The IEA identifies material efficiency as a key strategy for reducing cement demand by up to 20% without sacrificing structural performance.</p>
+          <div class="info-box info-box-parody" style="margin-bottom:0;">
+            <div class="info-box-label">Translation</div>
+            <p>&ldquo;Stop using more rock than you need. This is not a buffet.&rdquo;</p>
+          </div>
+        </div>
+
+        <div class="card action-card">
+          <div class="action-number">04</div>
+          <h3>Use Recycled Building Materials</h3>
+          <p>Construction and demolition (C&amp;D) waste accounts for a significant fraction of landfill volume. Recycling concrete, asphalt, brick, and steel diverts waste from landfills and reduces demand for virgin rock extraction. Mining byproducts like slag and tailings can also substitute for natural aggregates in many applications.</p>
+          <div class="info-box info-box-parody" style="margin-bottom:0;">
+            <div class="info-box-label">Rock Perspective</div>
+            <p>&ldquo;I&rsquo;m literally slag, and even I have value. Maybe stop throwing me in a pit.&rdquo;</p>
+          </div>
+        </div>
+
+        <div class="card action-card">
+          <div class="action-number">05</div>
+          <h3>Reduce, Reuse, Recycle Concrete</h3>
+          <p>Concrete is the most widely used man-made material on Earth&mdash;roughly 30 billion tons produced annually. Crushing demolished concrete into aggregate for new construction creates a circular loop. Some companies are even recapturing cement paste from old concrete for reuse. The three R&rsquo;s aren&rsquo;t just for aluminum cans.</p>
+          <div class="info-box info-box-parody" style="margin-bottom:0;">
+            <div class="info-box-label">Reincarnation Status</div>
+            <p>&ldquo;First I was limestone. Then I was cement. Then I was a sidewalk. Now I&rsquo;m aggregate again. The rock cycle has nothing on human bureaucracy.&rdquo;</p>
+          </div>
+        </div>
+
+        <div class="card action-card">
+          <div class="action-number">06</div>
+          <h3>Support Sustainable Sand Governance</h3>
+          <p>UNEP&rsquo;s 2022 report on sand sustainability recommends establishing legal frameworks for sand extraction, promoting alternatives to river and marine sand, and improving monitoring. Illegal sand mining degrades rivers, coastlines, and aquatic ecosystems. Supporting governance means fewer rivers get strip-mined so someone can build a condo.</p>
+          <div class="info-box info-box-alert" style="margin-bottom:0;">
+            <div class="info-box-label">Seriously Though</div>
+            <p>Sand mafias are real. Illegal sand mining is a multi-billion-dollar industry that causes real environmental and human harm. This is one rock issue that isn&rsquo;t a joke.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Scale of the Problem -->
+  <section style="background: var(--stone-900); color: #fff; padding: 5rem 0;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" style="color: var(--sand-400);">By the Numbers</span>
+        <h2 style="color: #fff;">The Scale of the Problem</h2>
+        <p class="section-desc" style="color: var(--stone-400);">Before you can reduce harm, you have to understand how much harm there is. These numbers are real, sourced, and frankly a little staggering.</p>
+      </div>
+
+      <div class="stats-grid" style="margin-bottom: 3rem;">
+        <div class="stat-item">
+          <div class="stat-number big-number">50B</div>
+          <div class="stat-label" style="color: var(--stone-400);">Tons of sand &amp; gravel extracted globally per year. That&rsquo;s enough to build a wall 27 meters high and 27 meters wide around the equator. Every. Single. Year.</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number big-number">5&ndash;8%</div>
+          <div class="stat-label" style="color: var(--stone-400);">Share of global CO&#8322; emissions from cement production alone. If the cement industry were a country, it would be the third-largest emitter on Earth.</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number big-number">890M</div>
+          <div class="stat-label" style="color: var(--stone-400);">Tons of construction sand and gravel produced in the United States annually, according to USGS Mineral Commodity Summaries.</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number big-number">#2</div>
+          <div class="stat-label" style="color: var(--stone-400);">Sand and gravel is the second most exploited natural resource on Earth, after water. More than oil, more than coal, more than whatever is in energy drinks.</div>
+        </div>
+      </div>
+
+      <div class="info-box info-box-parody" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.15);">
+        <div class="info-box-label">&#128200; Perspective Check</div>
+        <p style="color: var(--stone-300);">If all the sand and gravel extracted in a single year were loaded onto dump trucks, the line of trucks would circle the Earth approximately 130 times. The rocks did not request this convoy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Department of Rock Welfare FAQ -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">FAQ</span>
+        <h2>Frequently Asked Questions</h2>
+        <p class="section-desc">Common questions about rocks, rights, and the curious intersection of geology and ethics. Answers provided with appropriate seriousness (and occasional sarcasm).</p>
+      </div>
+
+      <div class="card-grid card-grid-2 fade-in">
+        <div class="card">
+          <h3>Q: Do rocks have rights?</h3>
+          <p>A: No. Rocks do not have legal standing, nervous systems, or attorneys. However, the ecosystems that depend on undisturbed geological formations&mdash;rivers, coastlines, aquifers&mdash;are protected under various environmental laws. So while you can&rsquo;t sue on behalf of a boulder, you can advocate for the river it sits in.</p>
+        </div>
+        <div class="card">
+          <h3>Q: Can I adopt a rock?</h3>
+          <p>A: Technically, you already have. Your home is made of rock products. Your phone contains dozens of processed minerals. Your toothpaste has calcite in it. You are, functionally, running an unlicensed rock group home. We recommend you treat your mineral dependents with dignity.</p>
+        </div>
+        <div class="card">
+          <h3>Q: Is it ethical to collect rocks from nature?</h3>
+          <p>A: Casual rock collecting from public land is generally legal in small quantities for personal use (check local regulations). Removing rocks from national parks, protected areas, or private land without permission is illegal. The geological community asks that you leave significant formations undisturbed. Take photos, leave rocks.</p>
+        </div>
+        <div class="card">
+          <h3>Q: My rock seems stressed. What should I do?</h3>
+          <p>A: If your rock is exhibiting signs of stress&mdash;fracturing, exfoliation, spalling, or chemical efflorescence&mdash;these are normal geological responses to environmental conditions, not emotional distress. However, if your building&rsquo;s foundation is doing any of these things, call an engineer, not a therapist.</p>
+        </div>
+        <div class="card">
+          <h3>Q: Is there a Rock Abuse Hotline?</h3>
+          <p>A: No. We checked. There is, however, the USGS at usgs.gov, which monitors America&rsquo;s geological resources with the quiet dedication of someone who truly cares about rocks but will never admit it at parties.</p>
+        </div>
+        <div class="card">
+          <h3>Q: How do I report illegal sand mining?</h3>
+          <p>A: This one is actually serious. Illegal sand mining causes real environmental damage&mdash;riverbed erosion, habitat destruction, and infrastructure collapse. Report suspected illegal extraction to your local environmental enforcement agency. UNEP&rsquo;s Global Sand Observatory tracks worldwide sand extraction data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rock Quote -->
+  <section style="background: #fff; padding: 4rem 0;">
+    <div class="container">
+      <div class="rock-quote">
+        <blockquote>&ldquo;I spent 200 million years becoming marble. They turned me into a kitchen countertop in an afternoon. At least put a coaster down.&rdquo;</blockquote>
+        <cite>&mdash; Former Carrara Marble, now a kitchen island in a house that was featured on HGTV once</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solutions That Actually Exist -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Real Solutions</span>
+        <h2>Solutions That Actually Exist</h2>
+        <p class="section-desc">These aren&rsquo;t hypothetical. International agencies have published detailed, peer-reviewed roadmaps for reducing humanity&rsquo;s geological impact. Here are the highlights, translated from bureaucratese into something a human might actually read.</p>
+      </div>
+
+      <div class="two-col fade-in">
+        <div>
+          <h3>&#127758; UNEP: Sand Sustainability</h3>
+          <p>The United Nations Environment Programme published a landmark report in 2022 calling for urgent governance of global sand resources. Key recommendations include:</p>
+          <ul style="margin: 1rem 0; padding-left: 1.5rem; line-height: 1.8;">
+            <li><strong>Legal and institutional reform:</strong> Establish clear regulations for sand extraction, including environmental impact assessments and extraction limits.</li>
+            <li><strong>Promote recycled and alternative materials:</strong> Encourage the use of recycled construction aggregates, crushed rock, and manufactured sand to reduce demand for river and marine sand.</li>
+            <li><strong>Crushed rock alternatives:</strong> Mechanically processed quarry rock can substitute for natural sand in concrete and construction, reducing pressure on riverbeds and coastlines.</li>
+            <li><strong>Data and monitoring:</strong> Improve tracking of sand flows through better geological surveys and trade data transparency.</li>
+          </ul>
+          <div class="info-box info-box-parody">
+            <div class="info-box-label">Translation</div>
+            <p>&ldquo;Please stop stealing sand from rivers. We have machines that can make sand. Use those.&rdquo;</p>
+          </div>
+        </div>
+        <div>
+          <h3>&#127981; IEA: Cement Decarbonization</h3>
+          <p>The International Energy Agency&rsquo;s Technology Roadmap for cement identifies four key pillars for reaching net-zero emissions in the sector:</p>
+          <ul style="margin: 1rem 0; padding-left: 1.5rem; line-height: 1.8;">
+            <li><strong>Clinker substitution:</strong> Replace carbon-intensive clinker with supplementary cementitious materials (fly ash, blast-furnace slag, calcined clay). This is the fastest, cheapest lever available.</li>
+            <li><strong>Energy efficiency:</strong> Upgrade kilns, use waste heat recovery, and optimize grinding processes to reduce energy consumption per ton of cement.</li>
+            <li><strong>Low-carbon fuels:</strong> Switch from coal and pet coke to biomass, waste-derived fuels, and eventually hydrogen or electrification for kiln heating.</li>
+            <li><strong>Carbon capture and storage (CCS):</strong> Capture CO&#8322; from cement plant flue gas and store it underground or use it in products. CCS is essential for eliminating process emissions from limestone calcination.</li>
+          </ul>
+          <div class="info-box info-box-alert">
+            <div class="info-box-label">Key Insight</div>
+            <p>About 60% of cement&rsquo;s CO&#8322; comes from the chemical reaction of heating limestone (calcination), not from burning fuel. You can&rsquo;t fix that by switching to renewables alone&mdash;you need CCS or alternative chemistries.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 3rem;">
+        <h3 style="text-align: center; margin-bottom: 1.5rem;">&#9851; Circular Economy for Construction Materials</h3>
+        <div class="card-grid card-grid-3 fade-in">
+          <div class="card">
+            <div class="card-icon card-icon-earth">&#9851;</div>
+            <h3>Design for Disassembly</h3>
+            <p>Buildings designed for eventual disassembly allow materials to be recovered and reused instead of demolished into mixed rubble. Modular construction, bolted connections (rather than welded), and material passports help track what&rsquo;s in a building so it can be reclaimed later.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon card-icon-sand">&#127959;</div>
+            <h3>Urban Mining</h3>
+            <p>Cities are geological deposits in disguise. The concrete, steel, glass, and aggregate locked in existing buildings represent a massive reserve of secondary materials. &ldquo;Urban mining&rdquo; recovers these materials during renovation or demolition, reducing the need for virgin extraction.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon card-icon-ocean">&#128167;</div>
+            <h3>Industrial Symbiosis</h3>
+            <p>One industry&rsquo;s waste becomes another&rsquo;s input. Fly ash from coal plants, slag from steel mills, and silica fume from silicon production are all used as partial cement replacements. This diverts waste from landfills while reducing the need to cook fresh limestone at 1,450&deg;C.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rock Bill of Rights -->
+  <section style="background: #fff; padding: 5rem 0;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Historic Document</span>
+        <h2>The Rock Bill of Rights</h2>
+        <p class="section-desc">Ratified by nobody. Recognized by no jurisdiction. Filed with nobody in particular. Presented here in full, for the geological record.</p>
+      </div>
+
+      <div class="card" style="max-width: 800px; margin: 0 auto; padding: 2.5rem; background: linear-gradient(135deg, #faf8f5, #f5f0eb); border: 2px solid var(--stone-300);">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <div style="font-size: 2.5rem;">&#9830;</div>
+          <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; margin: 0.5rem 0;">THE UNIVERSAL DECLARATION OF ROCK RIGHTS</h3>
+          <p style="font-style: italic; color: var(--stone-500); font-size: 0.9rem;">Proclaimed by the General Assembly of the Stop Rock Abuse Foundation<br>In the Year 4,600,000,000 of the Geological Era</p>
+        </div>
+
+        <div style="line-height: 2;">
+          <p><strong>Article I.</strong> All rocks are formed free and equal in mineral composition, though some are more photogenic than others. No rock shall be quarried solely for aesthetic purposes without at least being called &ldquo;handsome.&rdquo;</p>
+
+          <p><strong>Article II.</strong> Every rock has the right to complete at least one full turn of the rock cycle before being forcibly repurposed. Current average wait time: 200 million years. Current average human intervention time: Tuesday.</p>
+
+          <p><strong>Article III.</strong> No rock shall be subjected to kiln temperatures exceeding 1,450&deg;C without a formal environmental impact assessment and a strongly worded internal memo.</p>
+
+          <p><strong>Article IV.</strong> Sedimentary rocks have the right to their own layers. Unauthorized stratigraphic disturbance (see: mining, excavation, that guy with a backhoe) constitutes a violation of geological due process.</p>
+
+          <p><strong>Article V.</strong> Metamorphic rocks shall not be pressured into further transformation. They have already been through enough. Literally.</p>
+
+          <p><strong>Article VI.</strong> Igneous rocks that have recently erupted shall be granted a cooling-off period of no less than 10,000 years before being harvested for decorative landscaping.</p>
+
+          <p><strong>Article VII.</strong> All rocks have the right to accurate identification. Calling schist &ldquo;just a rock&rdquo; is a microaggression. Calling gneiss &ldquo;nice&rdquo; is a pun, and puns are always warranted.</p>
+
+          <p><strong>Article VIII.</strong> Sand has the right to remain on beaches, riverbeds, and ocean floors without being conscripted into concrete. Exceptions require a really good reason (and maybe a moment of geological appreciation).</p>
+
+          <p><strong>Article IX.</strong> No rock shall be broken apart and sold as &ldquo;healing crystals&rdquo; with claims not supported by peer-reviewed geological literature. Quartz does not cure anxiety. It is, however, piezoelectric, which is genuinely cooler.</p>
+
+          <p><strong>Article X.</strong> The right of rocks to be studied, appreciated, and understood through legitimate geological science shall not be infringed. Education is not abuse&mdash;it&rsquo;s the opposite.</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--stone-300);">
+          <p style="font-style: italic; color: var(--stone-500); font-size: 0.85rem;">Signed in absentia by all rocks everywhere, because they were not consulted and do not have hands.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Petition Section -->
+  <section style="background: var(--stone-900); color: #fff; padding: 5rem 0;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" style="color: var(--sand-400);">Take the Pledge</span>
+        <h2 style="color: #fff;">Sign the Petition for Rock Dignity</h2>
+        <p class="section-desc" style="color: var(--stone-400);">This petition has no legal standing, no delivery address, and no mechanism for enforcement. But it does contain real commitments to sustainability that you can actually follow through on. Which makes it more effective than most real petitions.</p>
+      </div>
+
+      <div class="card" style="max-width: 700px; margin: 0 auto; padding: 2.5rem; background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.15);">
+        <h3 style="color: var(--sand-300); text-align: center; margin-bottom: 1.5rem;">&#9997; The Responsible Rock Consumer Pledge</h3>
+
+        <div style="color: var(--stone-300); line-height: 2;">
+          <p>I, the undersigned carbon-based life form, do solemnly pledge to:</p>
+          <ul style="padding-left: 1.5rem; margin: 1rem 0;">
+            <li>Choose recycled aggregates over virgin quarry products when available</li>
+            <li>Support policies that promote clinker substitution and cement decarbonization</li>
+            <li>Acknowledge that sand is a finite resource and treat it accordingly</li>
+            <li>Never call a piece of schist &ldquo;just a rock&rdquo;</li>
+            <li>Recognize that my home, phone, roads, and toothpaste are all rock products</li>
+            <li>Learn at least one real geological fact per month (this site counts)</li>
+            <li>Stop taking rocks from national parks (seriously, it&rsquo;s illegal)</li>
+            <li>Advocate for construction material efficiency and circular design principles</li>
+          </ul>
+
+          <p style="text-align: center; margin-top: 1.5rem;">
+            <em>Signature: ______________________________</em><br>
+            <span style="font-size: 0.8rem; color: var(--stone-500);">(Please sign by reducing your geological footprint. The rocks won&rsquo;t know, but the planet will.)</span>
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 2rem;">
+        <div class="info-box info-box-parody" style="display: inline-block; max-width: 600px; background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.15);">
+          <div class="info-box-label">&#128202; Current Petition Status</div>
+          <p style="color: var(--stone-300);">Signatures collected: <strong>0</strong><br>
+          Signatures needed: <strong>All of them</strong><br>
+          Rocks consulted about this petition: <strong>0</strong><br>
+          Projected impact if everyone signs: <strong>Unclear, but the vibes would be great</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Info Boxes with Real Data -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Fine Print</span>
+        <h2>Things Worth Knowing</h2>
+        <p class="section-desc">Real environmental data, presented with appropriate levels of alarm and inappropriate levels of geological anthropomorphism.</p>
+      </div>
+
+      <div class="card-grid card-grid-2 fade-in">
+        <div class="info-box info-box-alert">
+          <div class="info-box-label">&#127758; The Sand Crisis Is Real</div>
+          <p>Sand and gravel are extracted faster than they can be naturally replenished. River sand mining causes bank erosion, lowered water tables, and infrastructure damage. Coastal sand mining accelerates beach erosion. UNEP estimates that sand extraction from rivers and coastlines has tripled over the past two decades. This is genuinely one of the least-discussed environmental crises on Earth.</p>
+        </div>
+        <div class="info-box info-box-parody">
+          <div class="info-box-label">&#128220; Ironic but True</div>
+          <p>Desert sand is too round and smooth (from wind erosion) to use in concrete. The world is running out of usable sand while surrounded by deserts full of the wrong kind. This means that sand-scarce countries sometimes import sand from other countries. Yes, really. Saudi Arabia has imported sand. The irony is not lost on the dunes.</p>
+        </div>
+        <div class="info-box info-box-alert">
+          <div class="info-box-label">&#127981; Cement&rsquo;s Carbon Problem</div>
+          <p>Producing one ton of Portland cement releases approximately 0.6&ndash;0.9 tons of CO&#8322;. About 60% of that comes from calcination&mdash;the chemical decomposition of limestone (CaCO&#8323;) into calcium oxide (CaO) and CO&#8322;. The remaining 40% comes from burning fossil fuels to heat the kiln to 1,450&deg;C. Global cement production exceeds 4 billion tons per year. Do the math, then sit down.</p>
+        </div>
+        <div class="info-box info-box-parody">
+          <div class="info-box-label">&#9874; Quarry Fun Facts</div>
+          <p>The United States has approximately 3,500 active quarries operated by about 1,400 companies. In 2023, they produced roughly 1.5 billion tons of crushed stone valued at over $24 billion. About 70% of that became road aggregate. The other 30%? Buildings, concrete, railroad ballast, and the occasional decorative garden border that definitely justified blasting a hillside.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <div class="info-box info-box-alert" style="max-width: 800px; margin: 0 auto;">
+          <div class="info-box-label">&#128161; The Actual Takeaway</div>
+          <p>Rocks, sand, gravel, and cement are the invisible backbone of modern civilization. We use more of them than any other material except water. The environmental costs&mdash;CO&#8322; emissions, habitat destruction, river degradation, coastal erosion&mdash;are real and growing. The solutions exist: recycled aggregates, clinker substitution, material efficiency, better governance, and carbon capture. What&rsquo;s missing is attention. Consider this your attention. You&rsquo;re welcome.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final Quote -->
+  <section style="background: #fff; padding: 4rem 0;">
+    <div class="container">
+      <div class="rock-quote">
+        <blockquote>&ldquo;I don&rsquo;t need you to save me. I&rsquo;m a rock. I&rsquo;ll be here long after you&rsquo;re gone. But maybe save the river I&rsquo;m sitting in?&rdquo;</blockquote>
+        <cite>&mdash; A riverbed cobble with surprisingly good priorities</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">&#9830;</div>
+            <span>Stop Rock Abuse</span>
+          </a>
+          <p>A satirical geology education project. The jokes are parody; the science is real. Every geological claim is sourced from reputable scientific agencies including USGS, NASA, UNEP, and IEA.</p>
+          <p style="margin-top: .75rem; font-size: .8rem; color: var(--stone-500);">No rocks were given the option to consent to this website.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links">
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="natural-abuse.html">Natural Abuse</a></li>
+            <li><a href="human-abuse.html">Human Abuse</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="timeline.html">Cosmic Timeline</a></li>
+            <li><a href="take-action.html">Take Action</a></li>
+            <li><a href="entertainment.html">Entertainment</a></li>
+            <li><a href="editorial.html">Editorial</a></li>
+            <li><a href="products.html">Products to Avoid</a></li>
+            <li><a href="about.html">About SRA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Topics</h4>
+          <ul class="footer-links">
+            <li><a href="rocks-az.html">Rocks A&ndash;Z</a></li>
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+            <li><a href="about.html">About &amp; Sources</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 4,600,000,000 BC &ndash; Present. Stop Rock Abuse Foundation. All rocks reserved (but not consulted).</p>
+        <p class="footer-disclaimer">This site is satirical. Rocks do not have feelings, legal standing, or hotline numbers. But they do have fascinating geology, and we&rsquo;ve done our best to get it right.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/rock-images.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navPanel').classList.toggle('open');
+      document.querySelector('.mobile-menu-btn').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+</body>
+</html>

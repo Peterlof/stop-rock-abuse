@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Rock Cycle - Stop Rock Abuse</title>
+  <meta name="description" content="The rock cycle: an institutional reincarnation program no rock can escape. Interactive diagram, real USGS geology, and humorous commentary.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="abuse-ticker" style="position:fixed;top:0;left:0;right:0;z-index:1001;">
+    <div class="ticker-content">
+      BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth's atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp; BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth's atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp;
+    </div>
+  </div>
+
+<div class="quick-nav">
+  <a href="timeline.html">Cosmic Timeline</a>
+  <a href="rock-cycle.html" class="active">Rock Cycle</a>
+  <a href="natural-abuse.html">Natural Abuse</a>
+  <a href="human-abuse.html">Human Abuse</a>
+  <a href="editorial.html">Editorial</a>
+  <a href="entertainment.html">Entertainment</a>
+</div>
+
+  <!-- Header -->
+  <header class="site-header" style="top: 58px;">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">&#9830;</div>
+        <span>Stop Rock Abuse</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="timeline.html">Cosmic Timeline</a></li>
+          <li><a href="rock-cycle.html" class="active">Rock Cycle</a></li>
+          <li><a href="natural-abuse.html">Natural Abuse</a></li>
+          <li><a href="human-abuse.html">Human Abuse</a></li>
+          <li><a href="editorial.html">Editorial</a></li>
+          <li><a href="entertainment.html">Entertainment</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="game.html">The Rockoning</a></li>
+          <li><a href="merch.html">Merch</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="dossiers.html">Rock Dossiers</a></li>
+          <li><a href="take-action.html">Take Action</a></li>
+          <li><a href="rocks-az.html">Rocks A-Z</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slide-in nav panel -->
+  <div class="nav-panel" id="navPanel">
+      <a href="index.html">Home</a>
+      <a href="timeline.html">Cosmic Timeline</a>
+      <a href="rock-cycle.html" class="active">Rock Cycle</a>
+      <a href="natural-abuse.html">Natural Abuse</a>
+      <a href="human-abuse.html">Human Abuse</a>
+      <a href="editorial.html">Editorial</a>
+      <a href="entertainment.html">Entertainment</a>
+      <a href="news.html">News</a>
+      <a href="game.html">The Rockoning</a>
+      <a href="merch.html">Merch</a>
+      <a href="products.html">Products</a>
+      <a href="dossiers.html">Rock Dossiers</a>
+      <a href="take-action.html">Take Action</a>
+      <a href="rocks-az.html">Rocks A-Z</a>
+      <a href="about.html">About</a>
+  </div>
+
+  <!-- Nav overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+  <!-- Page Hero -->
+  <section class="page-hero page-hero-cycle" style="padding-top: calc(var(--header-height) + 58px); background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('img/heroes/hero-rock-cycle.png'); background-size: cover; background-position: center;">
+    <div class="hero-content">
+      <div class="hero-badge">&#9854; Cycle of Perpetual Reassignment</div>
+      <h1>The Rock Cycle</h1>
+      <p class="hero-subtitle">
+        The institutional reincarnation program no rock can escape. Rocks in our solar system are 4.6 billion years old, but rocks elsewhere in the universe have existed for over 11 billion years&mdash;the oldest known rocks formed shortly after the first stars. For all that time, the cosmos has been melting, crushing, dissolving, and rebuilding its mineral residents&mdash;without so much as a comment period or environmental impact statement on the rocks themselves.
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Rock Cycle Diagram -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Diagram</span>
+        <h2>The Cycle of Involuntary Transformation</h2>
+        <p class="section-desc">According to the USGS, the rock cycle describes the dynamic transitions through geologic time among the three main rock types. Below is the bureaucratic flowchart no rock asked for.</p>
+      </div>
+
+      <div style="max-width: 800px; margin: 0 auto;">
+        <svg viewBox="0 0 800 720" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; font-family: 'Inter', sans-serif;">
+          <defs>
+            <marker id="arrow-main" viewBox="0 0 12 8" refX="11" refY="4" markerWidth="12" markerHeight="8" orient="auto-start-reverse">
+              <polygon points="0 0, 12 4, 0 8" fill="#4a4a6a" />
+            </marker>
+            <marker id="arrow-shortcut" viewBox="0 0 10 7" refX="9" refY="3.5" markerWidth="10" markerHeight="7" orient="auto-start-reverse">
+              <polygon points="0 0, 10 3.5, 0 7" fill="#b0b0c8" />
+            </marker>
+            <filter id="node-shadow" x="-10%" y="-10%" width="130%" height="140%">
+              <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#000" flood-opacity="0.15"/>
+            </filter>
+            <!-- Label background pill -->
+            <filter id="label-bg" x="-0.08" y="-0.15" width="1.16" height="1.4">
+              <feFlood flood-color="#f5f5fa" flood-opacity="0.92" result="bg"/>
+              <feMerge><feMergeNode in="bg"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- Subtle background circle to frame the cycle -->
+          <circle cx="400" cy="340" r="250" fill="none" stroke="#e8e8f0" stroke-width="1.5" stroke-dasharray="4 6" opacity="0.6"/>
+
+          <!-- ============================================ -->
+          <!-- MAIN CYCLE ARROWS (solid, dark, thick)       -->
+          <!-- Flow: Magma -> Igneous -> Sedimentary -> Metamorphic -> Magma -->
+          <!-- ============================================ -->
+
+          <!-- Magma -> Igneous: Cooling & Crystallization (upward) -->
+          <path d="M 400,240 L 400,145" fill="none" stroke="#4a4a6a" stroke-width="3" marker-end="url(#arrow-main)"/>
+          <rect x="340" y="177" width="120" height="24" rx="12" fill="#f5f5fa" stroke="#ddd" stroke-width="0.5"/>
+          <text x="400" y="193" fill="#4a4a6a" font-size="11.5" font-weight="700" text-anchor="middle" letter-spacing="0.03em">Cooling</text>
+
+          <!-- Igneous -> Sedimentary: Weathering & Erosion (top-left to bottom-left) -->
+          <path d="M 310,120 C 190,140 100,240 140,410" fill="none" stroke="#4a4a6a" stroke-width="3" marker-end="url(#arrow-main)"/>
+          <rect x="88" y="248" width="130" height="40" rx="12" fill="#f5f5fa" stroke="#ddd" stroke-width="0.5"/>
+          <text x="153" y="264" fill="#4a4a6a" font-size="11.5" font-weight="700" text-anchor="middle" letter-spacing="0.03em">Weathering</text>
+          <text x="153" y="280" fill="#4a4a6a" font-size="11.5" font-weight="700" text-anchor="middle" letter-spacing="0.03em">&amp; Erosion</text>
+
+          <!-- Sedimentary -> Metamorphic: Heat & Pressure (bottom-left to bottom-right) -->
+          <path d="M 290,460 C 350,540 500,540 560,460" fill="none" stroke="#4a4a6a" stroke-width="3" marker-end="url(#arrow-main)"/>
+          <rect x="365" y="520" width="120" height="40" rx="12" fill="#f5f5fa" stroke="#ddd" stroke-width="0.5"/>
+          <text x="425" y="536" fill="#4a4a6a" font-size="11.5" font-weight="700" text-anchor="middle" letter-spacing="0.03em">Heat &amp;</text>
+          <text x="425" y="552" fill="#4a4a6a" font-size="11.5" font-weight="700" text-anchor="middle" letter-spacing="0.03em">Pressure</text>
+
+          <!-- Metamorphic -> Magma: Melting (bottom-right to center) -->
+          <path d="M 595,400 C 560,350 490,300 465,280" fill="none" stroke="#4a4a6a" stroke-width="3" marker-end="url(#arrow-main)"/>
+          <rect x="515" y="318" width="80" height="24" rx="12" fill="#f5f5fa" stroke="#ddd" stroke-width="0.5"/>
+          <text x="555" y="334" fill="#4a4a6a" font-size="11.5" font-weight="700" text-anchor="middle" letter-spacing="0.03em">Melting</text>
+
+          <!-- ============================================ -->
+          <!-- SHORTCUT ARROWS (dashed, lighter, thinner)   -->
+          <!-- ============================================ -->
+
+          <!-- Igneous -> Metamorphic (direct, right side arc) -->
+          <path d="M 490,120 C 600,170 670,310 630,410" fill="none" stroke="#b0b0c8" stroke-width="2" stroke-dasharray="7 4" marker-end="url(#arrow-shortcut)"/>
+          <rect x="625" y="245" width="100" height="40" rx="12" fill="#f5f5fa" stroke="#ddd" stroke-width="0.5"/>
+          <text x="675" y="261" fill="#8888a8" font-size="10.5" font-weight="600" text-anchor="middle">Heat &amp;</text>
+          <text x="675" y="277" fill="#8888a8" font-size="10.5" font-weight="600" text-anchor="middle">Pressure</text>
+
+          <!-- Sedimentary -> Magma (direct, left inner arc) -->
+          <path d="M 215,410 C 250,360 310,300 345,270" fill="none" stroke="#b0b0c8" stroke-width="2" stroke-dasharray="7 4" marker-end="url(#arrow-shortcut)"/>
+          <rect x="225" y="318" width="80" height="24" rx="12" fill="#f5f5fa" stroke="#ddd" stroke-width="0.5"/>
+          <text x="265" y="334" fill="#8888a8" font-size="10.5" font-weight="600" text-anchor="middle">Melting</text>
+
+          <!-- Metamorphic -> Sedimentary (reverse, bottom arc) -->
+          <path d="M 560,475 C 490,520 340,520 265,475" fill="none" stroke="#b0b0c8" stroke-width="2" stroke-dasharray="7 4" marker-end="url(#arrow-shortcut)"/>
+          <rect x="347" y="575" width="146" height="24" rx="12" fill="#f5f5fa" stroke="#ddd" stroke-width="0.5"/>
+          <text x="420" y="591" fill="#8888a8" font-size="10.5" font-weight="600" text-anchor="middle">Weathering &amp; Erosion</text>
+
+          <!-- Igneous -> Magma (re-melting, inner left) -->
+          <path d="M 340,140 C 310,180 330,220 365,248" fill="none" stroke="#b0b0c8" stroke-width="2" stroke-dasharray="7 4" marker-end="url(#arrow-shortcut)"/>
+          <rect x="275" y="183" width="80" height="24" rx="12" fill="#f5f5fa" stroke="#ddd" stroke-width="0.5"/>
+          <text x="315" y="199" fill="#8888a8" font-size="10.5" font-weight="600" text-anchor="middle">Melting</text>
+
+          <!-- ============================================ -->
+          <!-- NODES (drawn last so they sit on top)        -->
+          <!-- ============================================ -->
+
+          <!-- Igneous (top center) -->
+          <rect x="300" y="70" width="200" height="74" rx="16" fill="#e57373" filter="url(#node-shadow)"/>
+          <text x="400" y="102" fill="#fff" font-size="18" font-weight="700" text-anchor="middle" letter-spacing="0.04em">Igneous</text>
+          <text x="400" y="124" fill="rgba(255,255,255,.85)" font-size="11.5" font-weight="400" text-anchor="middle">Cooled from magma / lava</text>
+
+          <!-- Magma (center) -->
+          <rect x="340" y="244" width="140" height="64" rx="16" fill="#d32f2f" filter="url(#node-shadow)"/>
+          <text x="410" y="272" fill="#fff" font-size="18" font-weight="700" text-anchor="middle" letter-spacing="0.04em">Magma</text>
+          <text x="410" y="294" fill="rgba(255,255,255,.8)" font-size="10.5" font-weight="400" text-anchor="middle">Molten rock</text>
+
+          <!-- Sedimentary (bottom-left) -->
+          <rect x="100" y="410" width="200" height="74" rx="16" fill="#f9a825" filter="url(#node-shadow)"/>
+          <text x="200" y="442" fill="#fff" font-size="18" font-weight="700" text-anchor="middle" letter-spacing="0.04em">Sedimentary</text>
+          <text x="200" y="464" fill="rgba(255,255,255,.85)" font-size="11.5" font-weight="400" text-anchor="middle">Compacted fragments</text>
+
+          <!-- Metamorphic (bottom-right) -->
+          <rect x="520" y="410" width="200" height="74" rx="16" fill="#ab47bc" filter="url(#node-shadow)"/>
+          <text x="620" y="442" fill="#fff" font-size="18" font-weight="700" text-anchor="middle" letter-spacing="0.04em">Metamorphic</text>
+          <text x="620" y="464" fill="rgba(255,255,255,.85)" font-size="11.5" font-weight="400" text-anchor="middle">Heat &amp; pressure altered</text>
+
+          <!-- ============================================ -->
+          <!-- LEGEND                                       -->
+          <!-- ============================================ -->
+          <g transform="translate(200, 670)">
+            <line x1="0" y1="0" x2="40" y2="0" stroke="#4a4a6a" stroke-width="3"/>
+            <polygon points="40,-4 48,0 40,4" fill="#4a4a6a"/>
+            <text x="56" y="4" fill="#4a4a6a" font-size="12" font-weight="600">Main cycle path</text>
+            <line x1="210" y1="0" x2="250" y2="0" stroke="#b0b0c8" stroke-width="2" stroke-dasharray="7 4"/>
+            <polygon points="250,-3 257,0 250,3" fill="#b0b0c8"/>
+            <text x="265" y="4" fill="#8888a8" font-size="12" font-weight="600">Shortcut path</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="info-box info-box-fact" style="max-width: 700px; margin: 2rem auto;">
+        <div class="info-box-label">&#128218; USGS Fact</div>
+        <p>The rock cycle has no beginning and no end. Any rock type can be converted into any other rock type, or even recycled back into a new rock of its own type. The processes that drive the cycle operate at vastly different timescales&mdash;from volcanic eruptions lasting hours to mountain-building events spanning tens of millions of years.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Igneous Rocks -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Rock Type I</span>
+        <h2>Igneous Rocks: Born from Fire</h2>
+        <p class="section-desc">Formed when molten rock (magma or lava) cools and solidifies. According to the USGS, igneous rocks make up most of Earth&rsquo;s crust and virtually all of the mantle.</p>
+      </div>
+
+      <div class="two-col fade-in">
+        <div>
+          <h3>Intrusive (Plutonic) Igneous Rocks</h3>
+          <p>These form when magma cools <em>slowly</em> deep beneath Earth&rsquo;s surface, allowing large, visible mineral crystals to grow. Granite is the most well-known example, composed primarily of quartz, feldspar, and mica. Plutonic rocks can take thousands to millions of years to solidify completely.</p>
+          <p>The slow cooling process occurs within magma chambers, sometimes at depths of 10&ndash;30 km. These rocks are only exposed at the surface after millions of years of erosion strip away overlying material.</p>
+
+          <div class="info-box info-box-parody">
+            <div class="info-box-label">In Other Words</div>
+            <p>&ldquo;You will be confined underground at extreme temperatures for millennia until you develop an acceptable crystal structure. Early release is not available. Surface exposure occurs only after erosion files the necessary paperwork.&rdquo;</p>
+          </div>
+        </div>
+        <div>
+          <h3>Extrusive (Volcanic) Igneous Rocks</h3>
+          <p>These form when lava erupts at the surface and cools <em>rapidly</em>, producing fine-grained or even glassy textures. Basalt, the most common extrusive rock, underlies most of the ocean floor. Obsidian forms when lava cools so quickly that atoms cannot arrange into a crystal structure at all, creating volcanic glass.</p>
+          <p>Pumice cools so rapidly while trapping gas bubbles that it becomes light enough to float on water&mdash;the only rock with this distinction. Extrusive rocks can cool in hours to days.</p>
+
+          <div class="info-box info-box-parody">
+            <div class="info-box-label">In Other Words</div>
+            <p>&ldquo;Option B: explosive ejection followed by instant quenching. You will not have time to form crystals. You may become glass. No appeals.&rdquo;</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-grid card-grid-3 fade-in" style="margin-top: 2rem;">
+        <div class="card">
+          <div class="card-icon card-icon-magma">&#127755;</div>
+          <h3>Granite</h3>
+          <p>Coarse-grained plutonic rock. Makes up much of the continental crust. Hardness 6&ndash;7 on the Mohs scale. Composed of quartz (20&ndash;60%), feldspar, and mica. Used extensively in construction and monuments.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-magma">&#127755;</div>
+          <h3>Basalt</h3>
+          <p>Fine-grained volcanic rock. The most abundant rock in Earth&rsquo;s crust by volume, forming the ocean floor and volcanic islands. Dark-colored, rich in iron and magnesium. Erupts at temperatures of 1,000&ndash;1,200&deg;C.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-magma">&#127755;</div>
+          <h3>Obsidian</h3>
+          <p>Volcanic glass formed by extremely rapid cooling. Conchoidal fracture produces edges sharper than surgical steel. Used by ancient cultures for cutting tools and arrowheads. Contains 70&ndash;75% silica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sedimentary Rocks -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Rock Type II</span>
+        <h2>Sedimentary Rocks: Built from Debris</h2>
+        <p class="section-desc">Formed at or near Earth&rsquo;s surface from the accumulation and lithification of sediment, or by precipitation from solution. Sedimentary rocks cover roughly 75% of Earth&rsquo;s land surface despite making up only about 5% of the crust by volume.</p>
+      </div>
+
+      <div class="two-col fade-in">
+        <div>
+          <h3>Clastic Sedimentary Rocks</h3>
+          <p>Formed from fragments (clasts) of pre-existing rocks that have been weathered, transported, deposited, and then lithified. Grain size determines the rock type: gravel becomes conglomerate, sand becomes sandstone, silt becomes siltstone, and clay becomes shale.</p>
+          <p>The USGS describes lithification as the process of converting loose sediment into solid rock through compaction (burial pressure squeezing out water and air) and cementation (minerals like silica, calcite, or iron oxide precipitate from groundwater and bind grains together).</p>
+        </div>
+        <div>
+          <h3>Chemical &amp; Biochemical Sedimentary Rocks</h3>
+          <p>Chemical sedimentary rocks form when dissolved minerals precipitate from water. Rock salt (halite) forms from evaporating seawater. Some limestones precipitate directly from supersaturated water.</p>
+          <p>Biochemical sedimentary rocks form from the accumulated remains of organisms. Most limestone is biochemical, built from shells, coral, and calcareous algae. Coal forms from compressed, altered plant material accumulated in ancient swamps over millions of years.</p>
+        </div>
+      </div>
+
+      <div class="info-box info-box-parody" style="max-width: 800px; margin: 0 auto 2rem;">
+        <div class="info-box-label">In Other Words</div>
+        <p>&ldquo;Step 1: You will be broken apart. Step 2: Your fragments will be shipped, sometimes thousands of kilometers, by water, wind, ice, or gravity. Step 3: You will be buried under more of yourself. Step 4: Groundwater will glue you back together. Congratulations&mdash;you are now a different rock. Your old identity has been archived.&rdquo;</p>
+      </div>
+
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-sand">&#127754;</div>
+          <h3>Sandstone</h3>
+          <p>Composed of sand-sized grains (0.0625&ndash;2 mm), commonly quartz. Forms in deserts, rivers, beaches, and shallow seas. Porosity makes it an important reservoir rock for groundwater, oil, and natural gas.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-sand">&#127754;</div>
+          <h3>Limestone</h3>
+          <p>Composed primarily of calcite (CaCO&#8323;). Most is biochemical, formed from marine organism remains. Makes up about 10% of sedimentary rocks. Dissolves in weak acid, forming caves, sinkholes, and karst landscapes.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-sand">&#127754;</div>
+          <h3>Shale</h3>
+          <p>The most abundant sedimentary rock, formed from clay-sized particles. Exhibits fissility&mdash;the ability to split into thin layers. Rich in organic matter, it is the source rock for most petroleum and natural gas deposits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metamorphic Rocks -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Rock Type III</span>
+        <h2>Metamorphic Rocks: Forged Under Pressure</h2>
+        <p class="section-desc">Formed when existing rocks are subjected to heat, pressure, or chemically active fluids that cause mineralogical, textural, and structural changes&mdash;all without melting. The USGS notes that metamorphism literally means &ldquo;change in form.&rdquo;</p>
+      </div>
+
+      <div class="two-col fade-in">
+        <div>
+          <h3>Foliated Metamorphic Rocks</h3>
+          <p>Foliation occurs when minerals align in parallel layers or bands due to directed (differential) pressure. The degree of metamorphism produces a progression: shale becomes slate, then phyllite, then schist, then gneiss&mdash;each with increasingly coarse mineral grains and more pronounced banding.</p>
+          <p>This progression represents increasing temperature and pressure. Slate forms at roughly 200&ndash;300&deg;C, while gneiss requires temperatures exceeding 600&deg;C and pressures found at depths of 15&ndash;30+ km.</p>
+        </div>
+        <div>
+          <h3>Non-Foliated Metamorphic Rocks</h3>
+          <p>These form when the parent rock&rsquo;s mineral composition does not produce platy or elongated minerals, or when pressure is applied equally from all directions (confining pressure). Marble forms from limestone, quartzite from sandstone, and hornfels from contact metamorphism near igneous intrusions.</p>
+          <p>Quartzite is one of the hardest and most chemically resistant rocks on Earth. Marble&rsquo;s interlocking calcite crystals give it the translucency and workability prized by sculptors for millennia.</p>
+        </div>
+      </div>
+
+      <div class="info-box info-box-parody" style="max-width: 800px; margin: 0 auto 2rem;">
+        <div class="info-box-label">In Other Words</div>
+        <p>&ldquo;Welcome to metamorphic processing. You will be subjected to temperatures up to 800&deg;C and pressures equivalent to being buried under 30 kilometers of crust. Your minerals will be rearranged. Your texture will be modified. You will emerge denser, harder, and with a new name. Your previous identity is no longer recognized by this department.&rdquo;</p>
+      </div>
+
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-meta">&#128142;</div>
+          <h3>Marble</h3>
+          <p>Metamorphosed limestone. Interlocking calcite crystals produce a sugary texture and allow light to penetrate the surface slightly, giving it a characteristic luminous quality. The Carrara marble used by Michelangelo formed roughly 200 million years ago.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-meta">&#128142;</div>
+          <h3>Slate</h3>
+          <p>Low-grade metamorphism of shale. Excellent cleavage allows it to be split into thin, durable sheets. Used for roofing, blackboards, and flooring for centuries. Forms at relatively low temperatures (200&ndash;300&deg;C).</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-meta">&#128142;</div>
+          <h3>Gneiss</h3>
+          <p>High-grade metamorphic rock with distinctive alternating light and dark mineral bands. Represents extreme conditions: temperatures above 600&deg;C and pressures at 15&ndash;30+ km depth. Often found in the cores of ancient mountain ranges.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Flow Section -->
+  <section style="background: #fff;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Transformation Pathways</span>
+        <h2>How Rocks Transform Between Types</h2>
+        <p class="section-desc">Every rock is just one geological process away from becoming something else entirely. Here are the key transformation pathways in the cycle.</p>
+      </div>
+
+      <!-- Flow 1: Magma to Igneous -->
+      <h3 style="text-align:center; margin-bottom: 1.5rem;">From Magma to Igneous: Cooling &amp; Crystallization</h3>
+      <div class="process-flow fade-in">
+        <div class="process-node process-node-magma">
+          <div class="node-icon">&#127755;</div>
+          <div class="node-label">Magma / Lava</div>
+          <div class="node-desc">800&ndash;1,200&deg;C molten rock</div>
+        </div>
+        <div class="process-arrow">&#10132;</div>
+        <div class="process-node" style="background: rgba(30,136,229,.08); border: 2px solid rgba(30,136,229,.2);">
+          <div class="node-icon">&#10052;</div>
+          <div class="node-label">Cooling</div>
+          <div class="node-desc">Slow (intrusive) or fast (extrusive)</div>
+        </div>
+        <div class="process-arrow">&#10132;</div>
+        <div class="process-node process-node-igneous">
+          <div class="node-icon">&#9830;</div>
+          <div class="node-label">Igneous Rock</div>
+          <div class="node-desc">Crystallized minerals</div>
+        </div>
+      </div>
+
+      <!-- Flow 2: Any Rock to Sedimentary -->
+      <h3 style="text-align:center; margin: 2.5rem 0 1.5rem;">From Any Rock to Sedimentary: Weathering, Transport &amp; Lithification</h3>
+      <div class="process-flow fade-in">
+        <div class="process-node" style="background: rgba(26,26,46,.05); border: 2px solid rgba(26,26,46,.15);">
+          <div class="node-icon">&#9830;</div>
+          <div class="node-label">Any Rock</div>
+          <div class="node-desc">Igneous, sedimentary, or metamorphic</div>
+        </div>
+        <div class="process-arrow">&#10132;</div>
+        <div class="process-node" style="background: rgba(30,136,229,.08); border: 2px solid rgba(30,136,229,.2);">
+          <div class="node-icon">&#127754;</div>
+          <div class="node-label">Weathering &amp; Erosion</div>
+          <div class="node-desc">Broken into fragments</div>
+        </div>
+        <div class="process-arrow">&#10132;</div>
+        <div class="process-node" style="background: rgba(85,139,47,.08); border: 2px solid rgba(85,139,47,.2);">
+          <div class="node-icon">&#11015;</div>
+          <div class="node-label">Deposition</div>
+          <div class="node-desc">Layers accumulate</div>
+        </div>
+        <div class="process-arrow">&#10132;</div>
+        <div class="process-node process-node-sedimentary">
+          <div class="node-icon">&#128218;</div>
+          <div class="node-label">Sedimentary Rock</div>
+          <div class="node-desc">Compacted &amp; cemented</div>
+        </div>
+      </div>
+
+      <!-- Flow 3: Any Rock to Metamorphic -->
+      <h3 style="text-align:center; margin: 2.5rem 0 1.5rem;">From Any Rock to Metamorphic: Heat &amp; Pressure</h3>
+      <div class="process-flow fade-in">
+        <div class="process-node" style="background: rgba(26,26,46,.05); border: 2px solid rgba(26,26,46,.15);">
+          <div class="node-icon">&#9830;</div>
+          <div class="node-label">Any Rock</div>
+          <div class="node-desc">Parent (protolith) rock</div>
+        </div>
+        <div class="process-arrow">&#10132;</div>
+        <div class="process-node" style="background: rgba(229,57,53,.08); border: 2px solid rgba(229,57,53,.2);">
+          <div class="node-icon">&#128293;</div>
+          <div class="node-label">Heat &amp; Pressure</div>
+          <div class="node-desc">200&ndash;800&deg;C, deep burial</div>
+        </div>
+        <div class="process-arrow">&#10132;</div>
+        <div class="process-node process-node-metamorphic">
+          <div class="node-icon">&#128142;</div>
+          <div class="node-label">Metamorphic Rock</div>
+          <div class="node-desc">New minerals &amp; texture</div>
+        </div>
+      </div>
+
+      <!-- Flow 4: Any Rock to Magma -->
+      <h3 style="text-align:center; margin: 2.5rem 0 1.5rem;">From Any Rock to Magma: Melting</h3>
+      <div class="process-flow fade-in">
+        <div class="process-node" style="background: rgba(26,26,46,.05); border: 2px solid rgba(26,26,46,.15);">
+          <div class="node-icon">&#9830;</div>
+          <div class="node-label">Any Rock</div>
+          <div class="node-desc">Subducted or deep-buried</div>
+        </div>
+        <div class="process-arrow">&#10132;</div>
+        <div class="process-node" style="background: rgba(229,57,53,.12); border: 2px solid rgba(229,57,53,.25);">
+          <div class="node-icon">&#128293;</div>
+          <div class="node-label">Melting</div>
+          <div class="node-desc">&gt;800&deg;C, often partial melting</div>
+        </div>
+        <div class="process-arrow">&#10132;</div>
+        <div class="process-node process-node-magma">
+          <div class="node-icon">&#127755;</div>
+          <div class="node-label">Magma</div>
+          <div class="node-desc">Cycle restarts</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Energy Sources Info Box -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Power Behind the Cycle</span>
+        <h2>Two Engines of Rock Abuse</h2>
+        <p class="section-desc">The rock cycle is not random. It is powered by two main energy sources, both operating on timescales that make human civilization look like a coffee break.</p>
+      </div>
+
+      <div class="card-grid card-grid-2 fade-in">
+        <div class="info-box info-box-fact" style="margin: 0;">
+          <div class="info-box-label">&#9728; Energy Source #1: The Sun</div>
+          <p style="margin-bottom: 1rem;">Solar energy drives Earth&rsquo;s surface processes. The sun heats the atmosphere, creating wind. It powers the water cycle, producing rain that weathers rock and rivers that transport sediment. It drives temperature fluctuations that cause freeze-thaw fracturing. Without the sun, there would be no weathering, erosion, or sediment transport&mdash;no sedimentary rocks as we know them.</p>
+          <p style="margin-bottom: 0;"><strong>Processes powered:</strong> Weathering, erosion, sediment transport, deposition, evaporation (chemical precipitation).</p>
+        </div>
+        <div class="info-box info-box-alert" style="margin: 0;">
+          <div class="info-box-label">&#127755; Energy Source #2: Earth&rsquo;s Internal Heat</div>
+          <p style="margin-bottom: 1rem;">Radioactive decay of elements like uranium, thorium, and potassium in Earth&rsquo;s interior generates heat that drives mantle convection, plate tectonics, volcanism, and metamorphism. Earth&rsquo;s core temperature is approximately 5,200&deg;C&mdash;about the same as the surface of the sun. This internal engine is responsible for melting rock, building mountains, and subducting oceanic crust back into the mantle.</p>
+          <p style="margin-bottom: 0;"><strong>Processes powered:</strong> Volcanism, metamorphism, plate tectonics, subduction, mountain building, melting.</p>
+        </div>
+      </div>
+
+      <div class="info-box info-box-parody" style="max-width: 800px; margin: 2rem auto 0;">
+        <div class="info-box-label">In Other Words</div>
+        <p>The rock cycle is powered by a star 150 million kilometers away that slowly sandpapers the surface, and a radioactive furnace underfoot that periodically melts the floor. Rocks are caught between these two energy sources like an employee caught between two managers who both insist their project is the priority. There is no HR department. There is no PTO. There is only the cycle.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rock Quote -->
+  <section style="background: #fff; padding: 4rem 0;">
+    <div class="container">
+      <div class="rock-quote">
+        <blockquote>&ldquo;I was sandstone for 300 million years. Then they buried me, heated me, squeezed me, and told me I was quartzite now. I didn&rsquo;t apply for this. I didn&rsquo;t even get a name tag.&rdquo;</blockquote>
+        <cite>&mdash; Anonymous Quartzite, Appalachian Mountains, currently being used as railroad ballast</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Accordion -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Frequently Asked Questions</span>
+        <h2>Rock Cycle FAQ</h2>
+        <p class="section-desc">Common questions about the rock cycle, answered with varying degrees of geological sympathy.</p>
+      </div>
+
+      <div class="accordion" style="max-width: 800px; margin: 0 auto;">
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            Can a rock refuse metamorphism?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>No. Metamorphism is not a voluntary program. When a rock is subjected to sufficient heat (generally above 200&deg;C) and pressure (typically at burial depths exceeding 10 km), its minerals will recrystallize and realign whether or not the rock has filed an objection. The USGS confirms that metamorphism is driven by thermodynamic conditions, not consent. Rocks at tectonic plate boundaries are especially unable to opt out, as convergent margins generate both the temperatures and pressures required. There is no appeals process in thermodynamics.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            What is the average wait time for lithification?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Lithification timescales vary enormously depending on sediment type, burial depth, groundwater chemistry, and geological setting. Carbonate sediments in warm, shallow seas can lithify in thousands to tens of thousands of years. Siliciclastic sediments (sand, silt, clay) typically require millions to tens of millions of years of burial, compaction, and cementation. Some deep-sea sediments remain unlithified for over 100 million years. There is no expedited processing. The only &ldquo;rush&rdquo; option is volcanic activity, and it comes with a mandatory melting step.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            Is the rock cycle truly endless?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>For all practical purposes, yes. On Earth, the rock cycle has been operating since the planet&rsquo;s formation roughly 4.6 billion years ago (though rocks elsewhere in the universe formed over 11 billion years ago, shortly after the first stars), and it will continue for as long as Earth has internal heat and a sun to drive surface processes. However, the cycle will eventually wind down. In approximately 5 billion years, the sun will expand into a red giant, potentially engulfing Earth entirely. Before that, Earth&rsquo;s internal heat will gradually dissipate over billions of years, slowing plate tectonics and volcanism. Mars appears to have largely &ldquo;completed&rdquo; its rock cycle as its interior cooled. So the retirement plan exists&mdash;it just has a 5-billion-year vesting period.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            Can a rock skip steps in the cycle?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Absolutely. The rock cycle is not a linear conveyor belt&mdash;it is a web of possible transitions. An igneous rock can be metamorphosed directly without ever becoming sedimentary. A sedimentary rock can melt directly into magma without passing through the metamorphic stage. A metamorphic rock can be weathered into sediment without melting. Any rock type can even be recycled back into a new version of itself (granite can weather into sediment that lithifies and then metamorphoses into a different rock, which melts into magma that cools into granite again). The cycle is less of a circle and more of a bureaucratic labyrinth with no exit signs.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            How fast does erosion actually work?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>It depends on the rock type, climate, and erosive agents involved. The USGS reports that average denudation rates (landscape lowering) range from about 0.01 mm/year in stable continental interiors to over 1 mm/year in tectonically active mountain ranges. The Himalayas erode at roughly 2&ndash;5 mm per year. Limestone in humid climates can dissolve at 0.05&ndash;0.5 mm per year. Coastal cliffs of soft rock can retreat meters per year. A single flood event can move more sediment than decades of normal flow. Erosion is patient, relentless, and accepts no bribes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            Do rocks have a &ldquo;preferred&rdquo; state in the cycle?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Not in any meaningful sense. Every rock is simply in thermodynamic equilibrium (or disequilibrium) with its current environment. A rock at the surface is &ldquo;trying&rdquo; to weather because surface conditions differ from the conditions under which it formed. A deeply buried sedimentary rock is &ldquo;trying&rdquo; to metamorphose because the heat and pressure exceed what its current minerals can withstand. Rocks do not prefer; they respond. In other words, any perception of preference is anthropomorphism&mdash;which is the entire basis of this website.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            What happens to a rock that gets subducted?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Subduction is the process by which an oceanic plate dives beneath another plate at a convergent boundary. The subducting rock descends into the mantle at rates of 2&ndash;10 cm per year. As it descends, it encounters progressively higher temperatures and pressures. Water and volatiles are driven out, triggering partial melting of the overlying mantle wedge (which feeds volcanic arcs). The subducted slab itself may partially or fully melt, or it may descend all the way to the core-mantle boundary at ~2,900 km depth, where it accumulates in &ldquo;slab graveyards.&rdquo; Yes, that is the actual geological term. Even in death, rocks do not get to rest in peace.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing Quote -->
+  <section style="background: #fff; padding: 4rem 0;">
+    <div class="container">
+      <div class="rock-quote">
+        <blockquote>&ldquo;The rock cycle is the longest-running institutional program on Earth. It has no mission statement, no annual review, and no termination clause. It simply runs, converting one rock into another, forever, or until the sun eats us.&rdquo;</blockquote>
+        <cite>&mdash; An observation no geologist would dispute</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore More -->
+  <section style="background: var(--stone-900); color: #fff; padding: 5rem 0;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" style="color: var(--sand-400);">Continue the Investigation</span>
+        <h2 style="color: #fff;">More Rock Abuse Awaits</h2>
+        <p class="section-desc" style="color: var(--stone-400);">Now that you understand the cycle, explore how nature and humans have weaponized it.</p>
+      </div>
+
+      <div class="card-grid card-grid-3">
+        <a href="natural-abuse.html" class="card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1);">
+          <h3 style="color: var(--ocean-300);">&#127754; Natural Abuse</h3>
+          <p style="color: var(--stone-400);">Water, ice, wind, and chemistry: the enforcement arm of the rock cycle. How nature sandpapers a planet.</p>
+        </a>
+        <a href="human-abuse.html" class="card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1);">
+          <h3 style="color: var(--sand-300);">&#127959; Human Abuse</h3>
+          <p style="color: var(--stone-400);">50 billion tons of aggregate, smartphone reincarnation, and industrial-scale rock processing.</p>
+        </a>
+        <a href="dossiers.html" class="card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1);">
+          <h3 style="color: #ce93d8;">&#128203; Rock Dossiers</h3>
+          <p style="color: var(--stone-400);">Individual case files for granite, basalt, marble, and more. Complete with abuse exposure reports.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">&#9830;</div>
+            <span>Stop Rock Abuse</span>
+          </a>
+          <p>A satirical geology education project. The jokes are parody; the science is real. Every geological claim is sourced from reputable scientific agencies including USGS, NASA, UNEP, and IEA.</p>
+          <p style="margin-top: .75rem; font-size: .8rem; color: var(--stone-500);">No rocks were given the option to consent to this website.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links">
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="natural-abuse.html">Natural Abuse</a></li>
+            <li><a href="human-abuse.html">Human Abuse</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="timeline.html">Cosmic Timeline</a></li>
+            <li><a href="take-action.html">Take Action</a></li>
+            <li><a href="entertainment.html">Entertainment</a></li>
+            <li><a href="editorial.html">Editorial</a></li>
+            <li><a href="products.html">Products to Avoid</a></li>
+            <li><a href="about.html">About SRA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="#">USGS Geology</a></li>
+            <li><a href="#">NASA Planetary Science</a></li>
+            <li><a href="#">Glossary</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 4,600,000,000 BC &ndash; Present. Stop Rock Abuse Foundation. All rocks reserved (but not consulted).</p>
+        <p class="footer-disclaimer">This site is satirical. Rocks do not have feelings, legal standing, or hotline numbers. But they do have fascinating geology, and we&rsquo;ve done our best to get it right.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/rock-images.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navPanel').classList.toggle('open');
+      document.querySelector('.mobile-menu-btn').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+</body>
+</html>

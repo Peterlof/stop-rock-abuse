@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Dossiers - Stop Rock Abuse</title>
+  <meta name="description" content="Individual case files for 12 rocks subjected to geological abuse. Complete with abuse exposure reports, hardness ratings, and consent statuses (spoiler: not requested).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="abuse-ticker" style="position:fixed;top:0;left:0;right:0;z-index:1001;">
+    <div class="ticker-content">
+      BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth's atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp; BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth's atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp;
+    </div>
+  </div>
+
+<div class="quick-nav">
+  <a href="timeline.html">Cosmic Timeline</a>
+  <a href="rock-cycle.html">Rock Cycle</a>
+  <a href="natural-abuse.html">Natural Abuse</a>
+  <a href="human-abuse.html">Human Abuse</a>
+  <a href="editorial.html">Editorial</a>
+  <a href="entertainment.html">Entertainment</a>
+</div>
+
+  <!-- Header -->
+  <header class="site-header" style="top: 58px;">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">&#9830;</div>
+        <span>Stop Rock Abuse</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="timeline.html">Cosmic Timeline</a></li>
+          <li><a href="rock-cycle.html">Rock Cycle</a></li>
+          <li><a href="natural-abuse.html">Natural Abuse</a></li>
+          <li><a href="human-abuse.html">Human Abuse</a></li>
+          <li><a href="editorial.html">Editorial</a></li>
+          <li><a href="entertainment.html">Entertainment</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="game.html">The Rockoning</a></li>
+          <li><a href="merch.html">Merch</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="dossiers.html" class="active">Rock Dossiers</a></li>
+          <li><a href="take-action.html">Take Action</a></li>
+          <li><a href="rocks-az.html">Rocks A-Z</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slide-in nav panel -->
+  <div class="nav-panel" id="navPanel">
+      <a href="index.html">Home</a>
+      <a href="timeline.html">Cosmic Timeline</a>
+      <a href="rock-cycle.html">Rock Cycle</a>
+      <a href="natural-abuse.html">Natural Abuse</a>
+      <a href="human-abuse.html">Human Abuse</a>
+      <a href="editorial.html">Editorial</a>
+      <a href="entertainment.html">Entertainment</a>
+      <a href="news.html">News</a>
+      <a href="game.html">The Rockoning</a>
+      <a href="merch.html">Merch</a>
+      <a href="products.html">Products</a>
+      <a href="dossiers.html" class="active">Rock Dossiers</a>
+      <a href="take-action.html">Take Action</a>
+      <a href="rocks-az.html">Rocks A-Z</a>
+      <a href="about.html">About</a>
+  </div>
+
+  <!-- Nav overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+  <!-- Page Hero -->
+  <section class="page-hero page-hero-dossiers" style="padding-top: calc(var(--header-height) + 58px); background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('img/heroes/hero-dossiers.png'); background-size: cover; background-position: center;">
+    <div class="hero-content">
+      <div class="hero-badge">&#128203; Geological Case Files</div>
+      <h1>Rock <span class="accent">Dossiers</span></h1>
+      <p class="hero-subtitle">
+        Detailed geological profiles for twelve common rocks. Each entry documents formation history, abuse exposure, and consent status. All files are open&mdash;because rocks never learned to lock a door.
+      </p>
+    </div>
+  </section>
+
+  <!-- Case File Notice -->
+  <section style="background: #fff; padding: 3rem 0;">
+    <div class="container">
+      <div class="info-box info-box-parody">
+        <div class="info-box-label">&#128221; A Note on These Case Files</div>
+        <p>The following dossiers contain real geological data presented in the format of institutional case files. Mohs hardness values, mineral compositions, and formation processes are scientifically accurate. Consent ratings, however, remain universally at 0%&mdash;because nobody has ever figured out how to ask a rock for permission. All 12 subjects are currently at large in the lithosphere.</p>
+      </div>
+
+      <div class="stats-bar" style="border-radius: var(--radius-lg); margin-top: 2rem;">
+        <div class="container">
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number">12</div>
+              <div class="stat-label">Active Case Files<br>in This Dossier</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">3</div>
+              <div class="stat-label">Rock Classifications<br>Represented</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">1&ndash;7</div>
+              <div class="stat-label">Mohs Hardness<br>Range Documented</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">0%</div>
+              <div class="stat-label">Consent Rating<br>Across All Subjects</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Igneous Dossiers -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" style="color: var(--magma-500);">Case Files: Igneous Division</span>
+        <h2>Born from Fire, Filed Without Consent</h2>
+        <p class="section-desc">These subjects were forged in magma chambers and volcanic eruptions. They never asked to exist, and they certainly never asked to be countertops.</p>
+      </div>
+
+      <div class="dossier-grid-inner fade-in">
+
+        <!-- Granite -->
+        <div class="dossier-card">
+          <div class="dossier-visual" data-rock="granite"></div>
+          <div class="dossier-body">
+            <h3>Granite</h3>
+            <span class="rock-type-tag tag-igneous">Igneous &mdash; Intrusive</span>
+            <div class="dossier-meta">
+              <span class="dossier-badge">&#9874; Crushed</span>
+              <span class="dossier-badge">&#128736; Polished</span>
+              <span class="dossier-badge">&#127959; Quarried</span>
+            </div>
+            <p>A coarse-grained intrusive igneous rock composed primarily of quartz, potassium feldspar, and mica. Granite forms deep underground as magma cools slowly over thousands to millions of years, allowing large interlocking crystals to develop. It is one of the most abundant rocks in Earth&rsquo;s continental crust.</p>
+            <div class="dossier-stats">
+              <div>
+                <div class="dossier-stat-label">Hardness (Mohs)</div>
+                <div class="dossier-stat-value">6&ndash;7</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Grain Size</div>
+                <div class="dossier-stat-value">Coarse-grained</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Consent Rating</div>
+                <div class="dossier-stat-value" style="color: var(--magma-500);">Not Requested</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Primary Abuse</div>
+                <div class="dossier-stat-value">Countertops, monuments, crushed aggregate</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Basalt -->
+        <div class="dossier-card">
+          <div class="dossier-visual" data-rock="basalt"></div>
+          <div class="dossier-body">
+            <h3>Basalt</h3>
+            <span class="rock-type-tag tag-igneous">Igneous &mdash; Extrusive</span>
+            <div class="dossier-meta">
+              <span class="dossier-badge">&#128293; Quenched</span>
+              <span class="dossier-badge">&#9874; Crushed</span>
+              <span class="dossier-badge">&#11015; Subducted</span>
+            </div>
+            <p>A fine-grained extrusive igneous rock and the most common volcanic rock on Earth. Basalt forms from the rapid cooling of low-viscosity lava rich in magnesium and iron. It constitutes the majority of the ocean floor and is the primary component of oceanic crust, making it arguably the most abused rock by area.</p>
+            <div class="dossier-stats">
+              <div>
+                <div class="dossier-stat-label">Hardness (Mohs)</div>
+                <div class="dossier-stat-value">6</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Grain Size</div>
+                <div class="dossier-stat-value">Fine-grained</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Consent Rating</div>
+                <div class="dossier-stat-value" style="color: var(--magma-500);">Not Requested</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Primary Abuse</div>
+                <div class="dossier-stat-value">Road base, ocean floor recycling, subduction</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Obsidian -->
+        <div class="dossier-card">
+          <div class="dossier-visual" data-rock="obsidian"></div>
+          <div class="dossier-body">
+            <h3>Obsidian</h3>
+            <span class="rock-type-tag tag-igneous">Igneous &mdash; Extrusive</span>
+            <div class="dossier-meta">
+              <span class="dossier-badge">&#128293; Quenched</span>
+              <span class="dossier-badge">&#9881; Knapped</span>
+              <span class="dossier-badge">&#128736; Weaponized</span>
+            </div>
+            <p>A naturally occurring volcanic glass formed when felsic lava cools so rapidly that crystals have no time to form. Obsidian exhibits conchoidal fracture, producing edges sharper than surgical steel&mdash;sometimes only a single molecule thick. Humans have exploited this property for over 700,000 years to make cutting tools and arrowheads.</p>
+            <div class="dossier-stats">
+              <div>
+                <div class="dossier-stat-label">Hardness (Mohs)</div>
+                <div class="dossier-stat-value">5&ndash;5.5</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Grain Size</div>
+                <div class="dossier-stat-value">Glassy (no crystals)</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Consent Rating</div>
+                <div class="dossier-stat-value" style="color: var(--magma-500);">Not Requested</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Primary Abuse</div>
+                <div class="dossier-stat-value">Blades, jewelry, decorative objects</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pumice -->
+        <div class="dossier-card">
+          <div class="dossier-visual" data-rock="pumice"></div>
+          <div class="dossier-body">
+            <h3>Pumice</h3>
+            <span class="rock-type-tag tag-igneous">Igneous &mdash; Extrusive</span>
+            <div class="dossier-meta">
+              <span class="dossier-badge">&#128293; Quenched</span>
+              <span class="dossier-badge">&#9881; Abraded</span>
+              <span class="dossier-badge">&#127754; Set Adrift</span>
+            </div>
+            <p>A highly vesicular (porous) volcanic rock formed during explosive eruptions when gas-saturated lava is violently ejected and cools rapidly. Pumice is so full of trapped gas bubbles that it is the only rock that routinely floats on water. Despite this buoyancy, humans grind it down to scrub calluses and polish teeth. A rock that can float still cannot escape.</p>
+            <div class="dossier-stats">
+              <div>
+                <div class="dossier-stat-label">Hardness (Mohs)</div>
+                <div class="dossier-stat-value">6</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Grain Size</div>
+                <div class="dossier-stat-value">Vesicular / Frothy</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Consent Rating</div>
+                <div class="dossier-stat-value" style="color: var(--magma-500);">Not Requested</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Primary Abuse</div>
+                <div class="dossier-stat-value">Abrasives, cosmetics, lightweight concrete</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Sedimentary Dossiers -->
+  <section style="background: #fff;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" style="color: var(--sand-600);">Case Files: Sedimentary Division</span>
+        <h2>Assembled from the Remains of Others</h2>
+        <p class="section-desc">These subjects were formed from fragments of pre-existing rocks, accumulated organic material, or chemical precipitates. Each one is, in a sense, a mass grave with good cementation.</p>
+      </div>
+
+      <div class="dossier-grid-inner fade-in">
+
+        <!-- Sandstone -->
+        <div class="dossier-card">
+          <div class="dossier-visual" data-rock="sandstone"></div>
+          <div class="dossier-body">
+            <h3>Sandstone</h3>
+            <span class="rock-type-tag tag-sedimentary">Sedimentary &mdash; Clastic</span>
+            <div class="dossier-meta">
+              <span class="dossier-badge">&#9881; Abraded</span>
+              <span class="dossier-badge">&#9874; Crushed</span>
+              <span class="dossier-badge">&#127959; Quarried</span>
+            </div>
+            <p>A clastic sedimentary rock composed of sand-sized grains (0.0625&ndash;2 mm), primarily quartz, cemented together by silica, calcite, or iron oxides. Sandstone forms when sand accumulates in layers&mdash;in deserts, riverbeds, or ocean floors&mdash;and is buried under enough sediment for lithification to occur. It is widely used as a building stone and reservoir rock for oil and groundwater.</p>
+            <div class="dossier-stats">
+              <div>
+                <div class="dossier-stat-label">Hardness (Mohs)</div>
+                <div class="dossier-stat-value">6&ndash;7</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Grain Size</div>
+                <div class="dossier-stat-value">Medium (sand-sized)</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Consent Rating</div>
+                <div class="dossier-stat-value" style="color: var(--magma-500);">Not Requested</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Primary Abuse</div>
+                <div class="dossier-stat-value">Building facades, fracking, glass production</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Limestone -->
+        <div class="dossier-card">
+          <div class="dossier-visual" data-rock="limestone"></div>
+          <div class="dossier-body">
+            <h3>Limestone</h3>
+            <span class="rock-type-tag tag-sedimentary">Sedimentary &mdash; Chemical/Biogenic</span>
+            <div class="dossier-meta">
+              <span class="dossier-badge">&#128167; Dissolved</span>
+              <span class="dossier-badge">&#127981; Kiln-Burned</span>
+              <span class="dossier-badge">&#9874; Crushed</span>
+            </div>
+            <p>A sedimentary rock composed mainly of calcium carbonate (CaCO&#8323;), often formed from the skeletal remains of marine organisms such as corals, foraminifera, and mollusks. Limestone is the primary raw material for cement production: it is heated to 1,450&deg;C in a kiln to produce clinite, which is then ground into Portland cement. The cement industry is responsible for approximately 8% of global CO&#8322; emissions.</p>
+            <div class="dossier-stats">
+              <div>
+                <div class="dossier-stat-label">Hardness (Mohs)</div>
+                <div class="dossier-stat-value">3&ndash;4</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Grain Size</div>
+                <div class="dossier-stat-value">Variable (fine to coarse)</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Consent Rating</div>
+                <div class="dossier-stat-value" style="color: var(--magma-500);">Not Requested</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Primary Abuse</div>
+                <div class="dossier-stat-value">Cement production, road base, agriculture</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shale -->
+        <div class="dossier-card">
+          <div class="dossier-visual" data-rock="shale"></div>
+          <div class="dossier-body">
+            <h3>Shale</h3>
+            <span class="rock-type-tag tag-sedimentary">Sedimentary &mdash; Clastic</span>
+            <div class="dossier-meta">
+              <span class="dossier-badge">&#128736; Foliated</span>
+              <span class="dossier-badge">&#9874; Fracked</span>
+              <span class="dossier-badge">&#127981; Kiln-Burned</span>
+            </div>
+            <p>A fine-grained clastic sedimentary rock formed from the compaction of silt and clay-sized particles. Shale is fissile, meaning it breaks along thin, parallel planes&mdash;a property born of its layered deposition. It is the most common sedimentary rock on Earth, comprising roughly 70% of all sedimentary strata. Modern industry subjects shale to hydraulic fracturing to extract trapped oil and natural gas.</p>
+            <div class="dossier-stats">
+              <div>
+                <div class="dossier-stat-label">Hardness (Mohs)</div>
+                <div class="dossier-stat-value">3</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Grain Size</div>
+                <div class="dossier-stat-value">Very fine (clay/silt)</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Consent Rating</div>
+                <div class="dossier-stat-value" style="color: var(--magma-500);">Not Requested</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Primary Abuse</div>
+                <div class="dossier-stat-value">Hydraulic fracturing, brick-making, fill material</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conglomerate -->
+        <div class="dossier-card">
+          <div class="dossier-visual" data-rock="conglomerate"></div>
+          <div class="dossier-body">
+            <h3>Conglomerate</h3>
+            <span class="rock-type-tag tag-sedimentary">Sedimentary &mdash; Clastic</span>
+            <div class="dossier-meta">
+              <span class="dossier-badge">&#9881; Abraded</span>
+              <span class="dossier-badge">&#9874; Crushed</span>
+              <span class="dossier-badge">&#127754; Tumbled</span>
+            </div>
+            <p>A coarse-grained clastic sedimentary rock composed of rounded pebbles, cobbles, or boulders (clasts larger than 2 mm) cemented in a finer-grained matrix of sand, silt, or clay. The rounding of clasts indicates significant transport by water, meaning each pebble was individually abraded before being imprisoned in a communal cementation event. It is essentially a geological group home.</p>
+            <div class="dossier-stats">
+              <div>
+                <div class="dossier-stat-label">Hardness (Mohs)</div>
+                <div class="dossier-stat-value">Variable (2&ndash;7)</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Grain Size</div>
+                <div class="dossier-stat-value">Coarse (pebbles in matrix)</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Consent Rating</div>
+                <div class="dossier-stat-value" style="color: var(--magma-500);">Not Requested</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Primary Abuse</div>
+                <div class="dossier-stat-value">Crushed aggregate, decorative stone, fill</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Interstitial Quote -->
+  <section style="padding: 4rem 0;">
+    <div class="container">
+      <div class="rock-quote">
+        <blockquote>&ldquo;They heated me to 1,450 degrees, ground me into powder, mixed me with water, and called the result &lsquo;improvement.&rsquo; I was a perfectly good limestone.&rdquo;</blockquote>
+        <cite>&mdash; Case File #LS-0047, Former Limestone, now Portland Cement (involuntary)</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metamorphic Dossiers -->
+  <section style="background: #fff;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" style="color: var(--metamorphic);">Case Files: Metamorphic Division</span>
+        <h2>Remade Under Duress</h2>
+        <p class="section-desc">These subjects were once other rocks, then subjected to extreme heat, pressure, or chemically active fluids until they became something else entirely. Metamorphism is rebranding without a marketing budget.</p>
+      </div>
+
+      <div class="dossier-grid-inner fade-in">
+
+        <!-- Marble -->
+        <div class="dossier-card">
+          <div class="dossier-visual" data-rock="marble"></div>
+          <div class="dossier-body">
+            <h3>Marble</h3>
+            <span class="rock-type-tag tag-metamorphic">Metamorphic &mdash; Non-foliated</span>
+            <div class="dossier-meta">
+              <span class="dossier-badge">&#128736; Recrystallized</span>
+              <span class="dossier-badge">&#127959; Quarried</span>
+              <span class="dossier-badge">&#128167; Dissolved</span>
+            </div>
+            <p>A non-foliated metamorphic rock formed when limestone is subjected to heat and pressure, causing its calcite grains to recrystallize into a dense interlocking mosaic. Marble&rsquo;s softness (Mohs 3) and translucency have made it the preferred medium for sculptors from Michelangelo to modern headstone manufacturers. It dissolves readily in acid rain, meaning even its post-quarry life is one of slow chemical erosion.</p>
+            <div class="dossier-stats">
+              <div>
+                <div class="dossier-stat-label">Hardness (Mohs)</div>
+                <div class="dossier-stat-value">3</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Grain Size</div>
+                <div class="dossier-stat-value">Medium (visible crystals)</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Consent Rating</div>
+                <div class="dossier-stat-value" style="color: var(--magma-500);">Not Requested</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Primary Abuse</div>
+                <div class="dossier-stat-value">Sculpture, flooring, countertops, headstones</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slate -->
+        <div class="dossier-card">
+          <div class="dossier-visual" data-rock="slate"></div>
+          <div class="dossier-body">
+            <h3>Slate</h3>
+            <span class="rock-type-tag tag-metamorphic">Metamorphic &mdash; Foliated</span>
+            <div class="dossier-meta">
+              <span class="dossier-badge">&#128736; Foliated</span>
+              <span class="dossier-badge">&#9874; Split</span>
+              <span class="dossier-badge">&#127959; Quarried</span>
+            </div>
+            <p>A fine-grained foliated metamorphic rock derived from shale through low-grade regional metamorphism. Slate&rsquo;s defining characteristic is slaty cleavage&mdash;the ability to be split into thin, flat sheets along planes perpendicular to the direction of compression. This property made it ideal for roofing tiles, chalkboards, and pool table surfaces. Shale spends millions of years becoming slate, only to be split into bathroom tiles.</p>
+            <div class="dossier-stats">
+              <div>
+                <div class="dossier-stat-label">Hardness (Mohs)</div>
+                <div class="dossier-stat-value">3&ndash;4</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Grain Size</div>
+                <div class="dossier-stat-value">Very fine</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Consent Rating</div>
+                <div class="dossier-stat-value" style="color: var(--magma-500);">Not Requested</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Primary Abuse</div>
+                <div class="dossier-stat-value">Roofing, flooring, chalkboards, pool tables</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quartzite -->
+        <div class="dossier-card">
+          <div class="dossier-visual" data-rock="quartzite"></div>
+          <div class="dossier-body">
+            <h3>Quartzite</h3>
+            <span class="rock-type-tag tag-metamorphic">Metamorphic &mdash; Non-foliated</span>
+            <div class="dossier-meta">
+              <span class="dossier-badge">&#128736; Recrystallized</span>
+              <span class="dossier-badge">&#9874; Crushed</span>
+              <span class="dossier-badge">&#127981; Kiln-Adjacent</span>
+            </div>
+            <p>A hard, non-foliated metamorphic rock formed when sandstone is subjected to heat and pressure, fusing its quartz grains into an interlocking crystalline mass. Quartzite is exceptionally resistant to weathering&mdash;Mohs 7, harder than steel&mdash;and fractures through its grains rather than around them. Despite being one of the toughest rocks in the lithosphere, humans still manage to crush it for railroad ballast and silica production.</p>
+            <div class="dossier-stats">
+              <div>
+                <div class="dossier-stat-label">Hardness (Mohs)</div>
+                <div class="dossier-stat-value">7</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Grain Size</div>
+                <div class="dossier-stat-value">Medium (fused grains)</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Consent Rating</div>
+                <div class="dossier-stat-value" style="color: var(--magma-500);">Not Requested</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Primary Abuse</div>
+                <div class="dossier-stat-value">Railroad ballast, countertops, silica processing</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gneiss -->
+        <div class="dossier-card">
+          <div class="dossier-visual" data-rock="gneiss"></div>
+          <div class="dossier-body">
+            <h3>Gneiss</h3>
+            <span class="rock-type-tag tag-metamorphic">Metamorphic &mdash; Foliated</span>
+            <div class="dossier-meta">
+              <span class="dossier-badge">&#128736; Foliated</span>
+              <span class="dossier-badge">&#11015; Subducted</span>
+              <span class="dossier-badge">&#9874; Crushed</span>
+            </div>
+            <p>A high-grade foliated metamorphic rock characterized by alternating light and dark mineral bands (gneissic banding). Gneiss forms under extreme temperature (600&ndash;900&deg;C) and pressure conditions deep in the crust. Its parent rock can be granite, sandstone, or other rocks pushed to their mineralogical limits. The Acasta Gneiss in Canada, dated at 4.03 billion years old, is among the oldest known intact crustal rocks on Earth.</p>
+            <div class="dossier-stats">
+              <div>
+                <div class="dossier-stat-label">Hardness (Mohs)</div>
+                <div class="dossier-stat-value">6&ndash;7</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Grain Size</div>
+                <div class="dossier-stat-value">Coarse (banded)</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Consent Rating</div>
+                <div class="dossier-stat-value" style="color: var(--magma-500);">Not Requested</div>
+              </div>
+              <div>
+                <div class="dossier-stat-label">Primary Abuse</div>
+                <div class="dossier-stat-value">Crushed stone, building material, road base</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing Quote -->
+  <section style="padding: 4rem 0;">
+    <div class="container">
+      <div class="rock-quote">
+        <blockquote>&ldquo;I survived 4 billion years of tectonic abuse, glacial scraping, and chemical weathering. Then someone turned me into a decorative birdbath.&rdquo;</blockquote>
+        <cite>&mdash; Anonymous Gneiss, Case File #GN-4030000001, Acasta Complex (retired involuntarily)</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consent Summary -->
+  <section style="background: var(--stone-900); color: #fff; padding: 5rem 0;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" style="color: var(--sand-400);">Summary</span>
+        <h2 style="color: #fff;">Consent Status: Universal Noncompliance</h2>
+        <p class="section-desc" style="color: var(--stone-400);">After reviewing all 12 case files, precisely zero rocks have been consulted regarding their extraction, processing, metamorphism, or decorative repurposing. This is consistent with all prior geological epochs.</p>
+      </div>
+
+      <div class="consent-meter" style="max-width: 600px; margin: 0 auto;">
+        <span style="font-size:.9rem; color: var(--stone-300);">Aggregate Consent Level (All 12 Subjects):</span>
+        <div class="consent-bar">
+          <div class="consent-fill" style="width: 0%;"></div>
+        </div>
+        <span class="consent-label">0% &mdash; Not Requested</span>
+      </div>
+
+      <div class="info-box info-box-parody" style="max-width: 700px; margin: 2rem auto 0;">
+        <div class="info-box-label">&#128221; Closing Note</div>
+        <p>All geological data in these dossiers is real. Mohs hardness values, mineral compositions, formation processes, and industrial applications are drawn from established geological science. The satirical framing is ours. The rocks, as always, had no say in the matter.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">&#9830;</div>
+            <span>Stop Rock Abuse</span>
+          </a>
+          <p>A satirical geology education project. The jokes are parody; the science is real. Every geological claim is sourced from reputable scientific agencies including USGS, NASA, UNEP, and IEA.</p>
+          <p style="margin-top: .75rem; font-size: .8rem; color: var(--stone-500);">No rocks were given the option to consent to this website.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links">
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="natural-abuse.html">Natural Abuse</a></li>
+            <li><a href="human-abuse.html">Human Abuse</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="timeline.html">Cosmic Timeline</a></li>
+            <li><a href="take-action.html">Take Action</a></li>
+            <li><a href="entertainment.html">Entertainment</a></li>
+            <li><a href="editorial.html">Editorial</a></li>
+            <li><a href="products.html">Products to Avoid</a></li>
+            <li><a href="about.html">About SRA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Topics</h4>
+          <ul class="footer-links">
+            <li><a href="rocks-az.html">Rocks A&ndash;Z</a></li>
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+            <li><a href="about.html">About &amp; Sources</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 4,600,000,000 BC &ndash; Present. Stop Rock Abuse Foundation. All rocks reserved (but not consulted).</p>
+        <p class="footer-disclaimer">This site is satirical. Rocks do not have feelings, legal standing, or hotline numbers. But they do have fascinating geology, and we&rsquo;ve done our best to get it right.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/rock-images.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navPanel').classList.toggle('open');
+      document.querySelector('.mobile-menu-btn').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+</body>
+</html>

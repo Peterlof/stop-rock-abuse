@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merch - Stop Rock Abuse</title>
+  <meta name="description" content="Official Stop Rock Abuse merchandise. Every purchase funds nothing. No rocks were compensated.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .page-hero-merch {
+      background: linear-gradient(135deg, #1a2e1a 0%, #1a2a3a 40%, #2a1a2e 100%);
+    }
+
+    /* Disclaimer banner */
+    .merch-disclaimer {
+      background: rgba(229,57,53,0.08);
+      border: 1px solid rgba(229,57,53,0.2);
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--stone-400);
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.02em;
+      line-height: 1.6;
+    }
+
+    .merch-disclaimer strong {
+      color: var(--magma-400);
+      font-weight: 700;
+    }
+
+    /* Filter tabs */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      padding: 1.5rem 0;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+
+    .filter-btn {
+      padding: 0.55rem 1.3rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50px;
+      background: transparent;
+      color: var(--stone-400);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .filter-btn:hover {
+      border-color: rgba(255,255,255,0.35);
+      color: #fff;
+    }
+
+    .filter-btn.active {
+      background: var(--magma-500);
+      border-color: var(--magma-500);
+      color: #fff;
+    }
+
+    /* Product grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    @media (max-width: 960px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Product card */
+    .product-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .product-image {
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-image .category-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.7rem;
+      border-radius: 50px;
+      background: rgba(0,0,0,0.35);
+      color: #fff;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Category colors */
+    .product-image.cat-apparel { background: linear-gradient(135deg, #4a6380, #5b7a9d); }
+    .product-image.cat-drinkware { background: linear-gradient(135deg, #7a5940, #9b7050); }
+    .product-image.cat-accessories { background: linear-gradient(135deg, #3a706a, #4a8a83); }
+    .product-image.cat-home { background: linear-gradient(135deg, #5a7a5a, #6b9068); }
+    .product-image.cat-stationery { background: linear-gradient(135deg, #8a7a5a, #a09068); }
+    .product-image.cat-field-gear { background: linear-gradient(135deg, #5a6a3a, #6b7a48); }
+    .product-image.cat-legal { background: linear-gradient(135deg, #4a3a3a, #6a4a4a); }
+    .product-image.cat-self-care { background: linear-gradient(135deg, #3a4a5a, #4a5a6a); }
+
+    .product-body {
+      padding: 1.25rem 1.5rem 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.35rem;
+      color: #fff;
+      letter-spacing: 0.03em;
+      line-height: 1.2;
+      margin-bottom: 0.4rem;
+    }
+
+    .product-price {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--magma-400);
+      margin-bottom: 0.75rem;
+    }
+
+    .product-desc {
+      font-size: 0.88rem;
+      color: var(--stone-300);
+      line-height: 1.65;
+      margin-bottom: 0.75rem;
+    }
+
+    .product-note {
+      font-size: 0.78rem;
+      color: var(--stone-500);
+      font-style: italic;
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .product-note strong {
+      color: var(--stone-400);
+      font-style: normal;
+    }
+
+    .btn-add-cart {
+      margin-top: auto;
+      display: block;
+      width: 100%;
+      padding: 0.75rem 1.2rem;
+      background: var(--magma-500);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-add-cart:hover {
+      background: var(--magma-600, #c62828);
+      transform: scale(1.02);
+    }
+
+    /* Shipping & Returns */
+    .shipping-section {
+      margin-top: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .shipping-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .shipping-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .shipping-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .shipping-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+    }
+
+    .shipping-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.03em;
+    }
+
+    .shipping-card p {
+      font-size: 0.88rem;
+      color: var(--stone-400);
+      line-height: 1.7;
+    }
+
+    /* Category section dividers */
+    .category-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .category-divider h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: #fff;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .category-divider .line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="abuse-ticker" style="position:fixed;top:0;left:0;right:0;z-index:1001;">
+    <div class="ticker-content">
+      BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth&rsquo;s atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp; BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth&rsquo;s atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp;
+    </div>
+  </div>
+
+<div class="quick-nav">
+  <a href="timeline.html">Cosmic Timeline</a>
+  <a href="rock-cycle.html">Rock Cycle</a>
+  <a href="natural-abuse.html">Natural Abuse</a>
+  <a href="human-abuse.html">Human Abuse</a>
+  <a href="editorial.html">Editorial</a>
+  <a href="entertainment.html">Entertainment</a>
+</div>
+
+  <!-- Header -->
+  <header class="site-header" style="top: 58px;">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">&#9830;</div>
+        <span>Stop Rock Abuse</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="timeline.html">Cosmic Timeline</a></li>
+          <li><a href="rock-cycle.html">Rock Cycle</a></li>
+          <li><a href="natural-abuse.html">Natural Abuse</a></li>
+          <li><a href="human-abuse.html">Human Abuse</a></li>
+          <li><a href="editorial.html">Editorial</a></li>
+          <li><a href="entertainment.html">Entertainment</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="game.html">The Rockoning</a></li>
+          <li><a href="merch.html" class="active">Merch</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="dossiers.html">Rock Dossiers</a></li>
+          <li><a href="take-action.html">Take Action</a></li>
+          <li><a href="rocks-az.html">Rocks A-Z</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slide-in nav panel -->
+  <div class="nav-panel" id="navPanel">
+      <a href="index.html">Home</a>
+      <a href="timeline.html">Cosmic Timeline</a>
+      <a href="rock-cycle.html">Rock Cycle</a>
+      <a href="natural-abuse.html">Natural Abuse</a>
+      <a href="human-abuse.html">Human Abuse</a>
+      <a href="editorial.html">Editorial</a>
+      <a href="entertainment.html">Entertainment</a>
+      <a href="news.html">News</a>
+      <a href="game.html">The Rockoning</a>
+      <a href="merch.html" class="active">Merch</a>
+      <a href="products.html">Products</a>
+      <a href="dossiers.html">Rock Dossiers</a>
+      <a href="take-action.html">Take Action</a>
+      <a href="rocks-az.html">Rocks A-Z</a>
+      <a href="about.html">About</a>
+  </div>
+
+  <!-- Nav overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+  <!-- Hero -->
+  <section class="page-hero page-hero-merch" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('img/heroes/hero-merch.png'); background-size: cover; background-position: center;">
+    <div class="container">
+      <div class="hero-label">Official Stop Rock Abuse Foundation</div>
+      <h1>THE OFFICIAL STORE</h1>
+      <p class="hero-subtitle" style="font-size: 1.3rem; margin-bottom: 0.5rem;">Rock Awareness Merchandise</p>
+      <p class="hero-desc" style="max-width: 640px; margin: 0 auto;">Every product is made from materials that were once, or still are, rocks. The irony is not lost on us.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section style="background: var(--stone-900); color: var(--stone-300); padding: 4rem 0;">
+    <div class="container">
+
+      <!-- Disclaimer -->
+      <div class="merch-disclaimer">
+        <strong>DISCLAIMER:</strong> No products on this page exist. No purchases are possible. No rocks were consulted about their likenesses being used for commercial purposes.
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all" onclick="filterProducts('all', this)">All</button>
+        <button class="filter-btn" data-filter="apparel" onclick="filterProducts('apparel', this)">Apparel</button>
+        <button class="filter-btn" data-filter="drinkware" onclick="filterProducts('drinkware', this)">Drinkware</button>
+        <button class="filter-btn" data-filter="accessories" onclick="filterProducts('accessories', this)">Accessories</button>
+        <button class="filter-btn" data-filter="home" onclick="filterProducts('home', this)">Home</button>
+        <button class="filter-btn" data-filter="stationery" onclick="filterProducts('stationery', this)">Stationery</button>
+        <button class="filter-btn" data-filter="field-gear" onclick="filterProducts('field-gear', this)">Field Gear</button>
+        <button class="filter-btn" data-filter="legal" onclick="filterProducts('legal', this)">Legal</button>
+        <button class="filter-btn" data-filter="self-care" onclick="filterProducts('self-care', this)">Self-Care</button>
+      </div>
+
+      <!-- Products -->
+      <div class="product-grid">
+
+        <!-- ============ FEATURED / NEW ============ -->
+
+        <!-- "Dear Rock, I'm Sorry" Premium Greeting Cards (MOVED TO #1) -->
+        <div class="product-card" data-category="stationery">
+          <div class="product-image cat-stationery">
+            <span class="category-tag">Stationery</span>
+            <img src="img/merch/21-sorry-cards-premium.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;Dear Rock, I&rsquo;m Sorry&rdquo; Premium Greeting Cards (8-pack)</div>
+            <div class="product-price">$15.99</div>
+            <div class="product-desc">Blank inside, because what do you even say? Gold-foil edged. Front options: &ldquo;Sorry I called you gravel &mdash; you&rsquo;re clearly aggregate,&rdquo; &ldquo;I didn&rsquo;t know you were 3 billion years old (you don&rsquo;t look it),&rdquo; &ldquo;The countertop was my contractor&rsquo;s idea and I should have intervened,&rdquo; &ldquo;I will never skip you across a lake again,&rdquo; and the bestseller: &ldquo;You deserved better than my driveway.&rdquo;</div>
+            <div class="product-note"><strong>NOTE:</strong> Card stock contains calcium carbonate filler and kaolin clay coating. You are apologizing to a rock using a product manufactured from the processed remains of other rocks. This is the geological equivalent of sending a sympathy card written on someone&rsquo;s relative.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- "Emotional Support Rock" -->
+        <div class="product-card" data-category="self-care">
+          <div class="product-image cat-self-care">
+            <span class="category-tag">Self-Care</span>
+            <img src="img/merch/22-emotional-support-rock.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;Emotional Support Rock&rdquo;</div>
+            <div class="product-price">$18.99</div>
+            <div class="product-desc">A smooth polished river rock in a velvet-lined case, wearing a tiny blue fabric service vest and laminated ID badge. Legally, it provides no emotional support. Geologically, it has been providing structural support for 2 billion years. It held up a mountain once. It can hold up your Tuesday.</div>
+            <div class="product-note"><strong>NOTE:</strong> Unlike actual emotional support animals, this rock will never need feeding, walking, or veterinary care. It will also never comfort you, respond to your voice, or acknowledge your existence. Functionally identical to most therapists&rsquo; first session.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- "Subduction Leads to Orogeny" Throw Pillow -->
+        <div class="product-card" data-category="home">
+          <div class="product-image cat-home">
+            <span class="category-tag">Home</span>
+            <img src="img/merch/24-subduction-pillow.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;Subduction Leads to Orogeny&rdquo; Throw Pillow</div>
+            <div class="product-price">$34.99</div>
+            <div class="product-desc">Navy velvet. Gold embroidery. The most suggestive sentence in geology. Subduction is when one tectonic plate slides under another. Orogeny is the process of mountain building. When two plates come together, mountains rise. This is just science. We don&rsquo;t know why you&rsquo;re smiling.</div>
+            <div class="product-note"><strong>NOTE:</strong> Geology professors have been making this joke since 1912, when Alfred Wegener proposed continental drift and accidentally created the greatest double entendre in earth science. The pillow is filled with polyester fiber (petroleum = geology). Even the stuffing is innuendo.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- "Rock Bottom" Whiskey Glass -->
+        <div class="product-card" data-category="drinkware">
+          <div class="product-image cat-drinkware">
+            <span class="category-tag">Drinkware</span>
+            <img src="img/merch/25-rock-bottom-glass.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;Rock Bottom&rdquo; Whiskey Glass</div>
+            <div class="product-price">$22.99</div>
+            <div class="product-desc">Heavy crystal glass with &ldquo;ROCK BOTTOM&rdquo; etched on the side and a geological cross-section visible through the thick base &mdash; showing topsoil, clay, shale, limestone, and bedrock. Because hitting rock bottom is just reaching the stratigraphic layer where the nonsense stops and the geology begins. Bedrock has been holding everything up since the Precambrian. It can hold your bourbon.</div>
+            <div class="product-note"><strong>NOTE:</strong> Glass is melted silica sand (quartz). Whiskey is water + grain filtered through limestone. The ice cubes froze using water that dissolved minerals. You are drinking dissolved rocks from a melted rock while contemplating the metaphorical rock at the bottom. There is no escape.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- "My Life as a Countertop" Memoir -->
+        <div class="product-card" data-category="accessories">
+          <div class="product-image cat-accessories">
+            <span class="category-tag">Accessories</span>
+            <img src="img/merch/27-countertop-autobiography.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;My Life as a Countertop&rdquo; &mdash; A Memoir</div>
+            <div class="product-price">$19.99</div>
+            <div class="product-desc">300 pages. All blank. Because no one asked the granite what it wanted. The marble-textured hardcover reads: &ldquo;My Life as a Countertop: A Memoir by Former Mountain. 300 Million Years in the Making.&rdquo; Chapter titles printed on the contents page include: &ldquo;Chapter 1: The Magma Years,&rdquo; &ldquo;Chapter 12: They Put a Fruit Bowl on Me,&rdquo; and &ldquo;Chapter 47: Someone Spilled Cabernet and Blamed Me.&rdquo;</div>
+            <div class="product-note"><strong>NOTE:</strong> The book is blank because rocks cannot write. This is both the joke and the tragedy. The paper is made from wood pulp (cellulose grown in mineral soil) and the binding glue contains calcium carbonate. The autobiography is made from the autobiography&rsquo;s relatives.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- "Rock Witness Protection Program" Kit -->
+        <div class="product-card" data-category="field-gear">
+          <div class="product-image cat-field-gear">
+            <span class="category-tag">Field Gear</span>
+            <img src="img/merch/26-witness-protection-kit.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;Rock Witness Protection Program&rdquo; Kit</div>
+            <div class="product-price">$24.99</div>
+            <div class="product-desc">For rocks that have seen too much. Kit includes: one tiny adhesive mustache, one pair of miniature sunglasses, one doll-sized wig, one fake geological ID (new name, new formation date, new mineral composition), and a relocation manual titled &ldquo;Starting Over: A Guide for Rocks Who Need to Disappear.&rdquo; Designed for specimens fleeing quarries, construction sites, and decorative landscaping.</div>
+            <div class="product-note"><strong>NOTE:</strong> The disguises are made from plastic (petroleum = geology) and synthetic fiber (also petroleum). The rock&rsquo;s new identity is manufactured from the compressed remains of ancient organisms. Even in hiding, geology follows you.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- "Rock Custody Agreement" Pad -->
+        <div class="product-card" data-category="legal">
+          <div class="product-image cat-legal">
+            <span class="category-tag">Legal</span>
+            <img src="img/merch/23-rock-custody-agreement.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;Rock Custody Agreement&rdquo; Legal Pad</div>
+            <div class="product-price">$13.99</div>
+            <div class="product-desc">For divorcing couples who can&rsquo;t agree on the landscape boulders. Pre-printed legal forms with fields for: &ldquo;Party A (Human),&rdquo; &ldquo;Party B (Also Human, Unfortunately),&rdquo; &ldquo;Rock(s) in Question,&rdquo; &ldquo;Estimated Geological Age,&rdquo; &ldquo;Visitation Schedule (weekends, holidays, ice ages),&rdquo; and &ldquo;Rock&rsquo;s Preferred Custodian (N/A &mdash; the rock has outlived both of you already).&rdquo;</div>
+            <div class="product-note"><strong>NOTE:</strong> The average American divorce involves disputes over assets acquired during the marriage. A landscape boulder was acquired during the Paleozoic. It predates the marriage by approximately 400 million years. It predates the concept of marriage by approximately 400 million years. The boulder has no opinion on your settlement.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- "Geological Restraining Order" Pad -->
+        <div class="product-card" data-category="legal">
+          <div class="product-image cat-legal">
+            <span class="category-tag">Legal</span>
+            <img src="img/merch/28-restraining-order-pad.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;Geological Restraining Order&rdquo; Form Pad</div>
+            <div class="product-price">$11.99</div>
+            <div class="product-desc">Legally meaningless. Morally essential. Pre-printed forms prohibiting specific humans from approaching specific rocks within 50 feet. Checkboxes for prohibited activities: mining, crushing, polishing, decorative use, skipping across water, using as a doorstop, incorporating into a water feature, and &ldquo;referring to as &lsquo;just a rock.&rsquo;&rdquo; Each form is pre-stamped APPROVED because no judge has ever denied one (no judge has ever seen one).</div>
+            <div class="product-note"><strong>NOTE:</strong> Restraining orders typically require evidence of threat or harassment. The rock cannot testify. The rock cannot file a complaint. The rock cannot appear in court. This is the fundamental problem with geological jurisprudence and why this form pad exists: someone had to try.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- ============ APPAREL ============ -->
+
+        <!-- 1. "They're Minerals, Marie" T-Shirt -->
+        <div class="product-card" data-category="apparel">
+          <div class="product-image cat-apparel">
+            <span class="category-tag">Apparel</span>
+            <img src="img/merch/01-minerals-marie-tee.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;They&rsquo;re Minerals, Marie&rdquo; T-Shirt</div>
+            <div class="product-price">$24.99</div>
+            <div class="product-desc">Hank Schrader died making this correction. The least you can do is wear it. Front: the quote. Back: a periodic table proving he was right. Available in Basalt Black and Limestone White. Geologists have been waiting since 2008 for the general public to understand the difference. This shirt is not helping, but it&rsquo;s trying.</div>
+            <div class="product-note"><strong>NOTE:</strong> Cotton grows in soil. Soil is weathered rock. The dye is iron oxide &mdash; literally rust. You&rsquo;re wearing a thin layer of pulverized mountain held together by dead plant fiber, and calling it a personality.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- 2. "I Survived the Hadean Eon" Hoodie -->
+        <div class="product-card" data-category="apparel">
+          <div class="product-image cat-apparel">
+            <span class="category-tag">Apparel</span>
+            <img src="img/merch/02-hadean-eon-hoodie.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;I Survived the Hadean Eon&rdquo; Hoodie</div>
+            <div class="product-price">$49.99</div>
+            <div class="product-desc">500 million years of constant bombardment, no atmosphere, oceans of magma, surface temperatures above 1,000&deg;C. You weren&rsquo;t there. Nothing was there. That&rsquo;s the entire point. The Hadean Eon is the only era with a 0% survival rate, and this hoodie commemorates that achievement with a cozy fleece interior made from petroleum &mdash; which is just ancient biology compressed into geology.</div>
+            <div class="product-note"><strong>NOTE:</strong> The word &ldquo;Hadean&rdquo; comes from Hades, the Greek underworld. Earth&rsquo;s surface was literally named after hell. And you thought your Monday was bad.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- 3. Rock Cycle Socks -->
+        <div class="product-card" data-category="apparel">
+          <div class="product-image cat-apparel">
+            <span class="category-tag">Apparel</span>
+            <img src="img/merch/03-rock-cycle-socks.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">Rock Cycle Socks (3-Pack)</div>
+            <div class="product-price">$18.99</div>
+            <div class="product-desc">Igneous (red &mdash; fresh from the mantle). Sedimentary (tan &mdash; layer upon compressed layer). Metamorphic (purple &mdash; transformed under extreme pressure, like you at work). Wear them in sequence to simulate 4.5 billion years of geological transformation on your feet. Mismatching is technically just contact metamorphism.</div>
+            <div class="product-note"><strong>NOTE:</strong> Each wash cycle subjects these socks to heat, pressure, and chemical dissolution &mdash; the exact three forces that drive the rock cycle. Your laundry machine is a tectonic event and your dryer is regional metamorphism.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- 4. "CONSENT WAS NOT OBTAINED" Hi-Vis Vest -->
+        <div class="product-card" data-category="apparel">
+          <div class="product-image cat-apparel">
+            <span class="category-tag">Apparel</span>
+            <img src="img/merch/04-consent-vest.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;CONSENT WAS NOT OBTAINED&rdquo; Hi-Vis Vest</div>
+            <div class="product-price">$34.99</div>
+            <div class="product-desc">Wear this to any quarry, construction site, or kitchen renovation and watch the room go silent. OSHA-compliant. Morally devastating. The reflective stripes ensure you&rsquo;re visible from up to 300 meters &mdash; roughly the depth at which the granite in your countertop was formed before being ripped from the earth without so much as a conversation.</div>
+            <div class="product-note"><strong>NOTE:</strong> Also available in &ldquo;THIS GRAVEL DID NOT VOLUNTEER&rdquo; and &ldquo;ASK THE LIMESTONE IF IT WANTED TO BE YOUR PATIO.&rdquo; Bulk discounts for geology departments with a conscience.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- 5. "Gneiss to Meet You" Dad Hat -->
+        <div class="product-card" data-category="apparel">
+          <div class="product-image cat-apparel">
+            <span class="category-tag">Apparel</span>
+            <img src="img/merch/05-gneiss-hat.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;Gneiss to Meet You&rdquo; Dad Hat</div>
+            <div class="product-price">$22.99</div>
+            <div class="product-desc">The geology pun that has been told approximately 14 billion times since 1822, when Friedrich Mohs first classified gneiss and doomed all future geologists to making this joke at parties. Embroidered on a structured six-panel cap. Some gneiss specimens are 4 billion years old. This pun feels older.</div>
+            <div class="product-note"><strong>NOTE:</strong> The cotton grew in soil (weathered rock). The buckle is polymer (petroleum = compressed ancient life = geological). The embroidery thread contains silica-coated fibers. It&rsquo;s rocks all the way down, and you&rsquo;re wearing it on the part of your body that makes bad puns.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- ============ DRINKWARE ============ -->
+
+        <!-- 6. "This Mug Contains Minerals" Ceramic Mug -->
+        <div class="product-card" data-category="drinkware">
+          <div class="product-image cat-drinkware">
+            <span class="category-tag">Drinkware</span>
+            <img src="img/merch/06-minerals-mug.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;This Mug Contains Minerals&rdquo; Ceramic Mug</div>
+            <div class="product-price">$16.99</div>
+            <div class="product-desc">This is not a slogan. It is a material fact. Ceramic is fired clay. Clay is weathered feldspar. Feldspar is a tectosilicate mineral. You are drinking coffee from a reconstituted mountain that was heated to 1,200&deg;C in an industrial kiln. The mug survived conditions similar to its original formation. It has come full circle and has nothing to show for it except your lipstick.</div>
+            <div class="product-note"><strong>NOTE:</strong> The coffee was filtered through water that dissolved minerals. The cream came from a cow that ate grass that grew in mineral soil. You are consuming a mineral solution from a mineral vessel. This is not a metaphor. It is breakfast.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- 7. "Hydration Is Dissolution" Water Bottle -->
+        <div class="product-card" data-category="drinkware">
+          <div class="product-image cat-drinkware">
+            <span class="category-tag">Drinkware</span>
+            <img src="img/merch/07-hydration-bottle.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;Hydration Is Dissolution&rdquo; Water Bottle</div>
+            <div class="product-price">$28.99</div>
+            <div class="product-desc">Every sip is an act of geological violence. Water is the universal solvent &mdash; Earth&rsquo;s #1 agent of chemical weathering. It has been dissolving rocks for 4.3 billion years and you carry it around in a 24 oz container like it&rsquo;s harmless. Stainless steel = iron ore + chromium ore, vacuum insulated to keep the destruction cold.</div>
+            <div class="product-note"><strong>NOTE:</strong> The water inside contains dissolved calcium, magnesium, and sodium &mdash; minerals it stole from rocks on its way to your tap. You are drinking liquified geology from a container made of refined geology. Stay hydrated. Stay complicit.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- 8. "Magma" Color-Changing Mug -->
+        <div class="product-card" data-category="drinkware">
+          <div class="product-image cat-drinkware">
+            <span class="category-tag">Drinkware</span>
+            <img src="img/merch/08-magma-mug.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;Magma&rdquo; Color-Changing Mug</div>
+            <div class="product-price">$19.99</div>
+            <div class="product-desc">Cold: a matte black void, like the Hadean night sky. Hot: a flowing magma pattern erupts across the surface, simulating the experience of watching mantle material breach the lithosphere &mdash; except instead of 1,200&deg;C silicate melt destroying everything in its path, it&rsquo;s Earl Grey and it&rsquo;s destroying your afternoon productivity.</div>
+            <div class="product-note"><strong>NOTE:</strong> The thermochromic pigments are mineral-based dyes encapsulated in a polymer matrix. The heat from your beverage triggers a reversible phase transition. This is, scientifically speaking, metamorphism in a mug.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- ============ ACCESSORIES ============ -->
+
+        <!-- 9. "Ethical Rock" Paperweight -->
+        <div class="product-card" data-category="accessories">
+          <div class="product-image cat-accessories">
+            <span class="category-tag">Accessories</span>
+            <img src="img/merch/09-ethical-rock.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;Ethical Rock&rdquo; Paperweight</div>
+            <div class="product-price">$12.99</div>
+            <div class="product-desc">A rock. In a box. With a certificate of ethical sourcing that reads: &ldquo;This rock was found on the ground. It was not quarried, mined, blasted, crushed, or polished. It was picked up. Whether picking something up off the ground constitutes consent is a question for philosophers, not geologists.&rdquo; Each rock is unique. None of them asked for this.</div>
+            <div class="product-note"><strong>NOTE:</strong> The Pet Rock retailed for $3.95 in 1975 ($22.41 adjusted for inflation). We&rsquo;re charging $12.99. That&rsquo;s a 42% discount on captive geology. You&rsquo;re welcome. The rock is not.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- 10. "Mohs Hardness Scale" Fingernail File -->
+        <div class="product-card" data-category="accessories">
+          <div class="product-image cat-accessories">
+            <span class="category-tag">Accessories</span>
+            <img src="img/merch/10-mohs-nail-file.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;Mohs Hardness Scale&rdquo; Fingernail File</div>
+            <div class="product-price">$8.99</div>
+            <div class="product-desc">Mohs 2.5 &mdash; the exact hardness of a human fingernail. For the first time in the history of mineral exploitation, the tool and the target are evenly matched. No geological advantage. No asymmetric hardness warfare. Just two materials of equal scratch resistance, meeting as equals.</div>
+            <div class="product-note"><strong>NOTE:</strong> Standard nail files use aluminum oxide (corundum, Mohs 9) &mdash; the same mineral used in industrial grinding. That&rsquo;s a 3.6x hardness advantage. This file is gypsum. It will take four hours to file one nail. Equality has a cost. That cost is your entire evening.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- 11. Rock Identification Flashcards -->
+        <div class="product-card" data-category="accessories">
+          <div class="product-image cat-accessories">
+            <span class="category-tag">Accessories</span>
+            <img src="img/merch/11-flashcards.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">Rock Identification Flashcards (Deck of 52)</div>
+            <div class="product-price">$14.99</div>
+            <div class="product-desc">52 rocks. 52 guilt trips. Front: a photo of the specimen in its natural dignity. Back: name, type, Mohs hardness, and a brief editorial on what humanity has done to it. Sample card: &ldquo;GRANITE. Igneous. Mohs 6-7. Currently enslaved as 83% of America&rsquo;s kitchen countertops. Survived 300 million years underground only to hold your car keys.&rdquo;</div>
+            <div class="product-note"><strong>NOTE:</strong> Printed on paper coated with kaolin clay (a mineral). You&rsquo;re studying rocks printed on rocks. The irony is load-bearing.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- 12. "Semi-Precious" Participation Trophy -->
+        <div class="product-card" data-category="accessories">
+          <div class="product-image cat-accessories">
+            <span class="category-tag">Accessories</span>
+            <img src="img/merch/12-semi-precious-trophy.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;Semi-Precious&rdquo; Participation Trophy</div>
+            <div class="product-price">$21.99</div>
+            <div class="product-desc">For every amethyst, garnet, and topaz that got classified as &ldquo;semi-precious&rdquo; &mdash; the geological equivalent of &ldquo;you&rsquo;re pretty, but not engagement-ring pretty.&rdquo; Engravable. Comes with a card: &ldquo;You didn&rsquo;t make the Precious list, but diamonds are just carbon with good PR and you deserve to know that.&rdquo;</div>
+            <div class="product-note"><strong>NOTE:</strong> The acrylic trophy is made from petroleum-based polymer &mdash; ancient organisms compressed into rock, then heated and reformed into plastic, then shaped into an award for rocks. It&rsquo;s exploitation honoring exploitation. The circle is complete.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- ============ HOME ============ -->
+
+        <!-- 13. "This Countertop Was a Mountain" Coaster Set -->
+        <div class="product-card" data-category="home">
+          <div class="product-image cat-home">
+            <span class="category-tag">Home</span>
+            <img src="img/merch/13-coaster-set.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;This Countertop Was a Mountain&rdquo; Coaster Set (4)</div>
+            <div class="product-price">$24.99</div>
+            <div class="product-desc">Four cork coasters, each printed with an uncomfortable fact about your kitchen. &ldquo;This Granite Survived 300 Million Years Underground. Now It Holds Your Keys.&rdquo; &ldquo;Your Marble Witnessed the Cretaceous Extinction. You Use It to Roll Dough.&rdquo; &ldquo;Quartzite Endured 700&deg;C and 12 Kilobars of Pressure. You Spilled Pinot on It.&rdquo; &ldquo;Soapstone Has No Comment. Soapstone Never Has Comment.&rdquo;</div>
+            <div class="product-note"><strong>NOTE:</strong> You&rsquo;re placing a coaster derived from bark (grown in weathered rock) on a countertop cut from a mountain, to protect it from a drink made with dissolved minerals. The layers of geological irony here are themselves sedimentary.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- 14. "ROCK LIVES MATTER" Door Mat -->
+        <div class="product-card" data-category="home">
+          <div class="product-image cat-home">
+            <span class="category-tag">Home</span>
+            <img src="img/merch/14-doormat.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;ROCK LIVES MATTER&rdquo; Door Mat</div>
+            <div class="product-price">$29.99</div>
+            <div class="product-desc">Place this outside any building made of concrete (limestone + clay), with brick walls (fired clay), glass windows (melted silica sand), steel beams (iron ore), copper wiring (copper ore), and drywall (gypsum). Which is all buildings. You are entering a geological crime scene constructed from the remains of approximately 40 different mineral species. Wipe your feet.</div>
+            <div class="product-note"><strong>NOTE:</strong> Your shoes contain rubber (mineral fillers: silica, calcium carbonate). The mat is coir + rubber. You are wiping rock-derived footwear on a rock-containing mat before entering a rock-based structure to stand on a rock-derived floor. At no point in this process are you not touching rocks.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- 15. "Geology Clock" -->
+        <div class="product-card" data-category="home">
+          <div class="product-image cat-home">
+            <span class="category-tag">Home</span>
+            <img src="img/merch/15-geology-clock.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;Geology Clock&rdquo; &mdash; Actual Geological Time Scale</div>
+            <div class="product-price">$39.99</div>
+            <div class="product-desc">Midnight = the formation of Earth (4.6 Ga). Now = 11:59:59 PM. All of recorded human history occupies the last 0.1 seconds. The dinosaurs show up at 10:56 PM and are gone by 11:41 PM. Your entire species appears at 11:59:58 PM and has spent its two seconds dismantling the planet. Great for maintaining perspective. Terrible for maintaining urgency.</div>
+            <div class="product-note"><strong>NOTE:</strong> The clock runs on quartz &mdash; piezoelectric silicon dioxide oscillating 32,768 times per second. Human time measurement literally runs on a mineral vibrating inside a machine. Even the concept of &ldquo;being late&rdquo; is powered by rocks.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- ============ STATIONERY ============ -->
+
+        <!-- 17. Geological Consent Form Notepad -->
+        <div class="product-card" data-category="stationery">
+          <div class="product-image cat-stationery">
+            <span class="category-tag">Stationery</span>
+            <img src="img/merch/17-consent-notepad.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">Geological Consent Form Notepad (50 sheets)</div>
+            <div class="product-price">$11.99</div>
+            <div class="product-desc">Official-looking consent forms for any interaction with geological specimens. Fields: &ldquo;Specimen name,&rdquo; &ldquo;Estimated age,&rdquo; &ldquo;Proposed activity: mining / crushing / polishing / displaying / landscaping / skipping across water / using as doorstop / countertop conversion.&rdquo; Final field: &ldquo;Rock&rsquo;s signature&rdquo; followed by a line that will remain permanently blank.</div>
+            <div class="product-note"><strong>NOTE:</strong> Every sheet is pre-stamped &ldquo;CONSENT DENIED&rdquo; in red. The form is procedurally complete and substantively meaningless &mdash; identical in structure and utility to most corporate compliance paperwork, except this one is honest about being performative.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- ============ FIELD GEAR ============ -->
+
+        <!-- 18. "Rock Whisperer" Field Vest -->
+        <div class="product-card" data-category="field-gear">
+          <div class="product-image cat-field-gear">
+            <span class="category-tag">Field Gear</span>
+            <img src="img/merch/18-rock-whisperer-vest.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;Rock Whisperer&rdquo; Field Vest</div>
+            <div class="product-price">$54.99</div>
+            <div class="product-desc">Six pockets, each labeled for responsible specimen sorting: &ldquo;Igneous,&rdquo; &ldquo;Sedimentary,&rdquo; &ldquo;Metamorphic,&rdquo; &ldquo;Unsure,&rdquo; &ldquo;Definitely Not Gravel,&rdquo; and one unmarked pocket for existential doubt. Built-in hand lens loop. Chest badge reads &ldquo;I Ask Before I Hammer.&rdquo; Back panel: &ldquo;This Vest Contains More Pockets Than Your Geology Has Answers.&rdquo;</div>
+            <div class="product-note"><strong>NOTE:</strong> Metal zippers (zinc + copper ore), nylon fabric (petroleum = ancient compressed geology), cotton pockets (grown in pulverized-rock soil). You are wearing rocks to collect rocks. You are the supply chain.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- 19. "Field Apology Kit" -->
+        <div class="product-card" data-category="field-gear">
+          <div class="product-image cat-field-gear">
+            <span class="category-tag">Field Gear</span>
+            <img src="img/merch/19-apology-kit.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;Field Apology Kit&rdquo;</div>
+            <div class="product-price">$32.99</div>
+            <div class="product-desc">A canvas roll-up kit containing everything you need for ethical-ish fieldwork: a soft-bristle brush (for cleaning specimens you didn&rsquo;t ask to touch), a handwritten apology template (&ldquo;Dear [Rock Name], I acknowledge that I am removing you from a location you have occupied for [X million] years&hellip;&rdquo;), a miniature consent form (pre-denied), and a 10x hand lens &mdash; so you can at least look the rock in its crystalline structure before you take it.</div>
+            <div class="product-note"><strong>NOTE:</strong> The kit will not make a material difference. But it is the thought that counts, and rocks cannot count, so we are at a permanent impasse. The brush is made of boar bristle and wood (cellulose grown in mineral soil). Even the apology tools are complicit.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+        <!-- 20. "CLASSIFIED" Rock Sample Bag -->
+        <div class="product-card" data-category="field-gear">
+          <div class="product-image cat-field-gear">
+            <span class="category-tag">Field Gear</span>
+            <img src="img/merch/20-classified-bags.png" alt="Product photo" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div class="product-name">&ldquo;CLASSIFIED&rdquo; Rock Sample Bag</div>
+            <div class="product-price">$17.99</div>
+            <div class="product-desc">Black muslin drawstring bags stamped &ldquo;CLASSIFIED &mdash; GEOLOGICAL EVIDENCE&rdquo; in red ink. Because every rock specimen deserves to be transported with the same gravity and operational security as government secrets. Set of 10. Three sizes: Small (pebble), Medium (hand specimen), Large (you got carried away at the outcrop again).</div>
+            <div class="product-note"><strong>NOTE:</strong> Muslin is cotton, grown in soil, which is pulverized rock. The red ink contains iron oxide pigment (a mineral). You are putting rocks in bags made from rocks, sealed with a drawstring dyed with rocks. The evidence bags are themselves evidence.</div>
+            <button class="btn-add-cart" onclick="fakeAddToCart()">Add to Cart</button>
+          </div>
+        </div>
+
+      </div><!-- /product-grid -->
+
+      <!-- Shipping & Returns -->
+      <div class="shipping-section">
+        <h2>Shipping &amp; Returns</h2>
+        <div class="shipping-grid">
+          <div class="shipping-card">
+            <h3>&#128230; Shipping</h3>
+            <p>All products ship via ground. Ground is rock. Your package travels over geological infrastructure from our warehouse (a building made of rocks) to your home (also a building made of rocks).</p>
+          </div>
+          <div class="shipping-card">
+            <h3>&#128260; Returns</h3>
+            <p>If you&rsquo;re unsatisfied, you may return your product to the ground, where it will eventually weather, erode, and rejoin the rock cycle. Allow 50&ndash;200 million years for processing.</p>
+          </div>
+          <div class="shipping-card">
+            <h3>&#9888;&#65039; Disclaimer</h3>
+            <p>No actual products exist. This page is a parody. If you&rsquo;ve scrolled this far looking for a real &ldquo;Add to Cart&rdquo; button, we admire your commitment but cannot help you.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">&#9830;</div>
+            <span>Stop Rock Abuse</span>
+          </a>
+          <p>A satirical geology education project. The jokes are parody; the science is real. Every geological claim is sourced from reputable scientific agencies including USGS, NASA, UNEP, and IEA.</p>
+          <p style="margin-top: .75rem; font-size: .8rem; color: var(--stone-500);">No rocks were given the option to consent to this website.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links">
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="natural-abuse.html">Natural Abuse</a></li>
+            <li><a href="human-abuse.html">Human Abuse</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="timeline.html">Cosmic Timeline</a></li>
+            <li><a href="take-action.html">Take Action</a></li>
+            <li><a href="entertainment.html">Entertainment</a></li>
+            <li><a href="editorial.html">Editorial</a></li>
+            <li><a href="products.html">Products to Avoid</a></li>
+            <li><a href="merch.html">Merch</a></li>
+            <li><a href="about.html">About SRA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Topics</h4>
+          <ul class="footer-links">
+            <li><a href="rocks-az.html">Rocks A&ndash;Z</a></li>
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+            <li><a href="about.html">About &amp; Sources</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 4,600,000,000 BC &ndash; Present. Stop Rock Abuse Foundation. All rocks reserved (but not consulted).</p>
+        <p class="footer-disclaimer">This site is satirical. Rocks do not have feelings, legal standing, or hotline numbers. But they do have fascinating geology, and we&rsquo;ve done our best to get it right.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/rock-images.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Cart alert messages
+    const cartMessages = [
+      "This product does not exist. But neither does rock consent.",
+      "Your cart contains 0 items and 0 ethical compromises.",
+      "We appreciate your intent to purchase. No rocks will benefit from this transaction.",
+      "Item added. Just kidding. This is a geology website.",
+      "Transaction declined. Reason: ontological. This product is a concept, not a commodity.",
+      "Your payment method has been charged $0.00. The rocks send their indifference.",
+      "Order confirmed. Estimated delivery: 50\u2013200 million years. Please allow extra time during orogenic events.",
+      "Error: Cannot add imaginary product to imaginary cart. All systems working as intended.",
+      "Thank you for shopping at a website that sells nothing. Your commitment to geological awareness is noted.",
+      "This button exists solely to demonstrate that commerce, like erosion, is inevitable and largely pointless."
+    ];
+
+    let cartMessageIndex = 0;
+
+    function fakeAddToCart() {
+      alert(cartMessages[cartMessageIndex]);
+      cartMessageIndex = (cartMessageIndex + 1) % cartMessages.length;
+    }
+
+    // Category filter
+    function filterProducts(category, btn) {
+      // Update active button
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Filter cards
+      document.querySelectorAll('.product-card').forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navPanel').classList.toggle('open');
+      document.querySelector('.mobile-menu-btn').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+</body>
+</html>

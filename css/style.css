@@ -1,0 +1,1825 @@
+/* ============================================
+   STOP ROCK ABUSE - Main Stylesheet
+   A Geological Mockumentary Website
+   ============================================ */
+
+/* === CSS Custom Properties === */
+:root {
+  --stone-900: #1a1a2e;
+  --stone-800: #2d2d44;
+  --stone-700: #3d3d5c;
+  --stone-600: #4a4a6a;
+  --stone-500: #6b6b8a;
+  --stone-400: #8e8ea8;
+  --stone-300: #b0b0c4;
+  --stone-200: #d4d4e0;
+  --stone-100: #eaeaf0;
+  --stone-50: #f5f5f8;
+
+  --magma-600: #c62828;
+  --magma-500: #e53935;
+  --magma-400: #ef5350;
+  --magma-300: #ff8a80;
+
+  --earth-700: #33691e;
+  --earth-600: #558b2f;
+  --earth-500: #7cb342;
+  --earth-400: #aed581;
+
+  --ocean-700: #0d47a1;
+  --ocean-600: #1565c0;
+  --ocean-500: #1e88e5;
+  --ocean-400: #64b5f6;
+  --ocean-300: #90caf9;
+
+  --sand-600: #bf8f00;
+  --sand-500: #f9a825;
+  --sand-400: #fdd835;
+  --sand-300: #fff176;
+  --sand-200: #fff9c4;
+
+  --metamorphic: #7b1fa2;
+  --igneous: #e53935;
+  --sedimentary: #f9a825;
+
+  --font-display: 'Bebas Neue', 'Arial Black', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,.1), 0 8px 10px -6px rgba(0,0,0,.1);
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --max-width: 1200px;
+  --header-height: 72px;
+}
+
+/* === Reset & Base === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--stone-800);
+  background: var(--stone-50);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: var(--ocean-600); text-decoration: none; transition: color .2s; }
+a:hover { color: var(--ocean-700); }
+
+h1, h2, h3, h4, h5 { font-family: var(--font-display); line-height: 1.1; color: var(--stone-900); letter-spacing: .04em; }
+h1 { font-size: clamp(2.6rem, 6vw, 4.5rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
+
+p { margin-bottom: 1rem; }
+
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 2rem; }
+
+/* === Header & Navigation === */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-height);
+  background: rgba(26, 26, 46, .95);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--magma-500), var(--sand-500));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 60%; height: 60%;
+  background: rgba(255,255,255,.15);
+  border-radius: 50% 40% 60% 30%;
+  transform: translate(-50%, -50%);
+}
+
+.nav-links {
+  display: none;
+  list-style: none;
+  gap: .1rem;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+/* Slide-in nav panel (lives outside header to avoid backdrop-filter stacking) */
+.nav-panel {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  bottom: 0;
+  width: 300px;
+  background: #0d0d20;
+  padding: 100px 1.5rem 2rem;
+  border-left: 2px solid rgba(255,255,255,.15);
+  z-index: 9999;
+  overflow-y: auto;
+  box-shadow: -8px 0 40px rgba(0,0,0,.7);
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  transition: right .3s ease;
+}
+
+.nav-panel.open {
+  right: 0;
+}
+
+.nav-panel a {
+  display: block;
+  padding: .75rem 1rem;
+  font-size: .95rem;
+  border-radius: var(--radius-md);
+  color: #ccc;
+  white-space: normal;
+  text-decoration: none;
+  transition: background .2s, color .2s;
+}
+
+.nav-panel a:hover {
+  background: rgba(255,255,255,.1);
+  color: #fff;
+}
+
+.nav-panel a.active {
+  background: rgba(229,57,53,.15);
+  color: #fff;
+}
+
+.nav-links a {
+  color: var(--stone-300);
+  padding: .4rem .55rem;
+  border-radius: var(--radius-sm);
+  font-size: .78rem;
+  font-weight: 500;
+  transition: all .2s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #fff;
+  background: rgba(255,255,255,.1);
+}
+
+.mobile-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: .5rem;
+  position: relative;
+  width: 36px;
+  height: 36px;
+  z-index: 10000;
+}
+
+/* Hamburger icon bars */
+.hamburger-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  position: absolute;
+  left: 7px;
+  transition: transform .3s ease, opacity .2s ease;
+}
+.hamburger-bar:nth-child(1) { top: 10px; }
+.hamburger-bar:nth-child(2) { top: 17px; }
+.hamburger-bar:nth-child(3) { top: 24px; }
+
+.mobile-menu-btn.open .hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.mobile-menu-btn.open .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+.mobile-menu-btn.open .hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Nav overlay backdrop */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,.6);
+  z-index: 9998;
+}
+.nav-overlay.active { display: block; }
+
+/* === Hero Sections === */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: var(--header-height);
+}
+
+.hero-home {
+  background: linear-gradient(135deg, var(--stone-900) 0%, #1a1a3e 30%, #2d1a3e 60%, var(--stone-800) 100%);
+}
+
+.hero-home::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse 600px 300px at 20% 80%, rgba(229,57,53,.12) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 400px at 80% 20%, rgba(30,136,229,.1) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 250px at 60% 70%, rgba(123,31,162,.08) 0%, transparent 70%);
+}
+
+.hero-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .4rem 1.2rem;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 100px;
+  color: var(--sand-300);
+  font-size: .85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  color: #fff;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+}
+
+.hero h1 .accent {
+  background: linear-gradient(135deg, var(--magma-400), var(--sand-400));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  color: var(--stone-300);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.8;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* === Buttons === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .85rem 2rem;
+  border-radius: var(--radius-md);
+  font-size: .95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all .25s;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--magma-500), var(--magma-400));
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(229,57,53,.3);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(229,57,53,.4);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.2);
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,.18);
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--stone-700);
+  border: 2px solid var(--stone-200);
+}
+.btn-outline:hover {
+  border-color: var(--ocean-500);
+  color: var(--ocean-600);
+  transform: translateY(-2px);
+}
+
+/* === Floating Rocks Animation (Hero) === */
+.floating-rocks {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.floating-rock {
+  position: absolute;
+  border-radius: 40% 60% 55% 45% / 50% 40% 60% 50%;
+  opacity: .06;
+  animation: float-rock 20s ease-in-out infinite;
+}
+
+.floating-rock:nth-child(1) {
+  width: 120px; height: 100px;
+  background: var(--magma-400);
+  top: 15%; left: 8%;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+.floating-rock:nth-child(2) {
+  width: 80px; height: 70px;
+  background: var(--ocean-400);
+  top: 60%; right: 12%;
+  animation-delay: -4s;
+  animation-duration: 22s;
+}
+.floating-rock:nth-child(3) {
+  width: 150px; height: 120px;
+  background: var(--sand-400);
+  bottom: 20%; left: 15%;
+  animation-delay: -8s;
+  animation-duration: 25s;
+}
+.floating-rock:nth-child(4) {
+  width: 60px; height: 55px;
+  background: #7b1fa2;
+  top: 30%; right: 25%;
+  animation-delay: -12s;
+  animation-duration: 20s;
+}
+.floating-rock:nth-child(5) {
+  width: 90px; height: 85px;
+  background: var(--earth-500);
+  bottom: 35%; right: 8%;
+  animation-delay: -6s;
+  animation-duration: 24s;
+}
+
+@keyframes float-rock {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(15px, -20px) rotate(5deg); }
+  50% { transform: translate(-10px, 15px) rotate(-3deg); }
+  75% { transform: translate(20px, 10px) rotate(4deg); }
+}
+
+/* === Page Hero (inner pages) === */
+.page-hero {
+  min-height: 45vh;
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--header-height) + 90px);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a1a2e, #1a2a3a, #2a1a2e);
+}
+
+.page-hero-cycle {
+  background: linear-gradient(135deg, #1a2a1a, #1a3a2a, #1a2a3a);
+}
+.page-hero-natural {
+  background: linear-gradient(135deg, #1a2a3a, #1a3a4a, #2a3a4a);
+}
+.page-hero-human {
+  background: linear-gradient(135deg, #2a1a1a, #3a2a1a, #3a2a2a);
+}
+.page-hero-dossiers {
+  background: linear-gradient(135deg, #1a1a2e, #2e1a2e, #2e2a3e);
+}
+.page-hero-timeline {
+  background: linear-gradient(135deg, #0a0a2e, #1a0a3e, #0a1a3e);
+}
+.page-hero-action {
+  background: linear-gradient(135deg, #1a2e1a, #1a3e2a, #2a3e1a);
+}
+.page-hero-about {
+  background: linear-gradient(135deg, #2e2e2e, #1a1a2e, #2e1a2e);
+}
+
+.page-hero .hero-content {
+  text-align: left;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  width: 100%;
+}
+
+.page-hero h1 {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.page-hero .hero-subtitle {
+  margin: 0;
+  max-width: 650px;
+  text-align: left;
+  color: var(--stone-300);
+}
+
+/* Ensure ALL text in page heroes is readable on dark backgrounds */
+.page-hero p,
+.page-hero .hero-badge,
+.page-hero .section-desc {
+  color: var(--stone-300);
+}
+
+.page-hero h1, .page-hero h2, .page-hero h3 {
+  color: #fff;
+}
+
+/* === Sections === */
+section {
+  padding: 5rem 0;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3.5rem;
+}
+
+.section-header h2 {
+  margin-bottom: 1rem;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: .8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--ocean-600);
+  margin-bottom: .75rem;
+}
+
+.section-desc {
+  color: var(--stone-500);
+  font-size: 1.05rem;
+}
+
+/* === Stats Bar === */
+.stats-bar {
+  background: var(--stone-900);
+  padding: 3rem 0;
+  position: relative;
+}
+
+.stats-bar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg,
+    rgba(229,57,53,.05),
+    rgba(30,136,229,.05),
+    rgba(123,31,162,.05),
+    rgba(249,168,37,.05));
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  position: relative;
+}
+
+.stat-item {
+  text-align: center;
+  color: #fff;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--sand-300), var(--magma-300));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+  margin-bottom: .25rem;
+}
+
+.stat-label {
+  font-size: .85rem;
+  color: var(--stone-400);
+  line-height: 1.4;
+}
+
+/* === Card Grids === */
+.card-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.card-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.card-grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+.card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--stone-100);
+  transition: all .3s;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.card-icon-magma { background: rgba(229,57,53,.1); color: var(--magma-500); }
+.card-icon-ocean { background: rgba(30,136,229,.1); color: var(--ocean-500); }
+.card-icon-earth { background: rgba(85,139,47,.1); color: var(--earth-600); }
+.card-icon-sand { background: rgba(249,168,37,.1); color: var(--sand-600); }
+.card-icon-meta { background: rgba(123,31,162,.1); color: var(--metamorphic); }
+
+.card h3 {
+  margin-bottom: .75rem;
+}
+
+.card p {
+  color: var(--stone-500);
+  font-size: .95rem;
+}
+
+/* === Rock Type Cards (special) === */
+.rock-type-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.rock-type-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+}
+
+.rock-type-card.igneous::before { background: linear-gradient(90deg, var(--magma-500), var(--magma-300)); }
+.rock-type-card.sedimentary::before { background: linear-gradient(90deg, var(--sand-500), var(--sand-300)); }
+.rock-type-card.metamorphic::before { background: linear-gradient(90deg, var(--metamorphic), #ce93d8); }
+
+.rock-type-tag {
+  display: inline-block;
+  padding: .2rem .7rem;
+  border-radius: 100px;
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 1rem;
+}
+
+.tag-igneous { background: rgba(229,57,53,.1); color: var(--magma-500); }
+.tag-sedimentary { background: rgba(249,168,37,.1); color: var(--sand-600); }
+.tag-metamorphic { background: rgba(123,31,162,.1); color: var(--metamorphic); }
+
+/* === Rock Dossier Cards === */
+.dossier-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--stone-100);
+  transition: all .3s;
+}
+
+.dossier-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.dossier-visual {
+  height: 180px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.dossier-visual .rock-shape {
+  width: 100px;
+  height: 90px;
+  border-radius: 45% 55% 50% 50% / 55% 45% 55% 45%;
+  position: relative;
+  box-shadow: inset -8px -8px 20px rgba(0,0,0,.2), inset 5px 5px 15px rgba(255,255,255,.1);
+}
+
+.dossier-body {
+  padding: 1.5rem;
+}
+
+.dossier-body h3 {
+  margin-bottom: .5rem;
+}
+
+.dossier-meta {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.dossier-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .15rem .5rem;
+  border-radius: 100px;
+  font-size: .7rem;
+  font-weight: 600;
+  background: var(--stone-100);
+  color: var(--stone-600);
+}
+
+.dossier-body p {
+  font-size: .9rem;
+  color: var(--stone-500);
+}
+
+.dossier-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--stone-100);
+}
+
+.dossier-stat-label {
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--stone-400);
+  font-weight: 600;
+}
+
+.dossier-stat-value {
+  font-size: .85rem;
+  color: var(--stone-700);
+  font-weight: 500;
+}
+
+/* Dossier visual backgrounds */
+.vis-granite { background: linear-gradient(135deg, #9e9e9e, #bdbdbd, #8d8d8d); }
+.vis-basalt { background: linear-gradient(135deg, #37474f, #546e7a, #263238); }
+.vis-obsidian { background: linear-gradient(135deg, #1a1a1a, #333, #0d0d0d); }
+.vis-sandstone { background: linear-gradient(135deg, #d4a574, #c4956a, #e0b88a); }
+.vis-limestone { background: linear-gradient(135deg, #e0d8c8, #d0c8b0, #c8c0a8); }
+.vis-shale { background: linear-gradient(135deg, #5d6d7e, #7f8c8d, #566573); }
+.vis-marble { background: linear-gradient(135deg, #ecf0f1, #d5dbdb, #f0f3f4); }
+.vis-slate { background: linear-gradient(135deg, #4a5568, #5a6578, #3a4558); }
+.vis-quartzite { background: linear-gradient(135deg, #f8e8d8, #e8d8c8, #f0e0d0); }
+.vis-gneiss { background: repeating-linear-gradient(170deg, #6b6b7a 0px, #8b8b9a 4px, #5b5b6a 8px, #7b7b8a 12px); }
+.vis-pumice { background: radial-gradient(circle 3px, rgba(0,0,0,.15) 1px, transparent 1px), linear-gradient(135deg, #d0ccc8, #c0bcb8); background-size: 8px 8px, 100% 100%; }
+.vis-conglomerate { background: radial-gradient(ellipse 12px 10px at 30% 40%, #a88060 0%, transparent 70%), radial-gradient(ellipse 8px 12px at 70% 30%, #8899aa 0%, transparent 70%), radial-gradient(ellipse 10px 8px at 50% 70%, #90a080 0%, transparent 70%), linear-gradient(135deg, #c8b898, #b8a888); }
+
+.vis-granite .rock-shape { background: radial-gradient(circle 4px, #333 1px, transparent 2px), radial-gradient(circle 3px, #ddd 1px, transparent 2px), radial-gradient(circle 3px, #f4a4a4 1px, transparent 2px), linear-gradient(135deg, #aaa, #ccc); background-size: 12px 12px, 10px 14px, 14px 10px, 100% 100%; }
+.vis-basalt .rock-shape { background: linear-gradient(135deg, #2c2c2c, #444, #2a2a2a); }
+.vis-obsidian .rock-shape { background: linear-gradient(135deg, #111, #2a2a2a, #050505); box-shadow: inset -5px -5px 15px rgba(0,0,0,.5), inset 3px 3px 10px rgba(255,255,255,.15), 0 0 20px rgba(255,255,255,.05); }
+.vis-sandstone .rock-shape { background: linear-gradient(180deg, #d4a574, #c4956a, #b88560); }
+.vis-limestone .rock-shape { background: linear-gradient(135deg, #e0d8c8, #d0c8b0); }
+.vis-shale .rock-shape { background: repeating-linear-gradient(175deg, #5d6d7e 0px, #7f8c8d 2px, #5d6d7e 4px); }
+.vis-marble .rock-shape { background: linear-gradient(135deg, #f0f0f0, #e8e8e8, #f5f5f5); box-shadow: inset -5px -5px 15px rgba(0,0,0,.08), inset 3px 3px 10px rgba(255,255,255,.8); }
+.vis-slate .rock-shape { background: repeating-linear-gradient(172deg, #4a5568 0px, #5a6578 1px, #4a5568 2px); border-radius: 30% 70% 60% 40% / 50% 30% 70% 50%; }
+.vis-quartzite .rock-shape { background: linear-gradient(135deg, #f0e0d0, #e8d0c0, #f8e8d8); }
+.vis-gneiss .rock-shape { background: repeating-linear-gradient(160deg, #5b5b6a 0px, #8b8b9a 3px, #6b6b7a 6px); }
+.vis-pumice .rock-shape { background: radial-gradient(circle 2px, rgba(0,0,0,.2) 1px, transparent 1px), linear-gradient(135deg, #d8d4d0, #c8c4c0); background-size: 6px 6px, 100% 100%; }
+.vis-conglomerate .rock-shape { background: radial-gradient(ellipse 8px 6px at 30% 40%, #a88060 0%, transparent 70%), radial-gradient(ellipse 5px 8px at 70% 30%, #8899aa 0%, transparent 70%), linear-gradient(135deg, #c8b898, #b8a888); }
+
+/* === Timeline === */
+.timeline {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--magma-500), var(--ocean-500), var(--earth-500), var(--sand-500));
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+  flex-direction: row;
+  padding-right: calc(50% + 2rem);
+  text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
+  padding-left: calc(50% + 2rem);
+  text-align: left;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--stone-900);
+  border: 3px solid var(--ocean-500);
+  z-index: 2;
+}
+
+.timeline-content {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--stone-100);
+}
+
+.timeline-date {
+  font-size: .8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--ocean-600);
+  margin-bottom: .5rem;
+}
+
+.timeline-content h3 {
+  margin-bottom: .5rem;
+  font-size: 1.1rem;
+}
+
+.timeline-content p {
+  font-size: .9rem;
+  color: var(--stone-500);
+  margin: 0;
+}
+
+/* === Process Flow Diagram === */
+.process-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 2rem;
+  background: var(--stone-50);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--stone-100);
+}
+
+.process-node {
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  min-width: 140px;
+  position: relative;
+}
+
+.process-node-igneous {
+  background: rgba(229,57,53,.08);
+  border: 2px solid rgba(229,57,53,.2);
+}
+.process-node-sedimentary {
+  background: rgba(249,168,37,.08);
+  border: 2px solid rgba(249,168,37,.2);
+}
+.process-node-metamorphic {
+  background: rgba(123,31,162,.08);
+  border: 2px solid rgba(123,31,162,.2);
+}
+.process-node-magma {
+  background: rgba(229,57,53,.15);
+  border: 2px solid rgba(229,57,53,.3);
+}
+
+.process-node .node-icon {
+  font-size: 2rem;
+  margin-bottom: .5rem;
+}
+
+.process-node .node-label {
+  font-weight: 700;
+  font-size: .9rem;
+  color: var(--stone-800);
+}
+
+.process-node .node-desc {
+  font-size: .75rem;
+  color: var(--stone-500);
+  margin-top: .25rem;
+}
+
+.process-arrow {
+  font-size: 1.5rem;
+  color: var(--stone-400);
+  flex-shrink: 0;
+}
+
+/* === Abuse Mechanism Badges === */
+.badge-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin: 1.5rem 0;
+}
+
+.abuse-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .4rem 1rem;
+  border-radius: 100px;
+  font-size: .8rem;
+  font-weight: 600;
+  border: 1px solid;
+  transition: transform .2s;
+}
+
+.abuse-badge:hover { transform: scale(1.05); }
+
+.badge-abraded { background: rgba(229,57,53,.08); border-color: rgba(229,57,53,.2); color: var(--magma-500); }
+.badge-plucked { background: rgba(30,136,229,.08); border-color: rgba(30,136,229,.2); color: var(--ocean-600); }
+.badge-dissolved { background: rgba(85,139,47,.08); border-color: rgba(85,139,47,.2); color: var(--earth-600); }
+.badge-quenched { background: rgba(249,168,37,.08); border-color: rgba(249,168,37,.2); color: var(--sand-600); }
+.badge-foliated { background: rgba(123,31,162,.08); border-color: rgba(123,31,162,.2); color: var(--metamorphic); }
+.badge-subducted { background: rgba(26,26,46,.08); border-color: rgba(26,26,46,.2); color: var(--stone-700); }
+.badge-crushed { background: rgba(121,85,72,.08); border-color: rgba(121,85,72,.2); color: #795548; }
+.badge-kiln { background: rgba(255,87,34,.08); border-color: rgba(255,87,34,.2); color: #ff5722; }
+
+/* === Info Boxes === */
+.info-box {
+  padding: 1.5rem 2rem;
+  border-radius: var(--radius-lg);
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 4px;
+}
+
+.info-box-parody {
+  background: rgba(249,168,37,.06);
+  border: 1px solid rgba(249,168,37,.15);
+}
+.info-box-parody::before { background: var(--sand-500); }
+
+.info-box-fact {
+  background: rgba(30,136,229,.06);
+  border: 1px solid rgba(30,136,229,.15);
+}
+.info-box-fact::before { background: var(--ocean-500); }
+
+.info-box-alert {
+  background: rgba(229,57,53,.06);
+  border: 1px solid rgba(229,57,53,.15);
+}
+.info-box-alert::before { background: var(--magma-500); }
+
+.info-box-label {
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: .5rem;
+}
+
+.info-box-parody .info-box-label { color: var(--sand-600); }
+.info-box-fact .info-box-label { color: var(--ocean-600); }
+.info-box-alert .info-box-label { color: var(--magma-500); }
+
+.info-box p {
+  margin: 0;
+  font-size: .95rem;
+}
+
+/* === Data Table === */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--stone-100);
+  margin: 2rem 0;
+}
+
+.data-table th {
+  background: var(--stone-900);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 600;
+}
+
+.data-table td {
+  padding: .85rem 1.5rem;
+  border-bottom: 1px solid var(--stone-100);
+  font-size: .9rem;
+  color: var(--stone-600);
+}
+
+.data-table tr:hover td {
+  background: var(--stone-50);
+}
+
+/* === Consent Rating === */
+.consent-meter {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: 1rem 1.5rem;
+  background: rgba(229,57,53,.04);
+  border: 1px solid rgba(229,57,53,.1);
+  border-radius: var(--radius-md);
+  margin: 1rem 0;
+}
+
+.consent-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--stone-200);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.consent-fill {
+  height: 100%;
+  background: var(--magma-500);
+  border-radius: 4px;
+  width: 0%;
+}
+
+.consent-label {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--magma-500);
+  white-space: nowrap;
+}
+
+/* === Rock Cycle Diagram === */
+.cycle-diagram {
+  position: relative;
+  max-width: 700px;
+  margin: 3rem auto;
+  height: 500px;
+}
+
+.cycle-node {
+  position: absolute;
+  width: 160px;
+  text-align: center;
+  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  z-index: 2;
+  font-weight: 700;
+  font-size: .95rem;
+}
+
+.cycle-node-igneous {
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #ffebee, #ffcdd2);
+  color: var(--magma-600);
+  border: 2px solid var(--magma-300);
+}
+
+.cycle-node-sedimentary {
+  bottom: 30px; left: 0;
+  background: linear-gradient(135deg, #fff8e1, #ffecb3);
+  color: var(--sand-600);
+  border: 2px solid var(--sand-400);
+}
+
+.cycle-node-metamorphic {
+  bottom: 30px; right: 0;
+  background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+  color: #6a1b9a;
+  border: 2px solid #ce93d8;
+}
+
+.cycle-node-magma {
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #bf360c, #e64a19);
+  color: #fff;
+  border: 2px solid #ff6e40;
+  font-size: .85rem;
+  width: 130px;
+  border-radius: 50%;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cycle-label {
+  position: absolute;
+  font-size: .72rem;
+  color: var(--stone-500);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  background: #fff;
+  padding: .2rem .6rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--stone-200);
+  white-space: nowrap;
+  z-index: 3;
+}
+
+.cycle-label-1 { top: 100px; left: 55px; }
+.cycle-label-2 { bottom: 190px; left: 50%; transform: translateX(-100%); }
+.cycle-label-3 { bottom: 190px; right: 0; transform: translateX(-10%); }
+.cycle-label-4 { top: 100px; right: 55px; }
+.cycle-label-5 { top: 50%; left: 10px; transform: translateY(-50%); }
+.cycle-label-6 { top: 50%; right: 10px; transform: translateY(-50%); }
+
+/* === Accordion === */
+.accordion { margin: 2rem 0; }
+
+.accordion-item {
+  border: 1px solid var(--stone-100);
+  border-radius: var(--radius-md);
+  margin-bottom: .75rem;
+  overflow: hidden;
+  background: #fff;
+}
+
+.accordion-header {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1.25rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--stone-800);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  font-family: var(--font-body);
+  transition: background .2s;
+}
+
+.accordion-header:hover { background: var(--stone-50); }
+
+.accordion-icon {
+  font-size: 1.2rem;
+  transition: transform .3s;
+  color: var(--stone-400);
+}
+
+.accordion-item.active .accordion-icon {
+  transform: rotate(45deg);
+}
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease-out;
+}
+
+.accordion-body-inner {
+  padding: 0 1.5rem 1.5rem;
+  color: var(--stone-500);
+  font-size: .95rem;
+}
+
+.accordion-item.active .accordion-body {
+  max-height: 800px;
+}
+
+/* === Quote / Testimonial === */
+.rock-quote {
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: var(--radius-xl);
+  text-align: center;
+  position: relative;
+  margin: 3rem 0;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--stone-100);
+}
+
+.rock-quote::before {
+  content: '\201C';
+  font-family: Georgia, serif;
+  font-size: 6rem;
+  position: absolute;
+  top: -.5rem;
+  left: 2rem;
+  color: var(--stone-200);
+  line-height: 1;
+}
+
+.rock-quote blockquote {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--stone-700);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1rem;
+}
+
+.rock-quote cite {
+  font-style: normal;
+  font-size: .85rem;
+  color: var(--stone-400);
+}
+
+/* === Footer === */
+.site-footer {
+  background: var(--stone-900);
+  color: var(--stone-400);
+  padding: 4rem 0 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-brand p {
+  font-size: .9rem;
+  line-height: 1.7;
+  color: var(--stone-400);
+}
+
+.footer-col h4 {
+  color: #fff;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: .5rem;
+}
+
+.footer-links a {
+  color: var(--stone-400);
+  font-size: .9rem;
+  transition: color .2s;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-bottom p {
+  font-size: .8rem;
+  color: var(--stone-500);
+  margin: 0;
+}
+
+.footer-disclaimer {
+  font-size: .75rem;
+  color: var(--stone-500);
+  font-style: italic;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .card-grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* 1100px hamburger rules moved to global scope */
+
+@media (max-width: 768px) {
+
+  .card-grid-3,
+  .card-grid-2 { grid-template-columns: 1fr; }
+
+  .footer-grid { grid-template-columns: 1fr; }
+
+  .timeline::before { left: 20px; }
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
+    flex-direction: row;
+    padding-left: 50px;
+    padding-right: 0;
+    text-align: left;
+  }
+  .timeline-dot { left: 20px; }
+
+  .hero-content { padding: 1.5rem; }
+
+  .cycle-diagram {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .cycle-node {
+    position: relative;
+    top: auto; left: auto; right: auto; bottom: auto;
+    transform: none;
+  }
+  .cycle-node-magma {
+    transform: none;
+    border-radius: var(--radius-lg);
+    width: 160px;
+    height: auto;
+    display: block;
+  }
+  .cycle-label { display: none; }
+
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+
+  .process-flow { flex-direction: column; }
+  .process-arrow { transform: rotate(90deg); }
+
+  .dossier-grid-inner { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  section { padding: 3rem 0; }
+  .container { padding: 0 1.25rem; }
+}
+
+/* === Scroll Animations === */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .6s ease-out, transform .6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Quick Nav Bar === */
+.quick-nav {
+  position: fixed;
+  top: 32px; /* below the ticker */
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(13, 13, 32, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+  padding: .35rem 1rem;
+}
+
+.quick-nav a {
+  color: var(--stone-400);
+  font-size: .72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  padding: .25rem .7rem;
+  border-radius: 50px;
+  transition: all .2s;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.quick-nav a:hover {
+  color: #fff;
+  background: rgba(255,255,255,.08);
+}
+
+.quick-nav a.active {
+  color: var(--magma-400);
+}
+
+/* === Special: Ticker / Marquee === */
+.abuse-ticker {
+  background: var(--magma-500);
+  color: #fff;
+  padding: .6rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+.ticker-content {
+  display: inline-block;
+  animation: ticker-scroll 30s linear infinite;
+}
+
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* === Content Sections === */
+.content-section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.content-section h2 {
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+}
+
+.content-section h2:first-child {
+  margin-top: 0;
+}
+
+.content-section h3 {
+  margin-bottom: .75rem;
+  margin-top: 2rem;
+}
+
+.content-section ul, .content-section ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.content-section li {
+  margin-bottom: .5rem;
+  color: var(--stone-600);
+}
+
+/* === Two Column Layout === */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+  margin: 3rem 0;
+}
+
+@media (max-width: 768px) {
+  .two-col { grid-template-columns: 1fr; }
+}
+
+/* === Counters / Big Numbers === */
+.big-number {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: .5rem;
+}
+
+.big-number-magma { color: var(--magma-500); }
+.big-number-ocean { color: var(--ocean-600); }
+.big-number-earth { color: var(--earth-600); }
+.big-number-sand { color: var(--sand-600); }
+
+/* === Action Cards === */
+.action-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  border: 2px solid var(--earth-400);
+  transition: all .3s;
+}
+
+.action-card:hover {
+  border-color: var(--earth-500);
+  box-shadow: 0 8px 25px rgba(85,139,47,.15);
+  transform: translateY(-4px);
+}
+
+.action-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--earth-600);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: .9rem;
+  margin-bottom: 1rem;
+}
+
+/* === Misc Utilities === */
+.text-center { text-align: center; }
+.mt-2 { margin-top: 2rem; }
+.mt-3 { margin-top: 3rem; }
+.mb-2 { margin-bottom: 2rem; }
+.mb-3 { margin-bottom: 3rem; }
+
+.highlight {
+  background: linear-gradient(180deg, transparent 60%, rgba(249,168,37,.2) 60%);
+}
+
+.source-link {
+  font-size: .75rem;
+  color: var(--stone-400);
+  vertical-align: super;
+}
+
+/* === Dossier Grid === */
+.dossier-grid-inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .dossier-grid-inner { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* === A-Z Encyclopedia === */
+.az-controls {
+  background: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--stone-100);
+  margin-bottom: 2rem;
+  position: sticky;
+  top: calc(var(--header-height) + 32px);
+  z-index: 50;
+}
+
+.az-alphabet {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+  margin-bottom: 1rem;
+}
+
+.az-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--stone-50);
+  border: 1px solid var(--stone-200);
+  color: var(--stone-700);
+  font-weight: 700;
+  font-size: .85rem;
+  text-decoration: none;
+  transition: all .2s;
+  cursor: pointer;
+}
+
+.az-letter:hover, .az-letter.active {
+  background: var(--stone-900);
+  color: #fff;
+  border-color: var(--stone-900);
+}
+
+.az-letter.disabled {
+  opacity: .3;
+  pointer-events: none;
+}
+
+.az-filters {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.az-filter-btn {
+  padding: .4rem 1.2rem;
+  border-radius: 100px;
+  border: 1px solid var(--stone-200);
+  background: #fff;
+  color: var(--stone-600);
+  font-size: .8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .2s;
+  font-family: var(--font-body);
+}
+
+.az-filter-btn:hover { border-color: var(--stone-400); }
+
+.az-filter-btn.active {
+  background: var(--stone-900);
+  color: #fff;
+  border-color: var(--stone-900);
+}
+
+.az-filter-btn.filter-igneous.active {
+  background: var(--magma-500);
+  border-color: var(--magma-500);
+}
+
+.az-filter-btn.filter-sedimentary.active {
+  background: var(--sand-600);
+  border-color: var(--sand-600);
+}
+
+.az-filter-btn.filter-metamorphic.active {
+  background: var(--metamorphic);
+  border-color: var(--metamorphic);
+}
+
+.az-search {
+  flex: 1;
+  min-width: 200px;
+  padding: .5rem 1rem;
+  border: 1px solid var(--stone-200);
+  border-radius: var(--radius-md);
+  font-size: .9rem;
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color .2s;
+}
+
+.az-search:focus { border-color: var(--ocean-500); }
+
+.az-search::placeholder { color: var(--stone-400); }
+
+.az-letter-section {
+  margin-bottom: 2rem;
+}
+
+.az-letter-heading {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--stone-200);
+  border-bottom: 2px solid var(--stone-100);
+  padding-bottom: .5rem;
+  margin-bottom: 1.5rem;
+}
+
+.az-rock-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .az-rock-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .az-rock-grid { grid-template-columns: 1fr; }
+  .az-controls { position: static; }
+}
+
+.az-rock-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--stone-100);
+  transition: all .3s;
+}
+
+.az-rock-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.az-rock-card.hidden { display: none; }
+
+.az-rock-img {
+  height: 220px;
+  background: var(--stone-200) center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+.az-rock-img::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 60px;
+  background: linear-gradient(transparent, rgba(0,0,0,.3));
+}
+
+.az-rock-body {
+  padding: 1.25rem;
+}
+
+.az-rock-body h3 {
+  font-size: 1.15rem;
+  margin-bottom: .4rem;
+}
+
+.az-rock-body h3 a {
+  color: var(--stone-900);
+  text-decoration: none;
+}
+
+.az-rock-body h3 a:hover {
+  color: var(--ocean-600);
+}
+
+.az-rock-sub {
+  font-size: .8rem;
+  color: var(--stone-500);
+  margin-bottom: .75rem;
+}
+
+.az-rock-body p {
+  font-size: .88rem;
+  color: var(--stone-500);
+  line-height: 1.6;
+  margin-bottom: .75rem;
+}
+
+.az-rock-stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: .75rem;
+  border-top: 1px solid var(--stone-100);
+  font-size: .75rem;
+}
+
+.az-rock-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.az-rock-stat-label {
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--stone-400);
+  font-weight: 600;
+}
+
+.az-rock-stat-value {
+  color: var(--stone-700);
+  font-weight: 500;
+}
+
+.az-rock-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin: .5rem 0;
+}
+
+.az-rock-badges .abuse-badge {
+  font-size: .7rem;
+  padding: .2rem .6rem;
+}
+
+.az-rock-quip {
+  font-style: italic;
+  font-size: .82rem;
+  color: var(--sand-600);
+  background: rgba(249,168,37,.06);
+  padding: .5rem .75rem;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--sand-400);
+  margin-top: .75rem;
+}
+
+.az-no-results {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--stone-400);
+  font-size: 1.1rem;
+}
+
+.az-count {
+  font-size: .85rem;
+  color: var(--stone-400);
+  margin-left: auto;
+}
+
+/* === Print === */
+@media print {
+  .site-header, .abuse-ticker, .floating-rocks, .az-controls { display: none; }
+  .hero { min-height: auto; padding: 2rem 0; }
+  body { color: #000; background: #fff; }
+}

@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rocks in Entertainment - Stop Rock Abuse</title>
+  <meta name="description" content="From asteroid impacts to mining montages, rocks in entertainment have endured millennia of fictional abuse. Here's the full record.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .page-hero-entertainment {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    }
+
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      padding: 2rem 0;
+      margin-bottom: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: var(--card-bg, #1e1e2e);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--accent, #e74c3c);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted, #aaa);
+      margin-top: 0.4rem;
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      padding: 1.5rem 0;
+      margin-bottom: 1rem;
+    }
+
+    .filter-btn {
+      padding: 0.55rem 1.3rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50px;
+      background: transparent;
+      color: var(--text-muted, #aaa);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .filter-btn:hover {
+      border-color: rgba(255,255,255,0.35);
+      color: #fff;
+    }
+
+    .filter-btn.active {
+      background: var(--accent, #e74c3c);
+      border-color: var(--accent, #e74c3c);
+      color: #fff;
+    }
+
+    .entertainment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      padding-bottom: 4rem;
+    }
+
+    .ent-card {
+      background: var(--card-bg, #1e1e2e);
+      border-radius: 12px;
+      padding: 1.8rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ent-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    .card-badges {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .badge-category {
+      padding: 0.25rem 0.7rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .badge-movie {
+      background: rgba(231, 76, 60, 0.15);
+      color: #e74c3c;
+      border: 1px solid rgba(231, 76, 60, 0.3);
+    }
+
+    .badge-game {
+      background: rgba(52, 152, 219, 0.15);
+      color: #5dade2;
+      border: 1px solid rgba(52, 152, 219, 0.3);
+    }
+
+    .badge-tv {
+      background: rgba(155, 89, 182, 0.15);
+      color: #bb8fce;
+      border: 1px solid rgba(155, 89, 182, 0.3);
+    }
+
+    .badge-music {
+      background: rgba(39, 174, 96, 0.15);
+      color: #58d68d;
+      border: 1px solid rgba(39, 174, 96, 0.3);
+    }
+
+    .badge-other {
+      background: rgba(243, 156, 18, 0.15);
+      color: #f5b041;
+      border: 1px solid rgba(243, 156, 18, 0.3);
+    }
+
+    .badge-tag {
+      padding: 0.25rem 0.7rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .badge-abused {
+      background: rgba(231, 76, 60, 0.2);
+      color: #ff6b6b;
+      border: 1px solid rgba(231, 76, 60, 0.4);
+    }
+
+    .badge-fights-back {
+      background: rgba(26, 188, 156, 0.2);
+      color: #1abc9c;
+      border: 1px solid rgba(26, 188, 156, 0.4);
+    }
+
+    .card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.15rem;
+      color: #fff;
+    }
+
+    .card-year {
+      font-size: 0.8rem;
+      color: var(--text-muted, #888);
+      margin-bottom: 0.9rem;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--text-secondary, #ccc);
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    .card-take {
+      font-size: 0.85rem;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--text-muted, #aaa);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 0.9rem;
+      margin-top: auto;
+    }
+
+    .card-take strong {
+      color: var(--accent, #e74c3c);
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .section-intro {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      text-align: center;
+    }
+
+    .section-intro p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-secondary, #ccc);
+    }
+
+    @media (max-width: 1024px) {
+      .entertainment-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .entertainment-grid {
+        grid-template-columns: 1fr;
+      }
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      .stat-number {
+        font-size: 2rem;
+      }
+      .filter-bar {
+        gap: 0.4rem;
+      }
+      .filter-btn {
+        padding: 0.45rem 1rem;
+        font-size: 0.78rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="abuse-ticker" style="position:fixed;top:0;left:0;right:0;z-index:1001;">
+    <div class="ticker-content">
+      BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth&rsquo;s atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp; BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth&rsquo;s atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp;
+    </div>
+  </div>
+
+  <div class="quick-nav">
+    <a href="timeline.html">Cosmic Timeline</a>
+    <a href="rock-cycle.html">Rock Cycle</a>
+    <a href="natural-abuse.html">Natural Abuse</a>
+    <a href="human-abuse.html">Human Abuse</a>
+    <a href="editorial.html">Editorial</a>
+    <a href="entertainment.html" class="active">Entertainment</a>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" style="top: 58px;">
+  <div class="container">
+    <a href="index.html" class="logo">STOP ROCK ABUSE</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="rock-cycle.html">Rock Cycle</a>
+      <a href="natural-abuse.html">Natural Abuse</a>
+      <a href="human-abuse.html">Human Abuse</a>
+      <a href="dossiers.html">Dossiers</a>
+      <a href="rocks-az.html">A–Z</a>
+      <a href="timeline.html">Timeline</a>
+      <a href="news.html">News</a>
+      <a href="entertainment.html" class="active">Entertainment</a>
+      <a href="products.html">Products</a>
+      <a href="game.html">The Rockoning</a>
+      <a href="merch.html">Merch</a>
+      <a href="take-action.html">Take Action</a>
+      <a href="about.html">About</a>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+  </div>
+</header>
+
+  <!-- Slide-in nav panel -->
+  <div class="nav-panel" id="navPanel">
+      <a href="index.html">Home</a>
+      <a href="timeline.html">Cosmic Timeline</a>
+      <a href="rock-cycle.html">Rock Cycle</a>
+      <a href="natural-abuse.html">Natural Abuse</a>
+      <a href="human-abuse.html">Human Abuse</a>
+      <a href="editorial.html">Editorial</a>
+      <a href="entertainment.html" class="active">Entertainment</a>
+      <a href="news.html">News</a>
+      <a href="game.html">The Rockoning</a>
+      <a href="merch.html">Merch</a>
+      <a href="products.html">Products</a>
+      <a href="dossiers.html">Rock Dossiers</a>
+      <a href="take-action.html">Take Action</a>
+      <a href="rocks-az.html">Rocks A-Z</a>
+      <a href="about.html">About</a>
+  </div>
+
+  <!-- Nav overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+<section class="page-hero page-hero-entertainment" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('img/heroes/hero-entertainment.png'); background-size: cover; background-position: center;">
+  <div class="container">
+    <h1>Rocks in Entertainment</h1>
+    <p>From asteroid impacts to mining montages, rocks have been drilled, nuked, punched, thrown, and metaphorically repurposed across every medium humans have invented. Some fought back. None were compensated.</p>
+  </div>
+</section>
+
+<main style="background: var(--stone-900); padding: 3rem 0;">
+  <div class="container">
+
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-number">32</div>
+        <div class="stat-label">Entries Documented</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">5</div>
+        <div class="stat-label">Categories of Abuse</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">0</div>
+        <div class="stat-label">Rocks Compensated</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">$1.5B+</div>
+        <div class="stat-label">Revenue Using "Rock" Name</div>
+      </div>
+    </div>
+
+    <div class="section-intro">
+      <p>Every entry is real. Every film, game, show, and song listed here exists. The editorial commentary is ours. The facts belong to the geological record and the entertainment industry, neither of which has issued an apology.</p>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="movie">Movies</button>
+      <button class="filter-btn" data-filter="game">Games</button>
+      <button class="filter-btn" data-filter="tv">TV</button>
+      <button class="filter-btn" data-filter="music">Music</button>
+      <button class="filter-btn" data-filter="other">Other</button>
+    </div>
+
+    <div class="entertainment-grid">
+
+      <!-- MOVIES — ABUSED first, then FIGHTS BACK -->
+
+      <div class="ent-card" data-category="movie">
+        <div class="card-badges">
+          <span class="badge-category badge-movie">Movie</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">Armageddon</div>
+        <div class="card-year">1998</div>
+        <p class="card-desc">An asteroid is drilled into and nuked from the inside. No environmental impact assessment was filed. No consent was obtained. Bruce Willis didn't even apologize.</p>
+        <div class="card-take"><strong>Our Take:</strong> The asteroid was just passing through. Humanity responded with explosives.</div>
+      </div>
+
+      <div class="ent-card" data-category="movie">
+        <div class="card-badges">
+          <span class="badge-category badge-movie">Movie</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">Deep Impact</div>
+        <div class="card-year">1997</div>
+        <p class="card-desc">A comet the size of Manhattan is nuked with a spacecraft. The "Messiah" crew literally sacrifices themselves to blow up a rock. The rock's perspective is never considered.</p>
+        <div class="card-take"><strong>Our Take:</strong> Two asteroid-nuking movies in two years. Hollywood declared war on space rocks.</div>
+      </div>
+
+      <div class="ent-card" data-category="movie">
+        <div class="card-badges">
+          <span class="badge-category badge-movie">Movie</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">The Core</div>
+        <div class="card-year">2003</div>
+        <p class="card-desc">Humans drill to the Earth's core and detonate nuclear weapons inside it to restart its rotation. The planet's interior—essentially a very large rock—is nuked from within.</p>
+        <div class="card-take"><strong>Our Take:</strong> When you nuke the inside of the planet you're standing on, you've escalated past rock abuse into geological domestic violence.</div>
+      </div>
+
+      <div class="ent-card" data-category="movie">
+        <div class="card-badges">
+          <span class="badge-category badge-movie">Movie</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">10,000 BC</div>
+        <div class="card-year">2008</div>
+        <p class="card-desc">Depicts early humans building pyramids by quarrying and dragging massive stone blocks. Archaeological accuracy aside, the rocks definitely didn't volunteer.</p>
+        <div class="card-take"><strong>Our Take:</strong> The first documented construction project. Also the first documented rock labor violation.</div>
+      </div>
+
+      <div class="ent-card" data-category="movie">
+        <div class="card-badges">
+          <span class="badge-category badge-movie">Movie</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">Indiana Jones Franchise</div>
+        <div class="card-year">1981–2023</div>
+        <p class="card-desc">Across five films, Indiana Jones steals artifacts from ancient rock temples, triggers boulder traps, and generally treats geological formations as obstacles between him and a museum.</p>
+        <div class="card-take"><strong>Our Take:</strong> The boulder in Raiders of the Lost Ark is the most justified act of rock self-defense in cinema history.</div>
+      </div>
+
+      <div class="ent-card" data-category="movie">
+        <div class="card-badges">
+          <span class="badge-category badge-movie">Movie</span>
+          <span class="badge-tag badge-fights-back">Fights Back</span>
+        </div>
+        <div class="card-title">127 Hours</div>
+        <div class="card-year">2010</div>
+        <p class="card-desc">A boulder traps a climber's arm for five days. Based on a true story. The rock did not move, did not negotiate, and did not apologize. The human had to remove his own arm.</p>
+        <div class="card-take"><strong>Our Take:</strong> The rock was there first. The human came uninvited. The rock held its ground—literally.</div>
+      </div>
+
+      <div class="ent-card" data-category="movie">
+        <div class="card-badges">
+          <span class="badge-category badge-movie">Movie</span>
+          <span class="badge-tag badge-fights-back">Fights Back</span>
+        </div>
+        <div class="card-title">Tremors</div>
+        <div class="card-year">1990</div>
+        <p class="card-desc">Giant underground worm-creatures burst through rock and soil to attack humans. The geological substrate itself becomes the battlefield.</p>
+        <div class="card-take"><strong>Our Take:</strong> Rocks finally got backup. Subterranean. With teeth.</div>
+      </div>
+
+      <div class="ent-card" data-category="movie">
+        <div class="card-badges">
+          <span class="badge-category badge-movie">Movie</span>
+          <span class="badge-tag badge-fights-back">Fights Back</span>
+        </div>
+        <div class="card-title">Dante's Peak / Volcano</div>
+        <div class="card-year">1997</div>
+        <p class="card-desc">Two movies in one year about molten rock attacking cities. Lava doesn't discriminate. It flows where gravity takes it. Humans built cities in the way.</p>
+        <div class="card-take"><strong>Our Take:</strong> When rocks reach 1,200&deg;C, they stop being passive. Hollywood noticed.</div>
+      </div>
+
+      <div class="ent-card" data-category="movie">
+        <div class="card-badges">
+          <span class="badge-category badge-movie">Movie</span>
+          <span class="badge-tag badge-fights-back">Fights Back</span>
+        </div>
+        <div class="card-title">The Lord of the Rings Trilogy</div>
+        <div class="card-year">2001–2003</div>
+        <p class="card-desc">The Ents destroy Isengard. Dwarves mine Moria's depths. Sauron's tower is literally a rock structure that collapses. But most importantly: an entire civilization of dwarves defines itself by extracting precious stones and metals from mountains.</p>
+        <div class="card-take"><strong>Our Take:</strong> Tolkien understood: the dwarves' relationship with stone was extractive. The mountain's collapse at the end was karma.</div>
+      </div>
+
+      <div class="ent-card" data-category="movie">
+        <div class="card-badges">
+          <span class="badge-category badge-movie">Movie</span>
+          <span class="badge-tag badge-fights-back">Fights Back</span>
+        </div>
+        <div class="card-title">Frozen</div>
+        <div class="card-year">2013</div>
+        <p class="card-desc">The trolls are literally rocks that come alive. They heal people, give advice, and try to matchmake. Living rocks with a social life and opinions.</p>
+        <div class="card-take"><strong>Our Take:</strong> Disney gave rocks sentience, a community, and musical numbers. Then went back to merchandising plastic toys.</div>
+      </div>
+
+      <!-- GAMES — ABUSED first, then FIGHTS BACK -->
+
+      <div class="ent-card" data-category="game">
+        <div class="card-badges">
+          <span class="badge-category badge-game">Game</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">Minecraft</div>
+        <div class="card-year">2011</div>
+        <p class="card-desc">The entire game is about punching, mining, and rearranging rocks. Players begin by punching trees, then immediately transition to punching stone. Cobblestone is the game's most fundamental building material—created by destroying natural rock formations.</p>
+        <div class="card-take"><strong>Our Take:</strong> 238 million copies sold. That's 238 million people who learned that the correct response to seeing a rock is to hit it.</div>
+      </div>
+
+      <div class="ent-card" data-category="game">
+        <div class="card-badges">
+          <span class="badge-category badge-game">Game</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">Asteroids</div>
+        <div class="card-year">1979</div>
+        <p class="card-desc">The player pilots a spaceship whose sole purpose is to shoot rocks until they break into smaller rocks, then shoot those until they cease to exist. No reason is given. The rocks aren't hostile. They're just floating.</p>
+        <div class="card-take"><strong>Our Take:</strong> The rocks were just drifting through space, minding their own business. Atari gave you a gun and said "fix this."</div>
+      </div>
+
+      <div class="ent-card" data-category="game">
+        <div class="card-badges">
+          <span class="badge-category badge-game">Game</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">Rock Band</div>
+        <div class="card-year">2007</div>
+        <p class="card-desc">The word "rock" is used as a verb meaning "to perform aggressively." The genre itself—rock music—is named after a geological object. The game reduces this to plastic button-mashing.</p>
+        <div class="card-take"><strong>Our Take:</strong> They named an entire musical genre after rocks and then made the rocks irrelevant to it.</div>
+      </div>
+
+      <div class="ent-card" data-category="game">
+        <div class="card-badges">
+          <span class="badge-category badge-game">Game</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">Dwarf Fortress</div>
+        <div class="card-year">2006</div>
+        <p class="card-desc">A game so detailed it simulates 200+ types of real stone, each with accurate properties. Players carve entire civilizations into mountains. The geological accuracy makes the rock abuse feel more personal.</p>
+        <div class="card-take"><strong>Our Take:</strong> The most geologically accurate rock abuse simulator ever created. Every stone type is modeled correctly before being hollowed out.</div>
+      </div>
+
+      <div class="ent-card" data-category="game">
+        <div class="card-badges">
+          <span class="badge-category badge-game">Game</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">The Legend of Zelda Series</div>
+        <div class="card-year">1986–present</div>
+        <p class="card-desc">Link has been picking up rocks and throwing them since 1986. He lifts them over his head, hurls them at enemies, and sometimes finds rupees underneath. Forty years of casual rock assault.</p>
+        <div class="card-take"><strong>Our Take:</strong> Link treats every rock as either a projectile or a piggy bank. No middle ground.</div>
+      </div>
+
+      <div class="ent-card" data-category="game">
+        <div class="card-badges">
+          <span class="badge-category badge-game">Game</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">Portal 2</div>
+        <div class="card-year">2011</div>
+        <p class="card-desc">Cave Johnson, fictional CEO, describes using moon rocks as a portal-conducting surface. "Ground up moon rocks are pure poison," he notes, before using them anyway. The moon rocks gave him fatal illness.</p>
+        <div class="card-take"><strong>Our Take:</strong> He ground up moon rocks, got poisoned, and his response was to keep going. Peak rock abuse hubris.</div>
+      </div>
+
+      <div class="ent-card" data-category="game">
+        <div class="card-badges">
+          <span class="badge-category badge-game">Game</span>
+          <span class="badge-tag badge-fights-back">Fights Back</span>
+        </div>
+        <div class="card-title">Dark Souls / Elden Ring</div>
+        <div class="card-year">2011 / 2022</div>
+        <p class="card-desc">Stone golems, rock-based enemies, and entire bosses made of animated stone. The Stray Demon is literally a massive rock creature. In Elden Ring, the Fallingstar Beast is a living meteorite.</p>
+        <div class="card-take"><strong>Our Take:</strong> FromSoftware understands: if you animate a rock and give it a health bar, it will kill you 47 times before you learn to dodge.</div>
+      </div>
+
+      <div class="ent-card" data-category="game">
+        <div class="card-badges">
+          <span class="badge-category badge-game">Game</span>
+          <span class="badge-tag badge-fights-back">Fights Back</span>
+        </div>
+        <div class="card-title">Shadow of the Colossus</div>
+        <div class="card-year">2005</div>
+        <p class="card-desc">Massive stone-and-earth colossi roam a desolate land. The player must climb them and stab their weak points. The colossi are peaceful until attacked. You are unambiguously the aggressor.</p>
+        <div class="card-take"><strong>Our Take:</strong> The game makes you feel bad about it. That's more than most manage.</div>
+      </div>
+
+      <!-- TV — ABUSED first, then FIGHTS BACK -->
+
+      <div class="ent-card" data-category="tv">
+        <div class="card-badges">
+          <span class="badge-category badge-tv">TV</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">Breaking Bad</div>
+        <div class="card-year">2008–2013</div>
+        <p class="card-desc">Minerals. They're minerals, Marie. Hank Schrader's rock collection is repeatedly and incorrectly called "rocks" by his family, a micro-aggression that resonates with geologists worldwide.</p>
+        <div class="card-take"><strong>Our Take:</strong> The most accurate depiction of mineral misidentification trauma ever aired on television.</div>
+      </div>
+
+      <div class="ent-card" data-category="tv">
+        <div class="card-badges">
+          <span class="badge-category badge-tv">TV</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">The Flintstones</div>
+        <div class="card-year">1960–1966</div>
+        <p class="card-desc">An entire civilization built from rock exploitation. Rock cars, rock houses, rock appliances. Every piece of technology is a repurposed geological specimen. The show ran for 166 episodes of this.</p>
+        <div class="card-take"><strong>Our Take:</strong> They made rocks into household appliances and called it family entertainment. Six seasons. No geological consent forms.</div>
+      </div>
+
+      <div class="ent-card" data-category="tv">
+        <div class="card-badges">
+          <span class="badge-category badge-tv">TV</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">Planet Earth / Blue Planet</div>
+        <div class="card-year">2006–present</div>
+        <p class="card-desc">David Attenborough narrates over footage of erosion, volcanic destruction, and geological transformation. Beautiful cinematography of rocks being dissolved, shattered, and subducted. Presented as "nature."</p>
+        <div class="card-take"><strong>Our Take:</strong> Attenborough's voice makes geological violence sound majestic. That doesn't make it consensual.</div>
+      </div>
+
+      <div class="ent-card" data-category="tv">
+        <div class="card-badges">
+          <span class="badge-category badge-tv">TV</span>
+          <span class="badge-tag badge-fights-back">Fights Back</span>
+        </div>
+        <div class="card-title">Avatar: The Last Airbender</div>
+        <div class="card-year">2005–2008</div>
+        <p class="card-desc">Earthbenders manipulate rocks telekinetically—throwing boulders, raising walls, even metalbending. Toph Beifong is blind and senses the world through stone. Rocks are weapons, armor, and sensory organs.</p>
+        <div class="card-take"><strong>Our Take:</strong> The only franchise where rocks have representation. Toph didn't abuse rocks—she collaborated with them. A model for interspecies cooperation.</div>
+      </div>
+
+      <div class="ent-card" data-category="tv">
+        <div class="card-badges">
+          <span class="badge-category badge-tv">TV</span>
+          <span class="badge-tag badge-fights-back">Fights Back</span>
+        </div>
+        <div class="card-title">Steven Universe</div>
+        <div class="card-year">2013–2019</div>
+        <p class="card-desc">The main characters are sentient alien gems—literally rocks with consciousness, relationships, and trauma. They fight, fuse, and have therapy sessions. A kids' show about rocks with feelings.</p>
+        <div class="card-take"><strong>Our Take:</strong> Gems with PTSD, relationship drama, and musical numbers. The most emotionally complex rocks in television history.</div>
+      </div>
+
+      <!-- MUSIC -->
+
+      <div class="ent-card" data-category="music">
+        <div class="card-badges">
+          <span class="badge-category badge-music">Music</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">"We Will Rock You" — Queen</div>
+        <div class="card-year">1977</div>
+        <p class="card-desc">The verb "rock" is used to describe a threatening act. Buddy, you're making a big noise, playing in the street. The stadium stomp rhythm mimics the sound of stone being struck.</p>
+        <div class="card-take"><strong>Our Take:</strong> An anthem where "rocking" someone is explicitly a threat. 2.4 billion YouTube views of geological intimidation.</div>
+      </div>
+
+      <div class="ent-card" data-category="music">
+        <div class="card-badges">
+          <span class="badge-category badge-music">Music</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">"Rock and Roll" as a Genre</div>
+        <div class="card-year">1950s–present</div>
+        <p class="card-desc">An entire genre named after geological objects, where the word "rock" was repurposed to mean "energetic disruption." The rocks were not consulted about this rebranding.</p>
+        <div class="card-take"><strong>Our Take:</strong> They took a 4-billion-year-old noun and turned it into a verb meaning "to party aggressively." Rocks didn't ask for this.</div>
+      </div>
+
+      <div class="ent-card" data-category="music">
+        <div class="card-badges">
+          <span class="badge-category badge-music">Music</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">"Like a Rolling Stone" — Bob Dylan</div>
+        <div class="card-year">1965</div>
+        <p class="card-desc">Being compared to a rolling stone is presented as a devastating insult—directionless, homeless, purposeless. A rolling stone gathers no moss, but the metaphor frames geological mobility as existential failure.</p>
+        <div class="card-take"><strong>Our Take:</strong> Dylan weaponized geology as a metaphor for social decline. The stone didn't ask to be a symbol of destitution.</div>
+      </div>
+
+      <div class="ent-card" data-category="music">
+        <div class="card-badges">
+          <span class="badge-category badge-music">Music</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">The Rolling Stones</div>
+        <div class="card-year">1962–present</div>
+        <p class="card-desc">Named after a Muddy Waters song, which referenced the proverb. A band worth $1.5 billion named after a geological process (erosion-driven displacement). No licensing fee paid to any actual stones.</p>
+        <div class="card-take"><strong>Our Take:</strong> $1.5 billion in revenue. Zero dollars to geological rights management.</div>
+      </div>
+
+      <!-- OTHER MEDIA -->
+
+      <div class="ent-card" data-category="other">
+        <div class="card-badges">
+          <span class="badge-category badge-other">Other</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">Pet Rock</div>
+        <div class="card-year">1975</div>
+        <p class="card-desc">Gary Dahl sold 1.5 million rocks at $4 each in six months. Each rock came in a box with air holes and a "care manual." The rocks did not benefit from the arrangement. Dahl made $15 million in 1975 dollars.</p>
+        <div class="card-take"><strong>Our Take:</strong> A man packaged captive rocks with fake breathing holes and became a millionaire. Peak commodification.</div>
+      </div>
+
+      <div class="ent-card" data-category="other">
+        <div class="card-badges">
+          <span class="badge-category badge-other">Other</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">Rock Paper Scissors</div>
+        <div class="card-year">Ancient</div>
+        <p class="card-desc">A game where rock loses to paper—a material made from wood pulp. The premise that a flat sheet of processed cellulose can defeat a geological specimen is scientifically indefensible.</p>
+        <div class="card-take"><strong>Our Take:</strong> Paper covers rock. In what physical scenario does paper defeat rock? The game has been slandering rocks since ancient China.</div>
+      </div>
+
+      <div class="ent-card" data-category="other">
+        <div class="card-badges">
+          <span class="badge-category badge-other">Other</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">Rock Balancing / Cairns</div>
+        <div class="card-year">2010s–present</div>
+        <p class="card-desc">Millions of photos of rocks stacked in precarious towers for social media engagement. The rocks are arranged, photographed, and abandoned. Leave No Trace principles are routinely violated.</p>
+        <div class="card-take"><strong>Our Take:</strong> Rocks forced into performative art for Instagram likes. They were already in a position they chose. You rearranged them for content.</div>
+      </div>
+
+      <div class="ent-card" data-category="other">
+        <div class="card-badges">
+          <span class="badge-category badge-other">Other</span>
+          <span class="badge-tag badge-abused">Abused</span>
+        </div>
+        <div class="card-title">Philosopher's Stone / Rosetta Stone</div>
+        <div class="card-year">Various</div>
+        <p class="card-desc">The Philosopher's Stone: a mythical rock humans invented so they could imagine a rock that makes gold. The Rosetta Stone: a real rock removed from Egypt, shipped to Britain, and put behind glass. One was imagined for exploitation; the other was actually exploited.</p>
+        <div class="card-take"><strong>Our Take:</strong> Humans either invent fake rocks to serve them or steal real ones and put them in museums. There is no middle option.</div>
+      </div>
+
+      <div class="ent-card" data-category="other">
+        <div class="card-badges">
+          <span class="badge-category badge-other">Other</span>
+          <span class="badge-tag badge-fights-back">Fights Back</span>
+        </div>
+        <div class="card-title">Dwayne "The Rock" Johnson</div>
+        <div class="card-year">1996–present</div>
+        <p class="card-desc">A human named himself after a rock and became one of the highest-paid actors in the world. While this is technically identity theft, it's also the single most successful case of rock representation in human culture.</p>
+        <div class="card-take"><strong>Our Take:</strong> The most famous rock in entertainment isn't a rock. But he's done more for rock awareness than any actual geological specimen.</div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Stop Rock Abuse</h4>
+        <p>A geological mockumentary. Real science, delivered with a straight face and a heavy conscience.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Topics</h4>
+        <ul>
+          <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+          <li><a href="natural-abuse.html">Natural Abuse</a></li>
+          <li><a href="human-abuse.html">Human Abuse</a></li>
+          <li><a href="dossiers.html">Rock Dossiers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="rocks-az.html">A–Z Encyclopedia</a></li>
+          <li><a href="timeline.html">Geological Timeline</a></li>
+          <li><a href="news.html">Rocks in the News</a></li>
+          <li><a href="entertainment.html">Entertainment</a></li>
+          <li><a href="take-action.html">Take Action</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="about.html">Our Focus Areas</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Stop Rock Abuse. All geological rights reserved. No rocks were consulted in the making of this website.</p>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+<script>
+  (function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.ent-card');
+
+    filterBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        filterBtns.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        cards.forEach(function(card) {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  })();
+</script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navPanel').classList.toggle('open');
+      document.querySelector('.mobile-menu-btn').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+<script src="js/entertainment-images.js"></script>
+</body>
+</html>

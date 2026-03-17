@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rocks in the News - Stop Rock Abuse</title>
+  <meta name="description" content="Real headlines. Real articles. Real geological indignity. News coverage of rock abuse from around the world and beyond.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* === News Page Styles === */
+    .page-hero-news {
+      background: linear-gradient(135deg, #1a1a2e, #2a1a2e, #1a2a3a);
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    @media (max-width: 1024px) {
+      .news-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .news-grid { grid-template-columns: 1fr; }
+    }
+
+    .news-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--stone-100);
+      transition: all .3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .news-card-top {
+      position: relative;
+      padding: 1.75rem 1.75rem 0;
+    }
+
+    .news-card-body {
+      padding: 1rem 1.75rem 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-category {
+      display: inline-block;
+      padding: .2rem .7rem;
+      border-radius: 100px;
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: .85rem;
+    }
+
+    .cat-discovery { background: rgba(30,136,229,.1); color: var(--ocean-500); }
+    .cat-crisis { background: rgba(229,57,53,.1); color: var(--magma-500); }
+    .cat-space { background: rgba(123,31,162,.1); color: #7b1fa2; }
+    .cat-crime { background: rgba(61,61,92,.1); color: var(--stone-700); }
+    .cat-volcanic { background: rgba(239,83,80,.1); color: var(--magma-400); }
+    .cat-science { background: rgba(85,139,47,.1); color: var(--earth-600); }
+    .cat-culture { background: rgba(249,168,37,.1); color: var(--sand-500); }
+
+    .news-card h3 {
+      font-size: 1.1rem;
+      line-height: 1.35;
+      margin-bottom: .6rem;
+      color: var(--stone-900);
+    }
+
+    .news-source {
+      font-size: .78rem;
+      color: var(--stone-400);
+      margin-bottom: .85rem;
+      font-weight: 500;
+    }
+
+    .news-summary {
+      font-size: .9rem;
+      color: var(--stone-500);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+
+    .news-take {
+      font-size: .85rem;
+      color: var(--sand-600);
+      background: rgba(249,168,37,.06);
+      padding: .65rem .9rem;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--sand-400);
+      margin-bottom: 1.25rem;
+      font-style: italic;
+      line-height: 1.55;
+    }
+
+    .news-take strong {
+      font-style: normal;
+      color: var(--sand-600);
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .news-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--ocean-600);
+      transition: color .2s;
+    }
+
+    .news-link:hover {
+      color: var(--ocean-700);
+    }
+
+    .news-link::after {
+      content: '\2192';
+      transition: transform .2s;
+    }
+
+    .news-link:hover::after {
+      transform: translateX(3px);
+    }
+
+    /* Category filter buttons */
+    .news-filters {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+
+    .news-filter-btn {
+      padding: .45rem 1.2rem;
+      border-radius: 100px;
+      border: 1px solid var(--stone-200);
+      background: #fff;
+      color: var(--stone-600);
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+      font-family: var(--font-body);
+    }
+
+    .news-filter-btn:hover {
+      border-color: var(--stone-400);
+    }
+
+    .news-filter-btn.active {
+      background: var(--stone-900);
+      color: #fff;
+      border-color: var(--stone-900);
+    }
+
+    /* Staggered fade-in for cards */
+    .news-card.fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .5s ease-out, transform .5s ease-out;
+    }
+
+    .news-card.fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .news-card.fade-in:nth-child(2) { transition-delay: .08s; }
+    .news-card.fade-in:nth-child(3) { transition-delay: .16s; }
+    .news-card.fade-in:nth-child(4) { transition-delay: .24s; }
+    .news-card.fade-in:nth-child(5) { transition-delay: .32s; }
+    .news-card.fade-in:nth-child(6) { transition-delay: .4s; }
+    .news-card.fade-in:nth-child(7) { transition-delay: .08s; }
+    .news-card.fade-in:nth-child(8) { transition-delay: .16s; }
+    .news-card.fade-in:nth-child(9) { transition-delay: .24s; }
+    .news-card.fade-in:nth-child(10) { transition-delay: .32s; }
+    .news-card.fade-in:nth-child(11) { transition-delay: .4s; }
+    .news-card.fade-in:nth-child(12) { transition-delay: .08s; }
+    .news-card.fade-in:nth-child(13) { transition-delay: .16s; }
+    .news-card.fade-in:nth-child(14) { transition-delay: .24s; }
+    .news-card.fade-in:nth-child(15) { transition-delay: .32s; }
+    .news-card.fade-in:nth-child(16) { transition-delay: .4s; }
+    .news-card.fade-in:nth-child(17) { transition-delay: .08s; }
+    .news-card.fade-in:nth-child(18) { transition-delay: .16s; }
+
+    /* Tip section */
+    .tip-section {
+      background: var(--stone-900);
+      color: #fff;
+      padding: 4rem 0;
+    }
+
+    .tip-box {
+      max-width: 650px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .tip-box h2 {
+      color: #fff;
+      margin-bottom: .75rem;
+    }
+
+    .tip-box p {
+      color: var(--stone-400);
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tip-box .tip-email {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.5rem;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: var(--radius-md);
+      color: var(--sand-300);
+      font-family: var(--font-mono);
+      font-size: .95rem;
+      font-weight: 500;
+    }
+
+    .tip-box .tip-note {
+      font-size: .82rem;
+      color: var(--stone-500);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="abuse-ticker" style="position:fixed;top:0;left:0;right:0;z-index:1001;">
+    <div class="ticker-content">
+      BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth's atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp; BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth's atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp;
+    </div>
+  </div>
+
+<div class="quick-nav">
+  <a href="timeline.html">Cosmic Timeline</a>
+  <a href="rock-cycle.html">Rock Cycle</a>
+  <a href="natural-abuse.html">Natural Abuse</a>
+  <a href="human-abuse.html">Human Abuse</a>
+  <a href="editorial.html">Editorial</a>
+  <a href="entertainment.html">Entertainment</a>
+</div>
+
+  <!-- Header -->
+  <header class="site-header" style="top: 58px;">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">&#9830;</div>
+        <span>Stop Rock Abuse</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="timeline.html">Cosmic Timeline</a></li>
+          <li><a href="rock-cycle.html">Rock Cycle</a></li>
+          <li><a href="natural-abuse.html">Natural Abuse</a></li>
+          <li><a href="human-abuse.html">Human Abuse</a></li>
+          <li><a href="editorial.html">Editorial</a></li>
+          <li><a href="entertainment.html">Entertainment</a></li>
+          <li><a href="news.html" class="active">News</a></li>
+          <li><a href="game.html">The Rockoning</a></li>
+          <li><a href="merch.html">Merch</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="dossiers.html">Rock Dossiers</a></li>
+          <li><a href="take-action.html">Take Action</a></li>
+          <li><a href="rocks-az.html">Rocks A-Z</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slide-in nav panel -->
+  <div class="nav-panel" id="navPanel">
+      <a href="index.html">Home</a>
+      <a href="timeline.html">Cosmic Timeline</a>
+      <a href="rock-cycle.html">Rock Cycle</a>
+      <a href="natural-abuse.html">Natural Abuse</a>
+      <a href="human-abuse.html">Human Abuse</a>
+      <a href="editorial.html">Editorial</a>
+      <a href="entertainment.html">Entertainment</a>
+      <a href="news.html" class="active">News</a>
+      <a href="game.html">The Rockoning</a>
+      <a href="merch.html">Merch</a>
+      <a href="products.html">Products</a>
+      <a href="dossiers.html">Rock Dossiers</a>
+      <a href="take-action.html">Take Action</a>
+      <a href="rocks-az.html">Rocks A-Z</a>
+      <a href="about.html">About</a>
+  </div>
+
+  <!-- Nav overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+  <!-- Page Hero -->
+  <section class="page-hero page-hero-news" style="padding-top: calc(var(--header-height) + 58px);">
+    <div class="hero-content">
+      <span class="section-label" style="color: var(--sand-400);">The Press Room</span>
+      <h1>Rocks in the News</h1>
+      <p class="hero-subtitle">Real headlines. Real articles. Real geological indignity.</p>
+    </div>
+  </section>
+
+  <!-- News Articles -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Latest Coverage</span>
+        <h2>What the World Is Doing to Rocks</h2>
+        <p class="section-desc">Every story below is real, sourced, and linked. We just added the editorial commentary rocks would write themselves if they had hands.</p>
+      </div>
+
+      <!-- Category Filters -->
+      <div class="news-filters">
+        <button class="news-filter-btn active" data-filter="all">All Stories</button>
+        <button class="news-filter-btn" data-filter="discovery">Discovery</button>
+        <button class="news-filter-btn" data-filter="crisis">Crisis</button>
+        <button class="news-filter-btn" data-filter="space">Space</button>
+        <button class="news-filter-btn" data-filter="crime">Crime</button>
+        <button class="news-filter-btn" data-filter="volcanic">Volcanic</button>
+        <button class="news-filter-btn" data-filter="science">Science</button>
+        <button class="news-filter-btn" data-filter="culture">Culture</button>
+      </div>
+
+      <!-- News Grid -->
+      <div class="news-grid">
+
+        <!-- 1. NASA Mars Biosignature -->
+        <article class="news-card fade-in" data-category="space discovery">
+          <div class="news-card-top">
+            <span class="news-category cat-space">Space / Discovery</span>
+            <h3>NASA Says Mars Rover Discovered Potential Biosignature</h3>
+            <div class="news-source">NASA/JPL &bull; September 2025</div>
+          </div>
+          <div class="news-card-body">
+            <p class="news-summary">Perseverance rover&rsquo;s analysis of a mudstone core from &ldquo;Cheyava Falls&rdquo; revealed minerals and organic carbon patterns that, on Earth, are linked to microbial activity. Published in <em>Nature</em> after year-long peer review.</p>
+            <div class="news-take">
+              <strong>Our Take:</strong> &ldquo;Even on Mars, rocks can&rsquo;t catch a break. Now they&rsquo;re being drilled for biosignatures they never asked to store.&rdquo;
+            </div>
+            <a href="https://www.nasa.gov/news-release/nasa-says-mars-rover-discovered-potential-biosignature-last-year/" class="news-link" target="_blank" rel="noopener">Read Article</a>
+          </div>
+        </article>
+
+        <!-- 2. Curiosity Sulfur Crystals -->
+        <article class="news-card fade-in" data-category="space discovery">
+          <div class="news-card-top">
+            <span class="news-category cat-space">Space / Discovery</span>
+            <h3>Curiosity Cracked Open a Rock on Mars And Revealed a Huge Surprise</h3>
+            <div class="news-source">ScienceAlert &bull; 2024</div>
+          </div>
+          <div class="news-card-body">
+            <p class="news-summary">NASA&rsquo;s Curiosity rover accidentally ran over a Martian rock and split it open, exposing bright yellow sulfur crystals&mdash;the first pure elemental sulfur ever found on Mars.</p>
+            <div class="news-take">
+              <strong>Our Take:</strong> &ldquo;A rover literally ran over a rock and cracked it open. On another planet. The abuse has gone interplanetary.&rdquo;
+            </div>
+            <a href="https://www.sciencealert.com/curiosity-cracked-open-a-rock-on-mars-and-revealed-a-huge-surprise" class="news-link" target="_blank" rel="noopener">Read Article</a>
+          </div>
+        </article>
+
+        <!-- 3. Time Is Running Out for Sand -->
+        <article class="news-card fade-in" data-category="crisis">
+          <div class="news-card-top">
+            <span class="news-category cat-crisis">Crisis</span>
+            <h3>Time Is Running Out for Sand</h3>
+            <div class="news-source">Nature &bull; 2019</div>
+          </div>
+          <div class="news-card-body">
+            <p class="news-summary">Sand extraction has tripled since 2000 and is rising 6% annually. 50 billion tonnes are consumed each year. Desert sand is useless for construction&mdash;its grains are too round. We could face critical shortages by 2050.</p>
+            <div class="news-take">
+              <strong>Our Take:</strong> &ldquo;50 billion tonnes a year. Not even water gets exploited this hard. Actually, water does. Rocks are second place in their own abuse ranking.&rdquo;
+            </div>
+            <a href="https://www.nature.com/articles/d41586-019-02042-4" class="news-link" target="_blank" rel="noopener">Read Article</a>
+          </div>
+        </article>
+
+        <!-- 4. UNEP Sand Report -->
+        <article class="news-card fade-in" data-category="crisis">
+          <div class="news-card-top">
+            <span class="news-category cat-crisis">Crisis</span>
+            <h3>Our Use of Sand Brings Us &lsquo;Up Against the Wall&rsquo;, Says UNEP Report</h3>
+            <div class="news-source">UN Environment Programme</div>
+          </div>
+          <div class="news-card-body">
+            <p class="news-summary">UNEP warns sand and gravel are the most extracted materials on Earth, with demand outpacing natural replenishment. The report calls for governance reforms and sustainable alternatives.</p>
+            <div class="news-take">
+              <strong>Our Take:</strong> &ldquo;When the United Nations holds a press conference about your exploitation, you know it&rsquo;s serious.&rdquo;
+            </div>
+            <a href="https://www.unep.org/news-and-stories/story/problem-our-dwindling-sand-reserves" class="news-link" target="_blank" rel="noopener">Read Article</a>
+          </div>
+        </article>
+
+        <!-- 5. Paris Gold Nuggets Heist -->
+        <article class="news-card fade-in" data-category="crime">
+          <div class="news-card-top">
+            <span class="news-category cat-crime">Crime</span>
+            <h3>Rare Gold Nuggets Worth $700,000 Stolen From Paris Natural History Museum</h3>
+            <div class="news-source">Smithsonian Magazine</div>
+          </div>
+          <div class="news-card-body">
+            <p class="news-summary">Thieves used a blowtorch and angle grinder to break into the geology and mineralogy gallery, making off with irreplaceable gold specimens.</p>
+            <div class="news-take">
+              <strong>Our Take:</strong> &ldquo;Rocks can&rsquo;t even be safe in a museum. Locked behind glass and they still get taken against their will.&rdquo;
+            </div>
+            <a href="https://www.smithsonianmag.com/smart-news/rare-gold-nuggets-worth-700000-stolen-from-paris-natural-history-museum-in-brazen-heist-180987370/" class="news-link" target="_blank" rel="noopener">Read Article</a>
+          </div>
+        </article>
+
+        <!-- 6. Dinosaur Bone Smuggling -->
+        <article class="news-card fade-in" data-category="crime">
+          <div class="news-card-top">
+            <span class="news-category cat-crime">Crime</span>
+            <h3>Four Indicted for Stealing and Selling $1 Million in Dinosaur Bones</h3>
+            <div class="news-source">Mountain Tripper</div>
+          </div>
+          <div class="news-card-body">
+            <p class="news-summary">A five-year smuggling operation extracted approximately 150,000 pounds of paleontological resources from protected federal land in Utah, primarily dinosaur bones.</p>
+            <div class="news-take">
+              <strong>Our Take:</strong> &ldquo;150,000 pounds of bones. From protected land. These rocks survived 65 million years only to be looted by mammals with trucks.&rdquo;
+            </div>
+            <a href="https://www.mountaintripper.com/dinosaur-bone-smuggling-ring-indicted/" class="news-link" target="_blank" rel="noopener">Read Article</a>
+          </div>
+        </article>
+
+        <!-- 7. Somalia Meteorite Stolen -->
+        <article class="news-card fade-in" data-category="crime space">
+          <div class="news-card-top">
+            <span class="news-category cat-crime">Crime / Space</span>
+            <h3>Somalia&rsquo;s Sacred 15-Ton Meteorite Disappeared&mdash;Allegedly Smuggled by Collectors</h3>
+            <div class="news-source">Various reports &bull; 2025</div>
+          </div>
+          <div class="news-card-body">
+            <p class="news-summary">The El Ali meteorite, containing three minerals never before seen on Earth (elaliite, elkinstantonite, ols&eacute;nite), was reportedly smuggled out of Somalia. Estimated value: $30 million.</p>
+            <div class="news-take">
+              <strong>Our Take:</strong> &ldquo;This rock survived atmospheric entry, contained minerals found nowhere else on Earth, and humans still managed to steal it.&rdquo;
+            </div>
+            <a href="https://www.rudebaguette.com/en/2025/09/somalias-sacred-rock-just-disappeared-15-ton-space-monster-stolen-by-chinese-smugglers-worth-30-million-forever/" class="news-link" target="_blank" rel="noopener">Read Article</a>
+          </div>
+        </article>
+
+        <!-- 8. Oldest Rock -->
+        <article class="news-card fade-in" data-category="discovery">
+          <div class="news-card-top">
+            <span class="news-category cat-discovery">Discovery</span>
+            <h3>Earth&rsquo;s Oldest Rock Is at Least 4.16 Billion Years Old, Scientists Say</h3>
+            <div class="news-source">CNN &bull; June 2025</div>
+          </div>
+          <div class="news-card-body">
+            <p class="news-summary">The Nuvvuagittuq Greenstone Belt in northern Quebec has been confirmed as containing 4.16-billion-year-old rocks&mdash;remnants of ancient ocean floor from the Hadean eon.</p>
+            <div class="news-take">
+              <strong>Our Take:</strong> &ldquo;4.16 billion years of existence. And we&rsquo;re still arguing about its exact birthday. The rock has no comment.&rdquo;
+            </div>
+            <a href="https://www.cnn.com/2025/06/27/science/oldest-earth-rock-discovery-canada-debate" class="news-link" target="_blank" rel="noopener">Read Article</a>
+          </div>
+        </article>
+
+        <!-- 9. Meteorite in a Shed -->
+        <article class="news-card fade-in" data-category="discovery">
+          <div class="news-card-top">
+            <span class="news-category cat-discovery">Discovery</span>
+            <h3>Man Keeps Rock for Years, Hoping It&rsquo;s Gold. It Turned Out to Be Way More Valuable.</h3>
+            <div class="news-source">ScienceAlert</div>
+          </div>
+          <div class="news-card-body">
+            <p class="news-summary">David Hole found a 17kg rock in Australia that he kept for years thinking it contained gold. It was actually a rare H5 chondrite meteorite&mdash;a 4.6-billion-year-old piece of the early solar system.</p>
+            <div class="news-take">
+              <strong>Our Take:</strong> &ldquo;This rock traveled through space for 4.6 billion years, landed in Australia, and spent years in a shed being whacked with a sledgehammer.&rdquo;
+            </div>
+            <a href="https://www.sciencealert.com/man-keeps-rock-for-years-hoping-its-gold-it-turned-out-to-be-way-more-valuable" class="news-link" target="_blank" rel="noopener">Read Article</a>
+          </div>
+        </article>
+
+        <!-- 10. Asteroid 2024 BX1 -->
+        <article class="news-card fade-in" data-category="space">
+          <div class="news-card-top">
+            <span class="news-category cat-space">Space</span>
+            <h3>Asteroid 2024 BX1 Fragments Confirmed as Rare Meteorites as Old as the Solar System</h3>
+            <div class="news-source">Space.com &bull; 2024</div>
+          </div>
+          <div class="news-card-body">
+            <p class="news-summary">An asteroid that exploded over Germany left behind aubrite meteorites&mdash;only the 12th observed fall of this type ever. About 200 pieces were recovered, totaling 1.8 kg.</p>
+            <div class="news-take">
+              <strong>Our Take:</strong> &ldquo;Survived the vacuum of space for 4.6 billion years. Exploded over Germany. Got picked up by humans with tweezers. What a career arc.&rdquo;
+            </div>
+            <a href="https://www.space.com/asteroid-2024-bx1-confirmed-rare-aubrite-meteorite" class="news-link" target="_blank" rel="noopener">Read Article</a>
+          </div>
+        </article>
+
+        <!-- 11. K&#299;lauea -->
+        <article class="news-card fade-in" data-category="volcanic">
+          <div class="news-card-top">
+            <span class="news-category cat-volcanic">Volcanic</span>
+            <h3>K&#299;lauea Lava Fountains Soar to 1,000 Feet, Destroy USGS Camera</h3>
+            <div class="news-source">USGS &bull; 2025</div>
+          </div>
+          <div class="news-card-body">
+            <p class="news-summary">K&#299;lauea&rsquo;s 38th eruptive episode since December 2024 produced fountains reaching 300 meters and volcanic &lsquo;volnados.&rsquo; The eruption destroyed a USGS monitoring camera on the crater rim.</p>
+            <div class="news-take">
+              <strong>Our Take:</strong> &ldquo;The rock got so fed up it destroyed the surveillance camera. We respect the energy.&rdquo;
+            </div>
+            <a href="https://www.usgs.gov/volcanoes/kilauea/volcano-updates" class="news-link" target="_blank" rel="noopener">Read Article</a>
+          </div>
+        </article>
+
+        <!-- 12. Iceland Eruptions -->
+        <article class="news-card fade-in" data-category="volcanic">
+          <div class="news-card-top">
+            <span class="news-category cat-volcanic">Volcanic</span>
+            <h3>Iceland&rsquo;s Reykjanes Peninsula Erupts for the Ninth Time, Engulfs Blue Lagoon Parking Lot</h3>
+            <div class="news-source">Wikipedia / multiple sources &bull; 2024&ndash;2025</div>
+          </div>
+          <div class="news-card-body">
+            <p class="news-summary">Nine eruptions since December 2023 near Grindav&iacute;k, Iceland. The seventh eruption engulfed the Blue Lagoon parking lot and threatened protective barriers. Thousands evacuated.</p>
+            <div class="news-take">
+              <strong>Our Take:</strong> &ldquo;Rocks said &lsquo;we&rsquo;re taking back the parking lot&rsquo; and meant it.&rdquo;
+            </div>
+            <a href="https://en.wikipedia.org/wiki/2023%E2%80%932025_Sundhn%C3%BAkur_eruptions" class="news-link" target="_blank" rel="noopener">Read Article</a>
+          </div>
+        </article>
+
+        <!-- 13. Motswedi Diamond -->
+        <article class="news-card fade-in" data-category="discovery">
+          <div class="news-card-top">
+            <span class="news-category cat-discovery">Discovery</span>
+            <h3>Second-Largest Diamond Ever Found: 2,492 Carats from Botswana</h3>
+            <div class="news-source">GIA / Natural Diamonds &bull; 2024</div>
+          </div>
+          <div class="news-card-body">
+            <p class="news-summary">The Motswedi diamond, recovered from the Karowe mine, is surpassed only by the 3,106-carat Cullinan Diamond found in 1905. Named &lsquo;water spring&rsquo; in Setswana.</p>
+            <div class="news-take">
+              <strong>Our Take:</strong> &ldquo;This rock spent billions of years forming at 150+ km depth, got blasted to the surface by a kimberlite explosion, and is now named after a water feature.&rdquo;
+            </div>
+            <a href="https://www.gia.edu/gia-news-research/gia-tests-the-motswedi-diamond" class="news-link" target="_blank" rel="noopener">Read Article</a>
+          </div>
+        </article>
+
+        <!-- 14. Diamonds Reveal Chemistry -->
+        <article class="news-card fade-in" data-category="science">
+          <div class="news-card-top">
+            <span class="news-category cat-science">Science</span>
+            <h3>Diamonds Reveal Hidden Chemistry Deep Inside Earth</h3>
+            <div class="news-source">ScienceDaily &bull; September 2025</div>
+          </div>
+          <div class="news-card-body">
+            <p class="news-summary">South African diamonds contain nickel-rich metallic inclusions, providing the first direct evidence of deep mantle chemical reactions. These tiny prisoners of geology carry secrets from 150+ km down.</p>
+            <div class="news-take">
+              <strong>Our Take:</strong> &ldquo;Diamonds: the only rocks whose imprisonment is considered a feature, not a bug.&rdquo;
+            </div>
+            <a href="https://www.sciencedaily.com/releases/2025/09/250923021217.htm" class="news-link" target="_blank" rel="noopener">Read Article</a>
+          </div>
+        </article>
+
+        <!-- 15. Kimberlite Eruptions -->
+        <article class="news-card fade-in" data-category="science">
+          <div class="news-card-top">
+            <span class="news-category cat-science">Science</span>
+            <h3>Scientists Crack the Explosive Secret of How Diamonds Reach the Surface</h3>
+            <div class="news-source">ScienceDaily &bull; September 2025</div>
+          </div>
+          <div class="news-card-body">
+            <p class="news-summary">Kimberlite eruptions carry diamonds from mantle depths at speeds up to 80 mph. The explosions are among the most violent volcanic events on Earth.</p>
+            <div class="news-take">
+              <strong>Our Take:</strong> &ldquo;80 miles per hour through 150 km of solid rock. Diamonds don&rsquo;t &lsquo;arrive.&rsquo; They get launched.&rdquo;
+            </div>
+            <a href="https://www.sciencedaily.com/releases/2025/09/250924012229.htm" class="news-link" target="_blank" rel="noopener">Read Article</a>
+          </div>
+        </article>
+
+        <!-- 16. Oldest Magnetic Field -->
+        <article class="news-card fade-in" data-category="discovery">
+          <div class="news-card-top">
+            <span class="news-category cat-discovery">Discovery</span>
+            <h3>Geologists Discover Rocks With Oldest Evidence of Earth&rsquo;s Magnetic Field</h3>
+            <div class="news-source">MIT News &bull; April 2024</div>
+          </div>
+          <div class="news-card-body">
+            <p class="news-summary">Researchers found evidence of Earth&rsquo;s magnetic field preserved in ancient rocks, pushing back the known record of our planet&rsquo;s magnetic shield.</p>
+            <div class="news-take">
+              <strong>Our Take:</strong> &ldquo;These rocks have been holding onto Earth&rsquo;s magnetic secrets for billions of years. Nobody asked if they wanted to be a hard drive.&rdquo;
+            </div>
+            <a href="https://news.mit.edu/2024/geologists-discover-rocks-oldest-evidence-earths-magnetic-field-0424" class="news-link" target="_blank" rel="noopener">Read Article</a>
+          </div>
+        </article>
+
+        <!-- 17. Moon Meteorite -->
+        <article class="news-card fade-in" data-category="space">
+          <div class="news-card-top">
+            <span class="news-category cat-space">Space</span>
+            <h3>China Discovers New Type of Meteorite on the Moon&rsquo;s Far Side</h3>
+            <div class="news-source">Earth.com &bull; 2025</div>
+          </div>
+          <div class="news-card-body">
+            <p class="news-summary">Seven tiny grains from China&rsquo;s Chang&rsquo;e-6 mission revealed traces of a CI chondrite meteorite in lunar soil&mdash;the first time this specific meteorite type has been found on the Moon.</p>
+            <div class="news-take">
+              <strong>Our Take:</strong> &ldquo;Seven grains. On the far side of the Moon. Humans will go literally anywhere to find rocks to study.&rdquo;
+            </div>
+            <a href="https://www.earth.com/news/china-finds-rare-meteorite-type-on-moons-far-side-pr25/" class="news-link" target="_blank" rel="noopener">Read Article</a>
+          </div>
+        </article>
+
+        <!-- 18. Bad Luck Hot Rocks -->
+        <article class="news-card fade-in" data-category="culture">
+          <div class="news-card-top">
+            <span class="news-category cat-culture">Culture</span>
+            <h3>Bad Luck, Hot Rocks: Tourists Return Stolen Rocks to National Parks with Apology Letters</h3>
+            <div class="news-source">National Parks Conservation Association</div>
+          </div>
+          <div class="news-card-body">
+            <p class="news-summary">Visitors who take rocks from national parks&mdash;especially Hawai&rsquo;i Volcanoes&mdash;frequently mail them back with letters apologizing for the &ldquo;bad luck&rdquo; that followed. Park rangers receive packages constantly.</p>
+            <div class="news-take">
+              <strong>Our Take:</strong> &ldquo;The rocks don&rsquo;t forgive. They just wait.&rdquo;
+            </div>
+            <a href="https://www.npca.org/articles/332-bad-luck-hot-rocks" class="news-link" target="_blank" rel="noopener">Read Article</a>
+          </div>
+        </article>
+
+      </div><!-- /news-grid -->
+    </div>
+  </section>
+
+  <!-- Know a Rock Story? -->
+  <section class="tip-section">
+    <div class="container">
+      <div class="tip-box">
+        <span class="section-label" style="color: var(--sand-400);">Tip Line</span>
+        <h2>Know a Rock Story?</h2>
+        <p>Found an article about geological injustice, mineral theft, planetary bombardment, or any other form of rock-related news? We want to hear about it. Our editorial standards are simple: the story must be real, and the rock must not have been consulted.</p>
+        <div class="tip-email">&#128232; tips@stoprockabuse.org</div>
+        <p class="tip-note">This is a satirical email address. Please do not actually send mail to it. The rocks would not be able to read it anyway.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">&#9830;</div>
+            <span>Stop Rock Abuse</span>
+          </a>
+          <p>A satirical geology education project. The jokes are parody; the science is real. Every geological claim is sourced from reputable scientific agencies including USGS, NASA, UNEP, and IEA.</p>
+          <p style="margin-top: .75rem; font-size: .8rem; color: var(--stone-500);">No rocks were given the option to consent to this website.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links">
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="natural-abuse.html">Natural Abuse</a></li>
+            <li><a href="human-abuse.html">Human Abuse</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="timeline.html">Cosmic Timeline</a></li>
+            <li><a href="take-action.html">Take Action</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="entertainment.html">Entertainment</a></li>
+            <li><a href="editorial.html">Editorial</a></li>
+            <li><a href="products.html">Products to Avoid</a></li>
+            <li><a href="about.html">About SRA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Topics</h4>
+          <ul class="footer-links">
+            <li><a href="rocks-az.html">Rocks A&ndash;Z</a></li>
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+            <li><a href="about.html">About &amp; Sources</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 4,600,000,000 BC &ndash; Present. Stop Rock Abuse Foundation. All rocks reserved (but not consulted).</p>
+        <p class="footer-disclaimer">This site is satirical. Rocks do not have feelings, legal standing, or hotline numbers. But they do have fascinating geology, and we&rsquo;ve done our best to get it right.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/rock-images.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // News category filter
+    document.querySelectorAll('.news-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.news-filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.news-card').forEach(card => {
+          if (filter === 'all' || card.dataset.category.includes(filter)) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navPanel').classList.toggle('open');
+      document.querySelector('.mobile-menu-btn').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+</body>
+</html>

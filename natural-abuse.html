@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Natural Abuse - Stop Rock Abuse</title>
+  <meta name="description" content="Water, ice, wind, chemistry, and deep-earth heat: the enforcement arm of the rock cycle. Learn how nature sandpapers an entire planet without a permit.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="abuse-ticker" style="position:fixed;top:0;left:0;right:0;z-index:1001;">
+    <div class="ticker-content">
+      BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth's atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp; BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth's atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp;
+    </div>
+  </div>
+
+<div class="quick-nav">
+  <a href="timeline.html">Cosmic Timeline</a>
+  <a href="rock-cycle.html">Rock Cycle</a>
+  <a href="natural-abuse.html" class="active">Natural Abuse</a>
+  <a href="human-abuse.html">Human Abuse</a>
+  <a href="editorial.html">Editorial</a>
+  <a href="entertainment.html">Entertainment</a>
+</div>
+
+  <!-- Header -->
+  <header class="site-header" style="top: 58px;">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">&#9830;</div>
+        <span>Stop Rock Abuse</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="timeline.html">Cosmic Timeline</a></li>
+          <li><a href="rock-cycle.html">Rock Cycle</a></li>
+          <li><a href="natural-abuse.html" class="active">Natural Abuse</a></li>
+          <li><a href="human-abuse.html">Human Abuse</a></li>
+          <li><a href="editorial.html">Editorial</a></li>
+          <li><a href="entertainment.html">Entertainment</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="game.html">The Rockoning</a></li>
+          <li><a href="merch.html">Merch</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="dossiers.html">Rock Dossiers</a></li>
+          <li><a href="take-action.html">Take Action</a></li>
+          <li><a href="rocks-az.html">Rocks A-Z</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slide-in nav panel -->
+  <div class="nav-panel" id="navPanel">
+      <a href="index.html">Home</a>
+      <a href="timeline.html">Cosmic Timeline</a>
+      <a href="rock-cycle.html">Rock Cycle</a>
+      <a href="natural-abuse.html" class="active">Natural Abuse</a>
+      <a href="human-abuse.html">Human Abuse</a>
+      <a href="editorial.html">Editorial</a>
+      <a href="entertainment.html">Entertainment</a>
+      <a href="news.html">News</a>
+      <a href="game.html">The Rockoning</a>
+      <a href="merch.html">Merch</a>
+      <a href="products.html">Products</a>
+      <a href="dossiers.html">Rock Dossiers</a>
+      <a href="take-action.html">Take Action</a>
+      <a href="rocks-az.html">Rocks A-Z</a>
+      <a href="about.html">About</a>
+  </div>
+
+  <!-- Nav overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+  <!-- Page Hero -->
+  <section class="page-hero page-hero-natural" style="padding-top: calc(var(--header-height) + 58px); background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('img/heroes/hero-natural-abuse.png'); background-size: cover; background-position: center;">
+    <div class="hero-content">
+      <div class="hero-badge">&#127754; Nature&rsquo;s Demolition Crew</div>
+      <h1>Natural <span class="accent">Abuse</span></h1>
+      <p class="hero-subtitle">
+        For over 11 billion years&mdash;and for 4.6 billion on Earth specifically&mdash;water, ice, wind, gravity, chemistry, and heat have been sandpapering planets without oversight or apology. This is how nature processes rocks without once asking if they&rsquo;re okay.
+      </p>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">11B+</div>
+          <div class="stat-label">Years of rock abuse<br>across the universe</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">~1 mm</div>
+          <div class="stat-label">Average weathering rate<br>per 1,000 years (granite)</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">20B</div>
+          <div class="stat-label">Tons of sediment delivered<br>to oceans annually by rivers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">0</div>
+          <div class="stat-label">Rocks who filed<br>a formal grievance</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Abuse Badges Overview -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Charges</span>
+        <h2>A Full Catalogue of Natural Offenses</h2>
+        <p class="section-desc">Nature employs an impressive arsenal of rock-demolition techniques, ranging from gentle chemical dissolution to multi-kilometer glacial interrogation. Below, the complete charge sheet.</p>
+      </div>
+
+      <div class="badge-grid" style="justify-content: center; margin-bottom: 3rem;">
+        <span class="abuse-badge badge-abraded">&#9881; Abraded</span>
+        <span class="abuse-badge badge-plucked">&#10052; Freeze-Thawed</span>
+        <span class="abuse-badge badge-dissolved">&#128167; Dissolved</span>
+        <span class="abuse-badge badge-quenched">&#128293; Thermally Stressed</span>
+        <span class="abuse-badge badge-foliated">&#128736; Root-Wedged</span>
+        <span class="abuse-badge badge-subducted">&#11015; Subducted</span>
+        <span class="abuse-badge badge-crushed">&#9874; Glacially Plucked</span>
+        <span class="abuse-badge badge-kiln">&#127981; Wind-Blasted</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECTION 1: WEATHERING                        -->
+  <!-- ============================================ -->
+  <section style="background: #fff;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Phase 1: Weathering</span>
+        <h2>Breaking Rocks Without Moving Them</h2>
+        <p class="section-desc">Weathering is the in-situ breakdown of rock&mdash;no transportation required. The rock stays put; it just gets smaller, weaker, and chemically rearranged. Think of it as a home invasion where the house is slowly disassembled around you.</p>
+      </div>
+
+      <div class="info-box info-box-fact">
+        <div class="info-box-label">&#128218; Geological Fact</div>
+        <p>Weathering is classified into three categories: mechanical (physical), chemical, and biological. In practice, these work simultaneously and reinforce each other. A crack opened by frost provides a new surface for chemical attack; lichen acids weaken rock that then crumbles mechanically.</p>
+      </div>
+
+      <!-- Mechanical / Physical Weathering -->
+      <h2 style="margin-top: 3rem;">Mechanical / Physical Weathering</h2>
+      <p>Physical weathering fragments rock without altering its chemistry. The minerals stay the same; there are just more, smaller pieces of them. It is the geological equivalent of tearing a phone book in half&mdash;same paper, more edges.</p>
+
+      <div class="card-grid card-grid-2 fade-in" style="margin-top: 2rem;">
+        <div class="card">
+          <div class="card-icon card-icon-ocean">&#10052;</div>
+          <h3>Freeze-Thaw (Frost Wedging)</h3>
+          <p>Water infiltrates cracks and pore spaces. When it freezes, it expands by approximately 9%, exerting pressures up to 207 MPa&mdash;far exceeding the tensile strength of most rocks (typically 2&ndash;20 MPa). Over hundreds of freeze-thaw cycles, the crack propagates and the rock splits apart. This process is most effective in climates that oscillate around 0&deg;C.</p>
+          <div class="info-box info-box-parody" style="margin-bottom:0; margin-top: 1rem;">
+            <div class="info-box-label">In Other Words</div>
+            <p>&ldquo;Water enters your personal space, expands 9% without warning, and does this thousands of times. HR has been notified. HR does not exist.&rdquo;</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-magma">&#9728;</div>
+          <h3>Thermal Expansion &amp; Contraction</h3>
+          <p>In arid environments, rock surfaces can experience temperature swings of 50&deg;C or more between day and night. Different minerals expand at different rates, creating differential stress at grain boundaries. Over time, the outer layers peel away in a process called <strong>exfoliation</strong> (or &ldquo;onion-skin weathering&rdquo;). Granite domes like Stone Mountain, Georgia, are textbook examples.</p>
+          <div class="info-box info-box-parody" style="margin-bottom:0; margin-top: 1rem;">
+            <div class="info-box-label">In Other Words</div>
+            <p>&ldquo;You expand all day, contract all night, and eventually your outer layers just give up and peel off. It&rsquo;s a spa treatment nobody asked for.&rdquo;</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-earth">&#127793;</div>
+          <h3>Root Wedging</h3>
+          <p>Plant roots follow moisture into fractures. As the root grows, it exerts radial pressure that can exceed 1.5 MPa&mdash;enough to slowly pry apart jointed rock. Large trees can displace boulders weighing several tons. The classic image: a sidewalk slab shattered by a tree that had <em>nowhere better to be</em>.</p>
+          <div class="info-box info-box-parody" style="margin-bottom:0; margin-top: 1rem;">
+            <div class="info-box-label">In Other Words</div>
+            <p>&ldquo;A seed lands in your crack. You think nothing of it. Fifty years later, you&rsquo;ve been split in half by something that photosynthesizes.&rdquo;</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-sand">&#129528;</div>
+          <h3>Salt Crystallization (Haloclasty)</h3>
+          <p>Saline water enters pores and evaporates, leaving crystals behind. As salt crystals grow, they exert pressures up to 30 MPa against pore walls. This is particularly devastating in coastal and desert environments. It is also the primary mechanism destroying historic limestone buildings near the sea.</p>
+          <div class="info-box info-box-parody" style="margin-bottom:0; margin-top: 1rem;">
+            <div class="info-box-label">In Other Words</div>
+            <p>&ldquo;Salt moves in, sets up shop in your pores, and remodels from the inside. No lease. No deposit. Just destruction.&rdquo;</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chemical Weathering -->
+      <h2 style="margin-top: 4rem;">Chemical Weathering</h2>
+      <p>Chemical weathering changes the mineral composition of rock, converting primary minerals into secondary ones (often clay minerals) and dissolving soluble components entirely. It is most aggressive in warm, humid climates where water and biological acids are abundant.</p>
+
+      <div class="card-grid card-grid-2 fade-in" style="margin-top: 2rem;">
+        <div class="card">
+          <div class="card-icon card-icon-ocean">&#128167;</div>
+          <h3>Dissolution</h3>
+          <p>Minerals like calcite (CaCO&#8323;) dissolve directly in slightly acidic water. Rainwater absorbs CO&#8322; from the atmosphere and soil to form carbonic acid (H&#8322;CO&#8323;), which reacts with calcite to produce soluble calcium bicarbonate. This is how caves, sinkholes, and entire karst landscapes form&mdash;the rock simply <em>disappears into solution</em>.</p>
+          <div class="consent-meter" style="margin-top: 1rem;">
+            <span style="font-size:.9rem;">Calcite Survival Rate:</span>
+            <div class="consent-bar">
+              <div class="consent-fill" style="width: 0%; background: var(--ocean-500);"></div>
+            </div>
+            <span class="consent-label" style="color: var(--ocean-600);">0% &mdash; Fully Dissolved</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-magma">&#9883;</div>
+          <h3>Oxidation</h3>
+          <p>Iron-bearing minerals like olivine, pyroxene, and biotite react with dissolved oxygen and water. Ferrous iron (Fe&#178;&#8314;) is oxidized to ferric iron (Fe&#179;&#8314;), producing iron oxides and hydroxides such as hematite and goethite. The rusty-red stains on weathered rock? That is iron being publicly humiliated by the atmosphere.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-earth">&#129514;</div>
+          <h3>Hydrolysis</h3>
+          <p>The most volumetrically significant chemical weathering process. Water reacts with silicate minerals (especially feldspars, which make up ~50% of the crust) and replaces cations like K&#8314;, Na&#8314;, and Ca&#178;&#8314; with H&#8314; ions. The feldspar is converted to clay minerals (kaolinite, illite, smectite). Granite&rsquo;s pink feldspar crystals become white, crumbly clay. Dignity: revoked.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-sand">&#127868;</div>
+          <h3>Carbonation</h3>
+          <p>A specific form of dissolution where carbonic acid attacks carbonate minerals and some silicates. CO&#8322; + H&#8322;O &rarr; H&#8322;CO&#8323;, which then reacts with CaCO&#8323; to form Ca(HCO&#8323;)&#8322;&mdash;soluble and easily carried away by groundwater. Limestone landscapes worldwide are slowly being drunk by rainwater. The rain didn&rsquo;t even bring a straw.</p>
+        </div>
+      </div>
+
+      <!-- Biological Weathering -->
+      <h2 style="margin-top: 4rem;">Biological Weathering</h2>
+      <p>Living organisms contribute to both mechanical and chemical weathering. They are nature&rsquo;s unpaid demolition interns&mdash;small, persistent, and alarmingly effective.</p>
+
+      <div class="card-grid card-grid-3 fade-in" style="margin-top: 2rem;">
+        <div class="card">
+          <div class="card-icon card-icon-earth">&#129704;</div>
+          <h3>Lichens</h3>
+          <p>These symbiotic organisms (fungus + alga/cyanobacterium) attach to bare rock surfaces and secrete organic acids (oxalic acid, carbonic acid) that dissolve minerals beneath them. They also penetrate the rock surface mechanically with fungal hyphae. Lichens are often the <em>first colonizers</em> of bare rock&mdash;the advance scouts of the demolition crew.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-earth">&#127794;</div>
+          <h3>Tree Roots</h3>
+          <p>Beyond simple wedging, tree roots chemically alter the soil around them. Root exudates (organic acids, chelating agents) dissolve minerals and accelerate chemical weathering rates by 2&ndash;10 times compared to abiotic conditions. Trees are, in effect, running an underground chemistry lab on rock&rsquo;s behalf&mdash;without asking.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-sand">&#128027;</div>
+          <h3>Burrowing Organisms</h3>
+          <p>Earthworms, ants, termites, rodents, and other burrowers mix soil, bring fresh rock fragments to the surface, and increase surface area exposed to chemical attack. Charles Darwin calculated that earthworms can move 7.5&ndash;18 tons of soil per acre per year. Rocks near the surface are being constantly shuffled by a workforce that never clocks out.</p>
+        </div>
+      </div>
+
+      <div class="info-box info-box-alert" style="margin-top: 2rem;">
+        <div class="info-box-label">&#9888; Official Incident Report</div>
+        <p>Biological weathering is estimated to increase overall weathering rates by a factor of 3&ndash;10 compared to sterile conditions. Life, it turns out, is one of the most effective rock-destruction technologies ever evolved. Rocks had a better time before the Cambrian.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rock Quote: Weathering -->
+  <section style="padding: 4rem 0;">
+    <div class="container">
+      <div class="rock-quote">
+        <blockquote>&ldquo;First the rain dissolved my face. Then a lichen moved in. Then a tree root split me in half. I used to be a cliff. Now I&rsquo;m regolith.&rdquo;</blockquote>
+        <cite>&mdash; Former Limestone Outcrop, Yorkshire Dales, currently dissolved into a cave system</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECTION 2: EROSION & TRANSPORT               -->
+  <!-- ============================================ -->
+  <section style="background: #fff;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Phase 2: Erosion &amp; Transport</span>
+        <h2>The Conveyor Belt of Indignity</h2>
+        <p class="section-desc">Once weathering has weakened or fragmented rock, erosion picks up the pieces and transports them&mdash;sometimes thousands of kilometers&mdash;to a final resting place where they will be buried and compressed into new rock. The cycle of abuse is also a logistics operation.</p>
+      </div>
+
+      <div class="info-box info-box-fact">
+        <div class="info-box-label">&#128218; Geological Fact</div>
+        <p>Rivers are the dominant agent of sediment transport on Earth, delivering approximately 20 billion tons of sediment to the oceans each year. The Amazon alone carries roughly 1.2 billion tons annually. Every grain in that load was once part of a larger rock that has been progressively broken down, rounded, and sorted by size.</p>
+      </div>
+
+      <h3 style="margin-top: 2.5rem;">How Water Moves Rock: Four Transport Modes</h3>
+
+      <div class="process-flow" style="margin: 2rem 0;">
+        <div class="process-node process-node-igneous">
+          <div class="node-icon">&#9899;</div>
+          <div class="node-label">Traction</div>
+          <div class="node-desc">Rolling &amp; sliding<br>along the bed</div>
+        </div>
+        <div class="process-arrow">&rarr;</div>
+        <div class="process-node process-node-sedimentary">
+          <div class="node-icon">&#11093;</div>
+          <div class="node-label">Saltation</div>
+          <div class="node-desc">Bouncing in<br>short hops</div>
+        </div>
+        <div class="process-arrow">&rarr;</div>
+        <div class="process-node process-node-metamorphic">
+          <div class="node-icon">&#9724;</div>
+          <div class="node-label">Suspension</div>
+          <div class="node-desc">Silt &amp; clay held<br>aloft by turbulence</div>
+        </div>
+        <div class="process-arrow">&rarr;</div>
+        <div class="process-node process-node-magma">
+          <div class="node-icon">&#128167;</div>
+          <div class="node-label">Solution</div>
+          <div class="node-desc">Dissolved ions<mdash;<br>invisible transport</div>
+        </div>
+      </div>
+
+      <div class="two-col fade-in">
+        <div>
+          <h3>Attrition: The Rounding Program</h3>
+          <p>As grains travel, they collide with each other and with the channel bed. Each impact chips away angular edges in a process called <strong>attrition</strong>. The result: grains become progressively smaller and rounder with distance from the source. A jagged mountain fragment becomes a smooth river pebble, then a fine grain of beach sand.</p>
+          <p>Geologists quantify this using <strong>Zingg&rsquo;s shape classification</strong> and <strong>Krumbein&rsquo;s sphericity and roundness charts</strong>. Translation: science has measured exactly how much dignity a rock loses per kilometer of river travel.</p>
+
+          <div class="info-box info-box-parody" style="margin-top: 1.5rem;">
+            <div class="info-box-label">In Other Words</div>
+            <p>&ldquo;You will be tumbled against your peers until your personality is statistically indistinguishable from a sphere. This is called &lsquo;maturity.&rsquo;&rdquo;</p>
+          </div>
+        </div>
+        <div>
+          <h3>Rivers: Rock-Processing Conveyor Belts</h3>
+          <p>A river is not just water flowing downhill. It is a sediment-sorting, rock-grinding, landscape-sculpting machine powered by gravity and the hydrological cycle. Rivers sort particles by size (a process called <strong>hydraulic sorting</strong>)&mdash;heavier and larger grains settle first; lighter ones travel farther.</p>
+          <p>This is why you find boulders near mountain headwaters, gravel in the middle reaches, and fine sand and mud at the delta. The river is essentially <em>grading papers</em>: you go where your size says you go.</p>
+
+          <div class="consent-meter" style="margin-top: 1.5rem;">
+            <span style="font-size:.9rem;">Sediment Consent Level:</span>
+            <div class="consent-bar">
+              <div class="consent-fill" style="width: 0%;"></div>
+            </div>
+            <span class="consent-label">0% &mdash; Involuntary Transport</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECTION 3: GLACIAL ABUSE                     -->
+  <!-- ============================================ -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Phase 3: Glacial Abuse</span>
+        <h2>Glacial Interrogation Techniques</h2>
+        <p class="section-desc">Glaciers are nature&rsquo;s slowest, heaviest, most relentless rock-processing facilities. A continental ice sheet can be 3&ndash;4 km thick, exerting basal pressures exceeding 30 MPa. Rocks trapped beneath them have no appeals process.</p>
+      </div>
+
+      <div class="info-box info-box-alert">
+        <div class="info-box-label">&#128680; Glacial Threat Level: EXTREME</div>
+        <p>During the Last Glacial Maximum (~20,000 years ago), ice sheets covered roughly 25% of Earth&rsquo;s land surface. The Laurentide Ice Sheet over North America was up to 3.5 km thick. Every rock beneath that ice was subjected to grinding, plucking, and compression for tens of thousands of years. The term &ldquo;glacial pace&rdquo; understates the violence.</p>
+      </div>
+
+      <div class="card-grid card-grid-2 fade-in" style="margin-top: 2rem;">
+        <div class="card">
+          <div class="card-icon card-icon-ocean">&#10052;</div>
+          <h3>Glacial Abrasion</h3>
+          <p>Rock fragments frozen into the base of a glacier act as natural sandpaper. As the glacier moves (typically 10&ndash;300 m/year for valley glaciers, up to 10+ km/year for ice streams), these embedded fragments scratch parallel grooves called <strong>striations</strong> into the bedrock below. The grinding also produces extremely fine-grained sediment called <strong>rock flour</strong>&mdash;so fine it turns meltwater milky turquoise.</p>
+          <div class="info-box info-box-parody" style="margin-bottom:0; margin-top: 1rem;">
+            <div class="info-box-label">In Other Words</div>
+            <p>&ldquo;You are pinned under 3 km of ice. The ice uses your neighbors as sandpaper against your face. The process takes 10,000 years. Nobody calls it a spa.&rdquo;</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-magma">&#9939;</div>
+          <h3>Glacial Plucking (Quarrying)</h3>
+          <p>Meltwater seeps into joints and fractures in the bedrock beneath the glacier, refreezes, and bonds the rock to the ice. As the glacier advances, it <em>rips out</em> entire chunks of bedrock&mdash;sometimes blocks weighing hundreds of tons. This process creates the steep, jagged lee-side faces of <strong>roches moutonn&eacute;es</strong> and is the primary mechanism for excavating glacial cirques and U-shaped valleys.</p>
+          <div class="info-box info-box-parody" style="margin-bottom:0; margin-top: 1rem;">
+            <div class="info-box-label">In Other Words</div>
+            <p>&ldquo;The glacier freezes to your body, then walks away. You come with it. This is called &lsquo;plucking&rsquo; and it is exactly as violent as it sounds.&rdquo;</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box info-box-fact" style="margin-top: 2rem;">
+        <div class="info-box-label">&#128218; Evidence at the Scene</div>
+        <p><strong>Glacial erratics</strong> are boulders transported by ice and deposited far from their source&mdash;sometimes hundreds of kilometers away. They sit incongruously on landscapes of entirely different geology, like geological hostages dropped in foreign territory. The Big Rock erratic near Okotoks, Alberta, weighs ~16,500 tons and was carried 500+ km from the Rocky Mountains by the Laurentide Ice Sheet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rock Quote: Glacial -->
+  <section style="background: #fff; padding: 4rem 0;">
+    <div class="container">
+      <div class="rock-quote">
+        <blockquote>&ldquo;I was a bedrock slab in the Canadian Shield. The glacier froze to me, tore me loose, dragged me 500 kilometers, then melted and left me in a field in Alberta. I have questions.&rdquo;</blockquote>
+        <cite>&mdash; Glacial Erratic #4,207, currently serving as a tourist attraction near Okotoks, AB</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECTION 4: WIND ABUSE                        -->
+  <!-- ============================================ -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Phase 4: Aeolian Assault</span>
+        <h2>Sandblasting With No HOA Oversight</h2>
+        <p class="section-desc">In arid and semi-arid regions where vegetation is sparse, wind becomes the dominant agent of erosion. It picks up loose particles, hurls them at exposed rock surfaces, and sculpts the results into alien landscapes. No safety goggles provided.</p>
+      </div>
+
+      <div class="card-grid card-grid-2 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-sand">&#127786;</div>
+          <h3>Deflation</h3>
+          <p>Wind selectively removes fine, loose particles (silt, clay, fine sand) from the surface, leaving behind a <strong>desert pavement</strong>&mdash;a surface armored with pebbles and cobbles too heavy for the wind to lift. Deflation can lower surface levels by several meters over time. In the Qattara Depression of Egypt, wind erosion has carved a basin 134 m below sea level.</p>
+          <p>Translation: the wind steals everything small and leaves you standing on the rejects.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-magma">&#9881;</div>
+          <h3>Wind Abrasion</h3>
+          <p>Sand grains carried by wind (typically within 1&ndash;2 m of the surface, since sand is heavy) blast exposed rock surfaces. The resulting erosional features include:</p>
+          <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+            <li style="margin-bottom: .5rem; color: var(--stone-500); font-size: .95rem;"><strong>Ventifacts:</strong> Stones sculpted into faceted shapes by wind-blown sand. Each flat face (facet) records a prevailing wind direction.</li>
+            <li style="margin-bottom: .5rem; color: var(--stone-500); font-size: .95rem;"><strong>Yardangs:</strong> Elongated, streamlined ridges carved from bedrock by persistent wind erosion. They can be meters to kilometers long and look like the hull of an upturned ship.</li>
+            <li style="color: var(--stone-500); font-size: .95rem;"><strong>Pedestal rocks:</strong> Undercut near the base (where abrasion is strongest) to form mushroom-shaped formations.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="info-box info-box-parody" style="margin-top: 2rem;">
+        <div class="info-box-label">&#128221; Field Report: Aeolian Division</div>
+        <p>Wind erosion is essentially nature running an industrial sandblaster 24/7 in the desert. Ventifacts are the &ldquo;before and after&rdquo; photos wind uses to demonstrate ROI. Yardangs are what happens when a rock formation stands in the wrong place for a few million years. The wind offers no appeals and accepts no feedback.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECTION 5: INTERNAL HEAT & PRESSURE          -->
+  <!-- ============================================ -->
+  <section style="background: #fff;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Phase 5: Deep-Earth Processing</span>
+        <h2>The Deep-Time Indignity</h2>
+        <p class="section-desc">Surface processes break rocks down. But Earth&rsquo;s interior subjects them to an entirely different category of abuse: burial under kilometers of crust, heating to hundreds of degrees, compression under gigapascals of pressure, and&mdash;if they&rsquo;re unlucky&mdash;total melting. Welcome to the underworld.</p>
+      </div>
+
+      <div class="two-col fade-in">
+        <div>
+          <h3>Earth&rsquo;s Internal Heat Engine</h3>
+          <p>Earth&rsquo;s interior is powered by two heat sources:</p>
+          <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+            <li style="margin-bottom: .5rem; color: var(--stone-600);"><strong>Primordial heat:</strong> Residual thermal energy from planetary accretion and core formation (~4.5 Ga). The collision of planetesimals converted kinetic energy to heat, and the iron catastrophe (core-mantle differentiation) released enormous gravitational energy.</li>
+            <li style="color: var(--stone-600);"><strong>Radiogenic heat:</strong> Ongoing radioactive decay of uranium-238, uranium-235, thorium-232, and potassium-40 in the mantle and crust. This contributes roughly half of Earth&rsquo;s total heat flow (~47 TW).</li>
+          </ul>
+          <p>This heat drives mantle convection, plate tectonics, volcanism, and metamorphism&mdash;the deep-cycle rock-recycling program that has been operating continuously for 4+ billion years.</p>
+        </div>
+        <div>
+          <h3>The Three Deep Tortures</h3>
+
+          <div class="card" style="margin-bottom: 1.5rem;">
+            <h3 style="color: var(--magma-500);">&#11015; Subduction</h3>
+            <p>An oceanic plate dives beneath a continental or another oceanic plate, dragging its rocks down into the mantle at rates of 2&ndash;10 cm/year. The subducting slab is progressively heated and squeezed. Hydrous minerals release water, triggering melting in the overlying mantle wedge. The original oceanic crust? Recycled, remelted, or transformed beyond recognition.</p>
+          </div>
+
+          <div class="card" style="margin-bottom: 1.5rem;">
+            <h3 style="color: var(--metamorphic);">&#128736; Metamorphism</h3>
+            <p>Rocks buried to depths of 10&ndash;30+ km experience temperatures of 200&ndash;800&deg;C and pressures of 0.3&ndash;1.2 GPa. Their minerals recrystallize into new, stable forms. Shale becomes slate, then phyllite, then schist, then gneiss. The rock is not melted&mdash;it is <em>fundamentally reorganized while still solid</em>. Think of it as mandatory personality reconstruction.</p>
+          </div>
+
+          <div class="card" style="margin-bottom: 0;">
+            <h3 style="color: var(--magma-500);">&#128293; Melting</h3>
+            <p>If temperatures exceed ~650&ndash;1,200&deg;C (depending on composition and water content), the rock partially or fully melts to form magma. All original textures and most mineral identities are erased. The rock effectively dies and is reborn as igneous rock upon cooling. Zero continuity of identity. Zero consent.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box info-box-alert" style="margin-top: 2rem;">
+        <div class="info-box-label">&#9888; Deep-Time Incident Summary</div>
+        <p>The average piece of oceanic crust survives approximately 200 million years before being subducted and recycled. Continental crust can persist for 4+ billion years but is repeatedly metamorphosed, intruded, and reworked. No rock escapes the deep-time processing facility permanently. The Earth&rsquo;s interior is running a 4.6-billion-year recycling program with a 100% participation rate.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rock Quote: Deep Earth -->
+  <section style="padding: 4rem 0;">
+    <div class="container">
+      <div class="rock-quote">
+        <blockquote>&ldquo;They buried me 25 kilometers deep. My minerals recrystallized. My texture was destroyed. They called it &lsquo;regional metamorphism.&rsquo; I call it an involuntary identity reassignment.&rdquo;</blockquote>
+        <cite>&mdash; Anonymous Gneiss, Appalachian Mountains, 1.1 billion years post-metamorphism and still foliated</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- COMPARISON TABLE                             -->
+  <!-- ============================================ -->
+  <section style="background: #fff;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Evidence</span>
+        <h2>Abuse Mechanism Comparison</h2>
+        <p class="section-desc">A side-by-side comparison of natural rock abuse mechanisms, their agents, typical pressures, timescales, and what we would call them if rocks could press charges.</p>
+      </div>
+
+      <div style="overflow-x: auto;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Mechanism</th>
+              <th>Agent</th>
+              <th>Typical Pressure / Force</th>
+              <th>Timescale</th>
+              <th>If Rocks Had Lawyers</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Freeze-Thaw</strong></td>
+              <td>Water + frost cycles</td>
+              <td>Up to 207 MPa</td>
+              <td>100s&ndash;10,000s of cycles</td>
+              <td>Repeated forced entry &amp; expansion</td>
+            </tr>
+            <tr>
+              <td><strong>Thermal Stress</strong></td>
+              <td>Solar heating &amp; night cooling</td>
+              <td>Differential grain stress</td>
+              <td>10,000s&ndash;millions of years</td>
+              <td>Involuntary exfoliation</td>
+            </tr>
+            <tr>
+              <td><strong>Root Wedging</strong></td>
+              <td>Plant roots</td>
+              <td>Up to 1.5 MPa radial pressure</td>
+              <td>Decades&ndash;centuries</td>
+              <td>Biological home invasion</td>
+            </tr>
+            <tr>
+              <td><strong>Salt Crystallization</strong></td>
+              <td>Evaporating saline water</td>
+              <td>Up to 30 MPa</td>
+              <td>Years&ndash;millennia</td>
+              <td>Internal remodeling without permit</td>
+            </tr>
+            <tr>
+              <td><strong>Dissolution</strong></td>
+              <td>Carbonic acid (rainwater)</td>
+              <td>Chemical, not mechanical</td>
+              <td>1,000s&ndash;millions of years</td>
+              <td>Identity erasure by acid</td>
+            </tr>
+            <tr>
+              <td><strong>Oxidation</strong></td>
+              <td>Atmospheric O&#8322; + water</td>
+              <td>Chemical degradation</td>
+              <td>100s&ndash;millions of years</td>
+              <td>Public rusting</td>
+            </tr>
+            <tr>
+              <td><strong>Hydrolysis</strong></td>
+              <td>Water + H&#8314; ions</td>
+              <td>Chemical transformation</td>
+              <td>1,000s&ndash;millions of years</td>
+              <td>Compulsory clay conversion</td>
+            </tr>
+            <tr>
+              <td><strong>Glacial Abrasion</strong></td>
+              <td>Ice + embedded debris</td>
+              <td>~30 MPa basal pressure</td>
+              <td>1,000s&ndash;100,000s of years</td>
+              <td>Industrial grinding under duress</td>
+            </tr>
+            <tr>
+              <td><strong>Glacial Plucking</strong></td>
+              <td>Refreezing meltwater</td>
+              <td>Adhesive + shear force</td>
+              <td>Instantaneous extraction</td>
+              <td>Forced relocation (kidnapping)</td>
+            </tr>
+            <tr>
+              <td><strong>Wind Abrasion</strong></td>
+              <td>Sand-laden wind</td>
+              <td>Impact at 15&ndash;50 m/s</td>
+              <td>1,000s&ndash;millions of years</td>
+              <td>Unsanctioned sandblasting</td>
+            </tr>
+            <tr>
+              <td><strong>Subduction</strong></td>
+              <td>Plate tectonics</td>
+              <td>1&ndash;4 GPa at depth</td>
+              <td>~200 million years (oceanic crust)</td>
+              <td>Involuntary descent into the mantle</td>
+            </tr>
+            <tr>
+              <td><strong>Metamorphism</strong></td>
+              <td>Heat + pressure + fluids</td>
+              <td>0.3&ndash;1.2 GPa, 200&ndash;800&deg;C</td>
+              <td>Millions&ndash;100s of millions of years</td>
+              <td>Compulsory identity reassignment</td>
+            </tr>
+            <tr>
+              <td><strong>Melting</strong></td>
+              <td>Extreme heat</td>
+              <td>650&ndash;1,200&deg;C+</td>
+              <td>Variable</td>
+              <td>Total destruction of prior self</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- ACCORDION FAQ                                -->
+  <!-- ============================================ -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Deep Dive</span>
+        <h2>Frequently Asked Questions</h2>
+        <p class="section-desc">Because apparently &ldquo;Why does nature hate rocks?&rdquo; is a question people have. The real answers are below&mdash;with real geology and only mildly exaggerated outrage.</p>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>What is the single most destructive natural force acting on rocks?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>It depends on climate and setting. In cold mountainous regions, <strong>freeze-thaw weathering</strong> dominates. In tropical humid climates, <strong>chemical weathering</strong> (especially hydrolysis of silicates) is the primary agent. In arid regions, <strong>wind abrasion</strong> and <strong>salt crystallization</strong> take the lead. Over geological time and across the whole Earth, <strong>water</strong>&mdash;in all its forms (liquid, ice, vapor)&mdash;is probably the single most consequential agent of rock destruction. Water weathers, erodes, transports, deposits, and facilitates virtually every metamorphic and magmatic process.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>How long does it take to turn a mountain into sand?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Denudation rates (the speed at which landscapes are lowered by erosion) vary enormously. A tectonically active mountain range like the Himalayas may erode at 1&ndash;5 mm per year. A stable continental interior might lose only 0.01 mm per year. As a rough order of magnitude, reducing a 3,000 m mountain range to a low plain takes on the order of <strong>10&ndash;100 million years</strong>, depending on climate, rock type, tectonic uplift, and biological activity. The Appalachian Mountains, once Himalaya-scale, have been worn down to their current modest elevations over ~300+ million years.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Do all rocks weather at the same rate?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Not even close. <strong>Goldich&rsquo;s stability series</strong> (1938) shows that minerals crystallizing at the highest temperatures in Bowen&rsquo;s reaction series (olivine, pyroxene, Ca-plagioclase) are the <em>least</em> stable at Earth&rsquo;s surface and weather fastest. Minerals that form at lower temperatures (muscovite, K-feldspar, quartz) are more stable. Quartz is the last mineral standing in most weathering environments, which is why beaches are full of quartz sand. Quartz is the cockroach of the mineral world.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Why does rock flour turn glacial lakes turquoise?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Rock flour consists of particles ground so fine by glacial abrasion (typically &lt;0.1 mm) that they remain suspended in meltwater. These particles are the right size to scatter short-wavelength (blue-green) light through <strong>Rayleigh scattering</strong>&mdash;the same physics that makes the sky blue. The high concentration of suspended particles gives glacial lakes (like Lake Louise in Banff) their distinctive, opaque turquoise color. The beauty is a direct product of rock being pulverized to dust. Ironic.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Can weathering be beneficial for life?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Absolutely. Chemical weathering of silicate rocks is one of the primary long-term sinks for atmospheric CO&#8322;, helping regulate Earth&rsquo;s climate over millions of years (the <strong>silicate weathering thermostat</strong>). Weathering also releases essential nutrients&mdash;phosphorus, potassium, calcium, magnesium, iron&mdash;from rock into soil and water, making them available to ecosystems. Without rock weathering, there would be no soil, no nutrients, and essentially no terrestrial life as we know it. Rocks are, unwillingly, the foundation of the biosphere.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>What is the difference between weathering and erosion?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p><strong>Weathering</strong> is the in-place breakdown of rock (the rock stays where it is; it just gets weaker, smaller, or chemically altered). <strong>Erosion</strong> is the removal and transport of the weathered material by agents like water, ice, wind, or gravity. Think of weathering as loosening the bolts and erosion as hauling the parts away. In practice they overlap constantly, but the distinction matters to geologists who enjoy categorizing things almost as much as nature enjoys destroying them.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Is natural rock abuse accelerating due to climate change?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>In several ways, yes. Warming temperatures are thawing permafrost and destabilizing mountain slopes, increasing mass wasting events. Retreating glaciers expose fresh bedrock to weathering for the first time in millennia. Increased atmospheric CO&#8322; slightly acidifies rain, accelerating chemical weathering. More intense precipitation events increase erosion rates. However, some freeze-thaw weathering may decrease in regions that warm above the frost line. The net effect varies by region, but overall, climate change is <em>reorganizing</em> natural rock abuse patterns rather than uniformly increasing or decreasing them.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Can rocks ever escape the cycle of abuse?</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <p>Temporarily, yes. Zircon crystals have survived 4.4 billion years by being chemically inert and physically tough&mdash;they are the geological equivalent of a witness protection program. Some deep continental cratonic rocks have avoided recycling for 3&ndash;4 billion years. But on sufficiently long timescales (billions of years), even these survivors will eventually be subducted, weathered, or consumed when the Sun expands into a red giant. The rock cycle is patient, and it always wins.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final Quote -->
+  <section style="background: #fff; padding: 4rem 0;">
+    <div class="container">
+      <div class="rock-quote">
+        <blockquote>&ldquo;In billions of years, nature has never once said &lsquo;sorry.&rsquo; It just keeps weathering, eroding, subducting, and metamorphosing. At least humans have the decency to name their quarries.&rdquo;</blockquote>
+        <cite>&mdash; An Exasperated Geologist, Annual Report (Year 4,600,000,001)</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore More -->
+  <section style="background: var(--stone-900); color: #fff; padding: 5rem 0;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" style="color: var(--sand-400);">Continue the Investigation</span>
+        <h2 style="color: #fff;">Nature Is Only Half the Story</h2>
+        <p class="section-desc" style="color: var(--stone-400);">Natural abuse is ancient and relentless. But humans industrialized it. Explore the full dossier.</p>
+      </div>
+
+      <div class="card-grid card-grid-3">
+        <a href="human-abuse.html" class="card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1);">
+          <h3 style="color: var(--sand-300);">&#127959; Human Abuse</h3>
+          <p style="color: var(--stone-400);">From 50 billion tons of aggregate to smartphone reincarnation. Industrial-scale crushing, burning, and lifestyle repackaging.</p>
+        </a>
+        <a href="rock-cycle.html" class="card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1);">
+          <h3 style="color: var(--magma-300);">&#9854; The Rock Cycle</h3>
+          <p style="color: var(--stone-400);">The institutional reincarnation program no rock can escape. Complete with diagrams and parole-denial statistics.</p>
+        </a>
+        <a href="dossiers.html" class="card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1);">
+          <h3 style="color: #ce93d8;">&#128203; Rock Dossiers</h3>
+          <p style="color: var(--stone-400);">Individual case files for granite, basalt, marble, and more. Complete with abuse exposure reports and consent ratings.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">&#9830;</div>
+            <span>Stop Rock Abuse</span>
+          </a>
+          <p>A satirical geology education project. The jokes are parody; the science is real. Every geological claim is sourced from reputable scientific agencies including USGS, NASA, UNEP, and IEA.</p>
+          <p style="margin-top: .75rem; font-size: .8rem; color: var(--stone-500);">No rocks were given the option to consent to this website.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links">
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="natural-abuse.html">Natural Abuse</a></li>
+            <li><a href="human-abuse.html">Human Abuse</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="timeline.html">Cosmic Timeline</a></li>
+            <li><a href="take-action.html">Take Action</a></li>
+            <li><a href="entertainment.html">Entertainment</a></li>
+            <li><a href="editorial.html">Editorial</a></li>
+            <li><a href="products.html">Products to Avoid</a></li>
+            <li><a href="about.html">About SRA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Topics</h4>
+          <ul class="footer-links">
+            <li><a href="rocks-az.html">Rocks A&ndash;Z</a></li>
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+            <li><a href="about.html">About &amp; Sources</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 4,600,000,000 BC &ndash; Present. Stop Rock Abuse Foundation. All rocks reserved (but not consulted).</p>
+        <p class="footer-disclaimer">This site is satirical. Rocks do not have feelings, legal standing, or hotline numbers. But they do have fascinating geology, and we&rsquo;ve done our best to get it right.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/rock-images.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navPanel').classList.toggle('open');
+      document.querySelector('.mobile-menu-btn').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+</body>
+</html>

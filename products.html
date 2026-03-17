@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products to Avoid - Stop Rock Abuse</title>
+  <meta name="description" content="A comprehensive guide to everyday products that exploit geological resources. Spoiler: it's all of them.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .page-hero-products {
+      background: linear-gradient(135deg, #2e1a1a 0%, #3a1a2a 40%, #2a1a3a 100%);
+    }
+
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      padding: 2rem 0;
+      margin-bottom: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--magma-400);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--stone-400);
+      margin-top: 0.4rem;
+    }
+
+    .products-intro {
+      max-width: 780px;
+      margin: 0 auto 2.5rem;
+      text-align: center;
+    }
+
+    .products-intro p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--stone-300);
+    }
+
+    /* Filter bar */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      padding: 1.5rem 0;
+      margin-bottom: 1rem;
+      justify-content: center;
+    }
+
+    .filter-btn {
+      padding: 0.55rem 1.3rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50px;
+      background: transparent;
+      color: var(--stone-400);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .filter-btn:hover {
+      border-color: rgba(255,255,255,0.35);
+      color: #fff;
+    }
+
+    .filter-btn.active {
+      background: var(--magma-500);
+      border-color: var(--magma-500);
+      color: #fff;
+    }
+
+    /* Guilt counter */
+    .guilt-counter {
+      text-align: center;
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+      background: rgba(229,57,53,0.06);
+      border: 1px solid rgba(229,57,53,0.15);
+      border-radius: 12px;
+    }
+
+    .guilt-counter-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      color: var(--stone-400);
+      margin-bottom: 0.3rem;
+    }
+
+    .guilt-counter-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: var(--magma-400);
+      line-height: 1;
+    }
+
+    .guilt-counter-sub {
+      font-size: 0.85rem;
+      color: var(--stone-500);
+      margin-top: 0.3rem;
+    }
+
+    /* Category sections */
+    .product-category {
+      margin-bottom: 4rem;
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .category-header h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: #fff;
+      letter-spacing: 0.04em;
+    }
+
+    .guilt-badge {
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .guilt-moderate {
+      background: rgba(249,168,37,0.15);
+      color: var(--sand-500);
+      border: 1px solid rgba(249,168,37,0.3);
+    }
+
+    .guilt-high {
+      background: rgba(255,152,0,0.15);
+      color: #ffa726;
+      border: 1px solid rgba(255,152,0,0.3);
+    }
+
+    .guilt-severe {
+      background: rgba(255,87,34,0.15);
+      color: #ff7043;
+      border: 1px solid rgba(255,87,34,0.3);
+    }
+
+    .guilt-extreme {
+      background: rgba(229,57,53,0.15);
+      color: var(--magma-400);
+      border: 1px solid rgba(229,57,53,0.3);
+    }
+
+    .category-tagline {
+      width: 100%;
+      font-size: 0.92rem;
+      color: var(--stone-400);
+      font-style: italic;
+      margin-top: -0.5rem;
+    }
+
+    /* Product cards */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .product-card {
+      background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+      padding: 1.8rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    .product-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.35rem;
+      letter-spacing: 0.02em;
+      color: #fff;
+      margin-bottom: 0.3rem;
+    }
+
+    .product-minerals {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--magma-300);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.8rem;
+    }
+
+    .product-desc {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--stone-300);
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    .product-zinger {
+      font-size: 0.85rem;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--stone-400);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 0.9rem;
+      margin-top: auto;
+    }
+
+    /* Verdict section */
+    .verdict-section {
+      padding: 4rem 0;
+    }
+
+    .verdict-box {
+      background: rgba(229,57,53,0.05);
+      border: 1px solid rgba(229,57,53,0.15);
+      border-radius: 16px;
+      padding: 3rem;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .verdict-box h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: #fff;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .verdict-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .verdict-stat {
+      padding: 1.2rem;
+      background: rgba(0,0,0,0.2);
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .verdict-stat-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--stone-500);
+      margin-bottom: 0.3rem;
+    }
+
+    .verdict-stat-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      color: var(--magma-400);
+    }
+
+    .verdict-text {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--stone-300);
+    }
+
+    .verdict-text p {
+      margin-bottom: 1rem;
+    }
+
+    .verdict-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Dark theme overrides for main content area */
+    main {
+      background: var(--stone-900);
+    }
+
+    .site-footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    @media (max-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      .stat-number {
+        font-size: 2rem;
+      }
+      .filter-bar {
+        gap: 0.4rem;
+      }
+      .filter-btn {
+        padding: 0.45rem 1rem;
+        font-size: 0.72rem;
+      }
+      .category-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .verdict-stats {
+        grid-template-columns: 1fr;
+      }
+      .verdict-box {
+        padding: 2rem 1.5rem;
+      }
+      .guilt-counter-number {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="abuse-ticker" style="position:fixed;top:0;left:0;right:0;z-index:1001;">
+    <div class="ticker-content">
+      BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth&rsquo;s atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp; BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth&rsquo;s atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp;
+    </div>
+  </div>
+
+  <div class="quick-nav">
+    <a href="timeline.html">Cosmic Timeline</a>
+    <a href="rock-cycle.html">Rock Cycle</a>
+    <a href="natural-abuse.html">Natural Abuse</a>
+    <a href="human-abuse.html">Human Abuse</a>
+    <a href="editorial.html">Editorial</a>
+    <a href="entertainment.html">Entertainment</a>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" style="top: 58px;">
+  <div class="container">
+    <a href="index.html" class="logo">STOP ROCK ABUSE</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="rock-cycle.html">Rock Cycle</a>
+      <a href="natural-abuse.html">Natural Abuse</a>
+      <a href="human-abuse.html">Human Abuse</a>
+      <a href="dossiers.html">Dossiers</a>
+      <a href="rocks-az.html">A&ndash;Z</a>
+      <a href="timeline.html">Timeline</a>
+      <a href="news.html">News</a>
+      <a href="entertainment.html">Entertainment</a>
+      <a href="editorial.html">Editorial</a>
+      <a href="products.html" class="active">Products</a>
+      <a href="game.html">The Rockoning</a>
+      <a href="merch.html">Merch</a>
+      <a href="take-action.html">Take Action</a>
+      <a href="about.html">About</a>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+  </div>
+</header>
+
+  <!-- Slide-in nav panel -->
+  <div class="nav-panel" id="navPanel">
+      <a href="index.html">Home</a>
+      <a href="timeline.html">Cosmic Timeline</a>
+      <a href="rock-cycle.html">Rock Cycle</a>
+      <a href="natural-abuse.html">Natural Abuse</a>
+      <a href="human-abuse.html">Human Abuse</a>
+      <a href="editorial.html">Editorial</a>
+      <a href="entertainment.html">Entertainment</a>
+      <a href="news.html">News</a>
+      <a href="game.html">The Rockoning</a>
+      <a href="merch.html">Merch</a>
+      <a href="products.html" class="active">Products</a>
+      <a href="dossiers.html">Rock Dossiers</a>
+      <a href="take-action.html">Take Action</a>
+      <a href="rocks-az.html">Rocks A-Z</a>
+      <a href="about.html">About</a>
+  </div>
+
+  <!-- Nav overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+<!-- Hero -->
+<section class="page-hero page-hero-products" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('img/heroes/hero-products.png'); background-size: cover; background-position: center;">
+  <div class="hero-content">
+    <h1>Products to Avoid</h1>
+    <p class="hero-subtitle">A Consumer Guide for the Rock-Conscious Individual</p>
+  </div>
+</section>
+
+<main style="background: var(--stone-900); color: var(--stone-300); padding: 3rem 0;">
+  <div class="container">
+
+    <!-- Stats bar -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Products listed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">12</div>
+        <div class="stat-label">Categories</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">0%</div>
+        <div class="stat-label">Avoidable</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">NOW</div>
+        <div class="stat-label">You're using rocks right now</div>
+      </div>
+    </div>
+
+    <!-- Intro -->
+    <div class="products-intro">
+      <p>You want to stop exploiting rocks. We respect that. So here is a comprehensive list of everyday products that contain, derive from, or were manufactured using rocks and minerals. Your task is straightforward: stop using all of them. We should mention upfront that this includes the device you're reading this on, the building you're sitting in, the roads that brought you here, and the electricity powering all of it. Good luck.</p>
+    </div>
+
+    <!-- Guilt counter -->
+    <div class="guilt-counter">
+      <div class="guilt-counter-label">Your estimated daily rock interactions</div>
+      <div class="guilt-counter-number" id="guiltCounter">47+</div>
+      <div class="guilt-counter-sub">And that's a conservative number</div>
+    </div>
+
+    <!-- Filter bar -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All Products</button>
+      <button class="filter-btn" data-filter="construction">Construction</button>
+      <button class="filter-btn" data-filter="technology">Technology</button>
+      <button class="filter-btn" data-filter="personal-care">Personal Care</button>
+      <button class="filter-btn" data-filter="kitchen">Kitchen &amp; Food</button>
+      <button class="filter-btn" data-filter="transportation">Transportation</button>
+      <button class="filter-btn" data-filter="clothing">Clothing</button>
+      <button class="filter-btn" data-filter="medicine">Medicine</button>
+      <button class="filter-btn" data-filter="cleaning">Cleaning</button>
+      <button class="filter-btn" data-filter="office">Writing &amp; Office</button>
+      <button class="filter-btn" data-filter="energy">Energy</button>
+      <button class="filter-btn" data-filter="agriculture">Agriculture</button>
+      <button class="filter-btn" data-filter="entertainment">Entertainment</button>
+    </div>
+
+    <!-- ===================== 1. CONSTRUCTION & HOME ===================== -->
+    <div class="product-category" data-category="construction">
+      <div class="category-header">
+        <h2>1. Construction &amp; Home</h2>
+        <span class="guilt-badge guilt-extreme">Rock Guilt: Extreme</span>
+        <p class="category-tagline">You literally live inside processed rocks.</p>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-name">Concrete &amp; Cement</div>
+          <div class="product-minerals">Limestone &bull; Clay &bull; Sand</div>
+          <div class="product-desc">Limestone, clay, and sand heated to 1,450&deg;C. 4.4 billion tons produced annually. The single most consumed material on Earth after water.</div>
+          <div class="product-zinger">You're probably inside some right now.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Bricks</div>
+          <div class="product-minerals">Clay (weathered rock)</div>
+          <div class="product-desc">Clay&mdash;which is just rock that lost an argument with weather&mdash;shaped into blocks and fired in kilns. Humans have been baking rocks into building materials since 7500 BC.</div>
+          <div class="product-zinger">Ten thousand years of kiln technology, all pointed at the same victim.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Glass / Windows</div>
+          <div class="product-minerals">Silica Sand</div>
+          <div class="product-desc">Silica sand heated to 1,700&deg;C until it becomes amorphous. The crystalline structure is permanently destroyed. What remains is transparent, which we find convenient.</div>
+          <div class="product-zinger">Every window is a rock that lost its crystal structure.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Drywall / Plasterboard</div>
+          <div class="product-minerals">Gypsum (Calcium Sulfate Dihydrate)</div>
+          <div class="product-desc">Gypsum mined, heated to drive off water, pressed into sheets, and installed as walls. The interior of your home is compressed mineral.</div>
+          <div class="product-zinger">You hang pictures on flattened rock and call it interior design.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Roof Tiles &amp; Slate</div>
+          <div class="product-minerals">Slate (Metamorphic Rock)</div>
+          <div class="product-desc">Metamorphic rock that spent millions of years forming under heat and pressure, split into thin sheets and nailed to the top of your house to keep rain off.</div>
+          <div class="product-zinger">Millions of years of geological formation. Current role: hat for your house.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Granite / Marble Countertops</div>
+          <div class="product-minerals">Granite &bull; Marble</div>
+          <div class="product-desc">Igneous and metamorphic rock polished to a mirror finish and installed in kitchens. A $40 billion global industry dedicated to giving rocks a second career as furniture.</div>
+          <div class="product-zinger">Millions of years of geological formation, installed to hold your coffee mug.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Ceramic Tiles</div>
+          <div class="product-minerals">Clay &bull; Feldspar &bull; Silica</div>
+          <div class="product-desc">Clay minerals mixed with feldspar and silica, shaped, glazed, and fired at high temperatures. Every tiled surface is kiln-tortured geology arranged in a grid.</div>
+          <div class="product-zinger">Your bathroom floor is an organized display of mineral suffering.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Insulation (Mineral Wool)</div>
+          <div class="product-minerals">Basalt &bull; Slag</div>
+          <div class="product-desc">Rock melted at 1,500&deg;C and spun into fibers at high speed, then stuffed inside walls. The rock equivalent of being turned into cotton candy and buried alive.</div>
+          <div class="product-zinger">Melted, spun, and entombed. For your comfort.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Gravel / Crushed Stone</div>
+          <div class="product-minerals">Various (Limestone, Granite, Trap Rock)</div>
+          <div class="product-desc">Rocks fed into industrial crushers and reduced to fragments. Used for driveways, foundations, and drainage. 1.3 billion tons per year in the US alone.</div>
+          <div class="product-zinger">Water gets to evaporate and come back as rain. Rocks get crushed into gravel and poured under a highway.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Asphalt</div>
+          <div class="product-minerals">Bitumen &bull; Crushed Rock Aggregate</div>
+          <div class="product-desc">Bitumen mixed with crushed rock aggregate and spread in layers. The entire road network is built on this formula. Every road is a rock graveyard with lane markings.</div>
+          <div class="product-zinger">We pave over rocks with other rocks, then drive on them.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===================== 2. TECHNOLOGY & ELECTRONICS ===================== -->
+    <div class="product-category" data-category="technology">
+      <div class="category-header">
+        <h2>2. Technology &amp; Electronics</h2>
+        <span class="guilt-badge guilt-severe">Rock Guilt: Severe</span>
+        <p class="category-tagline">You're reading this on processed minerals right now.</p>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-name">Smartphones</div>
+          <div class="product-minerals">Silicon &bull; Lithium &bull; Copper &bull; Cobalt &bull; Tantalum &bull; Gold &bull; REEs</div>
+          <div class="product-desc">Contains 60+ different minerals. Silicon for chips, lithium for the battery, copper for wiring, cobalt, tantalum, tin, tungsten, gold, and a full roster of rare earth elements.</div>
+          <div class="product-zinger">Your phone is a geological greatest hits album that fits in your pocket.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Computers &amp; Laptops</div>
+          <div class="product-minerals">Silicon &bull; Copper &bull; Aluminum &bull; Gold &bull; Rare Earth Elements</div>
+          <div class="product-desc">The same mineral cocktail as a smartphone, in a larger format. The entire computing revolution runs on refined sand and smelted ore.</div>
+          <div class="product-zinger">Silicon Valley is named after a rock element. They didn't try to hide it.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Fiber Optic Cables</div>
+          <div class="product-minerals">Ultra-Pure Silica Glass</div>
+          <div class="product-desc">Silica purified to 99.9999% and drawn into hair-thin strands that carry data as light pulses. The backbone of the global internet is stretched, molten rock.</div>
+          <div class="product-zinger">The internet runs on glass threads. The information superhighway is paved with sand.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Batteries (Lithium-Ion)</div>
+          <div class="product-minerals">Lithium &bull; Cobalt &bull; Nickel &bull; Manganese &bull; Graphite</div>
+          <div class="product-desc">Lithium, cobalt, nickel, manganese, and graphite, assembled into cells. Every EV battery contains roughly 8 kg of lithium and 35 kg of nickel.</div>
+          <div class="product-zinger">Your EV battery is a mineral diversity initiative on wheels.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Solar Panels</div>
+          <div class="product-minerals">Silicon &bull; Aluminum &bull; Silver &bull; Copper</div>
+          <div class="product-desc">Silicon wafers, aluminum frames, silver contacts, copper wiring. Each panel requires about 20 grams of silver. "Clean energy" built entirely on mined minerals.</div>
+          <div class="product-zinger">Harvesting sunlight with refined rocks. The sun does the work; the rocks get no credit.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">LED Lights</div>
+          <div class="product-minerals">Gallium &bull; Indium &bull; Sapphire</div>
+          <div class="product-desc">Gallium arsenide or gallium nitride on sapphire substrates. Your "energy-efficient" bulb exploits at least four minerals to produce photons.</div>
+          <div class="product-zinger">Even the green option isn't rock-free. Nothing is.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Hard Drives</div>
+          <div class="product-minerals">Aluminum &bull; Neodymium &bull; Platinum</div>
+          <div class="product-desc">Aluminum platters spinning at 7,200 RPM, read by heads floating on a cushion of air, positioned by rare earth magnets. Your vacation photos are stored on processed rocks.</div>
+          <div class="product-zinger">Your data is scratched into spinning metal by a needle riding a magnet. Somehow this works.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===================== 3. PERSONAL CARE & COSMETICS ===================== -->
+    <div class="product-category" data-category="personal-care">
+      <div class="category-header">
+        <h2>3. Personal Care &amp; Cosmetics</h2>
+        <span class="guilt-badge guilt-high">Rock Guilt: High</span>
+        <p class="category-tagline">Your morning routine is a mineral extraction report.</p>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-name">Toothpaste</div>
+          <div class="product-minerals">Calcium Carbonate &bull; Silica &bull; Fluorite</div>
+          <div class="product-desc">Contains calcium carbonate (chalk, which is limestone), silica (sand), and fluoride derived from the mineral fluorite. The abrasive that cleans your teeth is ground-up rock.</div>
+          <div class="product-zinger">You scrub your teeth with powdered rocks twice a day and call it hygiene.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Deodorant</div>
+          <div class="product-minerals">Aluminum Compounds (Bauxite Ore)</div>
+          <div class="product-desc">Many antiperspirants contain aluminum chlorohydrate, derived from bauxite ore. The mineral blocks your sweat glands. It does not get a say in this arrangement.</div>
+          <div class="product-zinger">You apply processed rock to your armpits every morning. This is considered normal.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Makeup / Foundation</div>
+          <div class="product-minerals">Talc &bull; Mica &bull; Iron Oxides &bull; Titanium Dioxide &bull; Zinc Oxide</div>
+          <div class="product-desc">Talc for smoothness, mica for shimmer, iron oxides for color, titanium dioxide for opacity, zinc oxide for coverage. A full mineral palette applied directly to the face.</div>
+          <div class="product-zinger">Contouring is just strategic mineral placement.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Sunscreen</div>
+          <div class="product-minerals">Zinc Oxide &bull; Titanium Dioxide</div>
+          <div class="product-desc">Mineral sunscreens work by physically blocking UV radiation with a layer of zinc oxide or titanium dioxide particles. You smear mineral paste on your skin and call it protection.</div>
+          <div class="product-zinger">A thin layer of rock between you and the sun. The rock takes the hit.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Exfoliating Scrubs</div>
+          <div class="product-minerals">Pumice &bull; Silica &bull; Volcanic Rock</div>
+          <div class="product-desc">Pumice, silica, or ground volcanic rock suspended in gel. The product category where you use rocks to scrub dead skin cells&mdash;which formed on a body built with minerals&mdash;off your body.</div>
+          <div class="product-zinger">You use rocks to remove parts of yourself. The circular economy at work.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Nail Polish</div>
+          <div class="product-minerals">Mica &bull; Silica &bull; Iron Oxide</div>
+          <div class="product-desc">Mica for shimmer, silica for texture, iron oxide for color. The tiny minerals are suspended in solvent and painted onto keratin. Decorative geology at the fingertip level.</div>
+          <div class="product-zinger">Glitter is just mica that got a rebrand.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Dry Shampoo</div>
+          <div class="product-minerals">Kaolin Clay &bull; Silica</div>
+          <div class="product-desc">Often contains kaolin clay or silica to absorb oil. You spray powdered geology into your hair to avoid washing it. The rocks do not judge you for this.</div>
+          <div class="product-zinger">Dusting your hair with mineral powder is apparently easier than showering.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===================== 4. KITCHEN & FOOD ===================== -->
+    <div class="product-category" data-category="kitchen">
+      <div class="category-header">
+        <h2>4. Kitchen &amp; Food</h2>
+        <span class="guilt-badge guilt-high">Rock Guilt: High</span>
+        <p class="category-tagline">Every meal involves mineral accomplices.</p>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-name">Salt</div>
+          <div class="product-minerals">Halite (Sodium Chloride)</div>
+          <div class="product-desc">Halite. A mineral you eat deliberately, on purpose, multiple times a day. 300 million tons mined annually. The only rock with its own shaker on the dinner table.</div>
+          <div class="product-zinger">You season your food with a mineral and nobody finds this remarkable.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Baking Soda</div>
+          <div class="product-minerals">Nahcolite &bull; Trona Ore</div>
+          <div class="product-desc">Sodium bicarbonate, derived from the mineral nahcolite or trona ore. It makes cakes rise, cleans surfaces, and deodorizes refrigerators. A mineral of many talents, none of them voluntary.</div>
+          <div class="product-zinger">Ground-up rock is why your cookies are fluffy.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Cast Iron Pans</div>
+          <div class="product-minerals">Iron Ore</div>
+          <div class="product-desc">Iron ore smelted at 1,200&deg;C, poured into molds, and sold as cookware. People develop emotional attachments to these and pass them down as heirlooms.</div>
+          <div class="product-zinger">Your omelet pan was a rock six months ago. Now it's a family heirloom.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Ceramic Dishes &amp; Mugs</div>
+          <div class="product-minerals">Kaolin Clay &bull; Feldspar &bull; Silica</div>
+          <div class="product-desc">Kaolin clay, feldspar, and silica shaped and fired. Your morning coffee arrives in a vessel made from three different minerals that were heated until they fused together permanently.</div>
+          <div class="product-zinger">Your "World's Best Dad" mug is fired mineral. The text is iron oxide.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Aluminum Foil</div>
+          <div class="product-minerals">Bauxite Ore</div>
+          <div class="product-desc">Bauxite ore refined through the Bayer process into alumina, then smelted and rolled into sheets 0.2mm thick. You use this to wrap leftover lasagna.</div>
+          <div class="product-zinger">You wrap leftovers in processed rock and throw it away.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Stainless Steel Appliances</div>
+          <div class="product-minerals">Iron Ore &bull; Chromium &bull; Nickel</div>
+          <div class="product-desc">Iron alloyed with chromium and nickel. Your refrigerator, dishwasher, and oven are alloys of at least three different rocks standing in your kitchen pretending to be appliances.</div>
+          <div class="product-zinger">Your fridge is three minerals in a trench coat.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Water Filters</div>
+          <div class="product-minerals">Activated Carbon &bull; Zeolite &bull; Diatomaceous Earth</div>
+          <div class="product-desc">Activated carbon, sometimes zeolite or diatomaceous earth. You pass water through rocks to remove things you don't want, which often includes other minerals.</div>
+          <div class="product-zinger">You filter water through rocks to remove rocks from the water.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Non-Stick Coatings</div>
+          <div class="product-minerals">Mineral-Derived Compounds</div>
+          <div class="product-desc">Some contain ceramic (mineral-based) compounds. Even the coating specifically designed so nothing sticks to it required minerals to manufacture. Rocks are inescapable.</div>
+          <div class="product-zinger">Even the "nothing sticks" surface started as something that was stuck underground.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===================== 5. TRANSPORTATION ===================== -->
+    <div class="product-category" data-category="transportation">
+      <div class="category-header">
+        <h2>5. Transportation</h2>
+        <span class="guilt-badge guilt-extreme">Rock Guilt: Extreme</span>
+        <p class="category-tagline">You can't go anywhere without riding on exploited rocks.</p>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-name">Roads</div>
+          <div class="product-minerals">Asphalt &bull; Crushed Stone Aggregate</div>
+          <div class="product-desc">Asphalt plus crushed stone aggregate, layered and compacted. The entire road network&mdash;4.19 million miles in the US alone&mdash;is a geological construction project masquerading as infrastructure.</div>
+          <div class="product-zinger">Every road is a flat rock with painted lines and a speed limit.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Cars</div>
+          <div class="product-minerals">Iron Ore &bull; Bauxite &bull; Silica &bull; Mineral Pigments</div>
+          <div class="product-desc">Steel body (iron ore), aluminum panels (bauxite), glass windows (silica), rubber tires (mineral fillers), paint (mineral pigments). A car is a rolling mineral exhibition with cup holders.</div>
+          <div class="product-zinger">You sit inside processed rocks traveling at 70 mph and complain about the traffic.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Trains &amp; Rails</div>
+          <div class="product-minerals">Steel &bull; Crushed Stone Ballast</div>
+          <div class="product-desc">Steel rails bolted to wooden ties sitting on beds of crushed stone ballast. Trains literally ride on rocks, over rocks, using wheels made from rocks.</div>
+          <div class="product-zinger">Trains ride on rocks. The rocks beneath them were placed there on purpose.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Aircraft</div>
+          <div class="product-minerals">Aluminum Alloys &bull; Titanium &bull; Mineral Composites</div>
+          <div class="product-desc">Aluminum alloys for the fuselage, titanium for engine components, mineral-based composites throughout. Flying is one of the most mineral-intensive things a person can do.</div>
+          <div class="product-zinger">You hurl refined rocks through the atmosphere at 500 mph and call it a vacation.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Tires</div>
+          <div class="product-minerals">Silica &bull; Calcium Carbonate &bull; Carbon Black</div>
+          <div class="product-desc">Rubber compounded with silica, calcium carbonate, and carbon black. The part of the car that actually touches the road is part rock, touching more rock.</div>
+          <div class="product-zinger">Rock-on-rock contact, 800 times per mile, and nobody files a report.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Brake Pads</div>
+          <div class="product-minerals">Mineral Fibers &bull; Copper &bull; Iron &bull; Ceramic</div>
+          <div class="product-desc">Mineral fibers, copper, iron, and ceramic compounds compressed into pads. Stopping your car works by grinding minerals against a metal disc until friction wins.</div>
+          <div class="product-zinger">Stopping is just controlled rock destruction.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===================== 6. CLOTHING & TEXTILES ===================== -->
+    <div class="product-category" data-category="clothing">
+      <div class="category-header">
+        <h2>6. Clothing &amp; Textiles</h2>
+        <span class="guilt-badge guilt-moderate">Rock Guilt: Moderate to Extreme</span>
+        <p class="category-tagline">You are wearing rocks.</p>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-name">Zippers</div>
+          <div class="product-minerals">Brass (Copper + Zinc) &bull; Aluminum</div>
+          <div class="product-desc">Metal zippers are brass (copper and zinc ore) or aluminum. Plastic zippers often contain mineral-filled polymers. The mechanism holding your pants together is smelted rock.</div>
+          <div class="product-zinger">Your fly is held up by refined ore. Act accordingly.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Buttons</div>
+          <div class="product-minerals">Various Smelted Ores &bull; Shell &bull; Stone</div>
+          <div class="product-desc">Metal buttons are smelted ore. Some decorative buttons use actual stone or shell (calcium carbonate). The fastening industry is quietly mineral-dependent.</div>
+          <div class="product-zinger">Buttons: small rocks pretending to be fashion accessories since the 13th century.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Dyes &amp; Pigments</div>
+          <div class="product-minerals">Iron Oxide &bull; Cobalt &bull; Chromium</div>
+          <div class="product-desc">Iron oxide for reds and yellows, cobalt for blue, chromium for green. Colored clothing is mineral-stained fabric. Your wardrobe is a pigment geology exhibit.</div>
+          <div class="product-zinger">That shirt isn't blue. It's cobalt. The mineral just doesn't get a credit.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Synthetic Fabrics</div>
+          <div class="product-minerals">Petroleum (Geological Origin)</div>
+          <div class="product-desc">Polyester is petroleum-derived, and petroleum is the product of geological processes acting on organic material over millions of years. Nylon follows the same lineage. Your athleisure has geological heritage.</div>
+          <div class="product-zinger">Your yoga pants are ancient geology, technically.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Jewelry</div>
+          <div class="product-minerals">Diamonds &bull; Gold &bull; Silver &bull; Platinum &bull; Gemstones</div>
+          <div class="product-desc">The most obvious entry on this list. Diamonds, gold, silver, platinum, gemstones&mdash;a $350 billion global industry built entirely on extracting rocks and attaching price tags.</div>
+          <div class="product-zinger">The engagement ring industry is a rock marketing operation with excellent branding.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===================== 7. MEDICINE & HEALTH ===================== -->
+    <div class="product-category" data-category="medicine">
+      <div class="category-header">
+        <h2>7. Medicine &amp; Health</h2>
+        <span class="guilt-badge guilt-high">Rock Guilt: High</span>
+        <p class="category-tagline">Your health depends on mineral exploitation.</p>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-name">Antacids</div>
+          <div class="product-minerals">Calcium Carbonate (Limestone)</div>
+          <div class="product-desc">Calcium carbonate&mdash;limestone&mdash;compressed into tablets and flavored. You chew rocks to settle your stomach. Tums are literally flavored limestone.</div>
+          <div class="product-zinger">Heartburn remedy: eat a rock. Medical science at its most direct.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Mineral Supplements</div>
+          <div class="product-minerals">Calcium &bull; Iron &bull; Zinc &bull; Magnesium &bull; Potassium</div>
+          <div class="product-desc">Calcium, iron, zinc, magnesium, potassium&mdash;minerals extracted from geological sources, put in capsules, and sold at a significant markup. Supplements are rocks in pill form.</div>
+          <div class="product-zinger">Rocks in capsule form, available at your pharmacy for $12.99.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Talcum Powder</div>
+          <div class="product-minerals">Talc</div>
+          <div class="product-desc">Ground talc mineral, the softest mineral on the Mohs scale. Mined, pulverized, and dusted onto babies. Baby powder is powdered rock applied to the most vulnerable members of society.</div>
+          <div class="product-zinger">We powder infants with ground-up rock and consider this standard childcare.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Kaolin (Anti-Diarrhea)</div>
+          <div class="product-minerals">Kaolin Clay</div>
+          <div class="product-desc">A clay mineral used in some digestive medications. The treatment for certain stomach problems is to ingest geology. The rock absorbs the problem. Nobody thanks the rock.</div>
+          <div class="product-zinger">Treating digestive issues with clay. The prescription is literally "eat dirt."</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Medical Devices</div>
+          <div class="product-minerals">Titanium &bull; Ceramic &bull; Surgical Steel</div>
+          <div class="product-desc">Titanium hip replacements, ceramic dental crowns, surgical steel instruments. Modern medicine would collapse without mineral exploitation. Your replacement knee is a rock.</div>
+          <div class="product-zinger">Some people are part rock. They have the X-rays to prove it.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">X-Ray Machines</div>
+          <div class="product-minerals">Tungsten &bull; Lead</div>
+          <div class="product-desc">Tungsten anodes generate the X-rays; lead shielding protects the operator. Seeing inside your body requires one mineral to emit radiation and another to block it.</div>
+          <div class="product-zinger">Diagnosis by rock bombardment. The minerals don't get malpractice insurance.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===================== 8. CLEANING & HOUSEHOLD ===================== -->
+    <div class="product-category" data-category="cleaning">
+      <div class="category-header">
+        <h2>8. Cleaning &amp; Household</h2>
+        <span class="guilt-badge guilt-high">Rock Guilt: High</span>
+        <p class="category-tagline">Cleaning your house requires destroying minerals.</p>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-name">Scouring Powder</div>
+          <div class="product-minerals">Feldspar &bull; Calcite &bull; Silica</div>
+          <div class="product-desc">Products like Comet and Ajax contain feldspar, calcite, or silica. The cleaning strategy is straightforward: rub rocks on the stain until it leaves. The rocks wear down. The stain loses.</div>
+          <div class="product-zinger">You clean your sink by scrubbing it with powdered rocks. This is the best method we have.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Cat Litter</div>
+          <div class="product-minerals">Bentonite Clay &bull; Diatomaceous Earth &bull; Silica Gel</div>
+          <div class="product-desc">Bentonite clay (the most common type), diatomaceous earth, or silica gel crystals. Your cat's bathroom is a mineral pit. The cat does not appreciate the geological sacrifice involved.</div>
+          <div class="product-zinger">Millions of years of mineral formation. Final assignment: cat bathroom.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Sandpaper</div>
+          <div class="product-minerals">Aluminum Oxide &bull; Silicon Carbide &bull; Garnet</div>
+          <div class="product-desc">Aluminum oxide, silicon carbide, or garnet bonded to paper. A rock glued to paper, used to destroy other surfaces through abrasion. The concept is ancient. The execution is efficient.</div>
+          <div class="product-zinger">A rock on paper, used to sand other things smooth. Weaponized geology.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Water Softener Salt</div>
+          <div class="product-minerals">Halite &bull; Potassium Chloride</div>
+          <div class="product-desc">Rock salt (halite) or potassium chloride pellets. You treat hard water&mdash;which is water that picked up too many minerals&mdash;by adding more minerals. The logic is circular but it works.</div>
+          <div class="product-zinger">The cure for too many minerals is more minerals.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Porcelain Fixtures</div>
+          <div class="product-minerals">Kaolin Clay</div>
+          <div class="product-desc">Toilets, sinks, and bathtubs: all fired kaolin clay. Every bathroom fixture is kiln-fired geology. Your bathroom is essentially a ceramics studio with plumbing.</div>
+          <div class="product-zinger">You bathe inside a fired rock. You sit on a fired rock. Your bathroom is a kiln.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Steel Wool</div>
+          <div class="product-minerals">Iron Ore</div>
+          <div class="product-desc">Very fine steel filaments made from iron ore. You scrub pots with shredded metal that was, not long ago, rock. The filaments slowly disintegrate from the friction, which is the point.</div>
+          <div class="product-zinger">Shredded rock, used to scour other objects. Disposable geology.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===================== 9. WRITING & OFFICE ===================== -->
+    <div class="product-category" data-category="office">
+      <div class="category-header">
+        <h2>9. Writing &amp; Office</h2>
+        <span class="guilt-badge guilt-moderate">Rock Guilt: Moderate</span>
+        <p class="category-tagline">Your office is a mineral depot.</p>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-name">Pencils</div>
+          <div class="product-minerals">Graphite &bull; Clay</div>
+          <div class="product-desc">Graphite mixed with clay, encased in wood. Writing with a pencil is the act of dragging a mineral across a surface until it leaves a trace. The pencil gets shorter. The writing remains.</div>
+          <div class="product-zinger">Writing is mineral dragging. Every sentence costs a rock a fraction of its body.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Paper</div>
+          <div class="product-minerals">Kaolin Clay &bull; Calcium Carbonate</div>
+          <div class="product-desc">Contains kaolin clay coating for smoothness and calcium carbonate filler for opacity and brightness. Even paper&mdash;the thing you assumed was just trees&mdash;has rocks in it.</div>
+          <div class="product-zinger">Paper is part rock. You've been writing on minerals this whole time.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Chalk</div>
+          <div class="product-minerals">Calcium Carbonate</div>
+          <div class="product-desc">Pure calcium carbonate pressed into sticks. Teachers have been dragging rocks across blackboards for centuries. The chalk dust that covers everything is airborne mineral particulate.</div>
+          <div class="product-zinger">Education runs on slowly disintegrating rocks. A metaphor writes itself.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Whiteboards</div>
+          <div class="product-minerals">Porcelain &bull; Steel</div>
+          <div class="product-desc">Porcelain-enameled steel. The replacement for chalkboards still uses minerals&mdash;just different ones. The upgrade from one rock surface to another was marketed as progress.</div>
+          <div class="product-zinger">We replaced rock-on-rock with marker-on-rock and called it innovation.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Ink</div>
+          <div class="product-minerals">Carbon Black &bull; Iron Oxide &bull; Titanium Dioxide</div>
+          <div class="product-desc">Contains mineral pigments: carbon black, iron oxide, titanium dioxide. The words on a printed page are mineral residue arranged into language.</div>
+          <div class="product-zinger">Every printed word is a thin film of ground rock arranged to mean something.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===================== 10. ENERGY ===================== -->
+    <div class="product-category" data-category="energy">
+      <div class="category-header">
+        <h2>10. Energy</h2>
+        <span class="guilt-badge guilt-extreme">Rock Guilt: Extreme</span>
+        <p class="category-tagline">All energy involves rocks. Even renewables.</p>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-name">Coal</div>
+          <div class="product-minerals">Coal (Sedimentary Rock)</div>
+          <div class="product-desc">Technically a sedimentary rock, burned for 27% of global energy. The most directly combusted rock. We dig it up and set it on fire. There is no subtlety to this process.</div>
+          <div class="product-zinger">Step one: find rock. Step two: set rock on fire. We built civilization on this.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Natural Gas</div>
+          <div class="product-minerals">Rock Formations (Shale, Sandstone)</div>
+          <div class="product-desc">Trapped in rock formations, extracted by drilling into those rocks or fracturing them (fracking). We break rocks open to get at the gas inside them. The rocks did not volunteer for this.</div>
+          <div class="product-zinger">We crack rocks open to harvest their gas. This is a real industry.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Nuclear Power</div>
+          <div class="product-minerals">Uranium Ore</div>
+          <div class="product-desc">Uranium ore mined, refined, enriched, and assembled into fuel rods. We split rock atoms to boil water to spin turbines. The most complicated way to make steam from rocks.</div>
+          <div class="product-zinger">We split atoms from rocks to boil water. This is peak engineering.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Hydroelectric Dams</div>
+          <div class="product-minerals">Concrete (Limestone + Rock Aggregate)</div>
+          <div class="product-desc">Massive concrete structures holding back rivers. The Hoover Dam contains 3.25 million cubic yards of concrete. We dam rivers with processed rock and call it renewable energy.</div>
+          <div class="product-zinger">Renewable energy, built from non-renewable rocks. The fine print is geological.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Geothermal</div>
+          <div class="product-minerals">Hot Rocks (Subsurface Geology)</div>
+          <div class="product-desc">We pump water into hot rocks deep underground and harvest the steam that comes back. The rocks do the heating. We do the billing. The rocks receive no royalties.</div>
+          <div class="product-zinger">The rocks heat the water. We sell the electricity. The arrangement is one-sided.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Wind Turbines</div>
+          <div class="product-minerals">Steel &bull; Rare Earth Magnets &bull; Concrete</div>
+          <div class="product-desc">Steel towers, rare earth magnets (neodymium, dysprosium) in generators, concrete foundations. Each turbine needs roughly 900 tons of steel and 2,500 tons of concrete. "Renewable" energy built on non-renewable minerals.</div>
+          <div class="product-zinger">The wind is free. Everything used to capture it is mined.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===================== 11. AGRICULTURE ===================== -->
+    <div class="product-category" data-category="agriculture">
+      <div class="category-header">
+        <h2>11. Agriculture</h2>
+        <span class="guilt-badge guilt-high">Rock Guilt: High</span>
+        <p class="category-tagline">Your food grows in pulverized rock.</p>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-name">Fertilizer</div>
+          <div class="product-minerals">Phosphate Rock &bull; Potash &bull; Limestone</div>
+          <div class="product-desc">Phosphate rock for phosphorus, potash for potassium, limestone for pH correction. Industrial agriculture runs on ground-up rocks spread over fields. Crops grow because of mineral intervention.</div>
+          <div class="product-zinger">Plants eat rocks so you can eat plants. The food chain starts underground.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Pesticides</div>
+          <div class="product-minerals">Copper Sulfate &bull; Mineral-Derived Compounds</div>
+          <div class="product-desc">Many contain mineral-derived compounds. Copper sulfate is a common fungicide. Sulfur is used as a pesticide. We spray mineral solutions on crops to protect them from other organisms.</div>
+          <div class="product-zinger">Mineral-based pest control. The bugs don't stand a chance against geology.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Soil Itself</div>
+          <div class="product-minerals">Weathered Rock + Organic Matter</div>
+          <div class="product-desc">Soil is weathered rock mixed with decomposed organic matter. The ground your food grows in IS rocks that have been broken down by weather, biology, and time over millennia. It takes about 500 years to produce one inch of topsoil.</div>
+          <div class="product-zinger">Dirt is just rock that gave up. We grow lunch in it.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===================== 12. ENTERTAINMENT & SPORTS ===================== -->
+    <div class="product-category" data-category="entertainment">
+      <div class="category-header">
+        <h2>12. Entertainment &amp; Sports</h2>
+        <span class="guilt-badge guilt-moderate">Rock Guilt: Moderate</span>
+        <p class="category-tagline">Even fun involves rocks.</p>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-name">Golf Sand Traps</div>
+          <div class="product-minerals">Silica Sand</div>
+          <div class="product-desc">Silica sand shaped into bunkers and maintained at significant expense. You hit a ball into a small pit of processed rock and get angry about it. The sand is indifferent to your handicap.</div>
+          <div class="product-zinger">A sport where landing in rocks is a penalty. The rocks were there first.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Swimming Pools</div>
+          <div class="product-minerals">Concrete &bull; Ceramic Tile &bull; Sand &bull; Gypsum</div>
+          <div class="product-desc">Concrete shell (rock), tile finish (ceramic/rock), filtration sand (rock), plaster coat (gypsum). A swimming pool is a rock bowl filled with water. You pay to float in it.</div>
+          <div class="product-zinger">Pools are rock bowls. You just add water and a pool noodle.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Ski Slopes</div>
+          <div class="product-minerals">Crushed Rock Base &bull; The Mountain Itself</div>
+          <div class="product-desc">Some slopes use crushed rock base layers. Artificial snow machines use mineral-rich water. And the mountain itself is, of course, an extremely large rock. The entire sport takes place on geology.</div>
+          <div class="product-zinger">Skiing is sliding down a rock at speed. The snow is optional; the rock is structural.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Fireworks</div>
+          <div class="product-minerals">Barium &bull; Strontium &bull; Copper &bull; Aluminum</div>
+          <div class="product-desc">Barium for green, strontium for red, copper for blue, aluminum for white sparks. Fireworks are mineral explosions. You watch rocks detonate in the sky and feel patriotic about it.</div>
+          <div class="product-zinger">Mineral explosions set to music. We do this to celebrate things.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Paint &amp; Art Supplies</div>
+          <div class="product-minerals">Cadmium &bull; Cobalt &bull; Ochre &bull; Lapis Lazuli</div>
+          <div class="product-desc">Cadmium yellow, cobalt blue, ochre, ultramarine (historically from lapis lazuli). Art is the process of arranging colored rocks on a surface and calling it expression.</div>
+          <div class="product-zinger">Every painting is just rocks smeared on fabric in a way that makes people feel things.</div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-name">Musical Instruments</div>
+          <div class="product-minerals">Bronze (Copper + Tin) &bull; Brass (Copper + Zinc) &bull; Steel</div>
+          <div class="product-desc">Cymbals are bronze (copper + tin), brass instruments are copper + zinc, drum hardware is steel. You strike, blow into, or vibrate smelted rock to produce sounds you find pleasing.</div>
+          <div class="product-zinger">Music is organized vibrations of refined rocks. A cymbal crash is a rock screaming.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===================== THE VERDICT ===================== -->
+    <div class="verdict-section">
+      <div class="verdict-box">
+        <h2>The Verdict</h2>
+        <div class="verdict-stats">
+          <div class="verdict-stat">
+            <div class="verdict-stat-label">Products containing rocks or minerals</div>
+            <div class="verdict-stat-value">Essentially all of them</div>
+          </div>
+          <div class="verdict-stat">
+            <div class="verdict-stat-label">Rock-free alternatives identified</div>
+            <div class="verdict-stat-value">None</div>
+          </div>
+          <div class="verdict-stat">
+            <div class="verdict-stat-label">Estimated daily rock interactions per person</div>
+            <div class="verdict-stat-value">47+</div>
+          </div>
+          <div class="verdict-stat">
+            <div class="verdict-stat-label">Likelihood of avoiding all rock products</div>
+            <div class="verdict-stat-value">0.00%</div>
+          </div>
+        </div>
+        <div class="verdict-text">
+          <p>The uncomfortable conclusion is that modern human existence is entirely dependent on geological exploitation. Rocks are in your walls, your food, your medicine, your clothing, your transportation, your entertainment, and&mdash;if you have a titanium hip&mdash;literally inside your body.</p>
+          <p>Even this website is displayed on a device made from at least 60 different minerals, transmitted through fiber optic cables made from silica, powered by energy derived from geological sources, and read by eyes that require zinc, calcium, and iron to function.</p>
+          <p>We are not suggesting you stop using all of these products. That would require living naked in a field, which itself is weathered rock covered in organic matter. We are suggesting you feel slightly worse about it.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Stop Rock Abuse</h4>
+        <p>A geological mockumentary. Real science, delivered with a straight face and a heavy conscience.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Topics</h4>
+        <ul>
+          <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+          <li><a href="natural-abuse.html">Natural Abuse</a></li>
+          <li><a href="human-abuse.html">Human Abuse</a></li>
+          <li><a href="dossiers.html">Rock Dossiers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="rocks-az.html">A&ndash;Z Encyclopedia</a></li>
+          <li><a href="timeline.html">Geological Timeline</a></li>
+          <li><a href="news.html">Rocks in the News</a></li>
+          <li><a href="entertainment.html">Entertainment</a></li>
+          <li><a href="editorial.html">Editorial</a></li>
+          <li><a href="products.html">Products to Avoid</a></li>
+          <li><a href="take-action.html">Take Action</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="about.html">Our Focus Areas</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Stop Rock Abuse. All geological rights reserved. No rocks were consulted in the making of this website.</p>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+<script>
+  // Category filter functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const categories = document.querySelectorAll('.product-category');
+
+    filterBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+
+        // Update active button
+        filterBtns.forEach(function(b) { b.classList.remove('active'); });
+        this.classList.add('active');
+
+        // Show/hide categories
+        categories.forEach(function(cat) {
+          if (filter === 'all' || cat.getAttribute('data-category') === filter) {
+            cat.style.display = '';
+          } else {
+            cat.style.display = 'none';
+          }
+        });
+
+        // Update guilt counter based on visible products
+        var visibleCards = document.querySelectorAll('.product-category:not([style*="display: none"]) .product-card');
+        var counter = document.getElementById('guiltCounter');
+        if (filter === 'all') {
+          counter.textContent = '47+';
+        } else {
+          counter.textContent = visibleCards.length + '+';
+        }
+      });
+    });
+  });
+</script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navPanel').classList.toggle('open');
+      document.querySelector('.mobile-menu-btn').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+</body>
+</html>

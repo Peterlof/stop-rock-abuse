@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Human Abuse - Stop Rock Abuse</title>
+  <meta name="description" content="Industrial-scale crushing, burning, and lifestyle repackaging: a comprehensive look at how humanity exploits 50 billion tons of rock annually. Real statistics, satirical framing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="abuse-ticker" style="position:fixed;top:0;left:0;right:0;z-index:1001;">
+    <div class="ticker-content">
+      BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth's atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp; BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth's atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp;
+    </div>
+  </div>
+
+<div class="quick-nav">
+  <a href="timeline.html">Cosmic Timeline</a>
+  <a href="rock-cycle.html">Rock Cycle</a>
+  <a href="natural-abuse.html">Natural Abuse</a>
+  <a href="human-abuse.html" class="active">Human Abuse</a>
+  <a href="editorial.html">Editorial</a>
+  <a href="entertainment.html">Entertainment</a>
+</div>
+
+  <!-- Header -->
+  <header class="site-header" style="top: 58px;">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">&#9830;</div>
+        <span>Stop Rock Abuse</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="timeline.html">Cosmic Timeline</a></li>
+          <li><a href="rock-cycle.html">Rock Cycle</a></li>
+          <li><a href="natural-abuse.html">Natural Abuse</a></li>
+          <li><a href="human-abuse.html" class="active">Human Abuse</a></li>
+          <li><a href="editorial.html">Editorial</a></li>
+          <li><a href="entertainment.html">Entertainment</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="game.html">The Rockoning</a></li>
+          <li><a href="merch.html">Merch</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="dossiers.html">Rock Dossiers</a></li>
+          <li><a href="take-action.html">Take Action</a></li>
+          <li><a href="rocks-az.html">Rocks A-Z</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slide-in nav panel -->
+  <div class="nav-panel" id="navPanel">
+      <a href="index.html">Home</a>
+      <a href="timeline.html">Cosmic Timeline</a>
+      <a href="rock-cycle.html">Rock Cycle</a>
+      <a href="natural-abuse.html">Natural Abuse</a>
+      <a href="human-abuse.html" class="active">Human Abuse</a>
+      <a href="editorial.html">Editorial</a>
+      <a href="entertainment.html">Entertainment</a>
+      <a href="news.html">News</a>
+      <a href="game.html">The Rockoning</a>
+      <a href="merch.html">Merch</a>
+      <a href="products.html">Products</a>
+      <a href="dossiers.html">Rock Dossiers</a>
+      <a href="take-action.html">Take Action</a>
+      <a href="rocks-az.html">Rocks A-Z</a>
+      <a href="about.html">About</a>
+  </div>
+
+  <!-- Nav overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+  <!-- Page Hero -->
+  <section class="page-hero page-hero-human" style="padding-top: calc(var(--header-height) + 58px); background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('img/heroes/hero-human-abuse.png'); background-size: cover; background-position: center;">
+    <div class="hero-content">
+      <div class="hero-badge">&#9874; Industrial Rock Processing</div>
+      <h1>Human <span class="accent">Abuse</span></h1>
+      <p class="hero-subtitle">
+        Industrial-scale crushing, kiln-grade burning, and lifestyle repackaging. Humanity doesn&rsquo;t just use rocks&mdash;we run a planetary-scale disassembly line that processes billions of tons annually, then sells the remains back as &ldquo;infrastructure.&rdquo;
+      </p>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">50B</div>
+          <div class="stat-label">Tons of sand &amp; gravel<br>used per year globally</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">1.5B</div>
+          <div class="stat-label">Tons of crushed stone<br>US alone (2023)</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">5&ndash;8%</div>
+          <div class="stat-label">Of global CO&#8322; emissions<br>from cement production</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">0</div>
+          <div class="stat-label">Rocks who filled out<br>a consent form</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section: Aggregates -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Foundation of Everything</span>
+        <h2>Aggregates &mdash; The World Runs on &ldquo;Small Rock&rdquo;</h2>
+        <p class="section-desc">Sand, gravel, and crushed stone are the most mined materials on Earth. They are the second most consumed natural resource after water. Every road, building, bridge, and runway begins with a rock that was perfectly fine being large.</p>
+      </div>
+
+      <div class="info-box info-box-fact">
+        <div class="info-box-label">&#128202; UNEP Global Aggregate Data</div>
+        <p>According to the United Nations Environment Programme, the world uses approximately <strong>50 billion tons</strong> of sand and gravel every year&mdash;a rate that has tripled over the past two decades. If you loaded that into dump trucks, the queue would circle the Earth roughly 575 times. None of those trucks would stop to ask the sand how it felt.</p>
+      </div>
+
+      <div class="two-col fade-in">
+        <div>
+          <div class="big-number big-number-sand">50B</div>
+          <h3>Tons Per Year, Globally</h3>
+          <p>Sand and gravel extraction now outpaces the natural rate at which these materials are produced by weathering and erosion. We are literally using rocks faster than nature can break them down&mdash;which, given that nature&rsquo;s been at it for 4.6 billion years, is an impressive level of industrial overachievement.</p>
+          <p>Aggregates underpin the production of concrete, asphalt, glass, electronics, and even water filtration systems. Remove aggregates from the economy and civilization collapses in approximately one billing cycle.</p>
+        </div>
+        <div>
+          <div class="big-number big-number-ocean">2nd</div>
+          <h3>Most Used Resource After Water</h3>
+          <p>Only water is consumed in greater quantities. But water gets to be a liquid, evaporate, and come back as rain. Rocks get crushed into gravel and poured under a highway. The career trajectory is not equivalent.</p>
+
+          <div class="consent-meter" style="margin-top: 1.5rem;">
+            <span style="font-size:.9rem;">Aggregate Consent Level:</span>
+            <div class="consent-bar">
+              <div class="consent-fill" style="width: 0%;"></div>
+            </div>
+            <span class="consent-label">0% &mdash; Not Even Asked</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box info-box-parody">
+        <div class="info-box-label">&#128221; In Other Words</div>
+        <p>&ldquo;We regret to inform you that your geological formation has been rezoned as &lsquo;infrastructure feedstock.&rsquo; You will be extracted, sorted by size, and distributed to facilities where you will be compressed under asphalt or dissolved into cement. Relocation counseling is not available.&rdquo;</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Crushed Stone -->
+  <section style="background: #fff;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Crushing Industry</span>
+        <h2>Crushed Stone</h2>
+        <p class="section-desc">The United States alone operates a vast network of quarries devoted to the singular purpose of making big rocks into small rocks. The USGS calls it &ldquo;mineral commodities.&rdquo; We call it organized fragmentation.</p>
+      </div>
+
+      <div class="card-grid card-grid-2 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-sand">&#9874;</div>
+          <h3>Scale of Operations</h3>
+          <p>In 2023, approximately <strong>1,400 companies</strong> operating roughly <strong>3,500 quarries</strong> in the United States produced about <strong>1.5 billion metric tons</strong> of crushed stone, valued at over <strong>$24 billion</strong>.</p>
+          <p>That is a lot of rocks being involuntarily downsized.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-magma">&#127959;</div>
+          <h3>End Uses</h3>
+          <p>Approximately <strong>70%</strong> of all crushed stone is used as construction aggregate, primarily for road building and maintenance. Another <strong>20%</strong> goes to cement manufacturing. The remaining 10% is scattered across railroad ballast, agricultural lime, and other applications that all end the same way: you&rsquo;re smaller than when you started.</p>
+        </div>
+      </div>
+
+      <table class="data-table fade-in">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Value</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>US Crushed Stone Production (2023)</td>
+            <td>~1.5 billion metric tons</td>
+            <td>USGS Mineral Commodity Summaries</td>
+          </tr>
+          <tr>
+            <td>Estimated Value</td>
+            <td>$24+ billion</td>
+            <td>USGS</td>
+          </tr>
+          <tr>
+            <td>Number of Companies</td>
+            <td>~1,400</td>
+            <td>USGS</td>
+          </tr>
+          <tr>
+            <td>Number of Quarries</td>
+            <td>~3,500</td>
+            <td>USGS</td>
+          </tr>
+          <tr>
+            <td>Construction Aggregate (Roads)</td>
+            <td>~70% of output</td>
+            <td>USGS</td>
+          </tr>
+          <tr>
+            <td>Cement Manufacturing</td>
+            <td>~20% of output</td>
+            <td>USGS</td>
+          </tr>
+          <tr>
+            <td>Rock Consent Forms Filed</td>
+            <td>0</td>
+            <td>All sources, unanimous</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="info-box info-box-parody">
+        <div class="info-box-label">&#128221; HR Notice from the Quarry</div>
+        <p>&ldquo;Dear Rock: Your position as &lsquo;outcrop&rsquo; has been terminated. You have been reassigned to &lsquo;3/4-inch aggregate.&rsquo; Please report to the jaw crusher at your earliest convenience. Benefits not included.&rdquo;</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Construction Sand & Gravel -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Granular Workforce</span>
+        <h2>Construction Sand &amp; Gravel</h2>
+        <p class="section-desc">If crushed stone is the blue-collar backbone of infrastructure, construction sand and gravel are the gig workers&mdash;smaller, cheaper, and exploited in staggering volume.</p>
+      </div>
+
+      <div class="two-col fade-in">
+        <div>
+          <div class="big-number big-number-magma">890M</div>
+          <h3>Tons Produced in the US (2024)</h3>
+          <p>The US produced approximately <strong>890 million metric tons</strong> of construction sand and gravel in 2024, valued at roughly <strong>$12 billion</strong>. That&rsquo;s nearly a billion tons of what were once respectable geological particles, now reduced to filler.</p>
+
+          <div class="consent-meter" style="margin-top: 1.5rem;">
+            <span style="font-size:.9rem;">Sand Consent Level:</span>
+            <div class="consent-bar">
+              <div class="consent-fill" style="width: 0%;"></div>
+            </div>
+            <span class="consent-label">0% &mdash; Sand Cannot Sign Documents</span>
+          </div>
+        </div>
+        <div>
+          <h3>Where It All Goes</h3>
+          <p>The largest single use&mdash;about <strong>42%</strong>&mdash;goes into portland cement concrete. Another <strong>20%</strong> is used for road base and coverings. The rest is distributed across fill, plaster, snow and ice control, filtration, and railroad ballast.</p>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>End Use</th>
+                <th>Share</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Portland Cement Concrete</td>
+                <td>~42%</td>
+              </tr>
+              <tr>
+                <td>Road Base &amp; Coverings</td>
+                <td>~20%</td>
+              </tr>
+              <tr>
+                <td>Fill</td>
+                <td>~12%</td>
+              </tr>
+              <tr>
+                <td>Asphaltic Concrete &amp; Other</td>
+                <td>~11%</td>
+              </tr>
+              <tr>
+                <td>Plaster, Gunite, Snow/Ice Control</td>
+                <td>~8%</td>
+              </tr>
+              <tr>
+                <td>Railroad Ballast &amp; Filtration</td>
+                <td>~7%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="info-box info-box-fact">
+        <div class="info-box-label">&#128202; The Sand Crisis Is Real</div>
+        <p>Global sand extraction from rivers and coastlines is outpacing natural replenishment in many regions. Sand mafias operate in parts of India and Southeast Asia. Desert sand is too round and smooth for concrete (wind erosion polishes the grains). The irony: we live on a planet covered in sand, and we&rsquo;re running out of the <em>right kind</em> of sand. Even abuse has quality standards.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rock Quote -->
+  <section style="background: #fff; padding: 4rem 0;">
+    <div class="container">
+      <div class="rock-quote">
+        <blockquote>&ldquo;I spent 200 million years becoming sandstone. They spent 200 seconds turning me back into sand. I&rsquo;d like to speak with a manager.&rdquo;</blockquote>
+        <cite>&mdash; Former Sandstone, now classified as &ldquo;Coarse Aggregate, Bin 7&rdquo;</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: The Concrete Paradox -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Great Reassembly</span>
+        <h2>The Concrete Paradox</h2>
+        <p class="section-desc">We crush rock into bits, then glue them back together into new rock. This is not a metaphor. This is literally what concrete is.</p>
+      </div>
+
+      <div class="process-flow fade-in">
+        <div class="process-node process-node-igneous">
+          <div class="node-icon">&#9968;</div>
+          <div class="node-label">Natural Rock</div>
+          <div class="node-desc">Perfectly happy outcrop</div>
+        </div>
+        <div class="process-arrow">&#10132;</div>
+        <div class="process-node process-node-magma">
+          <div class="node-icon">&#9874;</div>
+          <div class="node-label">Crushing</div>
+          <div class="node-desc">Jaw crusher, cone crusher</div>
+        </div>
+        <div class="process-arrow">&#10132;</div>
+        <div class="process-node process-node-sedimentary">
+          <div class="node-icon">&#9881;</div>
+          <div class="node-label">Aggregate</div>
+          <div class="node-desc">Sorted rubble</div>
+        </div>
+        <div class="process-arrow">&#10132;</div>
+        <div class="process-node process-node-metamorphic">
+          <div class="node-icon">&#127959;</div>
+          <div class="node-label">Concrete</div>
+          <div class="node-desc">New &ldquo;rock&rdquo;</div>
+        </div>
+      </div>
+
+      <div class="two-col fade-in" style="margin-top: 3rem;">
+        <div>
+          <h3>How Concrete Works</h3>
+          <p>Concrete is a composite material: a paste of <strong>cement and water</strong> binds together a mass of <strong>aggregates</strong> (sand, gravel, crushed stone) into a rock-like solid. Cement typically makes up only <strong>10&ndash;15% of the concrete mix by volume</strong>, according to the Portland Cement Association. The rest is aggregate.</p>
+          <p>In other words, concrete is 85&ndash;90% crushed rock held together by a thin slurry of chemically transformed limestone. It is, philosophically, rock with Stockholm syndrome.</p>
+
+          <div class="info-box info-box-parody" style="margin-top: 1.5rem;">
+            <div class="info-box-label">&#128221; In Other Words</div>
+            <p>&ldquo;We disassembled you into 50,000 pieces, mixed you with the calcium-oxide remains of your limestone cousin, added water, and now you&rsquo;re a parking garage. Congratulations on your new identity.&rdquo;</p>
+          </div>
+        </div>
+        <div>
+          <h3>The Paradox, Stated Plainly</h3>
+          <p>Rock spends millions of years forming through sedimentation, lithification, or crystallization from magma. Humans extract it, crush it, and re-bind it into a material that <em>mimics</em> rock but degrades in decades rather than millennia.</p>
+          <p>We are, in effect, making <strong>worse rock, faster</strong>.</p>
+
+          <div class="big-number big-number-earth" style="margin-top: 1.5rem;">10&ndash;15%</div>
+          <p><strong>Cement by volume</strong> in a typical concrete mix. The rest is aggregate: rocks who were perfectly functional before we intervened.</p>
+
+          <div class="consent-meter" style="margin-top: 1.5rem;">
+            <span style="font-size:.9rem;">Aggregate Consent to Reassembly:</span>
+            <div class="consent-bar">
+              <div class="consent-fill" style="width: 0%;"></div>
+            </div>
+            <span class="consent-label">0% &mdash; Forcibly Re-Rocked</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Industrial Silica -->
+  <section style="background: #fff;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Specialized Uses</span>
+        <h2>Industrial Silica Sand</h2>
+        <p class="section-desc">Not all sand ends up under a highway. Some gets promoted to specialized roles&mdash;glassmaking, foundry casting, abrasive blasting, and hydraulic fracturing. Think of it as a career fair where every booth ends in high-temperature processing.</p>
+      </div>
+
+      <div class="card-grid card-grid-2 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-sand">&#127863;</div>
+          <h3>Glassmaking (Prestige Track)</h3>
+          <p>High-purity silica sand (>99% SiO&#8322;) is heated to approximately <strong>1,700&deg;C</strong> and fused into glass. This is the &ldquo;prestige assignment&rdquo;&mdash;you get melted beyond recognition but at least you become a window, a bottle, or a fiber-optic cable. Rocks consider this the equivalent of being accepted to an elite university that requires cremation as part of orientation.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-magma">&#9881;</div>
+          <h3>Foundry Sand (Support Role)</h3>
+          <p>Silica sand is used to create molds and cores in metal casting. The sand is packed around a pattern, molten metal is poured in, and the sand absorbs the thermal shock. You exist to hold space for something else, then get discarded. It&rsquo;s the temp job of the mineral world.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-earth">&#128163;</div>
+          <h3>Abrasive Blasting (Combat Role)</h3>
+          <p>Sand grains are propelled at high velocity to clean, etch, or prepare surfaces. In this role, the sand is both the projectile and the casualty. &ldquo;Sandblasting&rdquo; is the rare industrial process where the tool destroys itself in the act of working. It is, arguably, the most honest metaphor for rock abuse on this entire website.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-ocean">&#128167;</div>
+          <h3>Hydraulic Fracturing (Proppant Duty)</h3>
+          <p>In fracking, silica sand (the &ldquo;proppant&rdquo;) is pumped underground at extreme pressure to hold open fractures in shale rock, allowing oil and gas to flow. Sand is forced into the body of another rock to keep its wounds open. Even by this website&rsquo;s standards, that&rsquo;s a lot.</p>
+        </div>
+      </div>
+
+      <div class="info-box info-box-parody">
+        <div class="info-box-label">&#128221; Career Fair Brochure (Abridged)</div>
+        <p>&ldquo;Welcome to the Industrial Silica Career Fair! Tracks available: (1) <strong>Glassmaking</strong> &mdash; You will be melted. Prestige guaranteed. (2) <strong>Foundry</strong> &mdash; Hold space for metal, then be swept away. (3) <strong>Abrasive Blasting</strong> &mdash; Become a high-velocity projectile that self-destructs on impact. (4) <strong>Fracking</strong> &mdash; Be injected into another rock under pressure. All tracks are non-refundable.&rdquo;</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Rocks in Your Pocket -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Digital Afterlife</span>
+        <h2>Rocks in Your Pocket: Smartphones</h2>
+        <p class="section-desc">Your phone is not a &ldquo;device.&rdquo; It is a tiny museum of minerals that were refined, purified, doped, etched, and wired into a rectangle that argues with you about autocorrect.</p>
+      </div>
+
+      <div class="two-col fade-in">
+        <div>
+          <h3>Silicon from Quartz</h3>
+          <p><strong>Silicon</strong>&mdash;produced from the mineral <strong>quartz</strong> (SiO&#8322;)&mdash;is the basis of every integrated circuit. Quartz is reduced with carbon in an electric arc furnace at ~2,000&deg;C to produce metallurgical-grade silicon, which is then further purified to electronic-grade purity (99.9999999% Si) through the Siemens process or Czochralski method.</p>
+          <p>Your quartz didn&rsquo;t die. It was reincarnated as your notification sounds.</p>
+
+          <h3 style="margin-top: 2rem;">Chalcopyrite &rarr; Copper</h3>
+          <p><strong>Chalcopyrite</strong> (CuFeS&#8322;) is the most important copper ore mineral. Copper extracted from chalcopyrite is used in the wiring, circuit traces, and connectors of virtually every electronic device. The mineral is crushed, concentrated by flotation, smelted at ~1,200&deg;C, and electrolytically refined.</p>
+          <p>Every text message you send travels through the processed remains of a sulfide mineral that formed in a hydrothermal vein millions of years ago.</p>
+        </div>
+        <div>
+          <h3>Electronic-Grade Quartz Crystal</h3>
+          <p>Natural and synthetic quartz crystals are used as <strong>frequency controls</strong> and timers in communications equipment, computers, and GPS devices. Quartz&rsquo;s piezoelectric properties&mdash;its ability to vibrate at precise frequencies when voltage is applied&mdash;make it the heartbeat of digital electronics.</p>
+          <p><strong>Your quartz crystal vibrates 32,768 times per second</strong> inside your watch. It didn&rsquo;t volunteer for this.</p>
+
+          <table class="data-table" style="margin-top: 1.5rem;">
+            <thead>
+              <tr>
+                <th>Mineral Source</th>
+                <th>Element / Product</th>
+                <th>Role in Electronics</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Quartz (SiO&#8322;)</td>
+                <td>Silicon</td>
+                <td>Integrated circuits, chips</td>
+              </tr>
+              <tr>
+                <td>Chalcopyrite (CuFeS&#8322;)</td>
+                <td>Copper</td>
+                <td>Wiring, circuit traces</td>
+              </tr>
+              <tr>
+                <td>Quartz Crystal</td>
+                <td>Piezoelectric oscillator</td>
+                <td>Frequency control, timers</td>
+              </tr>
+              <tr>
+                <td>Coltan (Columbite-Tantalite)</td>
+                <td>Tantalum</td>
+                <td>Capacitors</td>
+              </tr>
+              <tr>
+                <td>Spodumene / Lepidolite</td>
+                <td>Lithium</td>
+                <td>Batteries</td>
+              </tr>
+              <tr>
+                <td>Bauxite</td>
+                <td>Aluminum</td>
+                <td>Device casings</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="consent-meter" style="margin-top: 1.5rem;">
+            <span style="font-size:.9rem;">Mineral Consent to Becoming Your Phone:</span>
+            <div class="consent-bar">
+              <div class="consent-fill" style="width: 0%;"></div>
+            </div>
+            <span class="consent-label">0% &mdash; Signed Nothing</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box info-box-parody">
+        <div class="info-box-label">&#128221; Exit Interview</div>
+        <p>&ldquo;So, to summarize your journey: you formed in a magma chamber 300 million years ago, spent 200 million years in a mountain, were mined from a quarry, crushed, dissolved in acid, refined to 99.9999999% purity, sliced into wafers 0.775 mm thick, etched with ultraviolet light, and are now computing whether a photo of a sunset deserves a heart emoji. Any questions?&rdquo;</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rock Quote -->
+  <section style="background: #fff; padding: 4rem 0;">
+    <div class="container">
+      <div class="rock-quote">
+        <blockquote>&ldquo;I was a hydrothermal vein deposit. I had structure. I had community. Now I&rsquo;m a capacitor in a device that gets replaced every two years.&rdquo;</blockquote>
+        <cite>&mdash; Tantalum (formerly Columbite-Tantalite), currently residing in a smartphone that just fell in a toilet</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: The Carbon Footprint -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Atmospheric Complaint</span>
+        <h2>The Carbon Footprint of Rock Abuse</h2>
+        <p class="section-desc">When we burn and crush rocks at industrial scale, even the atmosphere files a grievance. Cement production alone accounts for 5&ndash;8% of global anthropogenic CO&#8322; emissions.</p>
+      </div>
+
+      <div class="two-col fade-in">
+        <div>
+          <div class="big-number big-number-magma">5&ndash;8%</div>
+          <h3>Of Global CO&#8322; Emissions</h3>
+          <p>The cement industry is responsible for approximately <strong>5&ndash;8% of global anthropogenic carbon dioxide emissions</strong> each year, according to the International Energy Agency and multiple peer-reviewed studies. If the cement industry were a country, it would be the third-largest emitter in the world, behind only China and the United States.</p>
+          <p>Rocks are not merely being abused. They are being <em>combusted into a climate problem</em>.</p>
+
+          <div class="info-box info-box-alert" style="margin-top: 1.5rem;">
+            <div class="info-box-label">&#9888; Climate Complaint #4,600,000,002</div>
+            <p>When limestone (CaCO&#8323;) is heated to ~1,450&deg;C in a rotary kiln to produce clinker, two things happen: (1) <strong>fuel combustion</strong> releases CO&#8322;, and (2) the <strong>chemical decomposition of limestone itself</strong> (calcination) releases additional CO&#8322;. Approximately 60% of cement&rsquo;s emissions come from calcination&mdash;the rock literally exhaling carbon as it&rsquo;s cooked. The other 40% comes from burning fuel to reach those temperatures.</p>
+          </div>
+        </div>
+        <div>
+          <h3>Clinker Production: The Double Emission</h3>
+          <p>Clinker is the intermediate product formed when raw materials (primarily limestone and clay) are heated in a cement kiln. The process involves:</p>
+          <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+            <li style="margin-bottom: .5rem; color: var(--stone-600);"><strong>Fuel combustion:</strong> Burning coal, petroleum coke, or natural gas to reach ~1,450&deg;C accounts for ~40% of emissions.</li>
+            <li style="margin-bottom: .5rem; color: var(--stone-600);"><strong>Calcination:</strong> The thermal decomposition of CaCO&#8323; into CaO + CO&#8322; accounts for ~60% of emissions. This is an unavoidable chemical reaction&mdash;no fuel substitution can eliminate it.</li>
+          </ul>
+
+          <h3 style="margin-top: 2rem;">IEA Decarbonization Levers</h3>
+          <p>The International Energy Agency identifies several pathways to reduce cement emissions:</p>
+          <table class="data-table" style="margin-top: 1rem;">
+            <thead>
+              <tr>
+                <th>Lever</th>
+                <th>Mechanism</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Clinker Substitution</td>
+                <td>Replace clinker with supplementary cementitious materials (fly ash, slag, calcined clay)</td>
+              </tr>
+              <tr>
+                <td>Energy Efficiency</td>
+                <td>Shift from wet to dry kilns, waste heat recovery</td>
+              </tr>
+              <tr>
+                <td>Fuel Switching</td>
+                <td>Replace fossil fuels with biomass, hydrogen, or waste-derived fuels</td>
+              </tr>
+              <tr>
+                <td>Carbon Capture (CCUS)</td>
+                <td>Capture CO&#8322; from kiln exhaust before it enters the atmosphere</td>
+              </tr>
+              <tr>
+                <td>Novel Cements</td>
+                <td>Alternative binder chemistries that avoid or reduce calcination emissions</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="info-box info-box-parody" style="margin-top: 2rem;">
+        <div class="info-box-label">&#128221; A Letter from the Atmosphere</div>
+        <p>&ldquo;Dear Cement Industry: We have received your annual submission of 2.8 billion tons of CO&#8322;. While we appreciate your commitment to consistency, we must note that the atmosphere&rsquo;s storage capacity is not unlimited. Please consider the decarbonization levers outlined in our previous 47 memos. Yours in mounting frustration, The Atmosphere.&rdquo;</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Summary Stats Section -->
+  <section style="background: var(--stone-900); color: #fff; padding: 5rem 0;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" style="color: var(--sand-400);">The Full Ledger</span>
+        <h2 style="color: #fff;">Human Rock Abuse: By the Numbers</h2>
+        <p class="section-desc" style="color: var(--stone-400);">Every statistic below is sourced from real scientific and governmental agencies. The editorial commentary is ours. The rocks had no say in either.</p>
+      </div>
+
+      <table class="data-table fade-in" style="margin: 0 auto; max-width: 900px;">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Annual Volume / Value</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color: var(--sand-300);">Global Sand &amp; Gravel</td>
+            <td>~50 billion tons/year</td>
+            <td>UNEP</td>
+          </tr>
+          <tr>
+            <td style="color: var(--sand-300);">US Crushed Stone (2023)</td>
+            <td>~1.5 billion tons, $24B+</td>
+            <td>USGS</td>
+          </tr>
+          <tr>
+            <td style="color: var(--sand-300);">US Sand &amp; Gravel (2024)</td>
+            <td>~890 million tons, $12B</td>
+            <td>USGS</td>
+          </tr>
+          <tr>
+            <td style="color: var(--sand-300);">Cement CO&#8322; Emissions</td>
+            <td>5&ndash;8% of global total</td>
+            <td>IEA / IPCC</td>
+          </tr>
+          <tr>
+            <td style="color: var(--sand-300);">Concrete Production</td>
+            <td>~14 billion cubic meters/year</td>
+            <td>GCCA</td>
+          </tr>
+          <tr>
+            <td style="color: var(--sand-300);">US Quarries in Operation</td>
+            <td>~3,500</td>
+            <td>USGS</td>
+          </tr>
+          <tr>
+            <td style="color: var(--sand-300);">Rocks Who Consented</td>
+            <td>0</td>
+            <td>All sources, unanimous</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Closing Quote -->
+  <section style="padding: 4rem 0;">
+    <div class="container">
+      <div class="rock-quote">
+        <blockquote>&ldquo;You call it &lsquo;construction.&rsquo; We call it &lsquo;involuntary reassembly with inadequate binder ratios.&rsquo;&rdquo;</blockquote>
+        <cite>&mdash; Aggregate #4,782,001, now load-bearing in a strip mall somewhere in Ohio</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore More -->
+  <section style="background: var(--stone-900); color: #fff; padding: 5rem 0;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" style="color: var(--sand-400);">Continue the Investigation</span>
+        <h2 style="color: #fff;">More Evidence Awaits</h2>
+        <p class="section-desc" style="color: var(--stone-400);">Human abuse is only one chapter. Nature has been running its own program for billions of years, and individual rocks have stories that would fill a library.</p>
+      </div>
+
+      <div class="card-grid card-grid-3">
+        <a href="natural-abuse.html" class="card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1);">
+          <h3 style="color: var(--ocean-300);">&#127754; Natural Abuse</h3>
+          <p style="color: var(--stone-400);">Water, ice, wind, and chemistry: the enforcement arm of the rock cycle. Learn how nature sandpapers a planet.</p>
+        </a>
+        <a href="dossiers.html" class="card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1);">
+          <h3 style="color: #ce93d8;">&#128203; Rock Dossiers</h3>
+          <p style="color: var(--stone-400);">Individual case files for granite, basalt, marble, and more. Complete with abuse exposure reports and consent ratings.</p>
+        </a>
+        <a href="take-action.html" class="card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1);">
+          <h3 style="color: var(--earth-400);">&#9996; Take Action</h3>
+          <p style="color: var(--stone-400);">Rock Harm Reduction strategies that aren't preachy. Choose recycled aggregate. Let rocks enjoy a second life.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">&#9830;</div>
+            <span>Stop Rock Abuse</span>
+          </a>
+          <p>A satirical geology education project. The jokes are parody; the science is real. Every geological claim is sourced from reputable scientific agencies including USGS, NASA, UNEP, and IEA.</p>
+          <p style="margin-top: .75rem; font-size: .8rem; color: var(--stone-500);">No rocks were given the option to consent to this website.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links">
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="natural-abuse.html">Natural Abuse</a></li>
+            <li><a href="human-abuse.html">Human Abuse</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="timeline.html">Cosmic Timeline</a></li>
+            <li><a href="take-action.html">Take Action</a></li>
+            <li><a href="entertainment.html">Entertainment</a></li>
+            <li><a href="editorial.html">Editorial</a></li>
+            <li><a href="products.html">Products to Avoid</a></li>
+            <li><a href="about.html">About SRA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Topics</h4>
+          <ul class="footer-links">
+            <li><a href="rocks-az.html">Rocks A&ndash;Z</a></li>
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+            <li><a href="about.html">About &amp; Sources</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 4,600,000,000 BC &ndash; Present. Stop Rock Abuse Foundation. All rocks reserved (but not consulted).</p>
+        <p class="footer-disclaimer">This site is satirical. Rocks do not have feelings, legal standing, or hotline numbers. But they do have fascinating geology, and we&rsquo;ve done our best to get it right.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/rock-images.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navPanel').classList.toggle('open');
+      document.querySelector('.mobile-menu-btn').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+</body>
+</html>

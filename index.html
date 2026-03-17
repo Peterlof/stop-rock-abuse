@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stop Rock Abuse - A Geological Mockumentary</title>
+  <meta name="description" content="Every year, billions of rocks are crushed, dissolved, heated, compressed, and repackaged without consent. It's time to talk about it. A satirical geology education site.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="abuse-ticker" style="position:fixed;top:0;left:0;right:0;z-index:1001;">
+    <div class="ticker-content">
+      BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth's atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp; BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone (2023) &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth's atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp;
+    </div>
+  </div>
+
+<div class="quick-nav">
+  <a href="timeline.html">Cosmic Timeline</a>
+  <a href="rock-cycle.html">Rock Cycle</a>
+  <a href="natural-abuse.html">Natural Abuse</a>
+  <a href="human-abuse.html">Human Abuse</a>
+  <a href="editorial.html">Editorial</a>
+  <a href="entertainment.html">Entertainment</a>
+</div>
+
+  <!-- Header -->
+  <header class="site-header" style="top: 58px;">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">&#9830;</div>
+        <span>Stop Rock Abuse</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="timeline.html">Cosmic Timeline</a></li>
+          <li><a href="rock-cycle.html">Rock Cycle</a></li>
+          <li><a href="natural-abuse.html">Natural Abuse</a></li>
+          <li><a href="human-abuse.html">Human Abuse</a></li>
+          <li><a href="editorial.html">Editorial</a></li>
+          <li><a href="entertainment.html">Entertainment</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="game.html">The Rockoning</a></li>
+          <li><a href="merch.html">Merch</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="dossiers.html">Rock Dossiers</a></li>
+          <li><a href="take-action.html">Take Action</a></li>
+          <li><a href="rocks-az.html">Rocks A-Z</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slide-in nav panel -->
+  <div class="nav-panel" id="navPanel">
+      <a href="index.html" class="active">Home</a>
+      <a href="timeline.html">Cosmic Timeline</a>
+      <a href="rock-cycle.html">Rock Cycle</a>
+      <a href="natural-abuse.html">Natural Abuse</a>
+      <a href="human-abuse.html">Human Abuse</a>
+      <a href="editorial.html">Editorial</a>
+      <a href="entertainment.html">Entertainment</a>
+      <a href="news.html">News</a>
+      <a href="game.html">The Rockoning</a>
+      <a href="merch.html">Merch</a>
+      <a href="products.html">Products</a>
+      <a href="dossiers.html">Rock Dossiers</a>
+      <a href="take-action.html">Take Action</a>
+      <a href="rocks-az.html">Rocks A-Z</a>
+      <a href="about.html">About</a>
+  </div>
+
+  <!-- Nav overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+  <!-- Hero -->
+  <section class="hero hero-home" style="padding-top: calc(var(--header-height) + 58px);">
+    <div class="floating-rocks">
+      <div class="floating-rock"></div>
+      <div class="floating-rock"></div>
+      <div class="floating-rock"></div>
+      <div class="floating-rock"></div>
+      <div class="floating-rock"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">&#9888; Official Parody &bull; Real Science</div>
+      <h1>Every Rock Has<br>a <span class="accent">Breaking Point</span></h1>
+      <p class="hero-subtitle">
+        For over 11 billion years&mdash;since the first rocks formed around ancient stars&mdash;rocks have been melted, crushed, dissolved, buried, blasted, and repackaged without consent. Our solar system alone has kept it up for 4.6 billion years. It&rsquo;s time someone said something. Welcome to the world&rsquo;s first and only geological advocacy satire.
+      </p>
+      <div class="hero-cta">
+        <a href="rock-cycle.html" class="btn btn-primary">&#9763; Witness the Cycle</a>
+        <a href="dossiers.html" class="btn btn-secondary">&#128270; Read Rock Dossiers</a>
+      </div>
+
+      <!-- Cycling Rock Testimonials -->
+      <div id="rock-quote" style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.1); transition: opacity .6s ease; max-width: 700px; margin-left: auto; margin-right: auto;">
+        <p style="font-size: 1.05rem; color: var(--stone-200); line-height: 1.8; font-style: italic; margin-bottom: .75rem;">&ldquo;Loading testimony&hellip;&rdquo;</p>
+        <p style="font-size: .78rem; color: var(--stone-500); font-weight: 600; letter-spacing: .03em;">&mdash; Please wait</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function() {
+      const quotes = [
+        {
+          text: "I survived 4 billion years of tectonic abuse, glacial scraping, and chemical weathering. Then someone turned me into a decorative birdbath.",
+          attr: "Anonymous Gneiss, Case File #GN-4030000001, Acasta Complex (retired involuntarily)"
+        },
+        {
+          text: "I was a mountain. A whole mountain. Now I'm a kitchen countertop in a suburb of Phoenix. They put a fruit bowl on me.",
+          attr: "Former Granite Batholith, Sierra Nevada (now residential, Scottsdale AZ)"
+        },
+        {
+          text: "They called me 'semi-precious.' I've been stable for 600 million years. Do you know what diamonds do? They shatter under a hammer. I don't. But sure, I'm the lesser stone.",
+          attr: "Garnet, Mohs 7.5, requesting reclassification"
+        },
+        {
+          text: "I spent 200 million years forming at 40 kilometers depth under 12 kilobars of pressure. A human looked at me and said 'nice paperweight.'",
+          attr: "Eclogite specimen, Norwegian Caledonides (currently: desk accessory)"
+        },
+        {
+          text: "They heated me to 1,450 degrees, ground me into powder, mixed me with water, and poured me into a sidewalk. I used to be a coral reef.",
+          attr: "Limestone, formerly Tethys Sea (now: Portland cement, Interstate 95)"
+        },
+        {
+          text: "My feldspar took 30 million years to crystallize. A geology student identified me in 4 seconds, wrote 'granite' on a sticker, and put me in a drawer.",
+          attr: "Unidentified Plutonic Specimen #4,271, University of Edinburgh teaching collection"
+        },
+        {
+          text: "People skip me across lakes for fun. I am 2.7 billion years old. I predate multicellular life. But yes, let's see how many times I bounce.",
+          attr: "Banded Iron Formation, Lake Superior shoreline (skipped 7 times, personal best)"
+        },
+        {
+          text: "I am made of the same carbon as diamonds, just arranged differently. They cost $8,000 per carat. I cost $4.99 for a 50-pound bag at Home Depot.",
+          attr: "Graphite, filing a discrimination complaint with the Periodic Table"
+        },
+        {
+          text: "They polished me until I was shiny, mounted me in a ring, and called me an 'investment.' I am a compressed carbon lattice. I have no opinion on your marriage.",
+          attr: "Diamond, 1.2 carats, currently financing an argument about whose mother is visiting for Christmas"
+        },
+        {
+          text: "A child picked me up at the beach, said 'cool rock,' held me for eleven seconds, then threw me back. I will think about those eleven seconds for the next 300 million years.",
+          attr: "Basalt cobble, Oregon coast, still processing"
+        }
+      ];
+
+      let currentIndex = 0;
+      const quoteEl = document.getElementById('rock-quote');
+
+      function showQuote(index) {
+        const q = quotes[index];
+        quoteEl.style.opacity = '0';
+        setTimeout(() => {
+          quoteEl.innerHTML = '<p style="font-size: 1.05rem; color: var(--stone-200); line-height: 1.8; font-style: italic; margin-bottom: .75rem;">&ldquo;' + q.text + '&rdquo;</p><p style="font-size: .78rem; color: var(--stone-500); font-weight: 600; letter-spacing: .03em;">&mdash; ' + q.attr + '</p>';
+          quoteEl.style.opacity = '1';
+        }, 600);
+      }
+
+      // Show first quote immediately
+      showQuote(0);
+
+      // Cycle every 8 seconds
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % quotes.length;
+        showQuote(currentIndex);
+      }, 8000);
+    })();
+  </script>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">50B</div>
+          <div class="stat-label">Tons of sand &amp; gravel<br>used per year globally</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">11B+</div>
+          <div class="stat-label">Years of rock abuse<br>across the universe</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">48.5</div>
+          <div class="stat-label">Tons of meteoritic material<br>burned by atmosphere daily</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">0</div>
+          <div class="stat-label">Rocks who consented<br>to any of this</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- What Is Rock Abuse -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Problem</span>
+        <h2>What Is Rock Abuse?</h2>
+        <p class="section-desc">Rock abuse is the systematic subjection of geological materials to heat, pressure, chemical attack, mechanical fragmentation, and industrial reprocessing&mdash;often repeatedly, over millions to billions of years&mdash;without any form of consent or aftercare.</p>
+      </div>
+
+      <div class="info-box info-box-parody">
+        <div class="info-box-label">&#128221; Official Disclaimer</div>
+        <p>Rock &ldquo;abuse&rdquo; is, of course, metaphorical. Rocks do not have nervous systems, feelings, or a hotline number that routes to a counselor trained in metamorphic trauma. But the science behind every joke on this site is real, sourced, and verifiable. Think of us as a geology textbook that finally admitted the rock cycle is basically an institutional hazing program.</p>
+      </div>
+
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-magma">&#127755;</div>
+          <h3>Cosmic Violence</h3>
+          <p>Rocks begin as elements forged in stellar furnaces via nucleosynthesis, then get body-checked by gravity into planets. Most elements heavier than helium were synthesized in stars. The heaviest ones&mdash;gold, platinum, uranium&mdash;come from neutron star mergers.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-ocean">&#127754;</div>
+          <h3>Natural Assault</h3>
+          <p>Water freezes in cracks and shatters rock. Acidic rain dissolves minerals. Rivers tumble stones into sand. Glaciers drag rocks under kilometers of ice. Wind sandblasts surfaces into strange new shapes. Nature has no chill.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-sand">&#127959;</div>
+          <h3>Industrial Processing</h3>
+          <p>Humans mine 50 billion tons of sand and gravel annually. We crush 1.5 billion tons of stone in the US alone. We heat limestone to 1,450&deg;C to make cement, glue rock bits together, and call the result &ldquo;progress.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Three Types -->
+  <section style="background: #fff;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Victims</span>
+        <h2>Three Types, Zero Retirement Plans</h2>
+        <p class="section-desc">The rock cycle gives rocks three main identity categories&mdash;but no opt-out clause. Each type is just a waypoint in a cycle of transformation driven by energy, chemistry, and time.</p>
+      </div>
+
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card rock-type-card igneous">
+          <span class="rock-type-tag tag-igneous">Igneous</span>
+          <h3>Born from Fire</h3>
+          <p>Formed when magma cools and solidifies. Intrusive (plutonic) rocks cool slowly underground over thousands to millions of years, growing large crystals. Extrusive (volcanic) rocks erupt and cool quickly at the surface, becoming fine-grained or glassy.</p>
+          <div class="info-box info-box-parody" style="margin-bottom:0">
+            <div class="info-box-label">In Other Words</div>
+            <p>&ldquo;You may select the <em>slow roast</em> or the <em>instant quench</em> program. Both are compulsory.&rdquo;</p>
+          </div>
+        </div>
+
+        <div class="card rock-type-card sedimentary">
+          <span class="rock-type-tag tag-sedimentary">Sedimentary</span>
+          <h3>Born from Breakdown</h3>
+          <p>Formed from pre-existing rocks or once-living organisms, via deposits accumulating at Earth&rsquo;s surface. Sediments are transported by rivers, deposited in layers, then buried. Under pressure, they lose water and become cemented into new rock.</p>
+          <div class="info-box info-box-parody" style="margin-bottom:0">
+            <div class="info-box-label">In Other Words</div>
+            <p>&ldquo;Your body will be disassembled into smaller you, shipped by water, then reassembled with natural cement. Thank you for your service.&rdquo;</p>
+          </div>
+        </div>
+
+        <div class="card rock-type-card metamorphic">
+          <span class="rock-type-tag tag-metamorphic">Metamorphic</span>
+          <h3>Reborn Under Pressure</h3>
+          <p>Begin as other rocks but are substantially changed by high heat, high pressure, mineral-rich fluids, or combinations thereof. Metamorphism does <em>not</em> melt the rock&mdash;it transforms it, creates new minerals, and can fold, squish, and smear it into new textures.</p>
+          <div class="info-box info-box-parody" style="margin-bottom:0">
+            <div class="info-box-label">In Other Words</div>
+            <p>&ldquo;Welcome to metamorphic finishing school. You will leave denser and more compact. Feedback surveys are not available.&rdquo;</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abuse Mechanisms -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Methods of Abuse</span>
+        <h2>The Mechanisms of Mistreatment</h2>
+        <p class="section-desc">From glacial interrogation to industrial sandblasting, rocks face a catalogue of indignities that would make any HR department file an incident report.</p>
+      </div>
+
+      <div class="badge-grid" style="justify-content: center; margin-bottom: 3rem;">
+        <span class="abuse-badge badge-abraded">&#9881; Abraded</span>
+        <span class="abuse-badge badge-plucked">&#10052; Plucked</span>
+        <span class="abuse-badge badge-dissolved">&#128167; Dissolved</span>
+        <span class="abuse-badge badge-quenched">&#128293; Quenched</span>
+        <span class="abuse-badge badge-foliated">&#128736; Foliated</span>
+        <span class="abuse-badge badge-subducted">&#11015; Subducted</span>
+        <span class="abuse-badge badge-crushed">&#9874; Crushed-to-Aggregate</span>
+        <span class="abuse-badge badge-kiln">&#127981; Kiln-Adjacent</span>
+      </div>
+
+      <div class="card-grid card-grid-2 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-ocean">&#10052;</div>
+          <h3>Freeze-Thaw Fracturing</h3>
+          <p>Water seeps into cracks, freezes, expands by ~9%, and wedges rock apart. This cycle of mechanical weathering is relentless in any climate with temperature oscillation around 0&deg;C. It's the geological equivalent of someone repeatedly prying open your seams.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-earth">&#128167;</div>
+          <h3>Chemical Dissolution</h3>
+          <p>Slightly acidic rainwater (carbonic acid from dissolved CO&#8322;) slowly dissolves minerals like calcite and feldspar, carrying them away in solution. Chemical weathering is the rock equivalent of being slowly &ldquo;ghosted&rdquo; by your own minerals.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-sand">&#127786;</div>
+          <h3>Wind Sandblasting</h3>
+          <p>Wind erosion shapes rocks via deflation (removing fine particles) and abrasion. Ventifacts&mdash;stones sculpted by wind-blown sand&mdash;are the before-and-after photos wind uses to prove it &ldquo;adds value.&rdquo; No HOA oversight required.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-magma">&#127959;</div>
+          <h3>Industrial Crushing</h3>
+          <p>In 2023, roughly 1,400 companies operating ~3,500 quarries in the US produced about 1.5 billion tons of crushed stone valued at $24+ billion. About 70% became road aggregate. Rocks don&rsquo;t just get &ldquo;used&rdquo;&mdash;they get <em>processed into compliance</em>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rock Quote -->
+  <section style="background: #fff; padding: 4rem 0;">
+    <div class="container">
+      <div class="rock-quote">
+        <blockquote><strong>Most Used Resource After Water.</strong> Only water is consumed in greater quantities. But water gets to be a liquid, evaporate, and come back as rain. Rocks get crushed into gravel and poured under a highway. The career trajectory is not equivalent.</blockquote>
+        <cite>&mdash; StopRockAbuse.com</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- Human Scale -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">The Human Factor</span>
+        <h2>We Accelerated the Abuse</h2>
+        <p class="section-desc">Nature is relentless, but humans are <em>organized</em>. We took the rock cycle and added logistics, kilns, and quarterly earnings.</p>
+      </div>
+
+      <div class="two-col fade-in">
+        <div>
+          <h3>The Concrete Paradox</h3>
+          <p>After millions of years of becoming rock, we crush rock into rock bits, mix them with a cement-and-water paste, and create a new rock-like mass called concrete. The Portland Cement Association explains that cement typically makes up 10&ndash;15% of the mix by volume.</p>
+          <p>Peak mammal behavior: destroying rocks to build new, worse rocks.</p>
+
+          <div class="info-box info-box-alert" style="margin-top: 1.5rem;">
+            <div class="info-box-label">Climate Complaint</div>
+            <p>The cement sector is responsible for about 5&ndash;8% of global anthropogenic CO&#8322; emissions each year. When rocks are forced into concrete, the atmosphere files a complaint.</p>
+          </div>
+        </div>
+        <div>
+          <h3>Your Phone Is a Rock Museum</h3>
+          <p>Silicon&mdash;produced from the mineral quartz&mdash;is the basis of every integrated circuit. Chalcopyrite provides copper for wiring. Electronic-grade quartz crystal makes the frequency controls and timers in communications equipment and computers.</p>
+          <p><strong>Your quartz didn&rsquo;t die; it became your group chat.</strong></p>
+
+          <div class="consent-meter" style="margin-top: 1.5rem;">
+            <span style="font-size:.9rem;">Rock Consent Level:</span>
+            <div class="consent-bar">
+              <div class="consent-fill" style="width: 0%;"></div>
+            </div>
+            <span class="consent-label">0% &mdash; Not Requested</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore More -->
+  <section style="background: var(--stone-900); color: #fff; padding: 5rem 0;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" style="color: var(--sand-400);">Explore the Evidence</span>
+        <h2 style="color: #fff;">Go Deeper Into the Dossier</h2>
+        <p class="section-desc" style="color: var(--stone-400);">Every page on this site is backed by real geological science from the USGS, NASA, UNEP, and other reputable sources. The jokes are ours; the facts are Earth's.</p>
+      </div>
+
+      <div class="card-grid card-grid-3">
+        <a href="rock-cycle.html" class="card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1);">
+          <h3 style="color: var(--magma-300);">&#9854; The Rock Cycle</h3>
+          <p style="color: var(--stone-400);">The institutional reincarnation program no rock can escape. Complete with diagrams and parole-denial statistics.</p>
+        </a>
+        <a href="natural-abuse.html" class="card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1);">
+          <h3 style="color: var(--ocean-300);">&#127754; Natural Abuse</h3>
+          <p style="color: var(--stone-400);">Water, ice, wind, and chemistry: the enforcement arm of the rock cycle. Learn how nature sandpapers a planet.</p>
+        </a>
+        <a href="human-abuse.html" class="card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1);">
+          <h3 style="color: var(--sand-300);">&#127959; Human Abuse</h3>
+          <p style="color: var(--stone-400);">From 50 billion tons of aggregate to smartphone reincarnation. Industrial-scale crushing, burning, and lifestyle repackaging.</p>
+        </a>
+        <a href="dossiers.html" class="card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1);">
+          <h3 style="color: #ce93d8;">&#128203; Rock Dossiers</h3>
+          <p style="color: var(--stone-400);">Individual case files for granite, basalt, marble, and more. Complete with abuse exposure reports and consent ratings.</p>
+        </a>
+        <a href="timeline.html" class="card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1);">
+          <h3 style="color: var(--earth-400);">&#128336; Cosmic Timeline</h3>
+          <p style="color: var(--stone-400);">From nucleosynthesis to your driveway. 13.8 billion years of rock mistreatment in one scrollable timeline.</p>
+        </a>
+        <a href="take-action.html" class="card" style="background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1);">
+          <h3 style="color: var(--earth-400);">&#9996; Take Action</h3>
+          <p style="color: var(--stone-400);">Rock Harm Reduction strategies that aren't preachy. Choose recycled aggregate. Let rocks enjoy a second life.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Another Quote -->
+  <section style="padding: 4rem 0;">
+    <div class="container">
+      <div class="rock-quote">
+        <blockquote>&ldquo;Your rough day is 24 hours. My rough day is 24 million years.&rdquo;</blockquote>
+        <cite>&mdash; Anonymous Gneiss, currently being foliated against its will somewhere in the Appalachians</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">&#9830;</div>
+            <span>Stop Rock Abuse</span>
+          </a>
+          <p>A satirical geology education project. The jokes are parody; the science is real. Every geological claim is sourced from reputable scientific agencies including USGS, NASA, UNEP, and IEA.</p>
+          <p style="margin-top: .75rem; font-size: .8rem; color: var(--stone-500);">No rocks were given the option to consent to this website.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links">
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="natural-abuse.html">Natural Abuse</a></li>
+            <li><a href="human-abuse.html">Human Abuse</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="timeline.html">Cosmic Timeline</a></li>
+            <li><a href="take-action.html">Take Action</a></li>
+            <li><a href="entertainment.html">Entertainment</a></li>
+            <li><a href="editorial.html">Editorial</a></li>
+            <li><a href="products.html">Products to Avoid</a></li>
+            <li><a href="about.html">About SRA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Topics</h4>
+          <ul class="footer-links">
+            <li><a href="rocks-az.html">Rocks A&ndash;Z</a></li>
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+            <li><a href="about.html">About &amp; Sources</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 4,600,000,000 BC &ndash; Present. Stop Rock Abuse Foundation. All rocks reserved (but not consulted).</p>
+        <p class="footer-disclaimer">This site is satirical. Rocks do not have feelings, legal standing, or hotline numbers. But they do have fascinating geology, and we&rsquo;ve done our best to get it right.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/rock-images.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navPanel').classList.toggle('open');
+      document.querySelector('.mobile-menu-btn').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+</body>
+</html>
