@@ -57,7 +57,13 @@ var ROCK_IMAGES = {
   "unakite": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Colored_minerals_closeup.jpg/960px-Colored_minerals_closeup.jpg",
   "varvite": "https://upload.wikimedia.org/wikipedia/commons/1/13/Pleistocene_Glacial_Lake_Varves_at_Sandend_Bay_in_Scotland_-_geograph_4175519.jpg",
   "wackestone": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Wackestone_PPL.jpg/960px-Wackestone_PPL.jpg",
-  "turbidite": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Turbidite_formation.jpg/960px-Turbidite_formation.jpg"
+  "turbidite": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Turbidite_formation.jpg/960px-Turbidite_formation.jpg",
+  "xenolith": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Xenolith_in_andesite_%28Tertiary%3B_Yellowstone%2C_Wyoming%2C_USA%29_6_%2848555518367%29.jpg/960px-Xenolith_in_andesite_%28Tertiary%3B_Yellowstone%2C_Wyoming%2C_USA%29_6_%2848555518367%29.jpg",
+  "xenotime": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Xenotime_with_Rutile-08-2-78ab.jpg",
+  "yule-marble": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/White_calcitic_marble_%28Yule_Marble%2C_Middle_Miocene%2C_12_Ma%3B_Marble%2C_Gunnison_County%2C_Colorado%2C_USA%29_4_%2849149677638%29.jpg/960px-White_calcitic_marble_%28Yule_Marble%2C_Middle_Miocene%2C_12_Ma%3B_Marble%2C_Gunnison_County%2C_Colorado%2C_USA%29_4_%2849149677638%29.jpg",
+  "yardang": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Yardang_Lea-Yoakum_Dunes.jpg",
+  "zircon": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Zircon-dtn1a.jpg",
+  "zeolite": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Natroliteinde1.jpg/960px-Natroliteinde1.jpg"
 };
 
 /* Auto-apply images to elements with data-rock attribute */
