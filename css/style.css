@@ -139,6 +139,12 @@ p { margin-bottom: 1rem; }
   transform: translate(-50%, -50%);
 }
 
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+}
+
 .nav-links {
   display: none;
   list-style: none;
