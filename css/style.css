@@ -335,7 +335,8 @@ p { margin-bottom: 1rem; }
 
 .hero-subtitle-lead {
   color: var(--stone-400);
-  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  font-weight: 600;
   line-height: 1.8;
   margin-bottom: 1.5rem;
 }
