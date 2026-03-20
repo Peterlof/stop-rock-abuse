@@ -257,10 +257,33 @@
   }
 
   // ── Helpers ─────────────────────────────────────────────────────
+  function escapeHtml(str) {
+    var d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  function renderLinks(text) {
+    // Convert [text](url) markdown links to <a> tags
+    // First escape HTML, then convert link patterns
+    var safe = escapeHtml(text);
+    return safe.replace(/\[([^\]]+)\]\(([^)]+)\)/g, function (_, label, url) {
+      // Only allow relative URLs and stoprockabuse.com links
+      if (url.match(/^(https?:\/\/(www\.)?stoprockabuse\.com|[a-zA-Z0-9][a-zA-Z0-9._#/-]*\.html)/)) {
+        return '<a href="' + url + '">' + label + '</a>';
+      }
+      return label;
+    });
+  }
+
   function renderBubble(role, text) {
     var div = document.createElement('div');
     div.className = 'rock-chat-msg ' + role;
-    div.textContent = text;
+    if (role === 'bot') {
+      div.innerHTML = renderLinks(text);
+    } else {
+      div.textContent = text;
+    }
     messagesEl.appendChild(div);
     messagesEl.scrollTop = messagesEl.scrollHeight;
   }
