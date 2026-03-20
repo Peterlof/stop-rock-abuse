@@ -5,8 +5,7 @@
  */
 (function () {
   // ── Config ──────────────────────────────────────────────────────
-  // TODO: Replace with your Cloudflare Worker URL after deployment
-  var WORKER_URL = 'https://rock-chat.YOUR-SUBDOMAIN.workers.dev';
+  var WORKER_URL = 'https://rock-chat.stoprockabuse.workers.dev';
   var MAX_MESSAGES = 30;
   var COOLDOWN_MS = 2000;
 
