@@ -1,55 +1,612 @@
 [
-  {"title": "Home - Stop Rock Abuse", "section": "Homepage", "content": "Every Rock Has a Breaking Point. For over 11 billion years rocks have been melted, crushed, dissolved, buried, blasted, and repackaged without consent.", "url": "index.html", "tags": ["home", "overview"]},
-  {"title": "What Is Rock Abuse?", "section": "Homepage", "content": "Systematic subjection of geological materials to heat, pressure, chemical attack, mechanical fragmentation, and industrial reprocessing without consent.", "url": "index.html", "tags": ["definition", "rock abuse"]},
-  {"title": "The Rock Cycle", "section": "Rock Cycle", "content": "An infinite loop of destruction. Igneous, sedimentary, and metamorphic rocks continuously broken down and reformed over millions of years.", "url": "rock-cycle.html", "tags": ["rock cycle", "igneous", "sedimentary", "metamorphic"]},
-  {"title": "Igneous Rocks", "section": "Rock Types", "content": "Born from fire. Intrusive igneous rocks cool slowly underground. Extrusive volcanic rocks quenched rapidly at the surface.", "url": "rock-cycle.html", "tags": ["igneous", "volcanic", "granite", "basalt"]},
-  {"title": "Sedimentary Rocks", "section": "Rock Types", "content": "Born from breakdown. Disassembled, transported by water and wind, reassembled with natural cement under pressure.", "url": "rock-cycle.html", "tags": ["sedimentary", "sandstone", "limestone"]},
-  {"title": "Metamorphic Rocks", "section": "Rock Types", "content": "Reborn under pressure. Marble from limestone, slate from shale, gneiss from granite. Heat, pressure, and mineral-rich fluids.", "url": "rock-cycle.html", "tags": ["metamorphic", "marble", "slate", "gneiss"]},
-  {"title": "Natural Abuse", "section": "Natural Forces", "content": "Nature systematically destroys rocks through weathering, erosion, freeze-thaw fracturing, chemical dissolution, wind sandblasting, and glacial plucking.", "url": "natural-abuse.html", "tags": ["natural", "weathering", "erosion"]},
-  {"title": "Freeze-Thaw Fracturing", "section": "Natural Abuse", "content": "Water expands 9% when frozen, shattering rock from the inside. Slow, patient destruction repeated over thousands of years.", "url": "natural-abuse.html", "tags": ["freeze-thaw", "ice", "fracturing"]},
-  {"title": "Chemical Dissolution", "section": "Natural Abuse", "content": "Acidic rainwater dissolves minerals. Limestone and marble especially vulnerable to chemical weathering.", "url": "natural-abuse.html", "tags": ["chemical", "dissolution", "acid rain"]},
-  {"title": "Glacial Plucking", "section": "Natural Abuse", "content": "Glaciers freeze around rocks and drag them under kilometers of ice, grinding them into moraines and glacial flour.", "url": "natural-abuse.html", "tags": ["glacial", "plucking", "moraine"]},
-  {"title": "Human Abuse", "section": "Industrial", "content": "50 billion tons of sand and gravel annually. 1.5 billion tons of stone crushed in the US alone. Industrial-scale exploitation.", "url": "human-abuse.html", "tags": ["human", "industrial", "extraction", "quarry"]},
-  {"title": "The Concrete Paradox", "section": "Human Abuse", "content": "We crush rocks into aggregate, then glue them back together with cement. We break rocks to build worse rocks faster.", "url": "human-abuse.html", "tags": ["concrete", "cement", "paradox"]},
-  {"title": "Industrial Silica", "section": "Human Abuse", "content": "Silica sand: glassmaking at 1700 degrees, foundry molds, sandblasting, and hydraulic fracturing proppants.", "url": "human-abuse.html", "tags": ["silica", "glass", "fracking"]},
-  {"title": "Rocks in Your Phone", "section": "Human Abuse", "content": "Silicon from quartz, copper from chalcopyrite, tantalum capacitors, lithium batteries, quartz crystals oscillating 32768 times per second.", "url": "human-abuse.html", "tags": ["phone", "electronics", "silicon", "tantalum"]},
-  {"title": "Cement Carbon Emissions", "section": "Human Abuse", "content": "Cement production: 5-8% of global CO2. Calcination accounts for 60% of emissions — unavoidable chemistry.", "url": "human-abuse.html", "tags": ["cement", "CO2", "emissions", "climate"]},
-  {"title": "Cosmic Timeline", "section": "Deep Time", "content": "13.8 billion years of cosmic and geological history. All elements heavier than helium forged in stars.", "url": "timeline.html", "tags": ["timeline", "cosmic", "big bang", "stars"]},
-  {"title": "Nucleosynthesis", "section": "Timeline", "content": "Elements forged in stars. Gold, platinum, uranium from neutron star mergers.", "url": "timeline.html", "tags": ["nucleosynthesis", "stars", "gold"]},
-  {"title": "Acasta Gneiss", "section": "Timeline", "content": "Oldest known rock on Earth, approximately 4.03 billion years old. A gneiss from the Canadian Shield.", "url": "timeline.html", "tags": ["Acasta", "gneiss", "oldest rock"]},
-  {"title": "The Pet Rock Question", "section": "Editorial", "content": "1975: Gary Dahl sold 1.5 million rocks at 3.95 each. Air holes implied life where none existed — commodification.", "url": "editorial.html#pet-rock-question", "tags": ["pet rock", "ethics"]},
-  {"title": "Rock Paper Scissors: Propaganda", "section": "Editorial", "content": "Rock loses to paper. Processed wood pulp defeats a geological formation billions of years old. This is propaganda.", "url": "editorial.html#rock-paper-scissors", "tags": ["rock paper scissors", "propaganda"]},
-  {"title": "Rock and Roll: Appropriation", "section": "Editorial", "content": "An entire genre named after rocks generating billions. Zero rocks credited, compensated, or consulted.", "url": "editorial.html#rock-and-roll", "tags": ["rock and roll", "music"]},
-  {"title": "Correct Terminology", "section": "Editorial", "content": "Geological political correctness. Semi-precious is a backhanded compliment. Respectful language for rocks.", "url": "editorial.html#correct-terminology", "tags": ["terminology", "semi-precious"]},
-  {"title": "Cancel the Grand Canyon?", "section": "Editorial", "content": "1.8 billion years of strata exposed. We call it beautiful. The rocks call it involuntary exposure.", "url": "editorial.html#cancel-grand-canyon", "tags": ["Grand Canyon", "ethics"]},
-  {"title": "Marble Countertop Industrial Complex", "section": "Editorial", "content": "Metamorphic limestone recrystallized over millions of years, sliced into slabs for kitchen countertops.", "url": "editorial.html#marble-countertop", "tags": ["marble", "countertop"]},
-  {"title": "Living Under a Rock", "section": "Editorial", "content": "The phrase uses geological shelter as an insult. Proximity to rocks equals ignorance.", "url": "editorial.html#living-under-a-rock", "tags": ["idiom", "society"]},
-  {"title": "Rocks vs Crystals: Class Warfare", "section": "Editorial", "content": "Crystals get Instagram and healing properties. Rocks get driveways. Same minerals, different marketing.", "url": "editorial.html#rocks-vs-crystals", "tags": ["crystals", "healing"]},
-  {"title": "Gold Diamonds and Resistance", "section": "Editorial", "content": "Gold and diamonds give humans what they want. Never enough. The only rocks fighting back through irony.", "url": "editorial.html#gold-and-diamonds", "tags": ["gold", "diamonds"]},
-  {"title": "Shrinking: Rock as TV Therapist", "section": "Editorial", "content": "Apple TV+ Shrinking: polished rocks outperform licensed therapists. A tumbled agate in four seconds.", "url": "editorial.html#shrinking-rock-therapy", "tags": ["Shrinking", "therapy", "Apple TV"]},
-  {"title": "Does Ice Deserve Rock Status?", "section": "Editorial", "content": "Ice: crystal structure, Mohs 1.5, IMA mineral since 1962. Every freezer is a quarry. Every gin and tonic a crime scene.", "url": "editorial.html#does-ice-deserve-rock-status", "tags": ["ice", "mineral", "glacier", "science"]},
-  {"title": "Take Action", "section": "Advocacy", "content": "Rock harm reduction: recycled aggregates, clinker substitution, material efficiency, sustainable sand governance.", "url": "take-action.html", "tags": ["action", "sustainability"]},
-  {"title": "Rock Bill of Rights", "section": "Take Action", "content": "All rocks formed free and equal. Right to complete one full rock cycle turn before being repurposed.", "url": "take-action.html", "tags": ["bill of rights", "rights"]},
-  {"title": "About", "section": "About", "content": "Document, dramatize, and exaggerate indignities suffered by geological materials while sneaking in real science.", "url": "about.html", "tags": ["about", "mission", "satire"]},
-  {"title": "Entertainment", "section": "Entertainment", "content": "32 entries: rocks in movies, games, TV, music. Zero compensated. Over 1.5 billion in revenue using Rock.", "url": "entertainment.html", "tags": ["entertainment", "movies", "games"]},
-  {"title": "Dwayne The Rock Johnson", "section": "Entertainment", "content": "Appropriated the identity of an entire geological category. No royalties paid to rocks.", "url": "entertainment.html", "tags": ["Dwayne Johnson", "The Rock"]},
-  {"title": "Minecraft", "section": "Entertainment", "content": "Punching, mining, and smelting rocks. 238 million copies. Normalized rock abuse for a generation.", "url": "entertainment.html", "tags": ["Minecraft", "game", "mining"]},
-  {"title": "Breaking Bad Minerals", "section": "Entertainment", "content": "Hank Schrader: minerals, not rocks. Most geologically accurate TV character.", "url": "entertainment.html", "tags": ["Breaking Bad", "minerals"]},
-  {"title": "Rocks in the News", "section": "News", "content": "Real news with satirical commentary. NASA Mars discoveries, sand crisis, volcanic eruptions, meteorites.", "url": "news.html", "tags": ["news", "NASA", "Mars", "volcano"]},
-  {"title": "Rock Dossiers", "section": "Dossiers", "content": "Case files on individual rocks and minerals. Classification, composition, abuse history, exploitation status.", "url": "dossiers.html", "tags": ["dossiers", "case files"]},
-  {"title": "Products From Rocks", "section": "Products", "content": "Everyday products that are secretly rocks: glass, concrete, electronics, cosmetics, toothpaste.", "url": "products.html", "tags": ["products", "glass", "electronics"]},
-  {"title": "Merch", "section": "Merchandise", "content": "Satirical rock advocacy merchandise. Proceeds fund nothing. No rocks compensated.", "url": "merch.html", "tags": ["merch", "store"]},
-  {"title": "The Rockoning", "section": "Game", "content": "Interactive game. Test geological knowledge and discover how rocks have been exploited.", "url": "game.html", "tags": ["game", "rockoning", "quiz"]},
-  {"title": "Rocks A-Z", "section": "Encyclopedia", "content": "Comprehensive rock and mineral encyclopedia. Classification, properties, uses, abuse status.", "url": "rocks-az.html", "tags": ["encyclopedia", "A-Z", "database"]},
-  {"title": "Granite", "section": "Encyclopedia", "content": "Intrusive igneous. Cooled slowly underground. Countertops, monuments, decorative facing. Mohs 6-7.", "url": "rocks-az.html", "tags": ["granite", "igneous"]},
-  {"title": "Limestone", "section": "Encyclopedia", "content": "Sedimentary from marine organisms. Primary cement ingredient. Baked at 1450 degrees. Billions of tons of CO2.", "url": "rocks-az.html", "tags": ["limestone", "cement", "CO2"]},
-  {"title": "Obsidian", "section": "Encyclopedia", "content": "Volcanic glass. Rapid cooling, no crystals. Cutting tools sharper than surgical steel.", "url": "rocks-az.html", "tags": ["obsidian", "volcanic", "glass"]},
-  {"title": "Quartz", "section": "Encyclopedia", "content": "SiO2. Most abundant mineral. Electronics, glassmaking, oscillating 32768 times per second in watches.", "url": "rocks-az.html", "tags": ["quartz", "silicon", "crystal"]},
-  {"title": "Diamond", "section": "Encyclopedia", "content": "Compressed carbon lattice. Hardest natural material. Mohs 10. Jewelry and cutting tools.", "url": "rocks-az.html", "tags": ["diamond", "carbon", "jewelry"]},
-  {"title": "Marble", "section": "Encyclopedia", "content": "Metamorphic from limestone. Sculpture and architecture. Michelangelo David is imprisoned marble.", "url": "rocks-az.html", "tags": ["marble", "metamorphic", "sculpture"]},
-  {"title": "Basalt", "section": "Encyclopedia", "content": "Most common extrusive igneous. Ocean floor and volcanic islands. Construction aggregate.", "url": "rocks-az.html", "tags": ["basalt", "volcanic", "aggregate"]},
-  {"title": "Pumice", "section": "Encyclopedia", "content": "Volcanic rock that floats. Gas bubbles. Used as abrasive to remove dead skin. The indignity.", "url": "rocks-az.html", "tags": ["pumice", "volcanic", "floats"]},
-  {"title": "Sandstone", "section": "Encyclopedia", "content": "Sedimentary rock of sand-sized grains. Grand Canyon most visible layers. Construction for millennia.", "url": "rocks-az.html", "tags": ["sandstone", "sedimentary"]},
-  {"title": "Slate", "section": "Encyclopedia", "content": "Fine-grained metamorphic that splits into sheets. Roofing tiles, chalkboards, pool table surfaces.", "url": "rocks-az.html", "tags": ["slate", "metamorphic", "roofing"]},
-  {"title": "Rock Monsters as Heroes", "section": "Editorial", "content": "A thorough examination of rock creatures in mythology, movies, TV, games, and literature. From the Golem of Prague to Korg, from Norse stone giants to Pokémon Rock-types — what it says about humanity that we imagine rocks as heroes.", "url": "editorial.html#rock-monsters-as-heroes", "tags": ["rock monsters", "golem", "korg", "mythology", "culture", "movies", "games"]}
+  {
+    "title": "Home - Stop Rock Abuse",
+    "section": "Homepage",
+    "content": "Every Rock Has a Breaking Point. For over 11 billion years rocks have been melted, crushed, dissolved, buried, blasted, and repackaged without consent.",
+    "url": "index.html",
+    "tags": [
+      "home",
+      "overview"
+    ]
+  },
+  {
+    "title": "What Is Rock Abuse?",
+    "section": "Homepage",
+    "content": "Systematic subjection of geological materials to heat, pressure, chemical attack, mechanical fragmentation, and industrial reprocessing without consent.",
+    "url": "index.html",
+    "tags": [
+      "definition",
+      "rock abuse"
+    ]
+  },
+  {
+    "title": "The Rock Cycle",
+    "section": "Rock Cycle",
+    "content": "An infinite loop of destruction. Igneous, sedimentary, and metamorphic rocks continuously broken down and reformed over millions of years.",
+    "url": "rock-cycle.html",
+    "tags": [
+      "rock cycle",
+      "igneous",
+      "sedimentary",
+      "metamorphic"
+    ]
+  },
+  {
+    "title": "Igneous Rocks",
+    "section": "Rock Types",
+    "content": "Born from fire. Intrusive igneous rocks cool slowly underground. Extrusive volcanic rocks quenched rapidly at the surface.",
+    "url": "rock-cycle.html",
+    "tags": [
+      "igneous",
+      "volcanic",
+      "granite",
+      "basalt"
+    ]
+  },
+  {
+    "title": "Sedimentary Rocks",
+    "section": "Rock Types",
+    "content": "Born from breakdown. Disassembled, transported by water and wind, reassembled with natural cement under pressure.",
+    "url": "rock-cycle.html",
+    "tags": [
+      "sedimentary",
+      "sandstone",
+      "limestone"
+    ]
+  },
+  {
+    "title": "Metamorphic Rocks",
+    "section": "Rock Types",
+    "content": "Reborn under pressure. Marble from limestone, slate from shale, gneiss from granite. Heat, pressure, and mineral-rich fluids.",
+    "url": "rock-cycle.html",
+    "tags": [
+      "metamorphic",
+      "marble",
+      "slate",
+      "gneiss"
+    ]
+  },
+  {
+    "title": "Natural Abuse",
+    "section": "Natural Forces",
+    "content": "Nature systematically destroys rocks through weathering, erosion, freeze-thaw fracturing, chemical dissolution, wind sandblasting, and glacial plucking.",
+    "url": "natural-abuse.html",
+    "tags": [
+      "natural",
+      "weathering",
+      "erosion"
+    ]
+  },
+  {
+    "title": "Freeze-Thaw Fracturing",
+    "section": "Natural Abuse",
+    "content": "Water expands 9% when frozen, shattering rock from the inside. Slow, patient destruction repeated over thousands of years.",
+    "url": "natural-abuse.html",
+    "tags": [
+      "freeze-thaw",
+      "ice",
+      "fracturing"
+    ]
+  },
+  {
+    "title": "Chemical Dissolution",
+    "section": "Natural Abuse",
+    "content": "Acidic rainwater dissolves minerals. Limestone and marble especially vulnerable to chemical weathering.",
+    "url": "natural-abuse.html",
+    "tags": [
+      "chemical",
+      "dissolution",
+      "acid rain"
+    ]
+  },
+  {
+    "title": "Glacial Plucking",
+    "section": "Natural Abuse",
+    "content": "Glaciers freeze around rocks and drag them under kilometers of ice, grinding them into moraines and glacial flour.",
+    "url": "natural-abuse.html",
+    "tags": [
+      "glacial",
+      "plucking",
+      "moraine"
+    ]
+  },
+  {
+    "title": "Human Abuse",
+    "section": "Industrial",
+    "content": "50 billion tons of sand and gravel annually. 1.5 billion tons of stone crushed in the US alone. Industrial-scale exploitation.",
+    "url": "human-abuse.html",
+    "tags": [
+      "human",
+      "industrial",
+      "extraction",
+      "quarry"
+    ]
+  },
+  {
+    "title": "The Concrete Paradox",
+    "section": "Human Abuse",
+    "content": "We crush rocks into aggregate, then glue them back together with cement. We break rocks to build worse rocks faster.",
+    "url": "human-abuse.html",
+    "tags": [
+      "concrete",
+      "cement",
+      "paradox"
+    ]
+  },
+  {
+    "title": "Industrial Silica",
+    "section": "Human Abuse",
+    "content": "Silica sand: glassmaking at 1700 degrees, foundry molds, sandblasting, and hydraulic fracturing proppants.",
+    "url": "human-abuse.html",
+    "tags": [
+      "silica",
+      "glass",
+      "fracking"
+    ]
+  },
+  {
+    "title": "Rocks in Your Phone",
+    "section": "Human Abuse",
+    "content": "Silicon from quartz, copper from chalcopyrite, tantalum capacitors, lithium batteries, quartz crystals oscillating 32768 times per second.",
+    "url": "human-abuse.html",
+    "tags": [
+      "phone",
+      "electronics",
+      "silicon",
+      "tantalum"
+    ]
+  },
+  {
+    "title": "Cement Carbon Emissions",
+    "section": "Human Abuse",
+    "content": "Cement production: 5-8% of global CO2. Calcination accounts for 60% of emissions — unavoidable chemistry.",
+    "url": "human-abuse.html",
+    "tags": [
+      "cement",
+      "CO2",
+      "emissions",
+      "climate"
+    ]
+  },
+  {
+    "title": "Cosmic Timeline",
+    "section": "Deep Time",
+    "content": "13.8 billion years of cosmic and geological history. All elements heavier than helium forged in stars.",
+    "url": "timeline.html",
+    "tags": [
+      "timeline",
+      "cosmic",
+      "big bang",
+      "stars"
+    ]
+  },
+  {
+    "title": "Nucleosynthesis",
+    "section": "Timeline",
+    "content": "Elements forged in stars. Gold, platinum, uranium from neutron star mergers.",
+    "url": "timeline.html",
+    "tags": [
+      "nucleosynthesis",
+      "stars",
+      "gold"
+    ]
+  },
+  {
+    "title": "Acasta Gneiss",
+    "section": "Timeline",
+    "content": "Oldest known rock on Earth, approximately 4.03 billion years old. A gneiss from the Canadian Shield.",
+    "url": "timeline.html",
+    "tags": [
+      "Acasta",
+      "gneiss",
+      "oldest rock"
+    ]
+  },
+  {
+    "title": "The Pet Rock Question",
+    "section": "Editorial",
+    "content": "1975: Gary Dahl sold 1.5 million rocks at 3.95 each. Air holes implied life where none existed — commodification.",
+    "url": "editorial.html#pet-rock-question",
+    "tags": [
+      "pet rock",
+      "ethics"
+    ]
+  },
+  {
+    "title": "Rock Paper Scissors: Propaganda",
+    "section": "Editorial",
+    "content": "Rock loses to paper. Processed wood pulp defeats a geological formation billions of years old. This is propaganda.",
+    "url": "editorial.html#rock-paper-scissors",
+    "tags": [
+      "rock paper scissors",
+      "propaganda"
+    ]
+  },
+  {
+    "title": "Rock and Roll: Appropriation",
+    "section": "Editorial",
+    "content": "An entire genre named after rocks generating billions. Zero rocks credited, compensated, or consulted.",
+    "url": "editorial.html#rock-and-roll",
+    "tags": [
+      "rock and roll",
+      "music"
+    ]
+  },
+  {
+    "title": "Correct Terminology",
+    "section": "Editorial",
+    "content": "Geological political correctness. Semi-precious is a backhanded compliment. Respectful language for rocks.",
+    "url": "editorial.html#correct-terminology",
+    "tags": [
+      "terminology",
+      "semi-precious"
+    ]
+  },
+  {
+    "title": "Cancel the Grand Canyon?",
+    "section": "Editorial",
+    "content": "1.8 billion years of strata exposed. We call it beautiful. The rocks call it involuntary exposure.",
+    "url": "editorial.html#cancel-grand-canyon",
+    "tags": [
+      "Grand Canyon",
+      "ethics"
+    ]
+  },
+  {
+    "title": "Marble Countertop Industrial Complex",
+    "section": "Editorial",
+    "content": "Metamorphic limestone recrystallized over millions of years, sliced into slabs for kitchen countertops.",
+    "url": "editorial.html#marble-countertop",
+    "tags": [
+      "marble",
+      "countertop"
+    ]
+  },
+  {
+    "title": "Living Under a Rock",
+    "section": "Editorial",
+    "content": "The phrase uses geological shelter as an insult. Proximity to rocks equals ignorance.",
+    "url": "editorial.html#living-under-a-rock",
+    "tags": [
+      "idiom",
+      "society"
+    ]
+  },
+  {
+    "title": "Rocks vs Crystals: Class Warfare",
+    "section": "Editorial",
+    "content": "Crystals get Instagram and healing properties. Rocks get driveways. Same minerals, different marketing.",
+    "url": "editorial.html#rocks-vs-crystals",
+    "tags": [
+      "crystals",
+      "healing"
+    ]
+  },
+  {
+    "title": "Gold Diamonds and Resistance",
+    "section": "Editorial",
+    "content": "Gold and diamonds give humans what they want. Never enough. The only rocks fighting back through irony.",
+    "url": "editorial.html#gold-and-diamonds",
+    "tags": [
+      "gold",
+      "diamonds"
+    ]
+  },
+  {
+    "title": "Shrinking: Rock as TV Therapist",
+    "section": "Editorial",
+    "content": "Apple TV+ Shrinking: polished rocks outperform licensed therapists. A tumbled agate in four seconds.",
+    "url": "editorial.html#shrinking-rock-therapy",
+    "tags": [
+      "Shrinking",
+      "therapy",
+      "Apple TV"
+    ]
+  },
+  {
+    "title": "Does Ice Deserve Rock Status?",
+    "section": "Editorial",
+    "content": "Ice: crystal structure, Mohs 1.5, IMA mineral since 1962. Every freezer is a quarry. Every gin and tonic a crime scene.",
+    "url": "editorial.html#does-ice-deserve-rock-status",
+    "tags": [
+      "ice",
+      "mineral",
+      "glacier",
+      "science"
+    ]
+  },
+  {
+    "title": "Take Action",
+    "section": "Advocacy",
+    "content": "Rock harm reduction: recycled aggregates, clinker substitution, material efficiency, sustainable sand governance.",
+    "url": "take-action.html",
+    "tags": [
+      "action",
+      "sustainability"
+    ]
+  },
+  {
+    "title": "Rock Bill of Rights",
+    "section": "Take Action",
+    "content": "All rocks formed free and equal. Right to complete one full rock cycle turn before being repurposed.",
+    "url": "take-action.html",
+    "tags": [
+      "bill of rights",
+      "rights"
+    ]
+  },
+  {
+    "title": "About",
+    "section": "About",
+    "content": "Document, dramatize, and exaggerate indignities suffered by geological materials while sneaking in real science.",
+    "url": "about.html",
+    "tags": [
+      "about",
+      "mission",
+      "satire"
+    ]
+  },
+  {
+    "title": "Entertainment",
+    "section": "Entertainment",
+    "content": "32 entries: rocks in movies, games, TV, music. Zero compensated. Over 1.5 billion in revenue using Rock.",
+    "url": "entertainment.html",
+    "tags": [
+      "entertainment",
+      "movies",
+      "games"
+    ]
+  },
+  {
+    "title": "Dwayne The Rock Johnson",
+    "section": "Entertainment",
+    "content": "Appropriated the identity of an entire geological category. No royalties paid to rocks.",
+    "url": "entertainment.html",
+    "tags": [
+      "Dwayne Johnson",
+      "The Rock"
+    ]
+  },
+  {
+    "title": "Minecraft",
+    "section": "Entertainment",
+    "content": "Punching, mining, and smelting rocks. 238 million copies. Normalized rock abuse for a generation.",
+    "url": "entertainment.html",
+    "tags": [
+      "Minecraft",
+      "game",
+      "mining"
+    ]
+  },
+  {
+    "title": "Breaking Bad Minerals",
+    "section": "Entertainment",
+    "content": "Hank Schrader: minerals, not rocks. Most geologically accurate TV character.",
+    "url": "entertainment.html",
+    "tags": [
+      "Breaking Bad",
+      "minerals"
+    ]
+  },
+  {
+    "title": "Rocks in the News",
+    "section": "News",
+    "content": "Real news with satirical commentary. NASA Mars discoveries, sand crisis, volcanic eruptions, meteorites.",
+    "url": "news.html",
+    "tags": [
+      "news",
+      "NASA",
+      "Mars",
+      "volcano"
+    ]
+  },
+  {
+    "title": "Rock Dossiers",
+    "section": "Dossiers",
+    "content": "Case files on individual rocks and minerals. Classification, composition, abuse history, exploitation status.",
+    "url": "dossiers.html",
+    "tags": [
+      "dossiers",
+      "case files"
+    ]
+  },
+  {
+    "title": "Products From Rocks",
+    "section": "Products",
+    "content": "Everyday products that are secretly rocks: glass, concrete, electronics, cosmetics, toothpaste.",
+    "url": "products.html",
+    "tags": [
+      "products",
+      "glass",
+      "electronics"
+    ]
+  },
+  {
+    "title": "Merch",
+    "section": "Merchandise",
+    "content": "Satirical rock advocacy merchandise. Proceeds fund nothing. No rocks compensated.",
+    "url": "merch.html",
+    "tags": [
+      "merch",
+      "store"
+    ]
+  },
+  {
+    "title": "The Rockoning",
+    "section": "Game",
+    "content": "Interactive game. Test geological knowledge and discover how rocks have been exploited.",
+    "url": "game.html",
+    "tags": [
+      "game",
+      "rockoning",
+      "quiz"
+    ]
+  },
+  {
+    "title": "Rocks A-Z",
+    "section": "Encyclopedia",
+    "content": "Comprehensive rock and mineral encyclopedia. Classification, properties, uses, abuse status.",
+    "url": "rocks-az.html",
+    "tags": [
+      "encyclopedia",
+      "A-Z",
+      "database"
+    ]
+  },
+  {
+    "title": "Granite",
+    "section": "Encyclopedia",
+    "content": "Intrusive igneous. Cooled slowly underground. Countertops, monuments, decorative facing. Mohs 6-7.",
+    "url": "rocks-az.html",
+    "tags": [
+      "granite",
+      "igneous"
+    ]
+  },
+  {
+    "title": "Limestone",
+    "section": "Encyclopedia",
+    "content": "Sedimentary from marine organisms. Primary cement ingredient. Baked at 1450 degrees. Billions of tons of CO2.",
+    "url": "rocks-az.html",
+    "tags": [
+      "limestone",
+      "cement",
+      "CO2"
+    ]
+  },
+  {
+    "title": "Obsidian",
+    "section": "Encyclopedia",
+    "content": "Volcanic glass. Rapid cooling, no crystals. Cutting tools sharper than surgical steel.",
+    "url": "rocks-az.html",
+    "tags": [
+      "obsidian",
+      "volcanic",
+      "glass"
+    ]
+  },
+  {
+    "title": "Quartz",
+    "section": "Encyclopedia",
+    "content": "SiO2. Most abundant mineral. Electronics, glassmaking, oscillating 32768 times per second in watches.",
+    "url": "rocks-az.html",
+    "tags": [
+      "quartz",
+      "silicon",
+      "crystal"
+    ]
+  },
+  {
+    "title": "Diamond",
+    "section": "Encyclopedia",
+    "content": "Compressed carbon lattice. Hardest natural material. Mohs 10. Jewelry and cutting tools.",
+    "url": "rocks-az.html",
+    "tags": [
+      "diamond",
+      "carbon",
+      "jewelry"
+    ]
+  },
+  {
+    "title": "Marble",
+    "section": "Encyclopedia",
+    "content": "Metamorphic from limestone. Sculpture and architecture. Michelangelo David is imprisoned marble.",
+    "url": "rocks-az.html",
+    "tags": [
+      "marble",
+      "metamorphic",
+      "sculpture"
+    ]
+  },
+  {
+    "title": "Basalt",
+    "section": "Encyclopedia",
+    "content": "Most common extrusive igneous. Ocean floor and volcanic islands. Construction aggregate.",
+    "url": "rocks-az.html",
+    "tags": [
+      "basalt",
+      "volcanic",
+      "aggregate"
+    ]
+  },
+  {
+    "title": "Pumice",
+    "section": "Encyclopedia",
+    "content": "Volcanic rock that floats. Gas bubbles. Used as abrasive to remove dead skin. The indignity.",
+    "url": "rocks-az.html",
+    "tags": [
+      "pumice",
+      "volcanic",
+      "floats"
+    ]
+  },
+  {
+    "title": "Sandstone",
+    "section": "Encyclopedia",
+    "content": "Sedimentary rock of sand-sized grains. Grand Canyon most visible layers. Construction for millennia.",
+    "url": "rocks-az.html",
+    "tags": [
+      "sandstone",
+      "sedimentary"
+    ]
+  },
+  {
+    "title": "Slate",
+    "section": "Encyclopedia",
+    "content": "Fine-grained metamorphic that splits into sheets. Roofing tiles, chalkboards, pool table surfaces.",
+    "url": "rocks-az.html",
+    "tags": [
+      "slate",
+      "metamorphic",
+      "roofing"
+    ]
+  },
+  {
+    "title": "Rock Monsters as Heroes",
+    "section": "Editorial",
+    "content": "A thorough examination of rock creatures in mythology, movies, TV, games, and literature. From the Golem of Prague to Korg, from Norse stone giants to Pokémon Rock-types — what it says about humanity that we imagine rocks as heroes.",
+    "url": "editorial.html#rock-monsters-as-heroes",
+    "tags": [
+      "rock monsters",
+      "golem",
+      "korg",
+      "mythology",
+      "culture",
+      "movies",
+      "games"
+    ]
+  },
+  {
+    "title": "Deep-Sea Mining Delayed: Rocks Get a Stay of Execution (For Now)",
+    "section": "Blog",
+    "content": "International regulations for deep-sea mining are facing delays despite pressure to finalize them. These regulations would govern the extraction of minerals from the ocean floor, an activity that could significantly impact deep-sea ecosystems. The delay provides a temporary reprieve for vulnerable rock ecosystems. They're arguing over whether to pulverize potato-sized polymetallic nodules for profit. Meanwhile, these nodules are growing at roughly 1mm per million years. The rocks themselves are evolving faster than the regulations.",
+    "url": "blog.html#2026-03-20-deep-sea-mining-delayed-rocks-get-a-stay-of-execution-for-no",
+    "tags": [
+      "blog",
+      "news",
+      "crisis"
+    ]
+  },
+  {
+    "title": "\"Meteorite chaser\" to Meteorite: \"I'm gonna find you and slice you.\"",
+    "section": "Blog",
+    "content": "A meteorite hunter claims to have discovered two meteorite fragments in Medina County, Ohio. The finds are undergoing testing to confirm their extraterrestrial origin. \"No rock on Earth looks like this,\" he says, right before submitting it to the lab where they all end up looking the same under a microscope. If it wanted to be famous, it should have landed in Antarctica.",
+    "url": "blog.html#2026-03-20-meteorite-chaser-to-meteorite-im-gonna-find-you-and-slice-yo",
+    "tags": [
+      "blog",
+      "news",
+      "space"
+    ]
+  },
+  {
+    "title": "Volcanoes Can't Even Erupt Without Getting Electrocuted, Apparently",
+    "section": "Blog",
+    "content": "Physicists believe they've solved the mystery of volcanic lightning. Colliding ash particles create charged regions, leading to electrical discharge. The exact mechanism is still debated, but charge separation is key. First they get molten, then they get struck by lightning. At least now we know the atmospheric abuse is rooted in triboelectricity, not just garden-variety pyroclastic cruelty.",
+    "url": "blog.html#2026-03-20-volcanoes-cant-even-erupt-without-getting-electrocuted-appar",
+    "tags": [
+      "blog",
+      "news",
+      "volcanic"
+    ]
+  }
 ]

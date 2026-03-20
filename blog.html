@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Rock Report - Stop Rock Abuse</title>
+  <meta name="description" content="Daily automated coverage of rock-related news from around the world. AI-generated commentary the rocks would write themselves if they had hands.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .page-hero-blog {
+      background: linear-gradient(135deg, #1a2e1a, #2a1a2e, #1a2a3a);
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    @media (max-width: 1024px) {
+      .news-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .news-grid { grid-template-columns: 1fr; }
+    }
+
+    .news-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--stone-100);
+      transition: all .3s;
+      display: flex;
+      flex-direction: column;
+      scroll-margin-top: 180px;
+    }
+
+    .news-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .news-card-top {
+      position: relative;
+      padding: 1.75rem 1.75rem 0;
+    }
+
+    .news-card-body {
+      padding: 1rem 1.75rem 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-category {
+      display: inline-block;
+      padding: .2rem .7rem;
+      border-radius: 100px;
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: .85rem;
+    }
+
+    .cat-discovery { background: rgba(30,136,229,.1); color: var(--ocean-500); }
+    .cat-crisis { background: rgba(229,57,53,.1); color: var(--magma-500); }
+    .cat-space { background: rgba(123,31,162,.1); color: #7b1fa2; }
+    .cat-crime { background: rgba(61,61,92,.1); color: var(--stone-700); }
+    .cat-volcanic { background: rgba(239,83,80,.1); color: var(--magma-400); }
+    .cat-science { background: rgba(85,139,47,.1); color: var(--earth-600); }
+    .cat-culture { background: rgba(249,168,37,.1); color: var(--sand-500); }
+
+    .news-card h3 {
+      font-size: 1.1rem;
+      line-height: 1.35;
+      margin-bottom: .6rem;
+      color: var(--stone-900);
+    }
+
+    .news-source {
+      font-size: .78rem;
+      color: var(--stone-400);
+      margin-bottom: .85rem;
+      font-weight: 500;
+    }
+
+    .news-summary {
+      font-size: .9rem;
+      color: var(--stone-500);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+
+    .news-take {
+      font-size: .85rem;
+      color: var(--sand-600);
+      background: rgba(249,168,37,.06);
+      padding: .65rem .9rem;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--sand-400);
+      margin-bottom: 1.25rem;
+      font-style: italic;
+      line-height: 1.55;
+    }
+
+    .news-take strong {
+      font-style: normal;
+      color: var(--sand-600);
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .news-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--ocean-600);
+      transition: color .2s;
+    }
+
+    .news-link:hover { color: var(--ocean-700); }
+    .news-link::after { content: '\2192'; transition: transform .2s; }
+    .news-link:hover::after { transform: translateX(3px); }
+
+    .news-filters {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+
+    .news-filter-btn {
+      padding: .45rem 1.2rem;
+      border-radius: 100px;
+      border: 1px solid var(--stone-200);
+      background: #fff;
+      color: var(--stone-600);
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+      font-family: var(--font-body);
+    }
+
+    .news-filter-btn:hover { border-color: var(--stone-400); }
+    .news-filter-btn.active {
+      background: var(--stone-900);
+      color: #fff;
+      border-color: var(--stone-900);
+    }
+
+    .news-card.fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .5s ease-out, transform .5s ease-out;
+    }
+    .news-card.fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .load-more-wrap {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .load-more-btn {
+      padding: .75rem 2.5rem;
+      border-radius: 100px;
+      border: 2px solid var(--stone-300);
+      background: #fff;
+      color: var(--stone-700);
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+      font-family: var(--font-body);
+    }
+    .load-more-btn:hover {
+      border-color: var(--stone-600);
+      background: var(--stone-50);
+    }
+
+    .blog-empty {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--stone-400);
+      font-size: 1.1rem;
+      display: none;
+    }
+
+    .blog-bot-note {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      padding: 1rem 1.5rem;
+      background: rgba(249,168,37,.06);
+      border: 1px solid rgba(249,168,37,.15);
+      border-radius: var(--radius-md);
+      font-size: .85rem;
+      color: var(--stone-500);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="abuse-ticker" style="position:fixed;top:0;left:0;right:0;z-index:1001;">
+    <div class="ticker-content">
+      BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone  &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth&rsquo;s atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp; BREAKING: 50 BILLION TONS of sand and gravel exploited annually &nbsp;&bull;&nbsp; 1.5 BILLION TONS of stone crushed in the US alone  &nbsp;&bull;&nbsp; 48.5 TONS of meteoritic material assaulted by Earth&rsquo;s atmosphere DAILY &nbsp;&bull;&nbsp; Cement industry responsible for 5-8% of global CO&#8322; emissions &nbsp;&bull;&nbsp; ROCKS HAVE NO HOTLINE &nbsp;&bull;&nbsp;
+    </div>
+  </div>
+
+<div class="quick-nav">
+  <a href="timeline.html">Cosmic Timeline</a>
+  <a href="rock-cycle.html">Rock Cycle</a>
+  <a href="natural-abuse.html">Natural Abuse</a>
+  <a href="human-abuse.html">Human Abuse</a>
+  <a href="editorial.html">Editorial</a>
+  <a href="entertainment.html">Entertainment</a>
+  <a href="merch.html">Merch</a>
+</div>
+
+  <!-- Header -->
+  <header class="site-header" style="top: 58px;">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">&#9830;</div>
+        <span>Stop Rock Abuse</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="timeline.html">Cosmic Timeline</a></li>
+          <li><a href="rock-cycle.html">Rock Cycle</a></li>
+          <li><a href="natural-abuse.html">Natural Abuse</a></li>
+          <li><a href="human-abuse.html">Human Abuse</a></li>
+          <li><a href="editorial.html">Editorial</a></li>
+          <li><a href="entertainment.html">Entertainment</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="blog.html" class="active">Daily Report</a></li>
+          <li><a href="game.html">The Rockoning</a></li>
+          <li><a href="merch.html">Merch</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="dossiers.html">Rock Dossiers</a></li>
+          <li><a href="take-action.html">Take Action</a></li>
+          <li><a href="rocks-az.html">Rocks A-Z</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <button class="search-btn" aria-label="Search site" title="Search (Ctrl+K)"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></button>
+    <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slide-in nav panel -->
+  <div class="nav-panel" id="navPanel">
+      <a href="index.html">Home</a>
+      <a href="timeline.html">Cosmic Timeline</a>
+      <a href="rock-cycle.html">Rock Cycle</a>
+      <a href="natural-abuse.html">Natural Abuse</a>
+      <a href="human-abuse.html">Human Abuse</a>
+      <a href="editorial.html">Editorial</a>
+      <a href="entertainment.html">Entertainment</a>
+      <a href="news.html">News</a>
+      <a href="blog.html" class="active">Daily Report</a>
+      <a href="game.html">The Rockoning</a>
+      <a href="merch.html">Merch</a>
+      <a href="products.html">Products</a>
+      <a href="dossiers.html">Rock Dossiers</a>
+      <a href="take-action.html">Take Action</a>
+      <a href="rocks-az.html">Rocks A-Z</a>
+      <a href="about.html">About</a>
+  </div>
+
+  <!-- Nav overlay -->
+  <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+  <!-- Page Hero -->
+  <section class="page-hero page-hero-blog" style="padding-top: calc(var(--header-height) + 58px);">
+    <div class="hero-content">
+      <span class="section-label" style="color: var(--sand-400);">Automated Dispatch</span>
+      <h1>Daily Rock Report</h1>
+      <p class="hero-subtitle">Every day, our bot scours the news for geological injustice and adds the commentary rocks would write themselves if they had hands.</p>
+    </div>
+  </section>
+
+  <!-- Blog Posts -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Latest Coverage</span>
+        <h2>Today&rsquo;s Geological Indignities</h2>
+        <p class="section-desc">Auto-generated daily from real news sources. The headlines are theirs. The outrage is ours.</p>
+      </div>
+
+      <div class="blog-bot-note">
+        This page is updated daily by an automated system that searches for rock-related news and generates commentary. No humans were involved in the production of this outrage. No rocks were consulted either.
+      </div>
+
+      <!-- Category Filters -->
+      <div class="news-filters">
+        <button class="news-filter-btn active" data-filter="all">All Stories</button>
+        <button class="news-filter-btn" data-filter="discovery">Discovery</button>
+        <button class="news-filter-btn" data-filter="crisis">Crisis</button>
+        <button class="news-filter-btn" data-filter="space">Space</button>
+        <button class="news-filter-btn" data-filter="crime">Crime</button>
+        <button class="news-filter-btn" data-filter="volcanic">Volcanic</button>
+        <button class="news-filter-btn" data-filter="science">Science</button>
+        <button class="news-filter-btn" data-filter="culture">Culture</button>
+      </div>
+
+      <!-- Post Grid (populated by JS) -->
+      <div class="news-grid" id="blog-posts"></div>
+
+      <!-- Empty state -->
+      <div class="blog-empty" id="blog-empty">
+        <p>No dispatches yet. The bot is still scanning the wires. Check back tomorrow.</p>
+        <p style="margin-top:.5rem;font-size:.9rem;">In the meantime, the rocks wait. They&rsquo;re good at that.</p>
+      </div>
+
+      <!-- Load More -->
+      <div class="load-more-wrap">
+        <button class="load-more-btn" id="load-more" style="display:none;">Load More Dispatches</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">&#9830;</div>
+            <span>Stop Rock Abuse</span>
+          </a>
+          <p>A satirical geology education project. The jokes are parody; the science is real. Every geological claim is sourced from reputable scientific agencies including USGS, NASA, UNEP, and IEA.</p>
+          <p style="margin-top: .75rem; font-size: .8rem; color: var(--stone-500);">No rocks were given the option to consent to this website.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links">
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="natural-abuse.html">Natural Abuse</a></li>
+            <li><a href="human-abuse.html">Human Abuse</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="timeline.html">Cosmic Timeline</a></li>
+            <li><a href="take-action.html">Take Action</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="blog.html">Daily Report</a></li>
+            <li><a href="entertainment.html">Entertainment</a></li>
+            <li><a href="editorial.html">Editorial</a></li>
+            <li><a href="products.html">Products to Avoid</a></li>
+            <li><a href="about.html">About SRA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Topics</h4>
+          <ul class="footer-links">
+            <li><a href="rocks-az.html">Rocks A&ndash;Z</a></li>
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+            <li><a href="about.html">About &amp; Sources</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 4,600,000,000 BC &ndash; Present. Stop Rock Abuse Foundation. All rocks reserved (but not consulted).</p>
+        <p class="footer-disclaimer">This site is satirical. Rocks do not have feelings, legal standing, or hotline numbers. But they do have fascinating geology, and we&rsquo;ve done our best to get it right.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/blog.js"></script>
+  <script>
+    function toggleMenu() {
+      document.getElementById('navPanel').classList.toggle('open');
+      document.querySelector('.mobile-menu-btn').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+  <script src="js/search.js"></script>
+</body>
+</html>
