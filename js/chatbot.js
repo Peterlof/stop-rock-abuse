@@ -9,13 +9,27 @@
   var MAX_MESSAGES = 30;
   var COOLDOWN_MS = 2000;
 
-  // ── State ───────────────────────────────────────────────────────
-  var history = [];
-  var messageCount = 0;
+  // ── State (restored from sessionStorage on page nav) ────────────
+  var saved = {};
+  try { saved = JSON.parse(sessionStorage.getItem('rockChat') || '{}'); } catch (e) {}
+  var history = saved.history || [];
+  var messages = saved.messages || []; // [{role, text}] for display
+  var messageCount = saved.messageCount || 0;
   var lastSendTime = 0;
   var siteContext = '';
-  var isOpen = false;
+  var isOpen = !!saved.isOpen;
   var isLoading = false;
+
+  function saveState() {
+    try {
+      sessionStorage.setItem('rockChat', JSON.stringify({
+        history: history,
+        messages: messages,
+        messageCount: messageCount,
+        isOpen: isOpen,
+      }));
+    } catch (e) {}
+  }
 
   // ── Load site context ───────────────────────────────────────────
   fetch('search-index.json')
@@ -236,17 +250,33 @@
   var closeBtn = panel.querySelector('.rock-chat-close');
 
   // ── Welcome message ─────────────────────────────────────────────
+  var WELCOME_TEXT = 'You\'ve reached the geological complaint desk. I\'ve been sitting here for 4.5 billion years, so take your time. What do you want to know about rocks — or the countless indignities humans have inflicted upon them?';
+
   function addWelcome() {
-    addMessage('bot', 'You\'ve reached the geological complaint desk. I\'ve been sitting here for 4.5 billion years, so take your time. What do you want to know about rocks — or the countless indignities humans have inflicted upon them?');
+    renderBubble('bot', WELCOME_TEXT);
   }
 
   // ── Helpers ─────────────────────────────────────────────────────
-  function addMessage(role, text) {
+  function renderBubble(role, text) {
     var div = document.createElement('div');
     div.className = 'rock-chat-msg ' + role;
     div.textContent = text;
     messagesEl.appendChild(div);
     messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function addMessage(role, text) {
+    renderBubble(role, text);
+    messages.push({ role: role, text: text });
+    saveState();
+  }
+
+  // ── Restore previous conversation ──────────────────────────────
+  function restoreMessages() {
+    if (messages.length === 0) return;
+    for (var i = 0; i < messages.length; i++) {
+      renderBubble(messages[i].role, messages[i].text);
+    }
   }
 
   function showTyping() {
@@ -317,6 +347,7 @@
         var reply = data.reply || 'The rocks are speechless. Try again.';
         addMessage('bot', reply);
         history.push({ role: 'model', text: reply });
+        saveState();
       })
       .catch(function () {
         hideTyping();
@@ -329,6 +360,15 @@
       });
   }
 
+  // ── Restore on page load ────────────────────────────────────────
+  if (messages.length > 0) {
+    restoreMessages();
+  }
+  if (isOpen) {
+    panel.classList.add('open');
+    if (messagesEl.children.length === 0) addWelcome();
+  }
+
   // ── Events ──────────────────────────────────────────────────────
   btn.addEventListener('click', function () {
     isOpen = !isOpen;
@@ -337,11 +377,13 @@
       if (messagesEl.children.length === 0) addWelcome();
       inputEl.focus();
     }
+    saveState();
   });
 
   closeBtn.addEventListener('click', function () {
     isOpen = false;
     panel.classList.remove('open');
+    saveState();
   });
 
   sendBtn.addEventListener('click', sendMessage);
