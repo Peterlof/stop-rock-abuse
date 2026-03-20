@@ -268,8 +268,8 @@
     // First escape HTML, then convert link patterns
     var safe = escapeHtml(text);
     return safe.replace(/\[([^\]]+)\]\(([^)]+)\)/g, function (_, label, url) {
-      // Only allow relative URLs and stoprockabuse.com links
-      if (url.match(/^(https?:\/\/(www\.)?stoprockabuse\.com|[a-zA-Z0-9][a-zA-Z0-9._#/-]*\.html)/)) {
+      // Allow relative URLs (.html, #anchors) and stoprockabuse.com links
+      if (/^[a-zA-Z0-9_./#-]+$/.test(url) || /^https?:\/\/(www\.)?stoprockabuse\.com/.test(url)) {
         return '<a href="' + url + '">' + label + '</a>';
       }
       return label;
