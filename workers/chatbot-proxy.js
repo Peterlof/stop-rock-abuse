@@ -128,7 +128,7 @@ export default {
           contents,
           generationConfig: {
             temperature: 0.85,
-            maxOutputTokens: 1024,
+            maxOutputTokens: 2048,
           },
         }),
       });
