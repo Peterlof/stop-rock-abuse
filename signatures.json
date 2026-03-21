@@ -1,1 +1,9 @@
-{"count":0,"signatures":[]}
+{
+  "count": 1,
+  "signatures": [
+    {
+      "name": "Peter",
+      "date": "2026-03-21"
+    }
+  ]
+}
