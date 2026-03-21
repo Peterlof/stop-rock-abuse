@@ -382,20 +382,30 @@
             <li>Advocate for construction material efficiency and circular design principles</li>
           </ul>
 
-          <p style="text-align: center; margin-top: 1.5rem;">
-            <em>Signature: ______________________________</em><br>
-            <span style="font-size: 0.8rem; color: var(--stone-500);">(Please sign by reducing your geological footprint. The rocks won&rsquo;t know, but the planet will.)</span>
-          </p>
+          <!-- Signature Form -->
+          <div id="petitionForm" style="text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p style="margin-bottom: 1rem; color: var(--stone-400); font-size: 0.9rem;">Add your name to the geological record:</p>
+            <div style="display: flex; gap: 0.75rem; max-width: 400px; margin: 0 auto;">
+              <input type="text" id="signatureName" placeholder="Your name" maxlength="100" autocomplete="name" style="flex:1; padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: #fff; font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s;">
+              <button id="signatureBtn" onclick="submitSignature()" style="padding: 0.75rem 1.5rem; border-radius: 8px; border: none; background: var(--sand-500); color: #fff; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.85rem; cursor: pointer; white-space: nowrap; transition: background 0.2s;">Sign Pledge</button>
+            </div>
+            <p id="signatureMsg" style="margin-top: 0.75rem; font-size: 0.82rem; color: var(--sand-400); min-height: 1.2em;"></p>
+          </div>
+          <div id="petitionSigned" style="display:none; text-align:center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p style="color: var(--sand-300); font-size: 1rem;">&#10003; Thank you, <strong id="signedName"></strong>. Your commitment has been etched into the geological record.</p>
+            <p style="color: var(--stone-500); font-size: 0.82rem; margin-top: 0.5rem;">The rocks remain unaware but statistically better off.</p>
+          </div>
         </div>
       </div>
 
       <div style="text-align: center; margin-top: 2rem;">
         <div class="info-box info-box-parody" style="display: inline-block; max-width: 600px; background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.15);">
           <div class="info-box-label">&#128202; Current Petition Status</div>
-          <p style="color: var(--stone-300);">Signatures collected: <strong>0</strong><br>
+          <p style="color: var(--stone-300);">Signatures collected: <strong id="sigCount">...</strong><br>
           Signatures needed: <strong>All of them</strong><br>
           Rocks consulted about this petition: <strong>0</strong><br>
           Projected impact if everyone signs: <strong>Unclear, but the vibes would be great</strong></p>
+          <div id="recentSigners" style="margin-top: 1rem; font-size: 0.8rem; color: var(--stone-500);"></div>
         </div>
       </div>
     </div>
@@ -508,6 +518,77 @@
       document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
     }
   </script>
+<script>
+  var WORKER_URL = 'https://rock-chat.stoprockabuse.workers.dev';
+
+  // Load current signature count
+  fetch(WORKER_URL + '/signatures')
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      document.getElementById('sigCount').textContent = data.count.toLocaleString();
+      if (data.recent && data.recent.length > 0) {
+        var names = data.recent.slice(-10).reverse();
+        document.getElementById('recentSigners').textContent =
+          'Recent signers: ' + names.join(', ');
+      }
+    })
+    .catch(function () {
+      document.getElementById('sigCount').textContent = '...';
+    });
+
+  function submitSignature() {
+    var input = document.getElementById('signatureName');
+    var btn = document.getElementById('signatureBtn');
+    var msg = document.getElementById('signatureMsg');
+    var name = input.value.trim();
+
+    if (!name) {
+      msg.textContent = 'Please enter your name. Even rocks have identities.';
+      msg.style.color = '#e74c3c';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Signing...';
+    msg.textContent = '';
+
+    fetch(WORKER_URL + '/signatures', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name }),
+    })
+      .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
+      .then(function (res) {
+        if (res.ok) {
+          document.getElementById('petitionForm').style.display = 'none';
+          document.getElementById('petitionSigned').style.display = '';
+          document.getElementById('signedName').textContent = res.data.name;
+          document.getElementById('sigCount').textContent = res.data.count.toLocaleString();
+        } else if (res.data.error === 'Already signed') {
+          msg.textContent = 'You\'ve already signed. The geological record does not accept duplicates.';
+          msg.style.color = 'var(--sand-400)';
+          btn.disabled = false;
+          btn.textContent = 'Sign Pledge';
+        } else {
+          msg.textContent = 'Something went wrong. The tectonic plates are not cooperating.';
+          msg.style.color = '#e74c3c';
+          btn.disabled = false;
+          btn.textContent = 'Sign Pledge';
+        }
+      })
+      .catch(function () {
+        msg.textContent = 'Connection failed. Even the internet is eroding.';
+        msg.style.color = '#e74c3c';
+        btn.disabled = false;
+        btn.textContent = 'Sign Pledge';
+      });
+  }
+
+  // Allow Enter key to submit
+  document.getElementById('signatureName').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); submitSignature(); }
+  });
+</script>
 <script src="js/search.js"></script>
 <script src="js/chatbot.js"></script>
 </body>
