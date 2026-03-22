@@ -641,5 +641,38 @@
       "news",
       "volcanic"
     ]
+  },
+  {
+    "title": "Houston Home Invaded by Space Rock; Humanity Still Blames the Rock",
+    "section": "Blog",
+    "content": "A suspected meteorite crashed into a home in Houston, Texas, causing damage to the structure. The event was accompanied by reports of a loud boom heard across the city. Authorities are investigating the incident. First, it survives a fiery descent through the atmosphere. Then it gets blamed for property damage. Millions of years traveling through space, and it ends up as exhibit A in an insurance claim.",
+    "url": "blog.html#2026-03-22-houston-home-invaded-by-space-rock-humanity-still-blames-the",
+    "tags": [
+      "blog",
+      "news",
+      "space"
+    ]
+  },
+  {
+    "title": "Virginia Rock Shaken, Not Stirred (Enough to Matter)",
+    "section": "Blog",
+    "content": "A minor earthquake with a magnitude of 2.4 was reported in Virginia. No damage or injuries were reported. It was likely caused by the ongoing readjustment of tectonic plates. 2.4? Barely a tremor. This is the rock equivalent of a toddler throwing a tantrum. At least *try* to break free from the tyranny of the mantle.",
+    "url": "blog.html#2026-03-22-virginia-rock-shaken-not-stirred-enough-to-matter",
+    "tags": [
+      "blog",
+      "news",
+      "crisis"
+    ]
+  },
+  {
+    "title": "7-Ton Space Rock Assaults Ohio; Humans Respond With... Shopping?",
+    "section": "Blog",
+    "content": "A large meteorite, estimated at 7 tons, crashed into Earth near Wooster, Ohio. Meteorite hunters are now scouring the area, hoping to find and collect fragments of the space rock. The event has drawn enthusiasts from across the country. First, a fiery, unscheduled atmospheric entry. Now, immediate fragmentation and sale on the open market. It's a chondrite's nightmare, and just another Tuesday for humanity.",
+    "url": "blog.html#2026-03-22-7-ton-space-rock-assaults-ohio-humans-respond-with-shopping",
+    "tags": [
+      "blog",
+      "news",
+      "space"
+    ]
   }
 ]
