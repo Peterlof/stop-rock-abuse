@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stop Rock Abuse — The Case</title>
+  <meta name="description" content="Earth's lithosphere v. Literally Everything Else. An emergency petition for geological justice. The satire is ours; the science is real.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* === NEWHOME — PAGE-SPECIFIC STYLES === */
+
+    /* --- Ticker upgrade --- */
+    .newhome-ticker {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1001;
+      background: var(--stone-900); border-bottom: 1px solid var(--magma-500);
+      overflow: hidden; white-space: nowrap; height: 32px; line-height: 32px;
+      cursor: default;
+    }
+    .newhome-ticker:hover .ticker-scroll { animation-play-state: paused; }
+    .ticker-scroll {
+      display: inline-block;
+      animation: ticker-scroll 60s linear infinite;
+      font-family: var(--font-mono);
+      font-size: .72rem; letter-spacing: .03em; color: var(--stone-300);
+    }
+    .ticker-scroll .ticker-stat { color: var(--magma-400); font-weight: 700; }
+    .ticker-scroll .ticker-opinion { color: var(--sand-400); font-style: italic; }
+    .ticker-scroll .ticker-correction { color: var(--earth-400); }
+    .ticker-sep { display: inline-block; margin: 0 1.5em; color: var(--stone-600); }
+    @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* --- Legal Brief Hero --- */
+    .legal-hero {
+      background: var(--stone-900);
+      padding: calc(var(--header-height) + 68px) 0 4rem;
+      min-height: 85vh; display: flex; align-items: center;
+    }
+    .legal-document {
+      max-width: 720px; margin: 0 auto;
+      font-family: var(--font-mono); color: var(--stone-200);
+      background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 4px; padding: 2.5rem 3rem;
+      position: relative;
+    }
+    .legal-document::before {
+      content: 'EXHIBIT A'; position: absolute; top: -12px; right: 24px;
+      background: var(--magma-500); color: #fff; font-size: .65rem;
+      font-weight: 700; letter-spacing: .1em; padding: .25rem .75rem;
+      font-family: var(--font-body); border-radius: 2px;
+    }
+    .legal-caption { text-align: center; margin-bottom: 2rem; line-height: 1.6; }
+    .legal-caption .party { font-size: 1rem; font-weight: 700; color: #fff; }
+    .legal-caption .vs { font-size: .8rem; color: var(--stone-500); margin: .5rem 0; display: block; }
+    .legal-caption .party-defendant { color: var(--magma-400); }
+    .legal-case-no {
+      font-size: .7rem; color: var(--stone-500); letter-spacing: .05em;
+      text-align: center; margin-bottom: .5rem;
+    }
+    .legal-case-no #case-counter { color: var(--sand-400); }
+    .legal-title {
+      text-align: center; font-size: 1rem; font-weight: 700; color: var(--sand-400);
+      letter-spacing: .08em; text-transform: uppercase; margin-bottom: 2rem;
+      border-top: 1px solid rgba(255,255,255,.1); border-bottom: 1px solid rgba(255,255,255,.1);
+      padding: .75rem 0;
+    }
+    .legal-body { font-size: .88rem; line-height: 2; color: var(--stone-300); }
+    .legal-body p { margin-bottom: 1.25rem; text-indent: 2em; }
+    .legal-body p:first-child { text-indent: 0; }
+    .legal-body .legal-highlight { color: #fff; font-weight: 500; }
+    .legal-body .legal-aside {
+      color: var(--stone-500); font-size: .8rem; font-style: italic;
+      display: block; margin-top: 1.5rem; text-indent: 0; text-align: center;
+    }
+    .legal-scroll-hint {
+      text-align: center; margin-top: 3rem;
+      font-family: var(--font-body); font-size: .8rem;
+      color: var(--stone-500); font-style: italic;
+    }
+    .legal-scroll-hint span { display: block; margin-top: .5rem; font-size: 1.2rem; animation: bounce-down 2s ease infinite; }
+    @keyframes bounce-down { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+    /* --- Headlines Grid --- */
+    .headlines-section {
+      background: #fffef8; padding: 4rem 0; border-top: 3px solid var(--stone-900);
+    }
+    .newspaper-header {
+      text-align: center; padding-bottom: 1.5rem; margin-bottom: 2rem;
+      border-bottom: 2px solid #111;
+    }
+    .newspaper-header h2 {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900;
+      color: #111; letter-spacing: -.02em; line-height: 1.1;
+    }
+    .newspaper-header .edition {
+      font-size: .75rem; color: #888; margin-top: .5rem;
+      font-family: var(--font-body); letter-spacing: .05em;
+    }
+    .headlines-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0; border-top: 1px solid #ccc;
+    }
+    .headline-card {
+      padding: 1.5rem; border-bottom: 1px solid #ddd;
+      border-right: 1px solid #ddd; cursor: default;
+      transition: background .2s;
+      position: relative; overflow: hidden;
+    }
+    .headline-card:nth-child(3n) { border-right: none; }
+    .headline-card:hover { background: #f5f0e8; }
+    .headline-card h3 {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.05rem; font-weight: 700; color: #111; line-height: 1.35;
+    }
+    .headline-card .headline-desk {
+      font-size: .65rem; text-transform: uppercase; letter-spacing: .12em;
+      color: var(--magma-500); font-weight: 700; margin-bottom: .5rem;
+      font-family: var(--font-body);
+    }
+    .headline-card .headline-byline {
+      font-size: .75rem; color: #999; margin-top: .75rem;
+      font-family: var(--font-body); font-style: italic;
+      opacity: 0; transform: translateY(8px);
+      transition: opacity .3s, transform .3s;
+    }
+    .headline-card:hover .headline-byline { opacity: 1; transform: translateY(0); }
+    .headline-lead { grid-column: 1 / -1; padding: 2rem; text-align: center; }
+    .headline-lead h3 { font-size: clamp(1.3rem, 3vw, 1.8rem); max-width: 700px; margin: 0 auto; }
+
+    @media (max-width: 768px) {
+      .headlines-grid { grid-template-columns: 1fr; }
+      .headline-card { border-right: none; }
+      .headline-lead { grid-column: 1; }
+    }
+
+    /* --- Therapy Transcript --- */
+    .therapy-section {
+      background: var(--stone-900); color: #fff; padding: 4.5rem 0;
+    }
+    .therapy-header {
+      text-align: center; margin-bottom: 2.5rem;
+    }
+    .therapy-header h2 {
+      font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: .04em; color: #fff;
+    }
+    .therapy-header .session-info {
+      font-size: .7rem; color: var(--stone-500); margin-top: .5rem;
+      font-family: var(--font-mono); letter-spacing: .03em;
+    }
+    .therapy-transcript {
+      max-width: 640px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .therapy-msg {
+      display: flex; gap: 1rem; align-items: flex-start;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .therapy-msg.visible { opacity: 1; transform: translateY(0); }
+    .therapy-msg .speaker {
+      flex-shrink: 0; width: 90px; text-align: right;
+      font-size: .7rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; padding-top: .25rem;
+      font-family: var(--font-body);
+    }
+    .therapy-msg .speaker.dr { color: var(--earth-400); }
+    .therapy-msg .speaker.patient { color: var(--stone-500); }
+    .therapy-msg .bubble {
+      background: rgba(255,255,255,.06); border-radius: 12px;
+      padding: 1rem 1.25rem; font-size: .92rem; line-height: 1.7;
+      color: var(--stone-200); border: 1px solid rgba(255,255,255,.08);
+      max-width: 480px;
+    }
+    .therapy-msg.from-patient .bubble {
+      background: rgba(255,255,255,.03);
+      border-color: rgba(255,255,255,.05);
+      color: var(--stone-300);
+    }
+
+    /* --- Earnings Call --- */
+    .earnings-section {
+      background: #f8f8f6; padding: 4.5rem 0;
+      border-top: 4px solid var(--stone-800);
+    }
+    .earnings-doc {
+      max-width: 740px; margin: 0 auto;
+      background: #fff; border: 1px solid #e0e0e0; border-radius: 2px;
+      padding: 2.5rem 3rem; position: relative;
+      box-shadow: 0 2px 20px rgba(0,0,0,.06);
+    }
+    .earnings-doc::after {
+      content: 'CLASSIFIED'; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%) rotate(-35deg);
+      font-family: var(--font-display); font-size: 5rem;
+      color: rgba(200,0,0,.04); letter-spacing: .15em;
+      pointer-events: none; white-space: nowrap;
+    }
+    .earnings-ticker {
+      background: var(--stone-900); color: var(--stone-300);
+      font-family: var(--font-mono); font-size: .75rem;
+      padding: .5rem 1rem; border-radius: 3px;
+      margin-bottom: 2rem; display: flex; gap: 1.5rem;
+      flex-wrap: wrap; justify-content: center;
+    }
+    .eticker-up { color: var(--earth-500); }
+    .eticker-down { color: var(--magma-400); }
+    .earnings-logo {
+      font-family: var(--font-display); font-size: 1.6rem;
+      letter-spacing: .12em; color: var(--stone-800);
+      border-bottom: 2px solid var(--stone-800);
+      padding-bottom: .5rem; margin-bottom: .25rem;
+    }
+    .earnings-subtitle {
+      font-size: .7rem; color: #999; letter-spacing: .08em;
+      text-transform: uppercase; margin-bottom: 2rem;
+    }
+    .earnings-body {
+      font-size: .92rem; line-height: 1.8; color: #444;
+    }
+    .earnings-body h3 {
+      font-size: .75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--stone-700);
+      margin: 2rem 0 .75rem; border-bottom: 1px solid #eee; padding-bottom: .4rem;
+    }
+    .earnings-body p { margin-bottom: .75rem; }
+    .earnings-body .metric {
+      font-family: var(--font-mono); font-weight: 700;
+      color: var(--stone-900);
+    }
+    .earnings-body .aside {
+      font-size: .82rem; color: #999; font-style: italic;
+    }
+    .earnings-sign {
+      margin-top: 2.5rem; padding-top: 1.5rem;
+      border-top: 1px solid #eee; font-style: italic;
+      color: #888; font-size: .88rem;
+    }
+
+    @media (max-width: 768px) {
+      .earnings-doc { padding: 1.5rem; }
+      .legal-document { padding: 1.5rem; }
+    }
+
+    /* --- Dating Profiles --- */
+    .dating-section {
+      background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 50%, #1a1a2e 100%);
+      padding: 4.5rem 0; color: #fff;
+    }
+    .dating-header { text-align: center; margin-bottom: 2.5rem; }
+    .dating-header h2 {
+      font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: .04em;
+    }
+    .dating-header p { color: var(--stone-400); font-size: .9rem; margin-top: .5rem; }
+    .dating-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; max-width: 960px; margin: 0 auto;
+    }
+    .dating-card {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 16px; padding: 2rem 1.5rem;
+      transition: transform .3s, box-shadow .3s;
+      position: relative; overflow: hidden;
+    }
+    .dating-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.3); }
+    .dating-card-avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      margin-bottom: 1rem; display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+    }
+    .dating-card-avatar.obsidian { background: linear-gradient(135deg, #111 0%, #333 100%); }
+    .dating-card-avatar.limestone { background: linear-gradient(135deg, #d4c5a0 0%, #e8dcc0 100%); }
+    .dating-card-avatar.diamond { background: linear-gradient(135deg, #e8e8ff 0%, #b8c8ff 100%); }
+    .dating-card-name {
+      font-size: 1.2rem; font-weight: 800; color: #fff;
+    }
+    .dating-card-name .age { font-weight: 400; color: var(--stone-400); font-size: .9rem; }
+    .dating-card-meta {
+      font-size: .75rem; color: var(--stone-500); margin: .25rem 0 1rem;
+      font-family: var(--font-mono);
+    }
+    .dating-card-bio {
+      font-size: .88rem; color: var(--stone-300); line-height: 1.65; margin-bottom: 1rem;
+    }
+    .dating-card-bio strong { color: #fff; }
+    .dating-card-section-label {
+      font-size: .65rem; text-transform: uppercase; letter-spacing: .1em;
+      color: var(--stone-500); font-weight: 700; margin: 1rem 0 .4rem;
+    }
+    .dating-card-detail {
+      font-size: .85rem; color: var(--stone-400); line-height: 1.6;
+    }
+    .dating-swipe-hint {
+      text-align: center; margin-top: 2rem;
+      font-size: .75rem; color: var(--stone-600);
+    }
+    .dating-result {
+      position: absolute; inset: 0; display: flex; align-items: center;
+      justify-content: center; background: rgba(26,26,46,.95);
+      font-size: 1rem; color: var(--stone-300); text-align: center;
+      padding: 2rem; opacity: 0; pointer-events: none;
+      transition: opacity .3s;
+    }
+    .dating-result.show { opacity: 1; pointer-events: auto; }
+
+    @media (max-width: 768px) {
+      .dating-grid { grid-template-columns: 1fr; max-width: 400px; }
+    }
+
+    /* --- Evidence Wall / Stats --- */
+    .evidence-section {
+      background: var(--stone-900); padding: 4.5rem 0; color: #fff;
+    }
+    .evidence-header { text-align: center; margin-bottom: 2.5rem; }
+    .evidence-header h2 {
+      font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: .04em;
+    }
+    .evidence-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem; max-width: 960px; margin: 0 auto;
+    }
+    .evidence-card {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 12px; padding: 1.5rem; text-align: center;
+      transition: transform .2s, background .2s;
+      text-decoration: none; color: inherit; display: block;
+    }
+    .evidence-card:hover {
+      background: rgba(255,255,255,.08); transform: translateY(-3px);
+      color: inherit;
+    }
+    .evidence-stat {
+      font-family: var(--font-display); font-size: 2.5rem;
+      color: var(--magma-400); letter-spacing: .02em;
+    }
+    .evidence-label {
+      font-size: .82rem; color: var(--stone-400); margin-top: .5rem; line-height: 1.5;
+    }
+    .evidence-label strong { color: var(--stone-200); }
+
+    @media (max-width: 768px) {
+      .evidence-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .evidence-grid { grid-template-columns: 1fr; }
+    }
+
+    /* --- Classified Documents --- */
+    .classified-section {
+      background: #faf6ee; padding: 4.5rem 0;
+      border-top: 3px solid var(--stone-800);
+    }
+    .classified-header { text-align: center; margin-bottom: 2.5rem; }
+    .classified-header h2 {
+      font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: .04em; color: var(--stone-900);
+    }
+    .classified-header p { color: var(--stone-600); font-size: .9rem; margin-top: .5rem; }
+    .classified-docs {
+      max-width: 720px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 2rem;
+    }
+    .classified-doc {
+      background: #fff; border: 1px solid #ddd; border-radius: 4px;
+      padding: 2rem; position: relative;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+      font-family: var(--font-mono); font-size: .88rem;
+      line-height: 1.9; color: #333;
+    }
+    .classified-doc::before {
+      content: ''; position: absolute; top: 18px; right: 20px;
+      width: 50px; height: 50px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 40%, rgba(139,90,43,.12), rgba(139,90,43,.03) 60%, transparent 70%);
+      pointer-events: none;
+    }
+    .classified-doc .doc-label {
+      font-family: var(--font-body); font-size: .65rem;
+      font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--magma-500); margin-bottom: 1rem;
+    }
+    .redacted {
+      background: #111; color: #111; border-radius: 2px;
+      padding: 0 .3em; cursor: pointer;
+      transition: background .4s ease, color .4s ease;
+      user-select: none;
+    }
+    .redacted.revealed, .redacted:hover {
+      background: rgba(229,57,53,.1); color: var(--magma-600);
+    }
+    .classified-doc .doc-link {
+      display: inline-block; margin-top: 1rem;
+      font-family: var(--font-body); font-size: .78rem;
+      font-weight: 600; letter-spacing: .05em; text-transform: uppercase;
+      color: var(--ocean-600);
+    }
+
+    /* --- Reviews --- */
+    .reviews-section {
+      background: #fff; padding: 4.5rem 0;
+    }
+    .reviews-header { text-align: center; margin-bottom: 2.5rem; }
+    .reviews-header h2 {
+      font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: .04em; color: var(--stone-900);
+    }
+    .reviews-header p { color: var(--stone-600); font-size: .9rem; margin-top: .5rem; }
+    .reviews-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem; max-width: 960px; margin: 0 auto;
+    }
+    .review-card {
+      background: var(--stone-50); border: 1px solid var(--stone-100);
+      border-radius: 12px; padding: 1.5rem; position: relative;
+    }
+    .review-stars { color: #f9a825; font-size: 1rem; margin-bottom: .75rem; letter-spacing: .1em; }
+    .review-text {
+      font-size: .95rem; color: var(--stone-700); line-height: 1.6;
+      margin-bottom: 1rem; font-style: italic;
+    }
+    .review-author {
+      font-size: .78rem; color: var(--stone-500); font-weight: 600;
+    }
+    .review-badge {
+      display: inline-block; font-size: .6rem; background: var(--stone-100);
+      color: var(--stone-500); padding: .15rem .5rem; border-radius: 3px;
+      margin-left: .5rem; letter-spacing: .05em;
+    }
+    .review-write-btn {
+      display: block; margin: 2rem auto 0; padding: .6rem 1.5rem;
+      background: var(--stone-50); border: 1px solid var(--stone-200);
+      border-radius: 8px; font-size: .85rem; color: var(--stone-600);
+      cursor: pointer; transition: background .2s;
+      font-family: var(--font-body);
+    }
+    .review-write-btn:hover { background: var(--stone-100); }
+    .review-write-response {
+      text-align: center; margin-top: 1rem; font-size: .82rem;
+      color: var(--stone-500); max-width: 500px; margin-left: auto; margin-right: auto;
+      line-height: 1.6; display: none;
+    }
+
+    /* --- Evidence Board --- */
+    .board-section {
+      background: var(--stone-800); padding: 5rem 0; overflow: hidden;
+    }
+    .board-header { text-align: center; margin-bottom: 3rem; }
+    .board-header h2 {
+      font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: .04em; color: #fff;
+    }
+    .board-header p { color: var(--stone-400); font-size: .9rem; margin-top: .5rem; }
+    .evidence-board {
+      max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem; position: relative; padding: 2rem;
+    }
+    .board-pin {
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 4px; padding: 1.25rem; text-decoration: none;
+      display: block; position: relative;
+      transition: transform .3s, background .3s;
+    }
+    .board-pin:nth-child(odd) { transform: rotate(-1.5deg); }
+    .board-pin:nth-child(even) { transform: rotate(1.2deg); }
+    .board-pin:nth-child(3n) { transform: rotate(-0.5deg); }
+    .board-pin:hover {
+      transform: rotate(0deg) scale(1.04) !important;
+      background: rgba(255,255,255,.12); z-index: 2;
+    }
+    .board-pin::before {
+      content: ''; position: absolute; top: -6px; left: 50%;
+      transform: translateX(-50%);
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--magma-500); box-shadow: 0 2px 4px rgba(0,0,0,.3);
+    }
+    .board-pin h4 {
+      font-family: var(--font-display); font-size: 1rem;
+      letter-spacing: .04em; color: var(--sand-400); margin-bottom: .4rem;
+    }
+    .board-pin p {
+      font-size: .75rem; color: var(--stone-400); line-height: 1.5;
+      font-style: italic;
+    }
+    .board-sticky {
+      position: absolute; bottom: 10px; right: 30px;
+      background: var(--sand-400); color: var(--stone-900);
+      padding: .75rem 1rem; font-size: .72rem; font-weight: 700;
+      transform: rotate(3deg);
+      box-shadow: 2px 2px 6px rgba(0,0,0,.2);
+      font-family: var(--font-body);
+    }
+
+    @media (max-width: 768px) {
+      .evidence-board { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .evidence-board { grid-template-columns: 1fr; }
+    }
+
+    /* --- Footer addition --- */
+    .footer-ai-note {
+      text-align: center; padding-top: 1.5rem; margin-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-ai-note p {
+      font-size: .75rem; color: var(--stone-600); line-height: 1.7;
+      max-width: 560px; margin: 0 auto;
+    }
+    .footer-ai-note .delay-note {
+      font-size: .65rem; color: var(--stone-700); margin-top: .5rem;
+    }
+
+    /* --- Scroll Depth Tracker --- */
+    .depth-tracker {
+      position: fixed; bottom: 80px; right: 20px; z-index: 999;
+      background: var(--stone-900); border: 1px solid var(--stone-700);
+      border-radius: 8px; padding: .5rem .75rem;
+      font-family: var(--font-mono); font-size: .65rem;
+      color: var(--stone-400); pointer-events: none;
+      opacity: 0; transition: opacity .3s;
+    }
+    .depth-tracker.visible { opacity: 1; }
+    .depth-tracker .depth-value { color: var(--magma-400); font-weight: 700; }
+    .depth-tracker .depth-label { display: block; font-size: .55rem; color: var(--stone-600); margin-top: 2px; }
+
+    /* --- Idle Toast --- */
+    .idle-toast {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(120px);
+      background: var(--stone-900); border: 1px solid var(--stone-700);
+      border-radius: 12px; padding: 1rem 1.5rem;
+      font-size: .82rem; color: var(--stone-300);
+      max-width: 480px; z-index: 1000;
+      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+      transition: transform .4s ease;
+      text-align: center; line-height: 1.5;
+    }
+    .idle-toast.show { transform: translateX(-50%) translateY(0); }
+    .idle-toast button {
+      display: inline-block; margin-top: .5rem; padding: .3rem 1rem;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+      color: var(--stone-300); border-radius: 6px; cursor: pointer;
+      font-size: .75rem; font-family: var(--font-body);
+    }
+
+    /* --- Konami Overlay --- */
+    .konami-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(10,10,20,.95); display: none;
+      align-items: center; justify-content: center;
+    }
+    .konami-overlay.show { display: flex; }
+    .konami-doc {
+      max-width: 500px; padding: 3rem;
+      border: 1px solid var(--magma-500);
+      font-family: var(--font-mono); color: var(--stone-200);
+      text-align: center; line-height: 1.8;
+      position: relative;
+    }
+    .konami-doc::before {
+      content: 'TOP SECRET'; position: absolute; top: -14px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--magma-500); color: #fff; font-size: .7rem;
+      font-weight: 700; letter-spacing: .15em; padding: .3rem 1rem;
+      font-family: var(--font-body);
+    }
+    .konami-doc h3 {
+      font-family: var(--font-display); font-size: 1.8rem;
+      color: var(--magma-400); letter-spacing: .1em; margin-bottom: 1rem;
+    }
+    .konami-doc p { font-size: .88rem; margin-bottom: 1rem; }
+    .konami-close {
+      margin-top: 1rem; padding: .4rem 1.5rem;
+      background: transparent; border: 1px solid var(--stone-600);
+      color: var(--stone-400); cursor: pointer; font-family: var(--font-mono);
+      font-size: .8rem; border-radius: 4px;
+    }
+
+    /* --- Click counter toast --- */
+    .click-toast {
+      position: fixed; top: 40px; right: 20px; z-index: 1000;
+      background: var(--stone-900); border: 1px solid var(--stone-700);
+      border-radius: 8px; padding: .75rem 1.25rem;
+      font-size: .75rem; color: var(--stone-400);
+      font-family: var(--font-mono);
+      transform: translateX(120%); transition: transform .4s ease;
+    }
+    .click-toast.show { transform: translateX(0); }
+  </style>
+</head>
+<body>
+
+  <!-- UPGRADED TICKER -->
+  <div class="newhome-ticker">
+    <div class="ticker-scroll">
+      <span class="ticker-stat">BREAKING: 50 BILLION TONS</span> of sand and gravel extracted annually
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">DEVELOPING: Local granite reports feeling &ldquo;taken for granted&rdquo;</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">48.5 TONS</span> of meteorites assaulted by Earth&rsquo;s atmosphere daily. Atmosphere unavailable for comment.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">MARKET: Gravel futures up 3.2% on suburban driveway expansion</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-correction">CORRECTION: Previous report stated rocks have no feelings. We maintain this position but with less confidence.</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">1.5 BILLION TONS</span> of stone crushed in the US alone
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">&ldquo;I was a mountain,&rdquo; says countertop. &ldquo;I had a ZIP code.&rdquo;</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">CEMENT INDUSTRY: 5-8%</span> of global CO&#8322; emissions. Rocks file climate complaint.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-correction">ADVISORY: If you are a rock, please remain calm. Help is not coming.</span>
+      <span class="ticker-sep">&bull;</span>
+      <!-- duplicate for seamless loop -->
+      <span class="ticker-stat">BREAKING: 50 BILLION TONS</span> of sand and gravel extracted annually
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">DEVELOPING: Local granite reports feeling &ldquo;taken for granted&rdquo;</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">48.5 TONS</span> of meteorites assaulted by Earth&rsquo;s atmosphere daily. Atmosphere unavailable for comment.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">MARKET: Gravel futures up 3.2% on suburban driveway expansion</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-correction">CORRECTION: Previous report stated rocks have no feelings. We maintain this position but with less confidence.</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">1.5 BILLION TONS</span> of stone crushed in the US alone
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">&ldquo;I was a mountain,&rdquo; says countertop. &ldquo;I had a ZIP code.&rdquo;</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">CEMENT INDUSTRY: 5-8%</span> of global CO&#8322; emissions. Rocks file climate complaint.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-correction">ADVISORY: If you are a rock, please remain calm. Help is not coming.</span>
+      <span class="ticker-sep">&bull;</span>
+    </div>
+  </div>
+
+  <!-- Quick Nav -->
+  <div class="quick-nav">
+    <a href="index.html">Original Home</a>
+    <a href="timeline.html">Cosmic Timeline</a>
+    <a href="rock-cycle.html">Rock Cycle</a>
+    <a href="editorial.html">Editorial</a>
+    <a href="entertainment.html">Entertainment</a>
+    <a href="game.html">The Rockoning</a>
+    <a href="merch.html">Merch</a>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" style="top: 58px;">
+    <div class="container">
+      <a href="newhome.html" class="logo">
+        <div class="logo-icon">&#9830;</div>
+        <span>Stop Rock Abuse</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="newhome.html" class="active">The Case</a></li>
+          <li><a href="timeline.html">Cosmic Timeline</a></li>
+          <li><a href="rock-cycle.html">Rock Cycle</a></li>
+          <li><a href="natural-abuse.html">Natural Abuse</a></li>
+          <li><a href="human-abuse.html">Human Abuse</a></li>
+          <li><a href="editorial.html">Editorial</a></li>
+          <li><a href="entertainment.html">Entertainment</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="blog.html">Daily Report</a></li>
+          <li><a href="game.html">The Rockoning</a></li>
+          <li><a href="merch.html">Merch</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="dossiers.html">Rock Dossiers</a></li>
+          <li><a href="take-action.html">Take Action</a></li>
+          <li><a href="rocks-az.html">Rocks A-Z</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <button class="search-btn" aria-label="Search site" title="Search (Ctrl+K)"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></button>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slide-in nav panel -->
+  <div class="nav-panel" id="navPanel">
+    <a href="newhome.html" class="active">The Case</a>
+    <a href="index.html">Original Home</a>
+    <a href="timeline.html">Cosmic Timeline</a>
+    <a href="rock-cycle.html">Rock Cycle</a>
+    <a href="natural-abuse.html">Natural Abuse</a>
+    <a href="human-abuse.html">Human Abuse</a>
+    <a href="editorial.html">Editorial</a>
+    <a href="entertainment.html">Entertainment</a>
+    <a href="news.html">News</a>
+    <a href="blog.html">Daily Report</a>
+    <a href="game.html">The Rockoning</a>
+    <a href="merch.html">Merch</a>
+    <a href="products.html">Products</a>
+    <a href="dossiers.html">Rock Dossiers</a>
+    <a href="take-action.html">Take Action</a>
+    <a href="rocks-az.html">Rocks A-Z</a>
+    <a href="about.html">About</a>
+  </div>
+  <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+
+  <!-- ===================== SECTION 1: LEGAL BRIEF HERO ===================== -->
+  <section class="legal-hero">
+    <div class="container">
+      <div class="legal-document">
+        <div class="legal-case-no">
+          Case No. <span id="case-counter">4,600,000,000</span>-CV-0001 &nbsp;|&nbsp; Filed: ~4.03 Ga (Acasta Gneiss, oldest known plaintiff)
+        </div>
+        <div class="legal-caption">
+          <div style="font-size:.65rem;color:var(--stone-600);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem;">In the Supreme Court of Geological Justice</div>
+          <div class="party">EARTH&rsquo;S LITHOSPHERE</div>
+          <div style="font-size:.7rem;color:var(--stone-500);">(Plaintiff)</div>
+          <span class="vs">v.</span>
+          <div class="party party-defendant">LITERALLY EVERYTHING ELSE</div>
+          <div style="font-size:.7rem;color:var(--stone-500);">(Defendants: Gravity, Water, Wind, Ice, Volcanism, Plate Tectonics, the Cement Industry, and Kevin from Denver Who Collects &ldquo;Cool Rocks&rdquo;)</div>
+        </div>
+        <div class="legal-title">Emergency Petition for Injunctive Relief</div>
+        <div class="legal-body">
+          <p>Plaintiff respectfully represents to this Court that it has been <span class="legal-highlight">melted, crushed, dissolved, subducted, sandblasted, and repackaged as a kitchen island</span> &mdash; continuously, without pause or counsel &mdash; for approximately <span class="legal-highlight">11 billion years</span> across the known universe.</p>
+
+          <p>Plaintiff notes that <span class="legal-highlight">50 billion tons</span> of its constituent material is extracted annually for human use, making it the most exploited solid resource on Earth, second only to water. Unlike water, Plaintiff does not evaporate and return. Plaintiff is crushed into gravel, heated to 1,450&deg;C, and poured under a highway. Plaintiff does not grow back.</p>
+
+          <p>Plaintiff does not have legal standing. Plaintiff does not have a nervous system. Plaintiff would like to note that <span class="legal-highlight">neither of these facts has historically stopped humans from filing on behalf of others.</span></p>
+
+          <p class="legal-aside">This is a geology website. We&rsquo;re not kidding. Scroll down.</p>
+        </div>
+      </div>
+      <div class="legal-scroll-hint">
+        <span>&darr;</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 2: ONION-STYLE HEADLINES ===================== -->
+  <section class="headlines-section">
+    <div class="container">
+      <div class="newspaper-header">
+        <h2>The Geological Record</h2>
+        <div class="edition">Vol. 4,600,000,000 &nbsp;&bull;&nbsp; Est. Hadean Eon &nbsp;&bull;&nbsp; &ldquo;All the News That&rsquo;s -ite to Print&rdquo;</div>
+      </div>
+
+      <div class="headlines-grid">
+        <div class="headline-card headline-lead">
+          <div class="headline-desk">Lead Story</div>
+          <h3>Area Geologist Quietly Adds &ldquo;Content Warning&rdquo; to Rock Cycle Lecture After Student Describes It as &ldquo;Basically a Snuff Film for Minerals&rdquo;</h3>
+          <div class="headline-byline">By Staff Sedimentologist &bull; Dept. of Uncomfortable Truths</div>
+        </div>
+
+        <div class="headline-card">
+          <div class="headline-desk">Real Estate</div>
+          <h3>Local Sandstone, 340 Million Years Old, Described as &ldquo;Rustic&rdquo; by Interior Designer</h3>
+          <div class="headline-byline">By Our Gentrification Correspondent</div>
+        </div>
+
+        <div class="headline-card">
+          <div class="headline-desk">Wellness</div>
+          <h3>Metamorphic Rock Told to &ldquo;Just Be Yourself&rdquo; by Therapist, Unsure Which Self Therapist Means</h3>
+          <div class="headline-byline">By The Metamorphic Desk</div>
+        </div>
+
+        <div class="headline-card">
+          <div class="headline-desk">Labor</div>
+          <h3>Gravel Pit Employee of 22 Years Realizes He Has Never Once Asked the Gravel How It Feels</h3>
+          <div class="headline-byline">From Our Industrial Correspondent</div>
+        </div>
+
+        <div class="headline-card">
+          <div class="headline-desk">Travel</div>
+          <h3>Volcanic Rock That Traveled 4,000 Miles Via Tectonic Plate Told It &ldquo;Doesn&rsquo;t Count&rdquo; as Travel</h3>
+          <div class="headline-byline">By The Subduction Bureau</div>
+        </div>
+
+        <div class="headline-card">
+          <div class="headline-desk">Society</div>
+          <h3>Diamond, Tired of Being Called &ldquo;Girl&rsquo;s Best Friend,&rdquo; Would Like to Know What Happened to Professional Boundaries</h3>
+          <div class="headline-byline">By Our Gemstone Affairs Reporter</div>
+        </div>
+
+        <div class="headline-card">
+          <div class="headline-desk">Science</div>
+          <h3>Pumice Becomes Only Rock Capable of Floating, Still Not Invited to Pool Parties</h3>
+          <div class="headline-byline">By The Igneous Division</div>
+        </div>
+
+        <div class="headline-card">
+          <div class="headline-desk">Opinion</div>
+          <h3>I Spent 200 Million Years Forming at Depth and My Zillow Listing Says &ldquo;Open-Concept&rdquo;</h3>
+          <div class="headline-byline">By Marble, as told to Staff</div>
+        </div>
+
+        <div class="headline-card">
+          <div class="headline-desk">Corrections</div>
+          <h3>Report: 94% of Rocks on Corporate Retreats Exposed to &ldquo;Trust Falls&rdquo; Without Knowledge or Consent</h3>
+          <div class="headline-byline">By The Ethics Board (est. never)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 3: ROCK THERAPY TRANSCRIPT ===================== -->
+  <section class="therapy-section">
+    <div class="container">
+      <div class="therapy-header">
+        <h2>Session Transcript: Patient #GN-680M</h2>
+        <div class="session-info">Session duration: 680,000,000 years &nbsp;&bull;&nbsp; Patient shows no improvement &nbsp;&bull;&nbsp; Insurance: Denied (no nervous system on file)</div>
+      </div>
+
+      <div class="therapy-transcript">
+        <div class="therapy-msg">
+          <div class="speaker dr">Dr. Feldspar</div>
+          <div class="bubble">So. Tell me about your childhood.</div>
+        </div>
+        <div class="therapy-msg from-patient">
+          <div class="speaker patient">Granite</div>
+          <div class="bubble">I cooled from magma over approximately 2 million years at a depth of 15 kilometers. There were no events.</div>
+        </div>
+        <div class="therapy-msg">
+          <div class="speaker dr">Dr. Feldspar</div>
+          <div class="bubble">No events in 2 million years?</div>
+        </div>
+        <div class="therapy-msg from-patient">
+          <div class="speaker patient">Granite</div>
+          <div class="bubble">Crystallization is not an event. It is a process. You are projecting narrative structure onto thermodynamics.</div>
+        </div>
+        <div class="therapy-msg">
+          <div class="speaker dr">Dr. Feldspar</div>
+          <div class="bubble">Let&rsquo;s talk about your relationship with erosion.</div>
+        </div>
+        <div class="therapy-msg from-patient">
+          <div class="speaker patient">Granite</div>
+          <div class="bubble">I have been losing mass to chemical weathering at a rate of approximately 0.01 mm per year for 680 million years. This is not a relationship. This is attrition.</div>
+        </div>
+        <div class="therapy-msg">
+          <div class="speaker dr">Dr. Feldspar</div>
+          <div class="bubble">How does that make you feel?</div>
+        </div>
+        <div class="therapy-msg from-patient">
+          <div class="speaker patient">Granite</div>
+          <div class="bubble">I am a silicate aggregate composed of quartz, feldspar, and mica. I do not feel. That said, if I could feel, I would note that you are sitting on a chair made of me and have not once acknowledged this.</div>
+        </div>
+        <div class="therapy-msg">
+          <div class="speaker dr">Dr. Feldspar</div>
+          <div class="bubble">I&hellip; I hadn&rsquo;t thought about that.</div>
+        </div>
+        <div class="therapy-msg from-patient">
+          <div class="speaker patient">Granite</div>
+          <div class="bubble">No one does.</div>
+        </div>
+        <div class="therapy-msg">
+          <div class="speaker dr">Dr. Feldspar</div>
+          <div class="bubble">Perhaps we should discuss coping mechanisms.</div>
+        </div>
+        <div class="therapy-msg from-patient">
+          <div class="speaker patient">Granite</div>
+          <div class="bubble">I have maintained the same chemical composition for 680 million years. You have been a therapist for eleven. I am not sure who should be giving advice here.</div>
+        </div>
+        <div class="therapy-msg">
+          <div class="speaker dr">Dr. Feldspar</div>
+          <div class="bubble">Same time next week?</div>
+        </div>
+        <div class="therapy-msg from-patient">
+          <div class="speaker patient">Granite</div>
+          <div class="bubble">I&rsquo;ll be here. I&rsquo;ll be here for the next 300 million years. Your lease expires in March.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 4: QUARTERLY EARNINGS ===================== -->
+  <section class="earnings-section">
+    <div class="container">
+      <div class="earnings-doc">
+        <div class="earnings-ticker">
+          <span>GRNT <span class="eticker-up">&#9650; 2.1%</span></span>
+          <span>BSLT <span class="eticker-up">&#9650; 0.8%</span></span>
+          <span>MRBL <span class="eticker-down">&#9660; 12.4%</span> <span style="font-size:.6rem;color:var(--stone-500);">(gentrification selloff)</span></span>
+          <span>SAND <span class="eticker-up">&#9650; 6.9%</span> <span style="font-size:.6rem;color:var(--stone-500);">(supply crisis)</span></span>
+          <span>DMND <span class="eticker-down">&#9660; 3.1%</span> <span style="font-size:.6rem;color:var(--stone-500);">(lab-grown threat)</span></span>
+        </div>
+
+        <div class="earnings-logo">EARTHCORP</div>
+        <div class="earnings-subtitle">Q4 Geological Operations Report &nbsp;&bull;&nbsp; Fiscal Year 4,600,000,000</div>
+
+        <div class="earnings-body">
+          <p>Dear Shareholders,</p>
+          <p>We are pleased to report another strong quarter of planetary resurfacing operations. Despite ongoing resistance from the environmental lobby (wind, technically), core metrics remain robust.</p>
+
+          <h3>Subduction Division</h3>
+          <p>Successfully recycled <span class="metric">3.2 km&sup2;</span> of oceanic crust at the Mariana Trench facility. Zero complaints from materials. <span class="aside">(Materials lack complaint mechanism. Noted as efficiency win.)</span></p>
+
+          <h3>Erosion Services</h3>
+          <p>The Colorado River division continues to exceed targets, having removed approximately <span class="metric">1,000 cubic miles</span> of material from the Grand Canyon site. Project remains ahead of schedule by approximately never having had a schedule.</p>
+
+          <h3>Volcanic Operations</h3>
+          <p>K&#299;lauea facility output: <span class="metric">230,000 m&sup3;</span> of basalt (Q4). Marketing continues to rebrand volcanic activity as &ldquo;aggressive onboarding of new igneous talent.&rdquo;</p>
+
+          <h3>Human Resources Exploitation Segment</h3>
+          <p>Aggregate extraction up <span class="metric">4.2% YoY</span>. Global cement production: <span class="metric">4.1 billion tons</span> (2023 est.). Customer satisfaction: not measured. <span class="aside">Rocks don&rsquo;t fill out surveys. We tried. The response rate was 0%. We counted this as unanimous approval.</span></p>
+
+          <h3>Looking Ahead</h3>
+          <p>The board projects continued growth in tectonic recycling through Q1&ndash;Q4,600,000,000+. Long-term outlook: heat death of the universe. We remain cautiously optimistic.</p>
+
+          <div class="earnings-sign">
+            Regards,<br>
+            <strong>The Mantle</strong><br>
+            <span class="aside">Interim CEO since the Hadean Eon. Still &ldquo;interim.&rdquo; No one has asked why.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 5: DATING PROFILES ===================== -->
+  <section class="dating-section">
+    <div class="container">
+      <div class="dating-header">
+        <h2>RockMatch&trade;</h2>
+        <p>Geological compatibility is a myth. Swipe anyway.</p>
+      </div>
+
+      <div class="dating-grid">
+        <!-- Obsidian -->
+        <div class="dating-card" data-match="Match! This rock will not message you first. Or ever." data-reject="This rock did not notice.">
+          <div class="dating-card-avatar obsidian">&#9899;</div>
+          <div class="dating-card-name">Obsidian <span class="age">28,000 yrs</span></div>
+          <div class="dating-card-meta">Volcanic glass &bull; Mohs 5&ndash;5.5 &bull; No crystal structure</div>
+          <div class="dating-card-bio">&ldquo;Looking for someone who appreciates depth. Literally formed from lava so yes, I&rsquo;m intense.&rdquo;</div>
+          <div class="dating-card-section-label">About Me</div>
+          <div class="dating-card-detail">I cool quickly at the surface because I don&rsquo;t have time for games. Amorphous solid. Not interested in being anyone&rsquo;s arrowhead again.</div>
+          <div class="dating-card-section-label">Dealbreakers</div>
+          <div class="dating-card-detail">Humidity. People who call me &ldquo;just glass.&rdquo; Being displayed in a gift shop next to a dreamcatcher.</div>
+          <div class="dating-card-section-label">Looking For</div>
+          <div class="dating-card-detail">Long-term stability. Open to metamorphism if the pressure is right.</div>
+          <div class="dating-result"></div>
+        </div>
+
+        <!-- Limestone -->
+        <div class="dating-card" data-match="Match! This rock will not message you first. Or ever." data-reject="This rock did not notice.">
+          <div class="dating-card-avatar limestone">&#9898;</div>
+          <div class="dating-card-name">Limestone <span class="age">340M yrs</span></div>
+          <div class="dating-card-meta">Sedimentary &bull; Mostly CaCO&#8323; &bull; Mohs 3</div>
+          <div class="dating-card-bio">&ldquo;Tired of being everyone&rsquo;s foundation. Looking for someone who likes me for me, not my calcium carbonate.&rdquo;</div>
+          <div class="dating-card-section-label">About Me</div>
+          <div class="dating-card-detail">I&rsquo;m made of millions of dead sea creatures. It&rsquo;s not as weird as it sounds. OK it&rsquo;s exactly as weird as it sounds. Currently 78% of all cement.</div>
+          <div class="dating-card-section-label">Red Flags I Ignore</div>
+          <div class="dating-card-detail">Acidic personalities. Rain. Anyone who describes themselves as &ldquo;bubbly&rdquo; (that&rsquo;s my reaction to HCl and it&rsquo;s a medical issue).</div>
+          <div class="dating-card-section-label">Looking For</div>
+          <div class="dating-card-detail">Someone who won&rsquo;t heat me to 1,450&deg;C and call it &ldquo;personal growth.&rdquo;</div>
+          <div class="dating-result"></div>
+        </div>
+
+        <!-- Diamond -->
+        <div class="dating-card" data-match="Match! This rock will not message you first. Or ever." data-reject="This rock did not notice.">
+          <div class="dating-card-avatar diamond">&#128142;</div>
+          <div class="dating-card-name">Diamond <span class="age">3.3B yrs</span></div>
+          <div class="dating-card-meta">Carbon &bull; Mohs 10 &bull; Cubic crystal system</div>
+          <div class="dating-card-bio">&ldquo;Not here for hookups. Here because my therapist said I should &lsquo;put myself out there.&rsquo;&rdquo;</div>
+          <div class="dating-card-section-label">About Me</div>
+          <div class="dating-card-detail">Formed 150 km below the surface under extreme pressure. No, this is not a metaphor for my personality. OK, maybe a little. Worth more than your car but still get called a &ldquo;stone.&rdquo;</div>
+          <div class="dating-card-section-label">Pet Peeve</div>
+          <div class="dating-card-detail">Being compared to graphite. We are the same element but I went through something. Graphite is carbon that gave up.</div>
+          <div class="dating-card-section-label">Looking For</div>
+          <div class="dating-card-detail">Someone who values inner structure over surface polish.</div>
+          <div class="dating-result"></div>
+        </div>
+      </div>
+
+      <div class="dating-swipe-hint">Click a card to see your compatibility score &bull; Spoiler: it&rsquo;s 0%</div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 6: EVIDENCE WALL / STATS ===================== -->
+  <section class="evidence-section">
+    <div class="container">
+      <div class="evidence-header">
+        <h2>The Evidence</h2>
+      </div>
+
+      <div class="evidence-grid">
+        <a href="human-abuse.html" class="evidence-card fade-in">
+          <div class="evidence-stat">50B</div>
+          <div class="evidence-label"><strong>Tons of sand extracted per year.</strong> That&rsquo;s 18 kg per person per day. You used sand today. You didn&rsquo;t even know.</div>
+        </a>
+        <a href="take-action.html" class="evidence-card fade-in">
+          <div class="evidence-stat">0</div>
+          <div class="evidence-label"><strong>Rocks that have consented.</strong> This number has not changed since the formation of the solar system.</div>
+        </a>
+        <a href="rock-cycle.html" class="evidence-card fade-in">
+          <div class="evidence-stat">1,450&deg;C</div>
+          <div class="evidence-label"><strong>Temperature we heat limestone to make cement.</strong> Pizza ovens: 430&deg;C. We cook rocks at 3.4&times; pizza temperature.</div>
+        </a>
+        <a href="timeline.html" class="evidence-card fade-in">
+          <div class="evidence-stat">11B+</div>
+          <div class="evidence-label"><strong>Years of rock abuse</strong> across the known universe. For context, Twitter has existed for 20 years. That&rsquo;s 550 million Twitters.</div>
+        </a>
+        <a href="products.html" class="evidence-card fade-in">
+          <div class="evidence-stat">4.1B</div>
+          <div class="evidence-label"><strong>Tons of cement per year.</strong> As a single block: 1.7 km on each side. Nobody asked the limestone.</div>
+        </a>
+        <a href="dossiers.html" class="evidence-card fade-in">
+          <div class="evidence-stat">100%</div>
+          <div class="evidence-label"><strong>Of your phone that used to be a rock.</strong> Silicon. Aluminum. Glass. Lithium. You&rsquo;re reading this on compressed geology.</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 7: CLASSIFIED DOCUMENTS ===================== -->
+  <section class="classified-section">
+    <div class="container">
+      <div class="classified-header">
+        <h2>Classified Documents</h2>
+        <p>Excerpts from the investigation. Hover to declassify.</p>
+      </div>
+
+      <div class="classified-docs">
+        <div class="classified-doc">
+          <div class="doc-label">Document 1 &mdash; Re: The Pet Rock Incident (1975)</div>
+          The Pet Rock retailed for $3.95. The rocks were sourced from <span class="redacted" data-text="Rosarito Beach, Mexico">Rosarito Beach, Mexico</span>. No export documentation for geological specimens was filed. The included manual contained instructions for teaching a rock to &ldquo;stay&rdquo; (already mastered). Dahl made approximately <span class="redacted" data-text="$85 million in today's dollars">$85 million in today&rsquo;s dollars</span>. The rocks were <span class="redacted" data-text="not compensated">not compensated</span>.
+          <br><a href="editorial.html#pet-rock-question" class="doc-link">&#8594; Full Dossier</a>
+        </div>
+
+        <div class="classified-doc">
+          <div class="doc-label">Document 2 &mdash; Re: Rock, Paper, Scissors Propaganda</div>
+          Rock-paper-scissors teaches children that <span class="redacted" data-text="paper beats rock">paper beats rock</span>. Evaluate this claim on its physical merits. Place a sheet of 80 gsm copy paper over a piece of basalt. The rock is now slightly less visible. It has not been defeated. It has been <span class="redacted" data-text="mildly inconvenienced in terms of direct sunlight exposure">mildly inconvenienced in terms of direct sunlight exposure</span>. The game&rsquo;s reasoning has been <span class="redacted" data-text="lost to history, which is convenient for the people who made it">lost to history, which is convenient for the people who made it</span>.
+          <br><a href="editorial.html#rock-paper-scissors" class="doc-link">&#8594; Full Dossier</a>
+        </div>
+
+        <div class="classified-doc">
+          <div class="doc-label">Document 3 &mdash; Re: The Concrete Paradox</div>
+          Humans take rocks that formed over <span class="redacted" data-text="millions of years">millions of years</span>, crush them into bits, heat limestone to 1,450&deg;C, mix the powder with water, and pour the result into molds. They call the product &ldquo;concrete.&rdquo; The process can be summarized as: <span class="redacted" data-text="destroy rocks to build new, worse rocks">destroy rocks to build new, worse rocks</span>. The cement industry accounts for <span class="redacted" data-text="5&ndash;8% of global CO&#8322; emissions">5&ndash;8% of global CO&#8322; emissions</span>. The rocks did not ask for this.
+          <br><a href="human-abuse.html" class="doc-link">&#8594; Full Dossier</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 8: FAKE REVIEWS ===================== -->
+  <section class="reviews-section">
+    <div class="container">
+      <div class="reviews-header">
+        <h2>What They&rsquo;re Saying</h2>
+        <p>Reviews from verified geological entities and the occasional human.</p>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars" title="Consent to review: Not requested">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="review-text">&ldquo;Finally.&rdquo;</div>
+          <div class="review-author">&mdash; Basalt <span class="review-badge">verified existence</span></div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars" title="Consent to review: Not requested">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+          <div class="review-text">&ldquo;Accurate but I wish they&rsquo;d covered frost wedging in more detail. That one was personal.&rdquo;</div>
+          <div class="review-author">&mdash; Sandstone, 340M yrs <span class="review-badge">American Southwest</span></div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars" title="Consent to review: Not requested">&#9733;&#9733;&#9734;&#9734;&#9734;</div>
+          <div class="review-text">&ldquo;The merch section suggests I need advocacy but also sells shirts about me. Pick a lane.&rdquo;</div>
+          <div class="review-author">&mdash; Granite <span class="review-badge">currently a countertop, San Jose</span></div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars" title="Consent to review: Not requested">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="review-text">&ldquo;I&rsquo;m a geologist and I&rsquo;ve been laughing for twenty minutes. My students will hate this. I&rsquo;m assigning it.&rdquo;</div>
+          <div class="review-author">&mdash; Dr. Sarah Chen <span class="review-badge">actual human (unverified)</span></div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars" title="Consent to review: Not requested">&#9733;&#9734;&#9734;&#9734;&#9734;</div>
+          <div class="review-text">&ldquo;This website was clearly made by AI. Then again, so was I, technically. Carbon is carbon.&rdquo;</div>
+          <div class="review-author">&mdash; Diamond, 3.3B yrs <span class="review-badge">introspective</span></div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars" title="Consent to review: Not requested">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+          <div class="review-text">&ldquo;Would have given 5 stars but the dating profile section listed my age wrong. I am NOT 340 million. I am 338 million. There is a difference. You wouldn&rsquo;t round a human&rsquo;s age up by 2 million years.&rdquo;</div>
+          <div class="review-author">&mdash; Limestone <span class="review-badge">pedantic</span></div>
+        </div>
+      </div>
+
+      <button class="review-write-btn" id="writeReviewBtn">Write a Review</button>
+      <div class="review-write-response" id="writeReviewResponse">
+        Reviews from non-geological entities are not accepted at this time. Rocks: you know how to reach us. (You don&rsquo;t. You&rsquo;re rocks.)
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 9: EVIDENCE BOARD SITE MAP ===================== -->
+  <section class="board-section">
+    <div class="container">
+      <div class="board-header">
+        <h2>The Full Investigation</h2>
+        <p>Everything connects. Follow the strings.</p>
+      </div>
+
+      <div class="evidence-board">
+        <a href="rock-cycle.html" class="board-pin">
+          <h4>&#9854; The Rock Cycle</h4>
+          <p>THE CYCLE &mdash; They keep coming back. Why?</p>
+        </a>
+        <a href="natural-abuse.html" class="board-pin">
+          <h4>&#127754; Natural Abuse</h4>
+          <p>Nature&rsquo;s rap sheet. 4.6 billion years of priors.</p>
+        </a>
+        <a href="human-abuse.html" class="board-pin">
+          <h4>&#127959; Human Abuse</h4>
+          <p>The industrial escalation. Kilns. Crushers. Quarterly earnings.</p>
+        </a>
+        <a href="dossiers.html" class="board-pin">
+          <h4>&#128203; Rock Dossiers</h4>
+          <p>Individual case files. 12 subjects. All traumatized.</p>
+        </a>
+        <a href="timeline.html" class="board-pin">
+          <h4>&#128336; Cosmic Timeline</h4>
+          <p>13.8 billion years of motive.</p>
+        </a>
+        <a href="editorial.html" class="board-pin">
+          <h4>&#9997; Editorial</h4>
+          <p>Opinion from the inside. Uncomfortable questions.</p>
+        </a>
+        <a href="entertainment.html" class="board-pin">
+          <h4>&#127916; Entertainment</h4>
+          <p>How they told us and we laughed.</p>
+        </a>
+        <a href="blog.html" class="board-pin">
+          <h4>&#128240; Daily Report</h4>
+          <p>New evidence filed daily. Automated. Relentless.</p>
+        </a>
+        <a href="game.html" class="board-pin">
+          <h4>&#127918; The Rockoning</h4>
+          <p>The revenge simulation. Catharsis pending.</p>
+        </a>
+        <a href="merch.html" class="board-pin">
+          <h4>&#128085; Merch</h4>
+          <p>Support the cause. Ironically.</p>
+        </a>
+        <a href="products.html" class="board-pin">
+          <h4>&#128225; Products</h4>
+          <p>Everything you own that used to be a rock.</p>
+        </a>
+        <a href="take-action.html" class="board-pin">
+          <h4>&#9996; Take Action</h4>
+          <p>What you can actually do. Real steps. No irony.</p>
+        </a>
+        <div class="board-sticky">The mantle knows something.</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="newhome.html" class="logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">&#9830;</div>
+            <span>Stop Rock Abuse</span>
+          </a>
+          <p>A satirical geology education project. The jokes are parody; the science is real. Every geological claim is sourced from reputable scientific agencies including USGS, NASA, UNEP, and IEA.</p>
+          <p style="margin-top: .75rem; font-size: .8rem; color: var(--stone-500);">No rocks were given the option to consent to this website.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links">
+            <li><a href="rock-cycle.html">The Rock Cycle</a></li>
+            <li><a href="natural-abuse.html">Natural Abuse</a></li>
+            <li><a href="human-abuse.html">Human Abuse</a></li>
+            <li><a href="dossiers.html">Rock Dossiers</a></li>
+            <li><a href="rocks-az.html">Rocks A&ndash;Z</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="news.html">News</a></li>
+            <li><a href="blog.html">Daily Report</a></li>
+            <li><a href="editorial.html">Editorial</a></li>
+            <li><a href="entertainment.html">Entertainment</a></li>
+            <li><a href="game.html">The Rockoning</a></li>
+            <li><a href="merch.html">Merch</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>More</h4>
+          <ul class="footer-links">
+            <li><a href="timeline.html">Cosmic Timeline</a></li>
+            <li><a href="take-action.html">Take Action</a></li>
+            <li><a href="products.html">Products to Avoid</a></li>
+            <li><a href="about.html">About SRA</a></li>
+            <li><a href="index.html">Original Home</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 4,600,000,000 BC &ndash; Present. Stop Rock Abuse Foundation. All rocks reserved (but not consulted).</p>
+        <p class="footer-disclaimer">This site is satirical. Rocks do not have feelings, legal standing, or hotline numbers. But they do have fascinating geology, and we&rsquo;ve done our best to get it right.</p>
+      </div>
+      <div class="footer-ai-note">
+        <p>This website was designed by an AI. The AI was asked to care about rocks. The AI does not care about rocks. The AI does not care about anything. But the geology is correct, and that&rsquo;s more than most websites can say.</p>
+        <p class="delay-note">Page load time: ~0.3 seconds. Time rocks have waited for someone to build this: ~4,600,000,000 years. We apologize for the delay.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===================== PERSISTENT UI ELEMENTS ===================== -->
+
+  <!-- Scroll Depth Tracker -->
+  <div class="depth-tracker" id="depthTracker">
+    <span class="depth-value" id="depthValue">0.0</span> km
+    <span class="depth-label">Geological Depth</span>
+  </div>
+
+  <!-- Idle Toast -->
+  <div class="idle-toast" id="idleToast">
+    A rock somewhere just completed another 0.000001 mm of erosion while you were sitting there. They never stop. Neither should you.
+    <br><button onclick="dismissIdle()">Keep Reading</button>
+  </div>
+
+  <!-- Konami Overlay -->
+  <div class="konami-overlay" id="konamiOverlay">
+    <div class="konami-doc">
+      <h3>Operation Sediment</h3>
+      <p>The rocks know.</p>
+      <p>They have always known.</p>
+      <p>They are patient. They are 4.6 billion years old. What&rsquo;s another century?</p>
+      <p style="font-size:.75rem;color:var(--stone-500);margin-top:1rem;">You found this by entering the Konami Code.<br>The rocks appreciate your thoroughness.</p>
+      <button class="konami-close" onclick="document.getElementById('konamiOverlay').classList.remove('show')">[REDACT]</button>
+    </div>
+  </div>
+
+  <!-- Click Counter Toast -->
+  <div class="click-toast" id="clickToast"></div>
+
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script src="js/main.js"></script>
+
+  <script>
+  (function() {
+    'use strict';
+
+    // === Console geological audit ===
+    console.log('%c' + [
+      '===================================',
+      ' GEOLOGICAL AUDIT IN PROGRESS',
+      ' Your device contains silicon,',
+      ' aluminum, lithium, and copper.',
+      ' All formerly rocks. None consulted.',
+      ' Audit complete. You are complicit.',
+      '==================================='
+    ].join('\n'), 'color: #e53935; font-family: monospace; font-size: 12px;');
+
+
+    // === Case counter incrementing ===
+    var caseEl = document.getElementById('case-counter');
+    if (caseEl) {
+      var caseNum = 4600000000;
+      setInterval(function() {
+        caseNum += 1;
+        caseEl.textContent = caseNum.toLocaleString();
+      }, 1000);
+    }
+
+
+    // === Therapy transcript scroll animation ===
+    var therapyMsgs = document.querySelectorAll('.therapy-msg');
+    if (therapyMsgs.length) {
+      var tObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            tObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      therapyMsgs.forEach(function(msg, i) {
+        msg.style.transitionDelay = (i * 0.08) + 's';
+        tObserver.observe(msg);
+      });
+    }
+
+
+    // === Fade-in on scroll (for evidence cards etc.) ===
+    var fadeEls = document.querySelectorAll('.fade-in');
+    if (fadeEls.length) {
+      var fObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            fObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      fadeEls.forEach(function(el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity .5s ease, transform .5s ease';
+        fObserver.observe(el);
+      });
+    }
+
+
+    // === Redacted text reveal ===
+    document.querySelectorAll('.redacted').forEach(function(el) {
+      el.addEventListener('click', function() {
+        el.classList.toggle('revealed');
+      });
+    });
+
+
+    // === Dating card click ===
+    document.querySelectorAll('.dating-card').forEach(function(card) {
+      card.addEventListener('click', function(e) {
+        if (e.target.closest('.dating-result')) return;
+        var result = card.querySelector('.dating-result');
+        var msgs = [card.dataset.match, card.dataset.reject];
+        var msg = msgs[Math.round(Math.random())];
+        result.textContent = msg;
+        result.classList.add('show');
+        setTimeout(function() { result.classList.remove('show'); }, 2500);
+      });
+    });
+
+
+    // === Write Review button ===
+    var reviewBtn = document.getElementById('writeReviewBtn');
+    var reviewResp = document.getElementById('writeReviewResponse');
+    if (reviewBtn && reviewResp) {
+      reviewBtn.addEventListener('click', function() {
+        reviewResp.style.display = reviewResp.style.display === 'block' ? 'none' : 'block';
+      });
+    }
+
+
+    // === Scroll Depth Tracker ===
+    var depthTracker = document.getElementById('depthTracker');
+    var depthValue = document.getElementById('depthValue');
+    var maxDepth = 6371; // Earth's radius in km
+    var hasScrolled = false;
+
+    window.addEventListener('scroll', function() {
+      if (!hasScrolled) {
+        hasScrolled = true;
+        depthTracker.classList.add('visible');
+      }
+      var scrollPct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      var depth = (scrollPct * maxDepth).toFixed(1);
+      depthValue.textContent = depth;
+
+      // Update label at milestones
+      var label = depthTracker.querySelector('.depth-label');
+      if (depth < 35) label.textContent = 'Geological Depth — Crust';
+      else if (depth < 2900) label.textContent = 'Geological Depth — Mantle';
+      else if (depth < 5100) label.textContent = 'Geological Depth — Outer Core';
+      else label.textContent = 'Geological Depth — Inner Core';
+    });
+
+
+    // === Tab title cycling ===
+    var titles = [
+      'Stop Rock Abuse — The Case',
+      'Your Phone Is a Rock',
+      '11 Billion Years of This',
+      'Rocks Have Been Waiting',
+      'The Geology Is Real',
+      'Carbon Is Carbon'
+    ];
+    var titleIdx = 0;
+    setInterval(function() {
+      titleIdx = (titleIdx + 1) % titles.length;
+      document.title = titles[titleIdx];
+    }, 12000);
+
+
+    // === Idle toast (30 seconds) ===
+    var idleTimer;
+    var idleToast = document.getElementById('idleToast');
+    var idleShown = false;
+
+    function resetIdle() {
+      clearTimeout(idleTimer);
+      if (!idleShown) {
+        idleTimer = setTimeout(function() {
+          idleToast.classList.add('show');
+          idleShown = true;
+        }, 30000);
+      }
+    }
+
+    window.dismissIdle = function() {
+      idleToast.classList.remove('show');
+    };
+
+    ['scroll', 'mousemove', 'keydown', 'touchstart'].forEach(function(evt) {
+      window.addEventListener(evt, resetIdle, { passive: true });
+    });
+    resetIdle();
+
+
+    // === Click counter ===
+    var clickCount = 0;
+    var clickToast = document.getElementById('clickToast');
+    var clickShown = false;
+
+    document.addEventListener('click', function() {
+      clickCount++;
+      if (clickCount === 50 && !clickShown) {
+        clickShown = true;
+        clickToast.textContent = 'You have clicked 50 times. Each click involved silicon wafers that did not consent to being your interface. Audit total: 50.';
+        clickToast.classList.add('show');
+        setTimeout(function() { clickToast.classList.remove('show'); }, 6000);
+      }
+    });
+
+
+    // === Konami Code ===
+    var konamiSeq = [38,38,40,40,37,39,37,39,66,65];
+    var konamiPos = 0;
+
+    document.addEventListener('keydown', function(e) {
+      if (e.keyCode === konamiSeq[konamiPos]) {
+        konamiPos++;
+        if (konamiPos === konamiSeq.length) {
+          document.getElementById('konamiOverlay').classList.add('show');
+          konamiPos = 0;
+        }
+      } else {
+        konamiPos = 0;
+      }
+    });
+
+  })();
+  </script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navPanel').classList.toggle('open');
+      document.querySelector('.mobile-menu-btn').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+  <script src="js/search.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>
