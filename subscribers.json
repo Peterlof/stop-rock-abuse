@@ -1,4 +1,11 @@
 {
-  "count": 0,
-  "subscribers": []
+  "count": 1,
+  "subscribers": [
+    {
+      "email": "peterlof@outlook.com",
+      "date": "2026-03-23",
+      "token": "8ffac411-1e13-49fb-9a52-668d05c3c4b2",
+      "active": true
+    }
+  ]
 }
