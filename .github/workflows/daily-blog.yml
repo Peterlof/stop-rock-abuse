@@ -30,3 +30,8 @@ jobs:
           git add blog/posts.json search-index.json
           git diff --staged --quiet || git commit -m "Daily rock news: $(date +%Y-%m-%d)"
           git push
+
+      - name: Send newsletter
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: python scripts/send-newsletter.py

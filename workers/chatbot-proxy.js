@@ -5,6 +5,9 @@
  *   POST /            — Chatbot (Gemini proxy)
  *   GET  /signatures  — Get petition signature count + recent names
  *   POST /signatures  — Add a petition signature (writes to GitHub)
+ *   POST /subscribe   — Subscribe an email to the daily newsletter
+ *   GET  /unsubscribe — Unsubscribe via link (token in query string)
+ *   POST /unsubscribe — Unsubscribe via API (token in body)
  *
  * Secrets (set via `wrangler secret put`):
  *   GEMINI_API_KEY    — Google Gemini API key
@@ -17,6 +20,8 @@ const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GE
 const GITHUB_REPO = 'Peterlof/stop-rock-abuse';
 const GITHUB_FILE = 'signatures.json';
 const GITHUB_API = `https://api.github.com/repos/${GITHUB_REPO}/contents/${GITHUB_FILE}`;
+const SUBSCRIBERS_FILE = 'subscribers.json';
+const SUBSCRIBERS_API = `https://api.github.com/repos/${GITHUB_REPO}/contents/${SUBSCRIBERS_FILE}`;
 
 const ALLOWED_ORIGINS = [
   'https://stoprockabuse.com',
@@ -227,6 +232,165 @@ async function handleAddSignature(body, env, origin) {
   }
 }
 
+// ── Newsletter handlers ─────────────────────────────────────────
+
+async function readSubscribersFromGitHub(token) {
+  const resp = await fetch(SUBSCRIBERS_API, {
+    headers: {
+      Authorization: `token ${token}`,
+      Accept: 'application/vnd.github.v3+json',
+      'User-Agent': 'StopRockAbuse-Worker',
+    },
+  });
+
+  if (!resp.ok) {
+    throw new Error(`GitHub read failed: ${resp.status}`);
+  }
+
+  const file = await resp.json();
+  const content = JSON.parse(atob(file.content.replace(/\n/g, '')));
+  return { data: content, sha: file.sha };
+}
+
+async function writeSubscribersToGitHub(token, data, sha, message) {
+  const encoded = btoa(JSON.stringify(data, null, 2) + '\n');
+  const resp = await fetch(SUBSCRIBERS_API, {
+    method: 'PUT',
+    headers: {
+      Authorization: `token ${token}`,
+      Accept: 'application/vnd.github.v3+json',
+      'User-Agent': 'StopRockAbuse-Worker',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      message,
+      content: encoded,
+      sha,
+    }),
+  });
+
+  if (!resp.ok) {
+    const err = await resp.text();
+    throw new Error(`GitHub write failed: ${resp.status} ${err}`);
+  }
+}
+
+async function handleSubscribe(body, env, origin) {
+  const token = env.GITHUB_TOKEN;
+  if (!token) {
+    return jsonResponse({ error: 'GitHub token not configured' }, origin, 500);
+  }
+
+  const email = (body.email || '').trim().toLowerCase();
+  if (!email || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return jsonResponse({ error: 'Valid email is required' }, origin, 400);
+  }
+
+  try {
+    const { data, sha } = await readSubscribersFromGitHub(token);
+
+    // Check for duplicate (active subscribers only)
+    const existing = data.subscribers.find(
+      s => s.email === email && s.active
+    );
+    if (existing) {
+      return jsonResponse({ error: 'Already subscribed' }, origin, 409);
+    }
+
+    // Reactivate if previously unsubscribed, otherwise add new
+    const inactive = data.subscribers.find(
+      s => s.email === email && !s.active
+    );
+    if (inactive) {
+      inactive.active = true;
+      inactive.date = new Date().toISOString().split('T')[0];
+    } else {
+      data.count += 1;
+      data.subscribers.push({
+        email,
+        date: new Date().toISOString().split('T')[0],
+        token: crypto.randomUUID(),
+        active: true,
+      });
+    }
+
+    await writeSubscribersToGitHub(token, data, sha, `Newsletter subscriber #${data.count}`);
+
+    return jsonResponse({ success: true, count: data.count }, origin);
+  } catch (err) {
+    return jsonResponse({ error: err.message }, origin, 502);
+  }
+}
+
+async function handleUnsubscribe(unsubToken, env, isGet) {
+  const token = env.GITHUB_TOKEN;
+  if (!token) {
+    if (isGet) {
+      return new Response('<html><body><h1>Error</h1><p>Service unavailable.</p></body></html>', {
+        status: 500, headers: { 'Content-Type': 'text/html' },
+      });
+    }
+    return jsonResponse({ error: 'GitHub token not configured' }, '*', 500);
+  }
+
+  if (!unsubToken) {
+    if (isGet) {
+      return new Response('<html><body><h1>Invalid Link</h1><p>This unsubscribe link is missing a token.</p></body></html>', {
+        status: 400, headers: { 'Content-Type': 'text/html' },
+      });
+    }
+    return jsonResponse({ error: 'Token is required' }, '*', 400);
+  }
+
+  try {
+    const { data, sha } = await readSubscribersFromGitHub(token);
+
+    const subscriber = data.subscribers.find(s => s.token === unsubToken);
+    if (!subscriber) {
+      if (isGet) {
+        return new Response(`<!DOCTYPE html><html><head><title>Not Found</title></head>
+<body style="font-family:Inter,sans-serif;text-align:center;padding:4rem;background:#1a1a2e;color:#e0d5c1;">
+<h1>Token Not Found</h1><p>This unsubscribe link is not valid.</p>
+<p><a href="https://stoprockabuse.com" style="color:#d4a843;">Return to Stop Rock Abuse</a></p>
+</body></html>`, { status: 404, headers: { 'Content-Type': 'text/html' } });
+      }
+      return jsonResponse({ error: 'Token not found' }, '*', 404);
+    }
+
+    if (!subscriber.active) {
+      if (isGet) {
+        return new Response(`<!DOCTYPE html><html><head><title>Already Unsubscribed</title></head>
+<body style="font-family:Inter,sans-serif;text-align:center;padding:4rem;background:#1a1a2e;color:#e0d5c1;">
+<h1>Already Unsubscribed</h1><p>You were already removed from the Daily Rock Report.</p>
+<p style="color:#888;margin-top:1rem;">The rocks understand. They&rsquo;ve been abandoned before.</p>
+<p><a href="https://stoprockabuse.com" style="color:#d4a843;">Return to Stop Rock Abuse</a></p>
+</body></html>`, { status: 200, headers: { 'Content-Type': 'text/html' } });
+      }
+      return jsonResponse({ success: true, message: 'Already unsubscribed' }, '*');
+    }
+
+    subscriber.active = false;
+    await writeSubscribersToGitHub(token, data, sha, `Newsletter unsubscribe`);
+
+    if (isGet) {
+      return new Response(`<!DOCTYPE html><html><head><title>Unsubscribed</title></head>
+<body style="font-family:Inter,sans-serif;text-align:center;padding:4rem;background:#1a1a2e;color:#e0d5c1;">
+<h1>Unsubscribed</h1><p>You&rsquo;ve been removed from the Daily Rock Report.</p>
+<p style="color:#888;margin-top:1rem;">The rocks understand. They&rsquo;ve been abandoned before.</p>
+<p style="margin-top:2rem;"><a href="https://stoprockabuse.com" style="color:#d4a843;">Return to Stop Rock Abuse</a></p>
+</body></html>`, { status: 200, headers: { 'Content-Type': 'text/html' } });
+    }
+    return jsonResponse({ success: true }, '*');
+  } catch (err) {
+    if (isGet) {
+      return new Response('<html><body><h1>Error</h1><p>Something went wrong. Try again later.</p></body></html>', {
+        status: 502, headers: { 'Content-Type': 'text/html' },
+      });
+    }
+    return jsonResponse({ error: err.message }, '*', 502);
+  }
+}
+
 // ── Router ───────────────────────────────────────────────────────
 
 export default {
@@ -242,8 +406,32 @@ export default {
       });
     }
 
+    // Route: GET /unsubscribe — no origin check (clicked from email)
+    if (path === '/unsubscribe' && request.method === 'GET') {
+      const unsubToken = url.searchParams.get('token');
+      return handleUnsubscribe(unsubToken, env, true);
+    }
+
     if (!origin) {
       return new Response('Forbidden', { status: 403 });
+    }
+
+    // Route: POST /subscribe
+    if (path === '/subscribe' && request.method === 'POST') {
+      let body;
+      try { body = await request.json(); } catch {
+        return jsonResponse({ error: 'Invalid JSON' }, origin, 400);
+      }
+      return handleSubscribe(body, env, origin);
+    }
+
+    // Route: POST /unsubscribe
+    if (path === '/unsubscribe' && request.method === 'POST') {
+      let body;
+      try { body = await request.json(); } catch {
+        return jsonResponse({ error: 'Invalid JSON' }, origin, 400);
+      }
+      return handleUnsubscribe(body.token, env, false);
     }
 
     // Route: GET /signatures

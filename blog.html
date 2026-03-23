@@ -339,6 +339,35 @@
     </div>
   </section>
 
+  <!-- Newsletter Signup -->
+  <section id="subscribe" style="background: var(--stone-900); color: #fff; padding: 4rem 0;">
+    <div class="container" style="text-align: center; max-width: 600px;">
+      <span class="section-label" style="color: var(--sand-400);">Stay Informed</span>
+      <h2 style="color: #fff; margin-bottom: 0.5rem;">Daily Rock Report &mdash; Delivered</h2>
+      <p style="color: var(--stone-400); margin-bottom: 2rem;">
+        Get each day&rsquo;s geological indignities delivered straight to your inbox.
+        The rocks can&rsquo;t email you themselves.
+      </p>
+      <div id="subscribeForm">
+        <div style="display: flex; gap: 0.75rem; max-width: 450px; margin: 0 auto;">
+          <input type="email" id="subscribeEmail" placeholder="your@email.com" maxlength="254" autocomplete="email"
+            style="flex:1; padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: #fff; font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none;">
+          <button id="subscribeBtn" onclick="submitSubscribe()"
+            style="padding: 0.75rem 1.5rem; border-radius: 8px; border: none; background: var(--sand-500); color: #fff; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.85rem; cursor: pointer; white-space: nowrap; transition: background .2s;">
+            Subscribe
+          </button>
+        </div>
+        <p id="subscribeMsg" style="margin-top: 0.75rem; font-size: 0.82rem; color: var(--sand-400); min-height: 1.2em;"></p>
+      </div>
+      <div id="subscribeSuccess" style="display:none;">
+        <p style="color: var(--sand-300);">&#10003; Subscribed. The geological record will now find you daily.</p>
+        <p style="color: var(--stone-500); font-size: 0.82rem; margin-top: 0.5rem;">
+          You can unsubscribe anytime via the link in each email.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
@@ -398,6 +427,61 @@
       document.getElementById('navOverlay').classList.toggle('active');
       document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
     }
+  </script>
+  <script>
+    (function () {
+      var WORKER_URL = 'https://rock-chat.stoprockabuse.workers.dev';
+
+      window.submitSubscribe = function () {
+        var input = document.getElementById('subscribeEmail');
+        var btn = document.getElementById('subscribeBtn');
+        var msg = document.getElementById('subscribeMsg');
+        var email = input.value.trim();
+
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          msg.textContent = 'Please enter a valid email. Even basalt has standards.';
+          msg.style.color = '#e74c3c';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Subscribing...';
+        msg.textContent = '';
+
+        fetch(WORKER_URL + '/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email }),
+        })
+          .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
+          .then(function (res) {
+            if (res.ok) {
+              document.getElementById('subscribeForm').style.display = 'none';
+              document.getElementById('subscribeSuccess').style.display = '';
+            } else if (res.data.error === 'Already subscribed') {
+              msg.textContent = "You're already subscribed. The strata have noted your enthusiasm.";
+              msg.style.color = 'var(--sand-400)';
+              btn.disabled = false;
+              btn.textContent = 'Subscribe';
+            } else {
+              msg.textContent = 'Something went wrong. The fault lines are acting up.';
+              msg.style.color = '#e74c3c';
+              btn.disabled = false;
+              btn.textContent = 'Subscribe';
+            }
+          })
+          .catch(function () {
+            msg.textContent = 'Connection failed. Even the internet is eroding.';
+            msg.style.color = '#e74c3c';
+            btn.disabled = false;
+            btn.textContent = 'Subscribe';
+          });
+      };
+
+      document.getElementById('subscribeEmail').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') { e.preventDefault(); submitSubscribe(); }
+      });
+    })();
   </script>
   <script src="js/search.js"></script>
 <script src="js/chatbot.js"></script>
