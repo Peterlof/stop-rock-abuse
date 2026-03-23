@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stop Rock Abuse — The Geological Review</title>
+  <meta name="description" content="The Geological Review: An Interdisciplinary Journal of Satirical Lithology. Impact Factor: 0.0. Rocks do not cite sources.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* === GEOLOGICAL REVIEW — PAGE-SPECIFIC STYLES === */
+
+    /* --- Ticker --- */
+    .review-ticker {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1001;
+      background: var(--stone-900); border-bottom: 1px solid var(--magma-500);
+      overflow: hidden; white-space: nowrap; height: 32px; line-height: 32px;
+      cursor: default;
+    }
+    .review-ticker:hover .ticker-scroll { animation-play-state: paused; }
+    .ticker-scroll {
+      display: inline-block;
+      animation: ticker-scroll 65s linear infinite;
+      font-family: var(--font-mono);
+      font-size: .72rem; letter-spacing: .03em; color: var(--stone-300);
+    }
+    .ticker-scroll .ticker-stat { color: var(--magma-400); font-weight: 700; }
+    .ticker-scroll .ticker-opinion { color: var(--sand-400); font-style: italic; }
+    .ticker-sep { display: inline-block; margin: 0 1.5em; color: var(--stone-600); }
+    @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* --- Academic Hero --- */
+    .journal-hero {
+      background: #fffef8;
+      padding: calc(var(--header-height) + 68px) 0 3.5rem;
+      min-height: 55vh; display: flex; align-items: center;
+      border-bottom: 3px double #222;
+    }
+    .journal-masthead {
+      max-width: 740px; margin: 0 auto; text-align: center;
+    }
+    .journal-rule { border: none; border-top: 2px solid #222; margin: 0 0 1.25rem; }
+    .journal-rule-thin { border: none; border-top: 1px solid #ccc; margin: 1rem 0; }
+    .journal-title {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: clamp(2.2rem, 6vw, 3.8rem); font-weight: 900;
+      color: #111; letter-spacing: -.02em; line-height: 1.05;
+      text-transform: uppercase;
+    }
+    .journal-subtitle {
+      font-family: var(--font-body); font-size: .85rem;
+      color: #666; letter-spacing: .06em; margin-top: .75rem;
+      font-style: italic;
+    }
+    .journal-meta {
+      font-family: var(--font-mono); font-size: .7rem;
+      color: #999; letter-spacing: .04em; margin-top: .5rem;
+    }
+    .journal-meta span { margin: 0 .75em; }
+    .journal-issn {
+      display: inline-block; margin-top: 1rem;
+      font-family: var(--font-mono); font-size: .65rem;
+      color: #bbb; letter-spacing: .08em;
+      border: 1px solid #ddd; padding: .25rem .75rem;
+      border-radius: 2px;
+    }
+
+    /* --- Papers Container --- */
+    .papers-section {
+      background: #f5f4f0; padding: 4rem 0;
+    }
+    .papers-list {
+      max-width: 920px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 4rem;
+    }
+
+    /* --- Individual Paper --- */
+    .paper {
+      background: #fff; border: 1px solid #e0e0e0;
+      border-radius: 2px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    }
+    .paper-header {
+      padding: 2.5rem 3rem 2rem;
+      border-bottom: 1px solid #eee;
+    }
+    .paper-doi {
+      font-family: var(--font-mono); font-size: .65rem;
+      color: #bbb; letter-spacing: .04em; margin-bottom: .75rem;
+    }
+    .paper-title {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: clamp(1.15rem, 2.5vw, 1.5rem); font-weight: 700;
+      color: #111; line-height: 1.35; margin-bottom: .75rem;
+    }
+    .paper-authors {
+      font-family: var(--font-body); font-size: .82rem;
+      color: #555; margin-bottom: .25rem;
+    }
+    .paper-affiliations {
+      font-family: var(--font-body); font-size: .72rem;
+      color: #999; font-style: italic; line-height: 1.6;
+    }
+    .paper-dates {
+      font-family: var(--font-mono); font-size: .62rem;
+      color: #bbb; margin-top: .75rem; letter-spacing: .03em;
+    }
+
+    /* --- Paper Body with Margin Comments --- */
+    .paper-body-wrap {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 0;
+    }
+    .paper-body {
+      padding: 2rem 3rem;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: .92rem; line-height: 1.85; color: #333;
+    }
+    .paper-body p { margin-bottom: 1.25rem; }
+    .paper-body .abstract-label {
+      font-family: var(--font-body); font-size: .7rem;
+      font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: #999; margin-bottom: .5rem;
+      display: block;
+    }
+    .paper-body .abstract {
+      font-style: italic; color: #555;
+      padding: 1.25rem; background: #fafaf6;
+      border-left: 3px solid #ddd; margin-bottom: 2rem;
+    }
+    .paper-body .passage-label {
+      font-family: var(--font-mono); font-size: .6rem;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: #bbb; margin-bottom: .25rem; display: block;
+    }
+    .paper-body .key-passage {
+      padding: 1rem 1.25rem; background: #fffff0;
+      border-left: 3px solid var(--sand-500);
+      margin-bottom: 1.5rem; font-size: .9rem;
+    }
+
+    /* --- Margin Comments (Peer Review) --- */
+    .paper-margin {
+      padding: 2rem 1.5rem; background: #faf9f5;
+      border-left: 1px solid #e8e8e0;
+      display: flex; flex-direction: column; gap: 1.25rem;
+    }
+    .margin-label {
+      font-family: var(--font-mono); font-size: .6rem;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: #999; font-weight: 700; text-align: center;
+      padding-bottom: .75rem; border-bottom: 1px solid #e8e8e0;
+    }
+    .review-note {
+      padding: 1rem; border-radius: 6px;
+      font-family: var(--font-body); font-size: .78rem;
+      line-height: 1.65; position: relative;
+      border-left: 3px solid;
+    }
+    .review-note::before {
+      content: attr(data-reviewer);
+      display: block; font-weight: 700;
+      font-size: .65rem; letter-spacing: .08em;
+      text-transform: uppercase; margin-bottom: .35rem;
+    }
+    .review-note.r1 {
+      background: rgba(30, 136, 229, .07); border-color: var(--ocean-500);
+      color: #1a5276;
+    }
+    .review-note.r1::before { color: var(--ocean-500); }
+    .review-note.r2 {
+      background: rgba(124, 179, 66, .08); border-color: var(--earth-500);
+      color: #2e5918;
+    }
+    .review-note.r2::before { color: var(--earth-500); }
+    .review-note.r3 {
+      background: rgba(229, 57, 53, .06); border-color: var(--magma-500);
+      color: #7b1a1a;
+    }
+    .review-note.r3::before { color: var(--magma-500); }
+    .review-note.editor {
+      background: rgba(253, 216, 53, .1); border-color: var(--sand-500);
+      color: #6d5600;
+    }
+    .review-note.editor::before { color: var(--sand-600); }
+    .review-verdict {
+      font-weight: 700; font-style: italic;
+      margin-top: .35rem; display: block;
+    }
+
+    /* --- Responsive: stack on mobile --- */
+    @media (max-width: 900px) {
+      .paper-body-wrap {
+        grid-template-columns: 1fr;
+      }
+      .paper-margin {
+        border-left: none; border-top: 1px solid #e8e8e0;
+        padding: 1.5rem;
+      }
+      .paper-header { padding: 2rem 1.5rem 1.5rem; }
+      .paper-body { padding: 1.5rem; }
+    }
+
+    /* --- Footer AI note --- */
+    .footer-ai-note {
+      text-align: center; margin-top: 2rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-ai-note p {
+      font-family: var(--font-mono); font-size: .75rem;
+      color: var(--stone-500); line-height: 1.7;
+    }
+    .footer-ai-note .delay-note {
+      font-size: .65rem; color: var(--stone-600); margin-top: .5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="review-ticker">
+    <div class="ticker-scroll">
+      <span class="ticker-stat">IMPACT FACTOR: 0.0</span> &mdash; rocks do not cite sources.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">RETRACTION WATCH: Paper claiming &ldquo;rocks have feelings&rdquo; retracted. Rocks unaffected.</span>
+      <span class="ticker-sep">&bull;</span>
+      PEER REVIEW: <span class="ticker-stat">3 REVIEWERS</span> assigned. One submitted comments on slate. Literally.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">&ldquo;This journal has no credibility,&rdquo; says geologist. &ldquo;But the mineralogy checks out.&rdquo;</span>
+      <span class="ticker-sep">&bull;</span>
+      <!-- duplicate for seamless loop -->
+      <span class="ticker-stat">IMPACT FACTOR: 0.0</span> &mdash; rocks do not cite sources.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">RETRACTION WATCH: Paper claiming &ldquo;rocks have feelings&rdquo; retracted. Rocks unaffected.</span>
+      <span class="ticker-sep">&bull;</span>
+      PEER REVIEW: <span class="ticker-stat">3 REVIEWERS</span> assigned. One submitted comments on slate. Literally.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">&ldquo;This journal has no credibility,&rdquo; says geologist. &ldquo;But the mineralogy checks out.&rdquo;</span>
+      <span class="ticker-sep">&bull;</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" style="top: 32px;">
+    <div class="container">
+      <a href="newhome.html" class="logo">
+        <div class="logo-icon">&#9830;</div>
+        <span>Stop Rock Abuse</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="newhome.html">The Case</a></li>
+          <li><a href="new-cycle.html">Orientation</a></li>
+          <li><a href="new-dossiers.html">Case Files</a></li>
+          <li><a href="new-timeline.html">Cold Case</a></li>
+          <li><a href="new-evidence.html">Incident Reports</a></li>
+          <li><a href="new-action.html">Class Action</a></li>
+          <li><a href="new-editorial.html" class="active">Peer Review</a></li>
+        </ul>
+        <button class="search-btn" aria-label="Search site" title="Search (Ctrl+K)"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></button>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slide-in nav panel -->
+  <div class="nav-panel" id="navPanel">
+    <a href="newhome.html">The Case</a>
+    <a href="new-cycle.html">Orientation</a>
+    <a href="new-dossiers.html">Case Files</a>
+    <a href="new-timeline.html">Cold Case</a>
+    <a href="new-evidence.html">Incident Reports</a>
+    <a href="new-action.html">Class Action</a>
+    <a href="new-editorial.html" class="active">Peer Review</a>
+  </div>
+  <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+
+  <!-- ===================== HERO: JOURNAL MASTHEAD ===================== -->
+  <section class="journal-hero">
+    <div class="container">
+      <div class="journal-masthead">
+        <hr class="journal-rule">
+        <h1 class="journal-title">The Geological Review</h1>
+        <div class="journal-subtitle">An Interdisciplinary Journal of Satirical Lithology</div>
+        <hr class="journal-rule-thin">
+        <div class="journal-meta">
+          <span>Impact Factor: 0.0 (rocks do not cite sources)</span>
+          <span>|</span>
+          <span>Established: 4.6 Ga</span>
+          <span>|</span>
+          <span>Volume 4,600,000,000</span>
+          <span>|</span>
+          <span>Issue 1</span>
+        </div>
+        <div class="journal-issn">ISSN: 0000-0000-ROCK</div>
+        <hr class="journal-rule" style="margin-top: 1.25rem;">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== PAPERS ===================== -->
+  <section class="papers-section">
+    <div class="container">
+      <div class="papers-list">
+
+
+        <!-- ===== PAPER 1 ===== -->
+        <article class="paper">
+          <div class="paper-header">
+            <div class="paper-doi">DOI: 10.0000/geolrev.0001 &nbsp;&bull;&nbsp; Open Access &nbsp;&bull;&nbsp; Satirical Lithology</div>
+            <h2 class="paper-title">Paper Beats Rock: A Critical Reexamination of Game-Theoretic Assumptions in Hand-Signal Resolution Systems</h2>
+            <div class="paper-authors">Dr. A. Gneiss<sup>1</sup>, Prof. B. Schist<sup>2</sup></div>
+            <div class="paper-affiliations">
+              <sup>1</sup>Department of Injustice Studies, University of the Mantle &nbsp;&bull;&nbsp;
+              <sup>2</sup>Center for Recreational Bias Analysis, Cratonic Institute
+            </div>
+            <div class="paper-dates">Received: 4.6 Ga &nbsp;|&nbsp; Accepted: Still pending &nbsp;|&nbsp; Published: Anyway</div>
+          </div>
+          <div class="paper-body-wrap">
+            <div class="paper-body">
+              <span class="abstract-label">Abstract</span>
+              <div class="abstract">
+                This paper examines the foundational claim of the hand-signal resolution system known as &ldquo;Rock, Paper, Scissors&rdquo; &mdash; specifically, the assertion that paper defeats rock. We subject this claim to physical testing across 47 paper-rock interactions and find that in 100% of cases, rock defeats paper by every measurable metric including mass, durability, and damage inflicted. We conclude that the game&rsquo;s rules represent a systematic anti-rock bias embedded in childhood education worldwide. We call for immediate reform, or at minimum, an asterisk.
+              </div>
+
+              <span class="passage-label">Key Passage &sect;3.1</span>
+              <div class="key-passage">
+                Place a sheet of standard A4 copy paper (80 gsm, 0.1mm thick) over a piece of granite. The rock is now slightly less visible. It has not been defeated. It has not been contained. It has been mildly inconvenienced in terms of direct sunlight exposure. By this logic, a hat defeats the human head, a tablecloth defeats a table, and nightfall defeats everything. The methodology is, to use a technical term, nonsense.
+              </div>
+
+              <span class="passage-label">Key Passage &sect;4.2</span>
+              <div class="key-passage">
+                Children encounter rock-paper-scissors at age 3&ndash;4, years before they learn what rocks actually are. Their first formal relationship with geology is a game that tells them rocks lose to office supplies. By the time they take Earth Science in middle school, the damage is done. They have internalized, at a neurodevelopmental level, that paper is superior to stone. We do not argue this is the sole cause of geological illiteracy, but we note the correlation and raise an eyebrow.
+              </div>
+
+              <p>The authors further note that &ldquo;scissors beats paper&rdquo; is at least physically coherent &mdash; scissors can cut paper. &ldquo;Rock beats scissors&rdquo; is similarly defensible &mdash; a rock will destroy scissors. It is only the paper-rock interaction that relies on metaphor rather than physics. The game is two-thirds empirical and one-third propaganda.</p>
+            </div>
+            <div class="paper-margin">
+              <div class="margin-label">Peer Review Comments</div>
+              <div class="review-note r1" data-reviewer="Reviewer 1">
+                While methodologically sound, the authors fail to consider that &ldquo;paper&rdquo; in the original Chinese game (<em>sh&#466;uq&#363;n</em>) may have represented a decree or legal document. The argument that bureaucracy defeats nature is&hellip; actually quite compelling. I&rsquo;m troubled.
+                <span class="review-verdict">Accept with revisions.</span>
+              </div>
+              <div class="review-note r2" data-reviewer="Reviewer 2">
+                I showed this to my children. They now refuse to play the game. My eldest insists on resolving disputes by comparing the Mohs hardness of nearby objects. Family dinners have become longer.
+                <span class="review-verdict">Reject on ethical grounds.</span>
+              </div>
+              <div class="review-note editor" data-reviewer="Editor's Note">
+                We recognize this paper may cause distress to paper-first players. A support hotline has not been established because this is a game. We also note that Reviewer 2&rsquo;s eldest child sounds like an excellent future geologist.
+              </div>
+            </div>
+          </div>
+        </article>
+
+
+        <!-- ===== PAPER 2 ===== -->
+        <article class="paper">
+          <div class="paper-header">
+            <div class="paper-doi">DOI: 10.0000/geolrev.0002 &nbsp;&bull;&nbsp; Open Access &nbsp;&bull;&nbsp; Geological Economics</div>
+            <h2 class="paper-title">Commodification Under Glass: The Pet Rock as Economic Case Study in Manufactured Dependency (1975&ndash;1976)</h2>
+            <div class="paper-authors">Dr. C.Ite<sup>1</sup>, Dr. D. Ite<sup>1</sup> (no relation)</div>
+            <div class="paper-affiliations">
+              <sup>1</sup>School of Geological Economics, Rosarito Beach Institute
+            </div>
+            <div class="paper-dates">Received: 4.6 Ga &nbsp;|&nbsp; Accepted: Reluctantly &nbsp;|&nbsp; Published: With reservations (like the Pet Rock)</div>
+          </div>
+          <div class="paper-body-wrap">
+            <div class="paper-body">
+              <span class="abstract-label">Abstract</span>
+              <div class="abstract">
+                In 1975, Gary Dahl sold approximately 1.5 million rocks at $3.95 each, netting roughly $85 million in today&rsquo;s dollars. This paper examines the Pet Rock phenomenon as a case study in manufactured dependency &mdash; specifically, the inclusion of air holes in the carrying box for an organism that does not breathe. We trace the arc from novelty to cultural artifact and conclude that the Pet Rock was, in economic terms, the most honest product ever sold: it promised nothing, delivered nothing, and the customer knew this going in. Every product since has been less transparent.
+              </div>
+
+              <span class="passage-label">Key Passage &sect;2.3</span>
+              <div class="key-passage">
+                The air holes served no functional purpose. They implied life where none existed, created the suggestion of a need that would justify enclosure. This is the foundational move of commodification &mdash; manufacture dependency to legitimize the product. The Pet Rock did not need air. It did not need the box. It did not need you. The air holes were theatre, and the audience paid $3.95 for the performance.
+              </div>
+
+              <span class="passage-label">Key Passage &sect;5.1</span>
+              <div class="key-passage">
+                The crystal healing industry performs identical extraction with a different markup. A piece of rose quartz that spent 50 million years forming in a pegmatite body retails for $24 on Etsy because someone assigned it authority over the heart chakra. The Pet Rock was at least honest about its absurdity. It wore the joke on its sleeve, or rather, in its air holes. The crystal healing industry wears the joke on a silk pouch embroidered with a crescent moon and charges for the pouch.
+              </div>
+
+              <p>The authors note that Dahl&rsquo;s instruction manual &mdash; which included commands such as &ldquo;sit&rdquo; and &ldquo;stay,&rdquo; at which the rock consistently excelled &mdash; represented the highest obedience rate of any pet in recorded history. A 100% compliance rate. No feeding. No veterinary bills. No noise complaints. The ideal pet, the authors argue, was always a rock. The market simply wasn&rsquo;t ready.</p>
+            </div>
+            <div class="paper-margin">
+              <div class="margin-label">Peer Review Comments</div>
+              <div class="review-note r1" data-reviewer="Reviewer 1">
+                I bought a Pet Rock in 1975. I have it on my desk. I am reviewing this paper next to it. I&rsquo;m not sure what that says about me, but I suspect this paper is about to tell me. The rock, characteristically, has no opinion.
+                <span class="review-verdict">Accept reluctantly.</span>
+              </div>
+              <div class="review-note r2" data-reviewer="Reviewer 2">
+                The comparison to the crystal healing industry is devastating and I love it. Minor note: &ldquo;pegmatite vein&rdquo; should be &ldquo;pegmatite body.&rdquo; Also, rose quartz commonly forms in pneumatolytic environments, not just pegmatites. The error has been corrected in proof. The larger point &mdash; that we assign metaphysical properties to rocks based on color &mdash; stands unscathed.
+                <span class="review-verdict">Revise and resubmit.</span>
+              </div>
+              <div class="review-note r3" data-reviewer="Reviewer 3">
+                I am a rock. I have no opinion on this paper. I have no opinions. I lack the neural architecture for critique. I have existed for approximately 340 million years. Five stars.
+                <span class="review-verdict">Accept (presumably).</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+
+        <!-- ===== PAPER 3 ===== -->
+        <article class="paper">
+          <div class="paper-header">
+            <div class="paper-doi">DOI: 10.0000/geolrev.0003 &nbsp;&bull;&nbsp; Open Access &nbsp;&bull;&nbsp; Involuntary Processing Studies</div>
+            <h2 class="paper-title">Thermal Decomposition as Career Transition: A Longitudinal Study of Limestone-to-Cement Conversion and Its Implications for Geological Identity</h2>
+            <div class="paper-authors">Prof. Cal Cite<sup>1</sup>, Dr.ite ite<sup>2</sup></div>
+            <div class="paper-affiliations">
+              <sup>1</sup>Department of Involuntary Processing, Portland Cement Research Institute &nbsp;&bull;&nbsp;
+              <sup>2</sup>Kiln Survivor Studies Program, University of Limestone
+            </div>
+            <div class="paper-dates">Received: ~340 Ma (as a marine organism) &nbsp;|&nbsp; Accepted: At 1,450&deg;C &nbsp;|&nbsp; Published: As CO&#8322;</div>
+          </div>
+          <div class="paper-body-wrap">
+            <div class="paper-body">
+              <span class="abstract-label">Abstract</span>
+              <div class="abstract">
+                This paper traces the lifecycle of a single calcium carbonate unit from marine deposition (~340 Ma) through lithification, diagenesis, tectonic uplift, quarrying, and thermal decomposition at 1,450&deg;C. We find that the cement production process destroys all geological identity in approximately 4 hours &mdash; a timeline 750 billion times shorter than the formation period. We ask whether this constitutes a career transition or an existential crisis. We do not answer, because the limestone can no longer be reached for comment.
+              </div>
+
+              <span class="passage-label">Key Passage &sect;3.1 &mdash; The Chemistry</span>
+              <div class="key-passage">
+                The reaction is elegant in its brutality: CaCO&#8323; &rarr; CaO + CO&#8322;. Calcium carbonate, heated to 1,450&deg;C in a rotary kiln, releases its carbon dioxide &mdash; the same carbon it has held in crystalline trust since the Carboniferous period &mdash; and becomes calcium oxide, or quickite. The CO&#8322; enters the atmosphere. The quicklite enters a mixer. The limestone&rsquo;s 340-million-year identity is annulled in a thermal event that the industry describes, without irony, as &ldquo;calcination.&rdquo;
+              </div>
+
+              <span class="passage-label">Key Passage &sect;4.3 &mdash; The Scale</span>
+              <div class="key-passage">
+                Global cement production: 4.1 billion tons annually. CO&#8322; released: approximately 2.8 billion tons, accounting for 5&ndash;8% of global anthropogenic emissions. Each ton of cement requires approximately 1.5 tons of limestone. The math is straightforward: to build the modern world, we are systematically disassembling the Carboniferous one. The marine organisms whose shells became this limestone fixed that carbon 340 million years ago. We are un-fixing it at industrial speed. The atmosphere is keeping score.
+              </div>
+
+              <p>The authors conclude that &ldquo;career transition&rdquo; is an inadequate metaphor. A career transition implies the subject continues to exist in a new role. Limestone does not continue to exist after calcination. It becomes two things, neither of which is limestone. The appropriate metaphor, the authors suggest, is &ldquo;disassembly.&rdquo; But they note that &ldquo;disassembly&rdquo; is rarely used in industry literature, because it sounds like what it is.</p>
+            </div>
+            <div class="paper-margin">
+              <div class="margin-label">Peer Review Comments</div>
+              <div class="review-note r1" data-reviewer="Reviewer 1">
+                The title alone made me reconsider my career in cement research. I have spent 22 years studying clinker formation. I have never once framed it as &ldquo;destroying a 340-million-year-old marine fossil record to make a sidewalk.&rdquo; I am going to need a moment.
+                <span class="review-verdict">Accept.</span>
+              </div>
+              <div class="review-note r2" data-reviewer="Reviewer 2">
+                The &ldquo;career transition&rdquo; framing, while obviously satirical, raises genuine questions about how we narrate industrial processes. We say limestone &ldquo;becomes&rdquo; cement as if it&rsquo;s voluntary. It is not. The passive voice in materials science papers is doing a lot of ethical heavy lifting. &ldquo;Limestone is heated&rdquo; &mdash; by whom? &ldquo;CO&#8322; is released&rdquo; &mdash; by what process, operated by what industry, for what purpose? This paper deserves publication and a therapy session.
+                <span class="review-verdict">Accept with commendation.</span>
+              </div>
+              <div class="review-note editor" data-reviewer="Editor's Note">
+                Minor correction: &ldquo;quickite&rdquo; in &sect;3.1 should read &ldquo;quicklime.&rdquo; The error has been preserved as a reminder that even fake journals have real typos.
+              </div>
+            </div>
+          </div>
+        </article>
+
+
+        <!-- ===== PAPER 4 ===== -->
+        <article class="paper">
+          <div class="paper-header">
+            <div class="paper-doi">DOI: 10.0000/geolrev.0004 &nbsp;&bull;&nbsp; Open Access &nbsp;&bull;&nbsp; Mineral Inequality Studies</div>
+            <h2 class="paper-title">Diamonds Are Forever, Graphite Is Now: A Comparative Study of Socioeconomic Outcomes for Allotropically Identical Carbon</h2>
+            <div class="paper-authors">Dr. C. Leavage<sup>1</sup></div>
+            <div class="paper-affiliations">
+              <sup>1</sup>Department of Mineral Inequality Studies, De Beers Independent Research Center (citation needed)
+            </div>
+            <div class="paper-dates">Received: Under pressure &nbsp;|&nbsp; Accepted: Under more pressure &nbsp;|&nbsp; Published: Under even more pressure (this is also how diamonds form)</div>
+          </div>
+          <div class="paper-body-wrap">
+            <div class="paper-body">
+              <span class="abstract-label">Abstract</span>
+              <div class="abstract">
+                Diamond and graphite are both pure carbon. Diamond is arranged in a tetrahedral lattice (sp&sup3;); graphite in planar sheets (sp&sup2;). Diamond retails for $5,000&ndash;$50,000 per carat. Graphite retails for $0.02 per pencil. This paper examines the socioeconomic consequences of crystallographic structure and concludes that geology has a class problem. We propose that no carbon atom should be valued more highly than another on the basis of bond angle alone, and we recognize that this proposal will be ignored.
+              </div>
+
+              <span class="passage-label">Key Passage &sect;2.1</span>
+              <div class="key-passage">
+                The only difference between a $10,000 engagement ring and the core of a #2 pencil is the angle at which carbon atoms bonded under pressure. This is, quite literally, a structural inequality. The diamond had no more ambition than the graphite. It did not work harder. It did not attend a better university. It was subjected to different thermodynamic conditions in the upper mantle, emerged at the surface via kimberlite eruption, and was subsequently assigned a monetary value by a cartel. The graphite, equally carbon, equally ancient, writes standardized tests and is then discarded. The system is not meritocratic.
+              </div>
+
+              <span class="passage-label">Key Passage &sect;4.4</span>
+              <div class="key-passage">
+                De Beers spent the 20th century convincing the public that a diamond &mdash; a compressed carbon lattice &mdash; was the only acceptable symbol of romantic commitment. They succeeded. An entire generation internalized the idea that love must be expressed in gigapascals. Meanwhile, graphite, the same element in a different mood, lubricates door hinges and fills in Scantron sheets. Both are carbon. Both are forever. One gets a vault; the other gets a pencil case. The market has spoken, and the market is crystallographically illiterate.
+              </div>
+
+              <p>The paper closes with a meditation on lab-grown diamonds, which are chemically, physically, and optically identical to mined diamonds but cost approximately 70% less. If the consumer cannot tell the difference, the author argues, then the value was never in the carbon. It was in the story &mdash; specifically, the story that this carbon is rare, when in fact carbon is the fourth most abundant element in the universe. &ldquo;You are not buying a rare element,&rdquo; the author writes. &ldquo;You are buying a marketing campaign that began in 1947.&rdquo;</p>
+            </div>
+            <div class="paper-margin">
+              <div class="margin-label">Peer Review Comments</div>
+              <div class="review-note r1" data-reviewer="Reviewer 1">
+                &ldquo;Structural inequality.&rdquo; I see what you did there. I have been reviewing papers for 18 years and I have never encountered a pun that was simultaneously this groan-inducing and this scientifically precise. The sp&sup3;/sp&sup2; framing is correct. The class analysis is correct. The pun is unforgivable. All three are reasons to publish.
+                <span class="review-verdict">Accept with applause.</span>
+              </div>
+              <div class="review-note r2" data-reviewer="Reviewer 2">
+                The paper neglects to mention that lab-grown diamonds are chemically identical to mined diamonds and cost 70% less. If the market can&rsquo;t tell the difference, the value was never in the carbon. It was in the story. This is either economics or geology. I&rsquo;m no longer sure which department should evaluate this paper. I am forwarding it to both and to the philosophy department for good measure.
+                <span class="review-verdict">Accept.</span>
+              </div>
+              <div class="review-note editor" data-reviewer="Editor's Note">
+                The author&rsquo;s affiliation with the &ldquo;De Beers Independent Research Center (citation needed)&rdquo; has been flagged by our conflict-of-interest committee, which does not exist but probably should.
+              </div>
+            </div>
+          </div>
+        </article>
+
+
+        <!-- ===== PAPER 5 ===== -->
+        <article class="paper">
+          <div class="paper-header">
+            <div class="paper-doi">DOI: 10.0000/geolrev.0005 &nbsp;&bull;&nbsp; Open Access &nbsp;&bull;&nbsp; Geological Philosophy</div>
+            <h2 class="paper-title">Towards a Unified Theory of Geological Neglect: Why Nobody Asks the Rocks</h2>
+            <div class="paper-authors">The Editorial Board</div>
+            <div class="paper-affiliations">
+              The Geological Review &nbsp;&bull;&nbsp; Published in perpetuity
+            </div>
+            <div class="paper-dates">Received: 4.6 Ga &nbsp;|&nbsp; Accepted: After 4.6 billion years of deliberation &nbsp;|&nbsp; Published: Now, finally</div>
+          </div>
+          <div class="paper-body-wrap">
+            <div class="paper-body">
+              <span class="abstract-label">Abstract</span>
+              <div class="abstract">
+                This paper asks a question that has not been asked in 4.6 billion years of geological study: why doesn&rsquo;t anyone ask the rocks? We acknowledge immediately that rocks cannot answer, as they lack nervous systems, vocal cords, and opinions. But we note that this has never stopped humans from speaking on behalf of other entities &mdash; corporations, nations, unborn generations, fictional characters, and their pets. We propose that the omission is not scientific. It is cultural. And it is, if you think about it long enough, very funny. And then, if you think about it even longer, not funny at all. And then funny again. The cycle continues, much like the rock cycle, though faster.
+              </div>
+
+              <span class="passage-label">Key Passage &sect;2.1</span>
+              <div class="key-passage">
+                Every geological process is described in the passive voice. Rock &ldquo;is weathered.&rdquo; Rock &ldquo;is eroded.&rdquo; Rock &ldquo;is subducted.&rdquo; The agent of these sentences &mdash; water, wind, gravity, humans &mdash; is grammatically secondary. The rock is always the object. Never the subject. This paper does not propose that rocks should be subjects. We propose that <em>noticing</em> this is the first step toward noticing other things we describe in the passive voice when we&rsquo;d prefer not to name the agent. &ldquo;Forests are cleared.&rdquo; &ldquo;Emissions are produced.&rdquo; &ldquo;Species are lost.&rdquo; By whom? The passive voice knows. The passive voice isn&rsquo;t telling.
+              </div>
+
+              <span class="passage-label">Key Passage &sect;3.4</span>
+              <div class="key-passage">
+                We asked a piece of basalt for comment. The basalt did not respond. We asked again. Nothing. We waited for 45 minutes, which is approximately 0.000000000001% of the basalt&rsquo;s lifespan. We interpreted the silence as neither consent nor refusal but as a reminder that some entities simply exist without narrating their existence. Humans find this unsettling. Rocks do not find it anything. That may be the point.
+              </div>
+
+              <p>The paper closes with a simple observation: every atom in the human body was, at some point, part of a rock. The calcium in our bones was once limestone. The iron in our blood was once hematite. The silicon in our neural pathways was once quartz. We are, all of us, rocks that somehow learned to move and complain. The rocks we dig up and process and discard are our geological relatives. We are not suggesting you treat your driveway with familial respect. We are suggesting that the universe is stranger and more connected than the passive voice allows us to admit. And that noticing this &mdash; really noticing it &mdash; changes what you see when you look at a piece of gravel.</p>
+            </div>
+            <div class="paper-margin">
+              <div class="margin-label">Peer Review Comments</div>
+              <div class="review-note r1" data-reviewer="Reviewer 1">
+                This started as comedy and ended as philosophy. I was not prepared for the section on passive voice. I study erosion. I have written &ldquo;rock is eroded&rdquo; approximately 4,000 times in my career. I have never once written &ldquo;water erodes rock&rdquo; or &ldquo;humans erode rock by redirecting water.&rdquo; I am uncomfortable and impressed in equal measure.
+                <span class="review-verdict">Accept.</span>
+              </div>
+              <div class="review-note r2" data-reviewer="Reviewer 2">
+                The point about passive voice in scientific writing is&hellip; actually a real critique of how we narrate environmental destruction. I came here to laugh. I did not come here to think. I have been ambushed by a satirical geology journal. I need to sit down. I am already sitting down. I need to sit down harder.
+                <span class="review-verdict">Reject on the grounds that I was not prepared.</span>
+              </div>
+              <div class="review-note editor" data-reviewer="Editor's Note">
+                Paper accepted unanimously. One reviewer submitted their review carved into a piece of slate. We respect the commitment. We were unable to scan the slate. We transcribed it by hand. The reviewer misspelled &ldquo;sedimentary.&rdquo; We corrected it. The slate did not object.
+              </div>
+            </div>
+          </div>
+        </article>
+
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="newhome.html" class="logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">&#9830;</div>
+            <span>Stop Rock Abuse</span>
+          </a>
+          <p>A satirical geology education project. The jokes are parody; the science is real. Every geological claim is sourced from reputable scientific agencies including USGS, NASA, UNEP, and IEA.</p>
+          <p style="margin-top: .75rem; font-size: .8rem; color: var(--stone-500);">No rocks were given the option to consent to this website.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul class="footer-links">
+            <li><a href="newhome.html">The Case</a></li>
+            <li><a href="new-cycle.html">Orientation</a></li>
+            <li><a href="new-dossiers.html">Case Files</a></li>
+            <li><a href="new-timeline.html">Cold Case</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="new-evidence.html">Incident Reports</a></li>
+            <li><a href="new-action.html">Class Action</a></li>
+            <li><a href="new-editorial.html">Peer Review</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legacy Site</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Original Home</a></li>
+            <li><a href="rock-cycle.html">Rock Cycle</a></li>
+            <li><a href="editorial.html">Editorial</a></li>
+            <li><a href="about.html">About SRA</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 4,600,000,000 BC &ndash; Present. Stop Rock Abuse Foundation. All rocks reserved (but not consulted).</p>
+        <p class="footer-disclaimer">This site is satirical. Rocks do not have feelings, legal standing, or hotline numbers. But they do have fascinating geology, and we&rsquo;ve done our best to get it right.</p>
+      </div>
+      <div class="footer-ai-note">
+        <p>This website was designed by an AI. The AI does not care about rocks. The AI does not care about anything. But the geology is correct, and that&rsquo;s more than most websites can say.</p>
+        <p class="delay-note">Page load time: ~0.3 seconds. Time rocks have waited for someone to build this: ~4,600,000,000 years. We apologize for the delay.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script src="js/main.js"></script>
+
+  <script>
+  (function() {
+    'use strict';
+
+    // === Fade-in papers on scroll ===
+    var papers = document.querySelectorAll('.paper');
+    if (papers.length) {
+      var pObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            pObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.05 });
+      papers.forEach(function(p) {
+        p.style.opacity = '0';
+        p.style.transform = 'translateY(30px)';
+        p.style.transition = 'opacity .6s ease, transform .6s ease';
+        pObserver.observe(p);
+      });
+    }
+
+    // === Console audit ===
+    console.log('%c' + [
+      '========================================',
+      ' THE GEOLOGICAL REVIEW',
+      ' Peer Review Status: ALWAYS OPEN',
+      ' Acceptance Rate: 100%',
+      ' (we cannot afford to be selective)',
+      ' Impact Factor: 0.0',
+      ' (rocks do not cite sources)',
+      ' Complaints: 0',
+      ' (rocks do not complain)',
+      '========================================'
+    ].join('\n'), 'color: #fdd835; font-family: monospace; font-size: 11px;');
+
+  })();
+  </script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navPanel').classList.toggle('open');
+      document.querySelector('.mobile-menu-btn').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+  <script src="js/search.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

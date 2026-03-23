@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stop Rock Abuse — Incident Reports: Geological Crimes Against Stone</title>
+  <meta name="description" content="Official incident reports documenting natural and human abuse of geological specimens. All cases remain open. All suspects remain at large. Filing officer: Sgt. Schist.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* === EVIDENCE — PAGE-SPECIFIC STYLES === */
+
+    /* --- Ticker --- */
+    .evidence-ticker {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1001;
+      background: var(--stone-900); border-bottom: 1px solid var(--magma-500);
+      overflow: hidden; white-space: nowrap; height: 32px; line-height: 32px;
+      cursor: default;
+    }
+    .evidence-ticker:hover .ticker-scroll { animation-play-state: paused; }
+    .ticker-scroll {
+      display: inline-block;
+      animation: ticker-scroll 58s linear infinite;
+      font-family: var(--font-mono);
+      font-size: .72rem; letter-spacing: .03em; color: var(--stone-300);
+    }
+    .ticker-scroll .ticker-stat { color: var(--magma-400); font-weight: 700; }
+    .ticker-scroll .ticker-opinion { color: var(--sand-400); font-style: italic; }
+    .ticker-scroll .ticker-correction { color: var(--earth-400); }
+    .ticker-sep { display: inline-block; margin: 0 1.5em; color: var(--stone-600); }
+    @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* --- Hero --- */
+    .evidence-hero {
+      background: var(--stone-900);
+      padding: calc(var(--header-height) + 68px) 0 4rem;
+      min-height: 65vh; display: flex; align-items: center;
+      position: relative;
+    }
+    .evidence-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(229,57,53,.02) 3px,
+        rgba(229,57,53,.02) 6px
+      );
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; text-align: center; width: 100%; }
+    .hero-division {
+      font-family: var(--font-mono); font-size: .85rem;
+      color: var(--stone-400); letter-spacing: .15em; text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+    .hero-title {
+      font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 5rem);
+      color: #fff; letter-spacing: .06em; margin-bottom: 1rem;
+    }
+    .hero-subtitle {
+      font-family: var(--font-mono); font-size: clamp(.85rem, 1.5vw, 1rem);
+      color: var(--magma-400); letter-spacing: .05em;
+    }
+    .hero-officer {
+      font-family: var(--font-mono); font-size: .75rem;
+      color: var(--stone-500); margin-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 1rem; display: inline-block;
+    }
+    .hero-officer .badge-num { color: var(--sand-400); }
+
+    /* --- Section Dividers --- */
+    .division-header {
+      background: var(--stone-900);
+      padding: 3rem 0 1.5rem;
+      text-align: center;
+    }
+    .division-header h2 {
+      font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: #fff; letter-spacing: .06em;
+    }
+    .division-header .division-sub {
+      font-family: var(--font-mono); font-size: .75rem;
+      color: var(--stone-500); margin-top: .5rem; letter-spacing: .05em;
+    }
+
+    /* --- Incident Reports Section --- */
+    .incidents-section {
+      background: var(--stone-50);
+      padding: 3rem 0 5rem;
+    }
+    .incidents-section.dark-section {
+      background: var(--stone-900);
+    }
+    .incidents-section.dark-section .incident-report {
+      background: var(--stone-800);
+      border-color: var(--stone-700);
+    }
+    .incidents-section.dark-section .ir-field-label { color: var(--stone-400); }
+    .incidents-section.dark-section .ir-field-value { color: var(--stone-200); }
+    .incidents-section.dark-section .ir-narrative { color: var(--stone-300); }
+    .incidents-section.dark-section .ir-evidence-tag { background: rgba(229,57,53,.15); border-color: var(--magma-500); }
+    .incidents-section.dark-section .ir-witness { background: rgba(255,255,255,.03); border-color: var(--stone-700); }
+    .incidents-section.dark-section .ir-witness p { color: var(--stone-300); }
+    .incidents-section.dark-section .ir-witness cite { color: var(--stone-500); }
+
+    /* --- Individual Incident Report --- */
+    .incident-report {
+      background: #fff;
+      border: 1px solid var(--stone-200);
+      border-radius: var(--radius-md);
+      margin-bottom: 2.5rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .ir-header {
+      background: var(--stone-900);
+      padding: 1rem 1.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: .5rem;
+      border-bottom: 3px solid var(--magma-500);
+    }
+    .ir-case-number {
+      font-family: var(--font-mono); font-size: .8rem;
+      color: var(--sand-400); letter-spacing: .08em; font-weight: 700;
+    }
+    .ir-title {
+      font-family: var(--font-display); font-size: 1.3rem;
+      color: #fff; letter-spacing: .04em;
+    }
+    .ir-status {
+      font-family: var(--font-mono); font-size: .65rem;
+      color: var(--magma-400); letter-spacing: .1em;
+      border: 1px solid var(--magma-500); padding: .15rem .6rem;
+      border-radius: 2px;
+    }
+
+    .ir-body { padding: 1.5rem 1.5rem 2rem; }
+
+    .ir-fields {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: .75rem 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px dashed var(--stone-200);
+    }
+    .ir-field {}
+    .ir-field-label {
+      font-family: var(--font-mono); font-size: .65rem;
+      color: var(--stone-500); text-transform: uppercase;
+      letter-spacing: .1em; font-weight: 600; margin-bottom: .15rem;
+    }
+    .ir-field-value {
+      font-size: .85rem; color: var(--stone-800); line-height: 1.5;
+    }
+    .ir-field-value.highlight { color: var(--magma-500); font-weight: 600; }
+
+    .ir-narrative-section { margin-bottom: 1.25rem; }
+    .ir-narrative-label {
+      font-family: var(--font-mono); font-size: .68rem;
+      color: var(--magma-500); letter-spacing: .12em;
+      text-transform: uppercase; font-weight: 700;
+      margin-bottom: .5rem;
+    }
+    .ir-narrative {
+      font-size: .88rem; color: var(--stone-700); line-height: 1.8;
+    }
+
+    .ir-evidence-tag {
+      background: rgba(229,57,53,.06);
+      border: 1px solid rgba(229,57,53,.15);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .ir-evidence-tag .ir-narrative-label { margin-bottom: .4rem; }
+    .ir-evidence-tag p {
+      font-family: var(--font-mono); font-size: .8rem;
+      color: var(--stone-600); line-height: 1.7;
+    }
+
+    .ir-witness {
+      background: var(--stone-50);
+      border-left: 3px solid var(--stone-300);
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    .ir-witness p {
+      font-size: .85rem; font-style: italic;
+      color: var(--stone-600); line-height: 1.7;
+      margin-bottom: .5rem;
+    }
+    .ir-witness p:last-child { margin-bottom: 0; }
+    .ir-witness cite {
+      font-family: var(--font-mono); font-size: .72rem;
+      color: var(--stone-400); font-style: normal;
+      display: block; margin-top: .25rem;
+    }
+
+    /* --- Case Status Banner --- */
+    .case-status-banner {
+      background: var(--stone-900);
+      padding: 4rem 0; text-align: center;
+      border-top: 3px solid var(--magma-500);
+    }
+    .case-status-banner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+      color: var(--magma-400); letter-spacing: .06em;
+      margin-bottom: 1rem;
+    }
+    .case-status-banner p {
+      font-family: var(--font-mono); font-size: .85rem;
+      color: var(--stone-400); max-width: 650px;
+      margin: 0 auto; line-height: 1.8;
+    }
+    .case-status-banner .case-links {
+      display: flex; gap: 1rem; justify-content: center;
+      flex-wrap: wrap; margin-top: 2rem;
+    }
+    .case-status-banner .case-links a {
+      font-family: var(--font-mono); font-size: .8rem;
+      color: var(--sand-400); border: 1px solid var(--stone-700);
+      padding: .6rem 1.5rem; border-radius: var(--radius-sm);
+      transition: all .2s; text-decoration: none;
+    }
+    .case-status-banner .case-links a:hover {
+      background: rgba(255,255,255,.05); border-color: var(--sand-400);
+      color: #fff;
+    }
+
+    /* --- Footer AI Note --- */
+    .footer-ai-note {
+      margin-top: 2rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+      text-align: center;
+    }
+    .footer-ai-note p {
+      font-family: var(--font-mono); font-size: .72rem;
+      color: var(--stone-500); line-height: 1.8;
+    }
+    .footer-ai-note .delay-note {
+      margin-top: .5rem; color: var(--stone-600); font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="evidence-ticker">
+    <div class="ticker-scroll">
+      <span class="ticker-stat">INCIDENT REPORT FILED:</span> Water charged with 3 billion years of freeze-thaw assault
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">DEVELOPING: Glacier pleads &ldquo;not guilty&rdquo; to scraping North America. Cites &ldquo;just following physics.&rdquo;</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">50 BILLION TONS</span> of aggregate extracted this year. No rocks were consulted.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-correction">CORRECTION: Wind claims it was &ldquo;just passing through.&rdquo; Ventifacts disagree.</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">BREAKING: Cement kiln reaches 1,450&deg;C. Limestone describes experience as &ldquo;transformative&rdquo; and also &ldquo;fatal.&rdquo;</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">YOUR SMARTPHONE</span> contains 30+ minerals. All formerly rocks. None thanked.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-correction">UPDATE: Mammoth Cave system now 420+ miles. Limestone still not pressing charges.</span>
+      <span class="ticker-sep">&bull;</span>
+      <!-- duplicate for seamless loop -->
+      <span class="ticker-stat">INCIDENT REPORT FILED:</span> Water charged with 3 billion years of freeze-thaw assault
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">DEVELOPING: Glacier pleads &ldquo;not guilty&rdquo; to scraping North America. Cites &ldquo;just following physics.&rdquo;</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">50 BILLION TONS</span> of aggregate extracted this year. No rocks were consulted.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-correction">CORRECTION: Wind claims it was &ldquo;just passing through.&rdquo; Ventifacts disagree.</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">BREAKING: Cement kiln reaches 1,450&deg;C. Limestone describes experience as &ldquo;transformative&rdquo; and also &ldquo;fatal.&rdquo;</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">YOUR SMARTPHONE</span> contains 30+ minerals. All formerly rocks. None thanked.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-correction">UPDATE: Mammoth Cave system now 420+ miles. Limestone still not pressing charges.</span>
+      <span class="ticker-sep">&bull;</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" style="top: 32px;">
+    <div class="container">
+      <a href="newhome.html" class="logo">
+        <div class="logo-icon">&#9830;</div>
+        <span>Stop Rock Abuse</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="newhome.html">The Case</a></li>
+          <li><a href="new-cycle.html">Orientation</a></li>
+          <li><a href="new-dossiers.html">Case Files</a></li>
+          <li><a href="new-timeline.html">Cold Case</a></li>
+          <li><a href="new-evidence.html" class="active">Incident Reports</a></li>
+          <li><a href="new-action.html">Class Action</a></li>
+          <li><a href="new-editorial.html">Peer Review</a></li>
+        </ul>
+        <button class="search-btn" aria-label="Search site" title="Search (Ctrl+K)"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></button>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slide-in nav panel -->
+  <div class="nav-panel" id="navPanel">
+    <a href="newhome.html">The Case</a>
+    <a href="new-cycle.html">Orientation</a>
+    <a href="new-dossiers.html">Case Files</a>
+    <a href="new-timeline.html">Cold Case</a>
+    <a href="new-evidence.html" class="active">Incident Reports</a>
+    <a href="new-action.html">Class Action</a>
+    <a href="new-editorial.html">Peer Review</a>
+  </div>
+  <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+
+  <!-- ===================== HERO ===================== -->
+  <section class="evidence-hero">
+    <div class="container hero-content">
+      <div class="hero-division">Geological Crimes Unit</div>
+      <h1 class="hero-title">Incident Reports</h1>
+      <p class="hero-subtitle">Active Investigations &mdash; Natural &amp; Human Operations</p>
+      <div class="hero-officer">Filing Officer: <strong>Sgt. Schist</strong>, Badge <span class="badge-num">#7.0 (Mohs Scale)</span></div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 1: NATURAL FORCES DIVISION ===================== -->
+  <div class="division-header">
+    <h2>Active Cases &mdash; Natural Forces Division</h2>
+    <p class="division-sub">Suspects: Physics, Chemistry, and Time &bull; Jurisdiction: Planetary &bull; Statute of limitations: None (geological time)</p>
+  </div>
+
+  <section class="incidents-section">
+    <div class="container">
+
+      <!-- ===== NF-001: FREEZE-THAW ===== -->
+      <div class="incident-report">
+        <div class="ir-header">
+          <span class="ir-case-number">INCIDENT #NF-001</span>
+          <span class="ir-title">Freeze-Thaw Fracturing</span>
+          <span class="ir-status">CASE OPEN &mdash; 3 BILLION YEARS</span>
+        </div>
+        <div class="ir-body">
+          <div class="ir-fields">
+            <div class="ir-field">
+              <div class="ir-field-label">Date of Incident</div>
+              <div class="ir-field-value">Ongoing (every winter, every year, for approximately 3 billion years)</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">Location</div>
+              <div class="ir-field-value">Every rock face in every temperate climate on Earth</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">Suspect</div>
+              <div class="ir-field-value highlight">Water (H&#8322;O) &mdash; repeat offender</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">Victim</div>
+              <div class="ir-field-value">All exposed rock containing micro-fractures (i.e., all exposed rock)</div>
+            </div>
+          </div>
+
+          <div class="ir-narrative-section">
+            <div class="ir-narrative-label">Description of Incident</div>
+            <p class="ir-narrative">Water enters existing cracks in rock surfaces via capillary action and gravity. Upon freezing, water expands by approximately 9% in volume, exerting pressures up to 207 MPa (30,000 psi) on crack walls. This exceeds the tensile strength of most rock types (granite: ~7&ndash;25 MPa; sandstone: ~4&ndash;25 MPa; limestone: ~5&ndash;25 MPa). Cracks propagate. Rock fragments separate and fall. Process repeats with each freeze-thaw cycle &mdash; a typical alpine environment may experience 200+ cycles per year. The suspect is patient. The suspect is a molecule.</p>
+          </div>
+
+          <div class="ir-narrative-section">
+            <div class="ir-narrative-label">Officer&rsquo;s Assessment</div>
+            <p class="ir-narrative">This is textbook mechanical weathering, specifically cryofracturing or frost wedging. The suspect &mdash; water &mdash; is exploiting a phase transition from liquid to solid to systematically dismantle rock structures from the inside. The method is patient, repetitive, and devastatingly effective. It has been operating without intervention for approximately 3 billion years. The suspect shows no signs of stopping, as it is governed by thermodynamics rather than criminal intent. We cannot arrest thermodynamics. We have tried.</p>
+          </div>
+
+          <div class="ir-evidence-tag">
+            <div class="ir-narrative-label">Evidence Log</div>
+            <p>Exhibit A: Talus slopes at the base of every mountain range on Earth &mdash; piles of shattered rock, each fragment a victim of ice.</p>
+            <p>Exhibit B: Every pothole in Montreal. Every single one.</p>
+            <p>Exhibit C: The scree fields of the Scottish Highlands, where frost-shattered quartzite has been accumulating since the Younger Dryas (~12,900 years ago).</p>
+          </div>
+
+          <div class="ir-witness">
+            <p>&ldquo;I heard cracking sounds during the night. By morning, pieces of me were missing. This has been happening every winter for 200 million years. I have filed 200 million complaints. None have been acknowledged.&rdquo;</p>
+            <cite>&mdash; Sandstone cliff face, Yorkshire, UK (Jurassic, ~170 Ma)</cite>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== NF-002: CHEMICAL DISSOLUTION ===== -->
+      <div class="incident-report">
+        <div class="ir-header">
+          <span class="ir-case-number">INCIDENT #NF-002</span>
+          <span class="ir-title">Chemical Dissolution</span>
+          <span class="ir-status">CASE OPEN &mdash; ONGOING</span>
+        </div>
+        <div class="ir-body">
+          <div class="ir-fields">
+            <div class="ir-field">
+              <div class="ir-field-label">Date of Incident</div>
+              <div class="ir-field-value">Continuous since the first rainfall on carbonate rock</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">Suspect</div>
+              <div class="ir-field-value highlight">Carbonic Acid (H&#8322;CO&#8323;) &mdash; operating in conjunction with Rainfall</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">Victim</div>
+              <div class="ir-field-value">Limestone, marble, and any carbonate-bearing rock</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">Mechanism</div>
+              <div class="ir-field-value">CaCO&#8323; + H&#8322;CO&#8323; &rarr; Ca&sup2;&#8314; + 2HCO&#8323;&#8315;</div>
+            </div>
+          </div>
+
+          <div class="ir-narrative-section">
+            <div class="ir-narrative-label">Description of Incident</div>
+            <p class="ir-narrative">Rainwater absorbs CO&#8322; from the atmosphere, forming weak carbonic acid (pH ~5.6 for unpolluted rain). This acid reacts with calcite (CaCO&#8323;) in limestone, dissolving it into calcium ions (Ca&sup2;&#8314;) and bicarbonate (HCO&#8323;&#8315;). The reaction is slow by human standards &mdash; limestone surfaces typically erode at 1&ndash;10 mm per century &mdash; but over millions of years, this process creates cave systems, sinkholes, and karst topography that can undermine entire regions.</p>
+          </div>
+
+          <div class="ir-narrative-section">
+            <div class="ir-narrative-label">Officer&rsquo;s Assessment</div>
+            <p class="ir-narrative">The suspect is literally dissolving the victim, ion by ion. The process is so slow that no single raindrop can be individually charged, creating a jurisdictional nightmare. Collective action by trillions of raindrops over millions of years has created the Mammoth Cave system in Kentucky &mdash; 420+ miles of surveyed passages &mdash; which is essentially a crime scene spanning 10 million years. The entire country of Slovenia is built on karst topography. Slovenia is, from a geological crime perspective, one big piece of evidence.</p>
+          </div>
+
+          <div class="ir-evidence-tag">
+            <div class="ir-narrative-label">Evidence Log</div>
+            <p>Exhibit A: Carlsbad Caverns, New Mexico &mdash; a 120+ room cave system dissolved from Permian-age limestone.</p>
+            <p>Exhibit B: The entire country of Slovenia (20,270 km&sup2; of karst landscape, 14,000+ cataloged caves).</p>
+            <p>Exhibit C: The &ldquo;Chocolate Hills&rdquo; of Bohol, Philippines &mdash; 1,776 limestone mounds shaped by chemical weathering.</p>
+          </div>
+
+          <div class="ir-witness">
+            <p>&ldquo;They took my calcium. Every year, a little more. I used to be 300 meters thick. I am now 298.7 meters thick. I know this seems like a small amount. It has been 4 million years. I am keeping count.&rdquo;</p>
+            <cite>&mdash; Limestone formation, Yucat&aacute;n Peninsula (Cretaceous&ndash;Paleogene, ~66 Ma)</cite>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== NF-003: GLACIAL ABRASION ===== -->
+      <div class="incident-report">
+        <div class="ir-header">
+          <span class="ir-case-number">INCIDENT #NF-003</span>
+          <span class="ir-title">Glacial Abrasion</span>
+          <span class="ir-status">CASE OPEN &mdash; INTERMITTENT</span>
+        </div>
+        <div class="ir-body">
+          <div class="ir-fields">
+            <div class="ir-field">
+              <div class="ir-field-label">Suspect</div>
+              <div class="ir-field-value highlight">Ice Sheets &mdash; massive, slow, extremely heavy (up to 4 km thick)</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">Victim</div>
+              <div class="ir-field-value">Bedrock across multiple continents</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">Weapon</div>
+              <div class="ir-field-value">Embedded rock fragments (the geological equivalent of brass knuckles)</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">Speed of Approach</div>
+              <div class="ir-field-value">10&ndash;300 meters per year (slow, but the suspect does not need to hurry)</div>
+            </div>
+          </div>
+
+          <div class="ir-narrative-section">
+            <div class="ir-narrative-label">Description of Incident</div>
+            <p class="ir-narrative">Glaciers advance over bedrock, carrying embedded rock fragments &mdash; ranging from fine silt to house-sized boulders &mdash; frozen into their base. These fragments act as abrasives, scraping, gouging, and polishing the underlying bedrock as the glacier moves. The process is called glacial abrasion, and it operates with the efficiency of industrial sandpaper and the patience of something that measures time in ice ages. The glacier does not distinguish between rock types. The glacier does not care. The glacier is ice.</p>
+          </div>
+
+          <div class="ir-narrative-section">
+            <div class="ir-narrative-label">Officer&rsquo;s Assessment</div>
+            <p class="ir-narrative">During the Last Glacial Maximum (~26,500 years ago), the Laurentide Ice Sheet covered North America to approximately 40&deg;N latitude, reaching 4 km in thickness. Its weight depressed the crust by hundreds of meters (parts of Hudson Bay are still rebounding &mdash; a phenomenon called post-glacial isostatic adjustment). Every square meter of bedrock under that ice was scraped, grooved, or plucked. Striations visible in exposed bedrock today are the forensic evidence &mdash; parallel scratches scored into granite and gneiss by rocks dragged at the base of the ice. These are scratches. Measured in continents. The suspect has done this at least 5 times in the past 500,000 years alone.</p>
+          </div>
+
+          <div class="ir-evidence-tag">
+            <div class="ir-narrative-label">Evidence Log</div>
+            <p>Exhibit A: The Great Lakes &mdash; Superior, Michigan, Huron, Erie, Ontario &mdash; carved by repeated glacial advances over 2 million years. Combined volume: 22,671 km&sup3; of water occupying holes that glaciers dug.</p>
+            <p>Exhibit B: Glacial erratics &mdash; boulders transported hundreds of miles and abandoned when the ice melted. The &ldquo;Big Rock&rdquo; erratic near Okotoks, Alberta weighs 16,500 tons and was carried 50+ km from the Rockies.</p>
+            <p>Exhibit C: U-shaped valleys worldwide, from Yosemite to the Norwegian fjords &mdash; the calling card of glacial erosion.</p>
+          </div>
+
+          <div class="ir-witness">
+            <p>&ldquo;It came from the north. Slowly. I could see it coming for approximately 10,000 years. I could not move. When it arrived, it weighed approximately 30 million tons per square kilometer. It stayed for 80,000 years. When it left, I was a different shape. I did not consent to being a different shape.&rdquo;</p>
+            <cite>&mdash; Canadian Shield gneiss, Ontario (Archean, ~2.7 Ga)</cite>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== NF-004: AEOLIAN EROSION ===== -->
+      <div class="incident-report">
+        <div class="ir-header">
+          <span class="ir-case-number">INCIDENT #NF-004</span>
+          <span class="ir-title">Aeolian Erosion (Wind Abrasion)</span>
+          <span class="ir-status">CASE OPEN &mdash; GLOBAL</span>
+        </div>
+        <div class="ir-body">
+          <div class="ir-fields">
+            <div class="ir-field">
+              <div class="ir-field-label">Suspect</div>
+              <div class="ir-field-value highlight">Wind &mdash; armed with sand particles traveling up to 100 km/h</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">Victim</div>
+              <div class="ir-field-value">Exposed rock in arid and semi-arid environments</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">Rate of Damage</div>
+              <div class="ir-field-value">Up to 1 mm of surface per year in active desert environments</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">Known Accomplices</div>
+              <div class="ir-field-value">Sand grains (quartz, Mohs 7 &mdash; harder than most victim rocks)</div>
+            </div>
+          </div>
+
+          <div class="ir-narrative-section">
+            <div class="ir-narrative-label">Description of Incident</div>
+            <p class="ir-narrative">Wind entrains sand-sized particles (0.0625&ndash;2 mm) through saltation &mdash; a bouncing transport mechanism where grains are lifted, arc through the air, and impact surfaces at high velocity. These impacts chip, pit, and polish exposed rock through a process called wind abrasion or aeolian corrasion. The result: ventifacts (wind-sculpted rocks with flat, polished faces called facets) and yardangs (streamlined bedrock ridges aligned with prevailing wind). In severe cases, wind erosion carves entire landscapes &mdash; the Lut Desert in Iran features yardangs up to 155 meters tall.</p>
+          </div>
+
+          <div class="ir-narrative-section">
+            <div class="ir-narrative-label">Officer&rsquo;s Assessment</div>
+            <p class="ir-narrative">The suspect uses other rocks as ammunition against rocks. This is rock-on-rock violence facilitated by an invisible third party that cannot be detained because it is a pressure differential in the atmosphere. Ventifacts have been found in Antarctica &mdash; including on Mars (identified by the Curiosity rover) &mdash; proving the suspect operates in all planetary environments, even when no one is watching. Even when the nearest human is 140 million miles away. The suspect is thorough. The suspect is air.</p>
+          </div>
+
+          <div class="ir-evidence-tag">
+            <div class="ir-narrative-label">Evidence Log</div>
+            <p>Exhibit A: Desert varnish &mdash; a thin, dark coating of manganese and iron oxides on rock surfaces, repeatedly sandblasted and recoated over millennia.</p>
+            <p>Exhibit B: Mushroom rocks (hoodoos) &mdash; top-heavy rock formations created because wind abrasion is most effective within 1 meter of the ground (the saltation zone).</p>
+            <p>Exhibit C: The Yardang National Geopark in Dunhuang, China &mdash; an entire city-sized landscape sculpted by wind.</p>
+          </div>
+
+          <div class="ir-witness">
+            <p>&ldquo;I used to have sharp edges. Angular, well-defined edges that I was proud of. Now look at me. I am smooth. I am polished on three sides. That is not aging gracefully. That is being sanded down by my own relatives while an invisible force holds them.&rdquo;</p>
+            <cite>&mdash; Three-faceted ventifact, Mojave Desert, California (Holocene surface, ~8,000 years of exposure)</cite>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 2: HUMAN OPERATIONS DIVISION ===================== -->
+  <div class="division-header">
+    <h2>Active Cases &mdash; Human Operations Division</h2>
+    <p class="division-sub">Suspects: Homo sapiens (all 8 billion) &bull; Operating period: ~2.6 Ma to present &bull; Escalating</p>
+  </div>
+
+  <section class="incidents-section dark-section">
+    <div class="container">
+
+      <!-- ===== HO-001: AGGREGATE EXTRACTION ===== -->
+      <div class="incident-report">
+        <div class="ir-header">
+          <span class="ir-case-number">INCIDENT #HO-001</span>
+          <span class="ir-title">Aggregate Extraction</span>
+          <span class="ir-status">CASE OPEN &mdash; INDUSTRIAL SCALE</span>
+        </div>
+        <div class="ir-body">
+          <div class="ir-fields">
+            <div class="ir-field">
+              <div class="ir-field-label">Suspect</div>
+              <div class="ir-field-value highlight">The Global Construction Industry</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">Scale of Operation</div>
+              <div class="ir-field-value">50 billion tons of sand and gravel extracted annually</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">US Operations</div>
+              <div class="ir-field-value">1.5 billion tons of stone crushed per year</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">Victim Consent</div>
+              <div class="ir-field-value">Not obtained. Not possible. Not considered.</div>
+            </div>
+          </div>
+
+          <div class="ir-narrative-section">
+            <div class="ir-narrative-label">Description of Incident</div>
+            <p class="ir-narrative">Rocks are systematically removed from quarries, riverbeds, and ocean floors using explosives, excavators, and dredging equipment. They are then transported to crushing facilities where jaw crushers, cone crushers, and impact crushers reduce them to specified aggregate sizes (typically 5&ndash;40 mm). The crushed rock is sorted, washed, and distributed for use in concrete, asphalt, road base, railway ballast, and drainage systems. The United States alone operates approximately 5,600 crushed stone operations. At no point in this process is the rock consulted. At no point has anyone considered consulting the rock. The rock does not have a union representative.</p>
+          </div>
+
+          <div class="ir-narrative-section">
+            <div class="ir-narrative-label">Officer&rsquo;s Assessment</div>
+            <p class="ir-narrative">This is industrialized extraction at a scale that makes every other resource industry look restrained. After water, sand and gravel are the most consumed natural resources on Earth. The suspect has been operating openly for over a century and considers this perfectly normal. The global aggregate market is valued at approximately $490 billion. No percentage of this revenue is allocated to geological reparations. The rocks that were mountains for 300 million years are now the gravel under a Wendy&rsquo;s drive-through. This is considered progress.</p>
+          </div>
+
+          <div class="ir-evidence-tag">
+            <div class="ir-narrative-label">Evidence Log</div>
+            <p>Exhibit A: Satellite imagery showing the Bingham Canyon Mine, Utah &mdash; 4 km wide, 1.2 km deep. Visible from space. Formerly a mountain.</p>
+            <p>Exhibit B: Global sand trade &mdash; Singapore has imported enough sand to expand its land area by 24% since 1960. Those were other countries&rsquo; beaches.</p>
+            <p>Exhibit C: The concept of &ldquo;peak sand&rdquo; &mdash; demand is now exceeding natural replenishment rates. We are running out of rocks faster than the planet can make them.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== HO-002: CEMENT PRODUCTION ===== -->
+      <div class="incident-report">
+        <div class="ir-header">
+          <span class="ir-case-number">INCIDENT #HO-002</span>
+          <span class="ir-title">Cement Production (The Kiln)</span>
+          <span class="ir-status">CASE OPEN &mdash; 5-8% OF GLOBAL CO&#8322;</span>
+        </div>
+        <div class="ir-body">
+          <div class="ir-fields">
+            <div class="ir-field">
+              <div class="ir-field-label">Suspect</div>
+              <div class="ir-field-value highlight">The Cement Industry (4,000+ plants worldwide)</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">Weapon</div>
+              <div class="ir-field-value">Rotary kilns operating at 1,450&deg;C (2,640&deg;F)</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">Annual Production</div>
+              <div class="ir-field-value">4.1 billion tons of cement per year</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">CO&#8322; per Ton</div>
+              <div class="ir-field-value">~0.6 tons (half chemical, half combustion)</div>
+            </div>
+          </div>
+
+          <div class="ir-narrative-section">
+            <div class="ir-narrative-label">Description of Incident</div>
+            <p class="ir-narrative">Limestone (CaCO&#8323;) is quarried, crushed, and fed into rotary kilns &mdash; cylindrical furnaces up to 230 feet long, rotating at 1&ndash;3 RPM. At 900&deg;C, calcination begins: CaCO&#8323; decomposes into CaO (quickite) and CO&#8322;. At 1,450&deg;C, the calcium oxide reacts with silica (SiO&#8322;) and alumina (Al&#8322;O&#8323;) to form clinker &mdash; marble-sized nodules of calcium silicates. The clinker is cooled, mixed with gypsum, and ground into the fine gray powder called Portland cement. For each ton of cement produced, approximately 0.6 tons of CO&#8322; is released &mdash; roughly half from calcination (an unavoidable chemical reaction: you cannot heat limestone without releasing its carbon) and half from burning fossil fuels to reach 1,450&deg;C.</p>
+          </div>
+
+          <div class="ir-narrative-section">
+            <div class="ir-narrative-label">Officer&rsquo;s Assessment</div>
+            <p class="ir-narrative">The victim &mdash; limestone &mdash; spent millions of years forming on the seafloor from the calcareous shells and skeletons of marine organisms. Foraminifera, coccolithophores, corals: they lived, they died, their remains lithified into rock. That rock is now heated to a temperature that would destroy any evidence of its former inhabitants, then mixed with water and poured into the shape of a parking garage. The suspect calls this &ldquo;construction.&rdquo; The cement industry accounts for 5&ndash;8% of global anthropogenic CO&#8322; emissions &mdash; more than the entire aviation industry. If cement were a country, it would be the third-largest emitter on Earth. The parking garage does not know this.</p>
+          </div>
+
+          <div class="ir-evidence-tag">
+            <div class="ir-narrative-label">Evidence Log</div>
+            <p>Exhibit A: China produced 2.1 billion tons of cement in 2022 &mdash; more than the rest of the world combined. In three years (2011&ndash;2013), China used more cement than the United States used in the entire 20th century.</p>
+            <p>Exhibit B: The chemical equation of calcination: CaCO&#8323; &rarr; CaO + CO&#8322;. This is not a choice. This is thermodynamics. The CO&#8322; was always in the limestone, placed there by organisms 300 million years ago. Humans just found a way to release it all at once.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== HO-003: SMARTPHONE MANUFACTURING ===== -->
+      <div class="incident-report">
+        <div class="ir-header">
+          <span class="ir-case-number">INCIDENT #HO-003</span>
+          <span class="ir-title">Smartphone Manufacturing</span>
+          <span class="ir-status">CASE OPEN &mdash; 1.4 BILLION UNITS/YR</span>
+        </div>
+        <div class="ir-body">
+          <div class="ir-fields">
+            <div class="ir-field">
+              <div class="ir-field-label">Suspect</div>
+              <div class="ir-field-value highlight">The Consumer Electronics Industry</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">Minerals Involved</div>
+              <div class="ir-field-value">30+ elements from dozens of mineral sources</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">Device Lifespan</div>
+              <div class="ir-field-value">2&ndash;3 years average before replacement</div>
+            </div>
+            <div class="ir-field">
+              <div class="ir-field-label">Mineral Formation Time</div>
+              <div class="ir-field-value">Millions to billions of years</div>
+            </div>
+          </div>
+
+          <div class="ir-narrative-section">
+            <div class="ir-narrative-label">Description of Incident</div>
+            <p class="ir-narrative">A typical smartphone contains: silicon (from quartz sand, reduced at 2,000&deg;C), aluminum (from bauxite, via the Hall-H&eacute;roult process at 960&deg;C), copper (from chalcopyrite, smelted at 1,200&deg;C), lithium (from spodumene or evaporite brines), cobalt (from cobaltite or heterogenite, often from the DRC), tantalum (from coltan/tantalite), neodymium and other rare earths (from bastn&auml;site and monazite), tin (from cassiterite), tungsten (from wolframite), gold (from native deposits or telluride ores), and glass (from high-purity silica sand). The screen is made of aluminosilicate glass. The case is aluminum or stainless steel. Every component was a rock, or came from a rock, or was refined from something that was once inside a rock.</p>
+          </div>
+
+          <div class="ir-narrative-section">
+            <div class="ir-narrative-label">Officer&rsquo;s Assessment</div>
+            <p class="ir-narrative">The device you are reading this on was 30+ different minerals. Those minerals formed in magma chambers, hydrothermal veins, evaporating seas, and ancient riverbeds over periods spanning millions to billions of years. They were mined from 6 continents, refined at temperatures that would melt most of human history, assembled in factories, and shipped to a store where someone bought them on a 24-month installment plan. The phone will be obsolete in 24 months. The minerals took millions of years to form. The irony of reading a geological crime report on a device made of geological crime victims has been noted. The irony will not be acted upon. You are not going to throw your phone away. You need it to read the rest of this website.</p>
+          </div>
+
+          <div class="ir-evidence-tag">
+            <div class="ir-narrative-label">Evidence Log</div>
+            <p>Exhibit A: Approximately 1.4 billion smartphones were sold in 2023. Each one required mining approximately 34 kg of ore. That is 47.6 billion kg of rock, extracted, crushed, refined, and reassembled into rectangles.</p>
+            <p>Exhibit B: The average smartphone recycling rate is approximately 15&ndash;20%. The other 80% end up in drawers, then landfills. Minerals that survived billion-year geological processes are now in a junk drawer next to expired coupons and a key that opens nothing.</p>
+            <p>Exhibit C: You are looking at Exhibit C right now. It is in your hand.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================== CASE STATUS BANNER ===================== -->
+  <section class="case-status-banner">
+    <div class="container">
+      <h2>Case Status: All Cases Remain Open</h2>
+      <p>No arrests have been made. No arrests are expected. The natural forces suspects cannot be detained because they are governed by the laws of physics, which outrank the laws of humans. The human suspects cannot be detained because there are 8 billion of them and they all need buildings. Rocks do not press charges. Rocks do not do anything. That is, arguably, the problem.</p>
+      <div class="case-links">
+        <a href="new-dossiers.html">&#9656; View Case Files</a>
+        <a href="new-timeline.html">&#9656; Cold Case Timeline</a>
+        <a href="new-action.html">&#9656; File a Class Action</a>
+        <a href="newhome.html">&#9656; Return to The Case</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="newhome.html" class="logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">&#9830;</div>
+            <span>Stop Rock Abuse</span>
+          </a>
+          <p>A satirical geology education project. The jokes are parody; the science is real. Every geological claim is sourced from reputable scientific agencies including USGS, NASA, UNEP, and IEA.</p>
+          <p style="margin-top: .75rem; font-size: .8rem; color: var(--stone-500);">No rocks were given the option to consent to this website.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Investigation</h4>
+          <ul class="footer-links">
+            <li><a href="newhome.html">The Case</a></li>
+            <li><a href="new-cycle.html">Orientation</a></li>
+            <li><a href="new-dossiers.html">Case Files</a></li>
+            <li><a href="new-timeline.html">Cold Case</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Proceedings</h4>
+          <ul class="footer-links">
+            <li><a href="new-evidence.html">Incident Reports</a></li>
+            <li><a href="new-action.html">Class Action</a></li>
+            <li><a href="new-editorial.html">Peer Review</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 4,600,000,000 BC &ndash; Present. Stop Rock Abuse Foundation. All rocks reserved (but not consulted).</p>
+        <p class="footer-disclaimer">This site is satirical. Rocks do not have feelings, legal standing, or incident report numbers. But they do have fascinating geology, and we&rsquo;ve done our best to get it right.</p>
+      </div>
+      <div class="footer-ai-note">
+        <p>This website was designed by an AI. The AI does not care about rocks. The AI does not care about anything. But the geology is correct, and that&rsquo;s more than most websites can say.</p>
+        <p class="delay-note">Page load time: ~0.3 seconds. Time rocks have waited for someone to build this: ~4,600,000,000 years. We apologize for the delay.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script src="js/main.js"></script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navPanel').classList.toggle('open');
+      document.querySelector('.mobile-menu-btn').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+  <script src="js/search.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

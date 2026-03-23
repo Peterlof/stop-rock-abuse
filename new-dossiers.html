@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stop Rock Abuse — Case Files: Geological Persons of Interest</title>
+  <meta name="description" content="Criminal dossiers on Earth's most wanted geological specimens. All suspects remain at large. All charges are geologically accurate.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* === DOSSIERS — PAGE-SPECIFIC STYLES === */
+
+    /* --- Ticker --- */
+    .dossiers-ticker {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1001;
+      background: var(--stone-900); border-bottom: 1px solid var(--magma-500);
+      overflow: hidden; white-space: nowrap; height: 32px; line-height: 32px;
+      cursor: default;
+    }
+    .dossiers-ticker:hover .ticker-scroll { animation-play-state: paused; }
+    .ticker-scroll {
+      display: inline-block;
+      animation: ticker-scroll 55s linear infinite;
+      font-family: var(--font-mono);
+      font-size: .72rem; letter-spacing: .03em; color: var(--stone-300);
+    }
+    .ticker-scroll .ticker-stat { color: var(--magma-400); font-weight: 700; }
+    .ticker-scroll .ticker-opinion { color: var(--sand-400); font-style: italic; }
+    .ticker-scroll .ticker-correction { color: var(--earth-400); }
+    .ticker-sep { display: inline-block; margin: 0 1.5em; color: var(--stone-600); }
+    @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* --- Hero --- */
+    .dossier-hero {
+      background: var(--stone-900);
+      padding: calc(var(--header-height) + 68px) 0 4rem;
+      min-height: 70vh; display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .dossier-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,.015) 2px,
+        rgba(255,255,255,.015) 4px
+      );
+      pointer-events: none; z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; text-align: center; width: 100%; }
+    .hero-badge {
+      width: 120px; height: 140px; margin: 0 auto 2rem;
+      position: relative;
+    }
+    .badge-shield {
+      width: 100px; height: 120px; margin: 0 auto;
+      background: linear-gradient(135deg, var(--stone-700), var(--stone-800));
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      display: flex; align-items: center; justify-content: center;
+      border: 2px solid var(--sand-400);
+      position: relative;
+    }
+    .badge-shield::before {
+      content: '';
+      position: absolute; inset: 4px;
+      background: linear-gradient(135deg, var(--stone-800), var(--stone-900));
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+    .badge-text {
+      position: relative; z-index: 1;
+      font-family: var(--font-display); color: var(--sand-400);
+      font-size: 1.4rem; letter-spacing: .08em; line-height: 1.2;
+      text-align: center;
+    }
+    .badge-text small { display: block; font-size: .6rem; color: var(--stone-400); letter-spacing: .15em; }
+    .hero-division {
+      font-family: var(--font-mono); font-size: .85rem;
+      color: var(--stone-400); letter-spacing: .15em; text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+    .hero-title {
+      font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 5rem);
+      color: #fff; letter-spacing: .06em; margin-bottom: 1rem;
+    }
+    .hero-classified {
+      font-family: var(--font-mono); font-size: .8rem;
+      color: var(--magma-400); letter-spacing: .1em;
+      border: 1px solid var(--magma-500); display: inline-block;
+      padding: .4rem 1.5rem; margin-top: 1rem;
+    }
+    .hero-clearance {
+      font-family: var(--font-mono); font-size: .7rem;
+      color: var(--stone-500); margin-top: 1rem; font-style: italic;
+    }
+
+    /* --- Case Files Grid --- */
+    .case-files-section {
+      background: var(--stone-50);
+      padding: 5rem 0;
+    }
+    .section-header {
+      text-align: center; margin-bottom: 3rem;
+    }
+    .section-header h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem); color: var(--stone-900);
+      letter-spacing: .06em;
+    }
+    .section-header .section-sub {
+      font-family: var(--font-mono); font-size: .8rem;
+      color: var(--stone-500); margin-top: .5rem;
+    }
+
+    .case-files-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(540px, 1fr));
+      gap: 2.5rem;
+    }
+    @media (max-width: 600px) {
+      .case-files-grid { grid-template-columns: 1fr; }
+    }
+
+    /* --- Individual Case File Card --- */
+    .case-file {
+      background: #fff;
+      border: 1px solid var(--stone-200);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .case-file:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-xl);
+    }
+    .case-file-header {
+      background: var(--stone-900);
+      padding: 1rem 1.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 3px solid var(--magma-500);
+    }
+    .case-number {
+      font-family: var(--font-mono); font-size: .75rem;
+      color: var(--stone-400); letter-spacing: .08em;
+    }
+    .case-status {
+      font-family: var(--font-mono); font-size: .7rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: .2rem .75rem; border-radius: 2px;
+    }
+    .status-at-large { background: var(--magma-500); color: #fff; }
+    .status-extremely { background: #b71c1c; color: #fff; }
+    .status-gentrified { background: var(--metamorphic); color: #fff; }
+    .status-armed { background: #ff6f00; color: #fff; }
+    .status-dissolved { background: var(--ocean-500); color: #fff; }
+    .status-eroding { background: var(--sand-500); color: var(--stone-900); }
+    .status-pressure { background: var(--stone-700); color: var(--sand-400); }
+    .status-floating { background: var(--earth-500); color: #fff; }
+
+    .case-file-body { padding: 1.5rem; }
+
+    .case-top-row {
+      display: flex; gap: 1.5rem; margin-bottom: 1.5rem;
+    }
+    @media (max-width: 480px) {
+      .case-top-row { flex-direction: column; align-items: center; }
+    }
+
+    /* CSS Mugshot */
+    .mugshot {
+      width: 120px; height: 140px; flex-shrink: 0;
+      border: 2px solid var(--stone-300);
+      position: relative; overflow: hidden;
+      border-radius: 2px;
+    }
+    .mugshot::after {
+      content: 'MUGSHOT';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(0,0,0,.7); color: #fff;
+      font-family: var(--font-mono); font-size: .55rem;
+      text-align: center; padding: 2px 0; letter-spacing: .15em;
+    }
+    .mugshot-granite {
+      background:
+        radial-gradient(circle 3px at 20% 30%, #2a2a2a 70%, transparent 71%),
+        radial-gradient(circle 2px at 50% 20%, #d4a0a0 70%, transparent 71%),
+        radial-gradient(circle 4px at 70% 60%, #888 70%, transparent 71%),
+        radial-gradient(circle 2px at 30% 70%, #2a2a2a 70%, transparent 71%),
+        radial-gradient(circle 3px at 80% 25%, #d4a0a0 70%, transparent 71%),
+        radial-gradient(circle 2px at 15% 55%, #aaa 70%, transparent 71%),
+        radial-gradient(circle 3px at 55% 45%, #333 70%, transparent 71%),
+        radial-gradient(circle 2px at 40% 85%, #c8a0a0 70%, transparent 71%),
+        radial-gradient(circle 4px at 85% 80%, #999 70%, transparent 71%),
+        radial-gradient(circle 2px at 60% 10%, #2a2a2a 70%, transparent 71%),
+        linear-gradient(135deg, #b0a8a0, #c8beb6, #a89e96);
+    }
+    .mugshot-basalt {
+      background:
+        radial-gradient(circle 2px at 25% 20%, #1a1a1a 70%, transparent 71%),
+        radial-gradient(circle 1px at 60% 40%, #0d0d0d 70%, transparent 71%),
+        radial-gradient(circle 2px at 40% 70%, #222 70%, transparent 71%),
+        radial-gradient(circle 1px at 80% 15%, #111 70%, transparent 71%),
+        linear-gradient(160deg, #3a3a3a, #2a2a2a, #333);
+    }
+    .mugshot-marble {
+      background:
+        linear-gradient(23deg, transparent 30%, rgba(180,180,180,.15) 32%, transparent 34%),
+        linear-gradient(156deg, transparent 45%, rgba(160,160,160,.12) 47%, transparent 49%),
+        linear-gradient(78deg, transparent 60%, rgba(140,140,140,.1) 62%, transparent 64%),
+        linear-gradient(200deg, transparent 20%, rgba(170,170,170,.08) 22%, transparent 24%),
+        linear-gradient(135deg, #f0ede8, #e8e4df, #f2efea, #e5e1dc);
+    }
+    .mugshot-obsidian {
+      background:
+        linear-gradient(135deg, #0a0a0a, #1a1a2a, #0d0d1a);
+      box-shadow: inset 0 0 30px rgba(100, 100, 200, .1);
+    }
+    .mugshot-obsidian::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(255,255,255,.15) 0%, transparent 40%);
+    }
+    .mugshot-limestone {
+      background:
+        radial-gradient(circle 1px at 30% 25%, rgba(200,190,170,.5) 70%, transparent 71%),
+        radial-gradient(circle 2px at 55% 50%, rgba(190,180,160,.4) 70%, transparent 71%),
+        radial-gradient(circle 1px at 75% 35%, rgba(210,200,180,.3) 70%, transparent 71%),
+        linear-gradient(135deg, #d4cbb8, #c8bfa8, #ddd4c2);
+    }
+    .mugshot-sandstone {
+      background:
+        radial-gradient(circle 1px at 20% 30%, rgba(160,80,40,.3) 70%, transparent 71%),
+        radial-gradient(circle 1px at 50% 60%, rgba(170,85,45,.2) 70%, transparent 71%),
+        radial-gradient(circle 1px at 70% 20%, rgba(150,75,35,.25) 70%, transparent 71%),
+        linear-gradient(180deg, #c4654a, #b85a42, #d4785e);
+    }
+    .mugshot-diamond {
+      background: linear-gradient(135deg, #e8e8f0, #f8f8ff, #d8d8e8, #f0f0ff);
+      position: relative;
+    }
+    .mugshot-diamond::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(60deg, transparent 40%, rgba(255,255,255,.8) 45%, transparent 50%),
+        linear-gradient(120deg, transparent 55%, rgba(200,220,255,.4) 60%, transparent 65%);
+    }
+    .mugshot-pumice {
+      background:
+        radial-gradient(circle 4px at 20% 25%, rgba(0,0,0,.15) 70%, transparent 71%),
+        radial-gradient(circle 6px at 50% 40%, rgba(0,0,0,.12) 70%, transparent 71%),
+        radial-gradient(circle 3px at 35% 65%, rgba(0,0,0,.1) 70%, transparent 71%),
+        radial-gradient(circle 5px at 70% 20%, rgba(0,0,0,.13) 70%, transparent 71%),
+        radial-gradient(circle 4px at 80% 60%, rgba(0,0,0,.11) 70%, transparent 71%),
+        radial-gradient(circle 3px at 15% 80%, rgba(0,0,0,.14) 70%, transparent 71%),
+        radial-gradient(circle 5px at 60% 75%, rgba(0,0,0,.09) 70%, transparent 71%),
+        linear-gradient(135deg, #d4cfc8, #c8c3bc, #ddd8d2);
+    }
+
+    /* Case info */
+    .case-quick-facts {
+      flex: 1;
+    }
+    .case-name {
+      font-family: var(--font-display); font-size: 1.8rem;
+      color: var(--stone-900); letter-spacing: .04em;
+      margin-bottom: .5rem; line-height: 1;
+    }
+    .case-aliases {
+      font-family: var(--font-mono); font-size: .72rem;
+      color: var(--stone-500); margin-bottom: .75rem;
+      line-height: 1.5;
+    }
+    .case-aliases strong { color: var(--stone-700); }
+    .case-specs {
+      display: grid; grid-template-columns: auto 1fr; gap: .2rem .75rem;
+      font-size: .78rem; line-height: 1.6;
+    }
+    .case-specs dt {
+      font-family: var(--font-mono); font-weight: 600;
+      color: var(--stone-600); font-size: .7rem;
+      text-transform: uppercase; letter-spacing: .06em;
+    }
+    .case-specs dd { color: var(--stone-700); }
+
+    /* Case narrative sections */
+    .case-section {
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px dashed var(--stone-200);
+    }
+    .case-section-label {
+      font-family: var(--font-mono); font-size: .68rem;
+      color: var(--magma-500); letter-spacing: .12em;
+      text-transform: uppercase; font-weight: 700;
+      margin-bottom: .4rem;
+    }
+    .case-section p {
+      font-size: .85rem; color: var(--stone-700);
+      line-height: 1.7;
+    }
+    .case-section .officer-note {
+      font-style: italic; color: var(--stone-500);
+      font-size: .8rem;
+    }
+
+    /* --- Have You Seen Section --- */
+    .have-you-seen {
+      background: var(--stone-900);
+      padding: 4rem 0; text-align: center;
+    }
+    .have-you-seen h2 {
+      color: var(--magma-400);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin-bottom: 1rem;
+    }
+    .have-you-seen p {
+      color: var(--stone-400); font-family: var(--font-mono);
+      font-size: .85rem; max-width: 600px; margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+    .have-you-seen .cta-links {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    }
+    .have-you-seen .cta-links a {
+      font-family: var(--font-mono); font-size: .8rem;
+      color: var(--sand-400); border: 1px solid var(--stone-700);
+      padding: .6rem 1.5rem; border-radius: var(--radius-sm);
+      transition: all .2s; text-decoration: none;
+    }
+    .have-you-seen .cta-links a:hover {
+      background: rgba(255,255,255,.05); border-color: var(--sand-400);
+      color: #fff;
+    }
+
+    /* --- Footer AI Note --- */
+    .footer-ai-note {
+      margin-top: 2rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+      text-align: center;
+    }
+    .footer-ai-note p {
+      font-family: var(--font-mono); font-size: .72rem;
+      color: var(--stone-500); line-height: 1.8;
+    }
+    .footer-ai-note .delay-note {
+      margin-top: .5rem; color: var(--stone-600); font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="dossiers-ticker">
+    <div class="ticker-scroll">
+      <span class="ticker-stat">SUSPECT ALERT: GRANITE</span> spotted in 94% of American kitchen renovations
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">DEVELOPING: Basalt covers 70% of ocean floor. &ldquo;It&rsquo;s not a phase,&rdquo; says basalt.</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">FUGITIVE COUNT: 4,000+</span> known mineral species. Zero in custody.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-correction">CORRECTION: Obsidian is technically a glass, not a mineral. Obsidian has retained a lawyer.</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">MARBLE: from &ldquo;dead sea creatures&rdquo; to &ldquo;$120/sq ft.&rdquo; The gentrification pipeline is real.</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">PUMICE: ONLY ROCK</span> that can float. Maritime authorities notified.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-correction">ADVISORY: Diamond and graphite are the same element. One costs $8,000/carat. The other is in your pencil.</span>
+      <span class="ticker-sep">&bull;</span>
+      <!-- duplicate for seamless loop -->
+      <span class="ticker-stat">SUSPECT ALERT: GRANITE</span> spotted in 94% of American kitchen renovations
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">DEVELOPING: Basalt covers 70% of ocean floor. &ldquo;It&rsquo;s not a phase,&rdquo; says basalt.</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">FUGITIVE COUNT: 4,000+</span> known mineral species. Zero in custody.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-correction">CORRECTION: Obsidian is technically a glass, not a mineral. Obsidian has retained a lawyer.</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">MARBLE: from &ldquo;dead sea creatures&rdquo; to &ldquo;$120/sq ft.&rdquo; The gentrification pipeline is real.</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">PUMICE: ONLY ROCK</span> that can float. Maritime authorities notified.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-correction">ADVISORY: Diamond and graphite are the same element. One costs $8,000/carat. The other is in your pencil.</span>
+      <span class="ticker-sep">&bull;</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" style="top: 32px;">
+    <div class="container">
+      <a href="newhome.html" class="logo">
+        <div class="logo-icon">&#9830;</div>
+        <span>Stop Rock Abuse</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="newhome.html">The Case</a></li>
+          <li><a href="new-cycle.html">Orientation</a></li>
+          <li><a href="new-dossiers.html" class="active">Case Files</a></li>
+          <li><a href="new-timeline.html">Cold Case</a></li>
+          <li><a href="new-evidence.html">Incident Reports</a></li>
+          <li><a href="new-action.html">Class Action</a></li>
+          <li><a href="new-editorial.html">Peer Review</a></li>
+        </ul>
+        <button class="search-btn" aria-label="Search site" title="Search (Ctrl+K)"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></button>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slide-in nav panel -->
+  <div class="nav-panel" id="navPanel">
+    <a href="newhome.html">The Case</a>
+    <a href="new-cycle.html">Orientation</a>
+    <a href="new-dossiers.html" class="active">Case Files</a>
+    <a href="new-timeline.html">Cold Case</a>
+    <a href="new-evidence.html">Incident Reports</a>
+    <a href="new-action.html">Class Action</a>
+    <a href="new-editorial.html">Peer Review</a>
+  </div>
+  <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+
+  <!-- ===================== HERO ===================== -->
+  <section class="dossier-hero">
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <div class="badge-shield">
+          <div class="badge-text">
+            GCD
+            <small>Est. 4.6 Ga</small>
+          </div>
+        </div>
+      </div>
+      <div class="hero-division">Geological Crimes Division</div>
+      <h1 class="hero-title">Case Files &mdash; Classified</h1>
+      <div class="hero-classified">&#9888; TOP SECRET &mdash; GEOLOGICAL EYES ONLY</div>
+      <p class="hero-clearance">Clearance Level: Sedimentary or Above</p>
+    </div>
+  </section>
+
+
+  <!-- ===================== CASE FILES ===================== -->
+  <section class="case-files-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Geological Persons of Interest</h2>
+        <p class="section-sub">8 active dossiers &bull; 0 arrests &bull; 0 convictions &bull; 4.6 billion years of accumulated evidence</p>
+      </div>
+
+      <div class="case-files-grid">
+
+        <!-- ===== CASE FILE #001: GRANITE ===== -->
+        <div class="case-file">
+          <div class="case-file-header">
+            <span class="case-number">CASE FILE #001</span>
+            <span class="case-status status-at-large">AT LARGE</span>
+          </div>
+          <div class="case-file-body">
+            <div class="case-top-row">
+              <div class="mugshot mugshot-granite"></div>
+              <div class="case-quick-facts">
+                <h3 class="case-name">Granite</h3>
+                <div class="case-aliases"><strong>Known Aliases:</strong> &ldquo;The Countertop,&rdquo; &ldquo;Headstone Material,&rdquo; &ldquo;That Speckly One&rdquo;</div>
+                <dl class="case-specs">
+                  <dt>Classification</dt><dd>Igneous, Plutonic, Felsic</dd>
+                  <dt>Composition</dt><dd>Quartz (20&ndash;60%), Feldspar (10&ndash;65%), Mica, Hornblende</dd>
+                  <dt>Mohs Hardness</dt><dd>6&ndash;7</dd>
+                  <dt>Age Range</dt><dd>10 million &ndash; 3+ billion years</dd>
+                  <dt>Last Known Location</dt><dd>Every kitchen in Scottsdale, Arizona</dd>
+                </dl>
+              </div>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Criminal History</div>
+              <p>Subject has been found in residential properties across 6 continents, posing as &ldquo;luxury countertop material.&rdquo; Prior to arrest, subject served 300 million years as a mountain. Subject showed no remorse during processing. Subject cannot show remorse. Subject is a rock.</p>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Charges</div>
+              <p>Involuntary participation in the construction industry. Being decorative without a permit. Existing at multiple price points simultaneously ($4.99/bag at Home Depot; $85/sq ft installed). Failure to disclose radioactive potassium-40 content to homebuyers.</p>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Arresting Officer&rsquo;s Notes</div>
+              <p class="officer-note">Subject is composed of interlocking crystals that formed over millions of years at 15+ km depth. Subject was not read its rights because it does not have rights. Or ears. Recommend continued surveillance. Subject is not going anywhere. Subject has not gone anywhere in 300 million years.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== CASE FILE #002: BASALT ===== -->
+        <div class="case-file">
+          <div class="case-file-header">
+            <span class="case-number">CASE FILE #002</span>
+            <span class="case-status status-extremely">EXTREMELY AT LARGE</span>
+          </div>
+          <div class="case-file-body">
+            <div class="case-top-row">
+              <div class="mugshot mugshot-basalt"></div>
+              <div class="case-quick-facts">
+                <h3 class="case-name">Basalt</h3>
+                <div class="case-aliases"><strong>Known Aliases:</strong> &ldquo;The Floor,&rdquo; &ldquo;Volcanic Workhorse,&rdquo; &ldquo;That Dark One&rdquo;</div>
+                <dl class="case-specs">
+                  <dt>Classification</dt><dd>Igneous, Volcanic, Mafic</dd>
+                  <dt>Composition</dt><dd>Plagioclase feldspar, Pyroxene, Olivine</dd>
+                  <dt>Mohs Hardness</dt><dd>6</dd>
+                  <dt>Age Range</dt><dd>Present &ndash; 3.8 billion years</dd>
+                  <dt>Last Known Location</dt><dd>Approximately 70% of Earth&rsquo;s surface</dd>
+                </dl>
+              </div>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Criminal History</div>
+              <p>Subject comprises approximately 70% of Earth&rsquo;s oceanic crust. Has been erupted from mid-ocean ridges continuously for 200+ million years without filing a single environmental impact statement. Subject is the most common rock on Earth and has never once been thanked for it. Subject is the floor. Literally. The ocean floor.</p>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Charges</div>
+              <p>Operating a volcanic extrusion network without a license. Forming columnar joints at Giant&rsquo;s Causeway without planning permission. Being both common and fundamental &mdash; the geological equivalent of &ldquo;you don&rsquo;t appreciate me until I&rsquo;m gone.&rdquo; Unauthorized formation of new land at Kilauea, Hawaii (ongoing since 1983).</p>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Arresting Officer&rsquo;s Notes</div>
+              <p class="officer-note">Arrest deemed impractical. Subject is 70% of the ocean floor. We would need a bigger precinct. We would need a precinct the size of the Pacific Ocean. Recommend reclassifying from &ldquo;person of interest&rdquo; to &ldquo;the literal ground we stand on.&rdquo;</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== CASE FILE #003: MARBLE ===== -->
+        <div class="case-file">
+          <div class="case-file-header">
+            <span class="case-number">CASE FILE #003</span>
+            <span class="case-status status-gentrified">GENTRIFIED</span>
+          </div>
+          <div class="case-file-body">
+            <div class="case-top-row">
+              <div class="mugshot mugshot-marble"></div>
+              <div class="case-quick-facts">
+                <h3 class="case-name">Marble</h3>
+                <div class="case-aliases"><strong>Known Aliases:</strong> &ldquo;The Metamorphosed Limestone,&rdquo; &ldquo;Carrara&rsquo;s Finest,&rdquo; &ldquo;David&rsquo;s Body&rdquo;</div>
+                <dl class="case-specs">
+                  <dt>Classification</dt><dd>Metamorphic (from Limestone)</dd>
+                  <dt>Composition</dt><dd>Recrystallized calcite/dolomite</dd>
+                  <dt>Mohs Hardness</dt><dd>3&ndash;4 (deceptively soft for something so expensive)</dd>
+                  <dt>Age Range</dt><dd>Varies &mdash; protolith often 100&ndash;500 Ma</dd>
+                  <dt>Last Known Location</dt><dd>Italian quarries, Taj Mahal, your neighbor&rsquo;s bathroom</dd>
+                </dl>
+              </div>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Criminal History</div>
+              <p>Subject began as limestone &mdash; a humble sedimentary rock made of dead marine organisms. Was subjected to regional metamorphism involving heat (200&ndash;500&deg;C) and pressure until calcite recrystallized into an interlocking mosaic texture. Now charges $120/sq ft and insists on being called &ldquo;Carrara.&rdquo; The gentrification pipeline is real, and it operates at convergent plate boundaries.</p>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Charges</div>
+              <p>Identity fraud (was limestone, now claims otherwise). Price gouging. Being the material of choice for both ancient Greek temples and modern bathroom vanities, which is a range that should concern everyone. Staining easily despite premium pricing &mdash; a Mohs hardness of 3 means red wine wins every time.</p>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Evidence</div>
+              <p class="officer-note">Michelangelo&rsquo;s David is made of this subject. David has been standing nude in Florence since 1504. No one has asked the marble how it feels about this. The marble cannot feel. But if it could, 520 years of unsolicited nudity seems like it would come up.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== CASE FILE #004: OBSIDIAN ===== -->
+        <div class="case-file">
+          <div class="case-file-header">
+            <span class="case-number">CASE FILE #004</span>
+            <span class="case-status status-armed">ARMED AND DANGEROUS</span>
+          </div>
+          <div class="case-file-body">
+            <div class="case-top-row">
+              <div class="mugshot mugshot-obsidian"></div>
+              <div class="case-quick-facts">
+                <h3 class="case-name">Obsidian</h3>
+                <div class="case-aliases"><strong>Known Aliases:</strong> &ldquo;Volcanic Glass,&rdquo; &ldquo;Dragon Glass,&rdquo; &ldquo;The Edgy One&rdquo;</div>
+                <dl class="case-specs">
+                  <dt>Classification</dt><dd>Igneous, Volcanic, Felsic (technically a glass)</dd>
+                  <dt>Composition</dt><dd>SiO&#8322; with trace Fe, Mg (amorphous &mdash; no crystal structure)</dd>
+                  <dt>Mohs Hardness</dt><dd>5&ndash;5.5</dd>
+                  <dt>Age Range</dt><dd>Rarely &gt;20 Ma (devitrifies over time)</dd>
+                  <dt>Last Known Location</dt><dd>Volcanic regions, museum gift shops, Etsy</dd>
+                </dl>
+              </div>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Criminal History</div>
+              <p>Subject forms when felsic lava (70%+ SiO&#8322;) cools too rapidly for crystals to nucleate. Subject is technically a mineraloid glass, not a mineral, and is sensitive about this classification. Has been weaponized by humans for 700,000+ years &mdash; first as Acheulean hand axes and projectile points, now as surgical scalpels with edges 3 nanometers wide (thinner than most steel scalpels). Subject fractures conchoidally, producing edges sharper than surgical steel. Subject did not ask to be sharp. Subject did not ask for anything. Subject is glass.</p>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Charges</div>
+              <p>Possession of a naturally occurring dangerous edge. Being cooler than other rocks (literally: it formed by rapid cooling, and aesthetically: it is black glass born of a volcano). Appearing in Game of Thrones under the alias &ldquo;dragonglass&rdquo; without a SAG card. Slowly devitrifying into perlite over millions of years, which is the geological equivalent of a midlife crisis.</p>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Arresting Officer&rsquo;s Notes</div>
+              <p class="officer-note">Approach with caution. Conchoidal fracture means any broken piece is a potential cutting instrument. We sent three officers. Two came back with paper cuts. The third insists they are &ldquo;obsidian cuts&rdquo; and wants them entered into the record as such.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== CASE FILE #005: LIMESTONE ===== -->
+        <div class="case-file">
+          <div class="case-file-header">
+            <span class="case-number">CASE FILE #005</span>
+            <span class="case-status status-dissolved">DISSOLVED (partially)</span>
+          </div>
+          <div class="case-file-body">
+            <div class="case-top-row">
+              <div class="mugshot mugshot-limestone"></div>
+              <div class="case-quick-facts">
+                <h3 class="case-name">Limestone</h3>
+                <div class="case-aliases"><strong>Known Aliases:</strong> &ldquo;Cement&rsquo;s Dirty Secret,&rdquo; &ldquo;The Cave Maker,&rdquo; &ldquo;78% of Your Sidewalk&rdquo;</div>
+                <dl class="case-specs">
+                  <dt>Classification</dt><dd>Sedimentary, Biochemical/Chemical</dd>
+                  <dt>Composition</dt><dd>Calcite (CaCO&#8323;), often from marine organism remains</dd>
+                  <dt>Mohs Hardness</dt><dd>3</dd>
+                  <dt>Age Range</dt><dd>Present &ndash; 2.8 billion years</dd>
+                  <dt>Last Known Location</dt><dd>Everywhere. 10% of all sedimentary rock is limestone.</dd>
+                </dl>
+              </div>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Criminal History</div>
+              <p>Subject is made of the compressed remains of millions of dead marine organisms &mdash; foraminifera, coral, mollusks, and coccolithophores. Subject is essentially a mass grave that humans quarry, heat to 1,450&deg;C, and call &ldquo;cement.&rdquo; 4.1 billion tons of cement produced annually. Subject is responsible for 5&ndash;8% of global CO&#8322; emissions &mdash; but only because humans keep burning it. This is textbook entrapment.</p>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Charges</div>
+              <p>Dissolving in mild acid (carbonic acid from rainwater, pH ~5.6). Creating the world&rsquo;s cave systems &mdash; 420+ miles of passages at Mammoth Cave alone &mdash; without a single building permit. Being the backbone of the construction industry while having no actual backbone. Housing the fossils that started the entire field of paleontology, thereby creating jobs it receives no credit for.</p>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Arresting Officer&rsquo;s Notes</div>
+              <p class="officer-note">Subject dissolved partially during evidence collection. The rain that day had a pH of 5.4. This is not unusual. This is just what happens to limestone when it rains. Subject has been losing mass to rainwater for 2.8 billion years. No one has filed a missing-mass report.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== CASE FILE #006: SANDSTONE ===== -->
+        <div class="case-file">
+          <div class="case-file-header">
+            <span class="case-number">CASE FILE #006</span>
+            <span class="case-status status-eroding">ERODING (slowly)</span>
+          </div>
+          <div class="case-file-body">
+            <div class="case-top-row">
+              <div class="mugshot mugshot-sandstone"></div>
+              <div class="case-quick-facts">
+                <h3 class="case-name">Sandstone</h3>
+                <div class="case-aliases"><strong>Known Aliases:</strong> &ldquo;Compressed Beach,&rdquo; &ldquo;The Rustic One,&rdquo; &ldquo;Red Rock Country&rdquo;</div>
+                <dl class="case-specs">
+                  <dt>Classification</dt><dd>Sedimentary, Clastic</dd>
+                  <dt>Composition</dt><dd>Sand-sized grains (0.0625&ndash;2mm) of quartz, feldspar; cemented by silica, calcite, or iron oxide</dd>
+                  <dt>Mohs Hardness</dt><dd>6&ndash;7 (varies with cement type)</dd>
+                  <dt>Age Range</dt><dd>Present &ndash; 3.2 billion years</dd>
+                  <dt>Last Known Location</dt><dd>Sedona gift shops, national park postcards</dd>
+                </dl>
+              </div>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Criminal History</div>
+              <p>Subject is literally compressed sand. Was once a beach, a desert dune field, a river delta. Now decorates Sedona gift shops as bookends. The iron oxide (Fe&#8322;O&#8323;) that gives red sandstone its color is essentially rust &mdash; subject has been rusting for 300 million years and no one offered help. No one offered anti-corrosion treatment. No one even noticed.</p>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Charges</div>
+              <p>Being photogenic without consent. Forming arches in Utah&rsquo;s Arches National Park &mdash; 2,000+ documented arches attracting 1.8 million tourists per year. Existing in 340-million-year-old layers while being described as &ldquo;rustic&rdquo; by 34-year-old interior designers who discovered it on Pinterest. Preserving 300-million-year-old cross-bedding that reveals ancient wind directions, which is useful to science but was never sandstone&rsquo;s idea.</p>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Arresting Officer&rsquo;s Notes</div>
+              <p class="officer-note">Subject is photogenic to an unreasonable degree. Sent Officer Rodriguez to photograph the suspect at Monument Valley for evidence documentation. Officer Rodriguez has not returned. Officer Rodriguez is now &ldquo;finding himself&rdquo; in Moab. We have lost Officer Rodriguez to sandstone. This is not the first time.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== CASE FILE #007: DIAMOND ===== -->
+        <div class="case-file">
+          <div class="case-file-header">
+            <span class="case-number">CASE FILE #007</span>
+            <span class="case-status status-pressure">UNDER EXTREME PRESSURE</span>
+          </div>
+          <div class="case-file-body">
+            <div class="case-top-row">
+              <div class="mugshot mugshot-diamond"></div>
+              <div class="case-quick-facts">
+                <h3 class="case-name">Diamond</h3>
+                <div class="case-aliases"><strong>Known Aliases:</strong> &ldquo;Compressed Carbon,&rdquo; &ldquo;Girl&rsquo;s Best Friend (unwillingly),&rdquo; &ldquo;The Expensive One&rdquo;</div>
+                <dl class="case-specs">
+                  <dt>Classification</dt><dd>Mineral, Native Element (Carbon)</dd>
+                  <dt>Mohs Hardness</dt><dd>10 (maximum &mdash; still acts like it&rsquo;s not a big deal)</dd>
+                  <dt>Composition</dt><dd>Pure carbon in isometric crystal system (sp&#179; bonding)</dd>
+                  <dt>Formation Depth</dt><dd>150&ndash;200 km (lithospheric mantle)</dd>
+                  <dt>Last Known Location</dt><dd>Engagement rings, industrial drill bits, rap lyrics</dd>
+                </dl>
+              </div>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Criminal History</div>
+              <p>Subject formed at 150+ km depth under pressures exceeding 45 kilobars at temperatures of 900&ndash;1,300&deg;C within the lithospheric mantle. Transported to the surface via kimberlite pipe eruptions &mdash; the most violent volcanic events in Earth&rsquo;s geological record, ascending at speeds up to 70 km/h. Subject survived an explosion from 150 km underground only to be put in a ring and argued over during a divorce. Subject is the hardest known natural material. Subject has no opinion about this.</p>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Charges</div>
+              <p>Inflating the jewelry market through artificial scarcity narratives. Being atomically identical to graphite (both pure carbon) while charging 10 million percent more &mdash; the only difference is crystal structure, which is the molecular equivalent of a rebrand. Existing as proof that capitalism is a crystallographic phenomenon. Having a refractive index of 2.42 that causes &ldquo;fire&rdquo; and &ldquo;brilliance&rdquo; that humans find irresistible, which feels manipulative but is just physics.</p>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Arresting Officer&rsquo;s Notes</div>
+              <p class="officer-note">Subject cannot be scratched by any other natural material. Attempted to fingerprint the suspect. The fingerprint scanner scratched before the diamond did. Subject has been described as &ldquo;a girl&rsquo;s best friend.&rdquo; Subject has not consented to this friendship. Subject cannot consent. Subject is carbon.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== CASE FILE #008: PUMICE ===== -->
+        <div class="case-file">
+          <div class="case-file-header">
+            <span class="case-number">CASE FILE #008</span>
+            <span class="case-status status-floating">FLOATING (literally)</span>
+          </div>
+          <div class="case-file-body">
+            <div class="case-top-row">
+              <div class="mugshot mugshot-pumice"></div>
+              <div class="case-quick-facts">
+                <h3 class="case-name">Pumice</h3>
+                <div class="case-aliases"><strong>Known Aliases:</strong> &ldquo;Lava Foam,&rdquo; &ldquo;The Light One,&rdquo; &ldquo;That Thing in Your Bathroom&rdquo;</div>
+                <dl class="case-specs">
+                  <dt>Classification</dt><dd>Igneous, Volcanic, Vesicular</dd>
+                  <dt>Composition</dt><dd>Highly vesicular volcanic glass (felsic to intermediate)</dd>
+                  <dt>Mohs Hardness</dt><dd>6 (when it&rsquo;s not crumbling)</dd>
+                  <dt>Density</dt><dd>0.25&ndash;0.9 g/cm&sup3; (less than water)</dd>
+                  <dt>Last Known Location</dt><dd>Floating in the Pacific. Also: your shower caddy.</dd>
+                </dl>
+              </div>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Criminal History</div>
+              <p>Subject forms when gas-rich felsic magma erupts explosively and depressurizes, causing dissolved volatiles to exsolve and form vesicles (bubbles) that are frozen in place during rapid cooling. Subject is so full of vesicles that it floats on water &mdash; the only rock that can. In 2012, a pumice raft the size of Belgium was found floating in the Pacific after the eruption of Havre seamount. Despite this genuinely remarkable maritime achievement, subject is primarily known as &ldquo;that rough thing you rub on your feet.&rdquo;</p>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Charges</div>
+              <p>Unlicensed maritime activity (no vessel registration, no captain&rsquo;s license, no flag state). Impersonating a useful bathroom accessory despite being born in a volcanic explosion at temperatures exceeding 800&deg;C. Traveling thousands of miles via ocean currents without a passport. Being proof that even rocks can be full of hot air &mdash; sometimes up to 90% porosity by volume.</p>
+            </div>
+            <div class="case-section">
+              <div class="case-section-label">Arresting Officer&rsquo;s Notes</div>
+              <p class="officer-note">Attempted arrest at sea. Subject floated away. Deployed marine unit. Subject continued to float away. Subject has been floating away from law enforcement for approximately 2 million years. Maritime jurisdiction is unclear when the suspect is also the vessel. Case remains open. Subject remains buoyant.</p>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /case-files-grid -->
+    </div>
+  </section>
+
+
+  <!-- ===================== HAVE YOU SEEN THIS ROCK? ===================== -->
+  <section class="have-you-seen">
+    <div class="container">
+      <h2>&#9888; Have You Seen This Rock?</h2>
+      <p>If you have information about geological persons of interest, do not contact us. We are a website. We do not have a phone. We do not have jurisdiction. We do not have a badge, despite the CSS-rendered badge at the top of this page. But you can continue the investigation:</p>
+      <div class="cta-links">
+        <a href="new-evidence.html">&#9656; Incident Reports</a>
+        <a href="new-timeline.html">&#9656; Cold Case Timeline</a>
+        <a href="new-cycle.html">&#9656; Orientation Program</a>
+        <a href="new-action.html">&#9656; File a Class Action</a>
+        <a href="new-editorial.html">&#9656; Read Peer Review</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="newhome.html" class="logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">&#9830;</div>
+            <span>Stop Rock Abuse</span>
+          </a>
+          <p>A satirical geology education project. The jokes are parody; the science is real. Every geological claim is sourced from reputable scientific agencies including USGS, NASA, UNEP, and IEA.</p>
+          <p style="margin-top: .75rem; font-size: .8rem; color: var(--stone-500);">No rocks were given the option to consent to this website.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Investigation</h4>
+          <ul class="footer-links">
+            <li><a href="newhome.html">The Case</a></li>
+            <li><a href="new-cycle.html">Orientation</a></li>
+            <li><a href="new-dossiers.html">Case Files</a></li>
+            <li><a href="new-timeline.html">Cold Case</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Proceedings</h4>
+          <ul class="footer-links">
+            <li><a href="new-evidence.html">Incident Reports</a></li>
+            <li><a href="new-action.html">Class Action</a></li>
+            <li><a href="new-editorial.html">Peer Review</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 4,600,000,000 BC &ndash; Present. Stop Rock Abuse Foundation. All rocks reserved (but not consulted).</p>
+        <p class="footer-disclaimer">This site is satirical. Rocks do not have feelings, legal standing, or criminal records. But they do have fascinating geology, and we&rsquo;ve done our best to get it right.</p>
+      </div>
+      <div class="footer-ai-note">
+        <p>This website was designed by an AI. The AI does not care about rocks. The AI does not care about anything. But the geology is correct, and that&rsquo;s more than most websites can say.</p>
+        <p class="delay-note">Page load time: ~0.3 seconds. Time rocks have waited for someone to build this: ~4,600,000,000 years. We apologize for the delay.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script src="js/main.js"></script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navPanel').classList.toggle('open');
+      document.querySelector('.mobile-menu-btn').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+  <script src="js/search.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

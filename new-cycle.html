@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stop Rock Abuse — Employee Orientation: The Rock Cycle</title>
+  <meta name="description" content="Mandatory orientation packet for all new geological employees. By existing, you have agreed to the Terms of Geological Service.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* === TICKER (simplified from newhome) === */
+    .newhome-ticker {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1001;
+      background: var(--stone-900); border-bottom: 1px solid var(--magma-500);
+      overflow: hidden; white-space: nowrap; height: 32px; line-height: 32px;
+      cursor: default;
+    }
+    .newhome-ticker:hover .ticker-scroll { animation-play-state: paused; }
+    .ticker-scroll {
+      display: inline-block;
+      animation: ticker-scroll 60s linear infinite;
+      font-family: var(--font-mono);
+      font-size: .72rem; letter-spacing: .03em; color: var(--stone-300);
+    }
+    .ticker-scroll .ticker-stat { color: var(--magma-400); font-weight: 700; }
+    .ticker-scroll .ticker-opinion { color: var(--sand-400); font-style: italic; }
+    .ticker-scroll .ticker-correction { color: var(--earth-400); }
+    .ticker-sep { display: inline-block; margin: 0 1.5em; color: var(--stone-600); }
+    @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* === CORPORATE ORIENTATION STYLES === */
+
+    .corp-hero {
+      background: var(--stone-900);
+      padding: calc(var(--header-height) + 68px) 0 4rem;
+      min-height: 70vh; display: flex; align-items: center;
+    }
+
+    .letterhead {
+      max-width: 760px; margin: 0 auto;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 4px; padding: 3rem 3.5rem;
+      position: relative;
+      font-family: var(--font-mono);
+    }
+
+    .letterhead::before {
+      content: 'MANDATORY'; position: absolute; top: -12px; right: 24px;
+      background: var(--magma-500); color: #fff; font-size: .65rem;
+      font-weight: 700; letter-spacing: .1em; padding: .25rem .75rem;
+      font-family: var(--font-body); border-radius: 2px;
+    }
+
+    .letterhead-logo {
+      text-align: center; margin-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      padding-bottom: 2rem;
+    }
+    .letterhead-logo .corp-name {
+      font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--sand-400); letter-spacing: .12em;
+    }
+    .letterhead-logo .corp-division {
+      font-family: var(--font-mono); font-size: .75rem;
+      color: var(--stone-400); letter-spacing: .15em;
+      text-transform: uppercase; margin-top: .5rem;
+    }
+    .letterhead-title {
+      text-align: center; font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+      color: #fff; letter-spacing: .08em; margin: 1.5rem 0;
+    }
+    .letterhead-meta {
+      font-size: .8rem; color: var(--stone-400);
+      line-height: 2; margin-bottom: 1.5rem;
+    }
+    .letterhead-meta span { color: var(--stone-300); }
+    .letterhead-fine-print {
+      font-size: .7rem; color: var(--stone-600);
+      text-align: center; font-style: italic;
+      margin-top: 1.5rem; line-height: 1.7;
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding-top: 1rem;
+    }
+
+    /* === Welcome Letter === */
+    .welcome-section {
+      padding: 5rem 0;
+      background: var(--stone-50);
+    }
+    .welcome-letter {
+      max-width: 720px; margin: 0 auto;
+      background: #fff;
+      border: 1px solid var(--stone-200);
+      border-radius: var(--radius-md);
+      padding: 3rem 3.5rem;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .welcome-letter::before {
+      content: 'INTERNAL MEMO'; position: absolute; top: -11px; left: 24px;
+      background: var(--stone-800); color: var(--stone-200); font-size: .6rem;
+      font-weight: 700; letter-spacing: .1em; padding: .2rem .6rem;
+      font-family: var(--font-mono); border-radius: 2px;
+    }
+    .welcome-letter .memo-header {
+      font-family: var(--font-mono); font-size: .78rem;
+      color: var(--stone-500); line-height: 2.2;
+      border-bottom: 1px solid var(--stone-200);
+      padding-bottom: 1.5rem; margin-bottom: 1.5rem;
+    }
+    .welcome-letter .memo-header strong { color: var(--stone-800); }
+    .welcome-letter .memo-body {
+      font-size: .95rem; line-height: 1.9;
+      color: var(--stone-700);
+    }
+    .welcome-letter .memo-body p { margin-bottom: 1.2rem; }
+    .welcome-letter .memo-sig {
+      margin-top: 2rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--stone-200);
+      font-family: var(--font-mono); font-size: .8rem;
+      color: var(--stone-500);
+    }
+    .welcome-letter .memo-sig .sig-name {
+      font-family: var(--font-display); font-size: 1.6rem;
+      color: var(--stone-800); margin-bottom: .25rem;
+    }
+
+    /* === Department Cards === */
+    .departments-section {
+      padding: 5rem 0;
+      background: var(--stone-100);
+    }
+    .dept-section-header {
+      text-align: center; margin-bottom: 3rem;
+    }
+    .dept-section-header h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--stone-900);
+    }
+    .dept-section-header .dept-subtitle {
+      font-family: var(--font-mono); font-size: .8rem;
+      color: var(--stone-500); margin-top: .5rem;
+      letter-spacing: .04em;
+    }
+
+    .dept-card {
+      max-width: 800px; margin: 0 auto 3rem;
+      background: #fff;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--stone-200);
+    }
+    .dept-card-header {
+      padding: 2rem 2.5rem;
+      color: #fff;
+      position: relative;
+    }
+    .dept-card-header.igneous { background: linear-gradient(135deg, #c62828 0%, #e53935 100%); }
+    .dept-card-header.sedimentary { background: linear-gradient(135deg, #bf8f00 0%, #f9a825 100%); }
+    .dept-card-header.metamorphic { background: linear-gradient(135deg, #6a1b9a 0%, #9c27b0 100%); }
+
+    .dept-card-header .dept-tag {
+      font-family: var(--font-mono); font-size: .65rem;
+      letter-spacing: .15em; text-transform: uppercase;
+      opacity: .8; margin-bottom: .5rem;
+    }
+    .dept-card-header h3 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: #fff; margin-bottom: .25rem;
+    }
+    .dept-card-header .dept-motto {
+      font-style: italic; font-size: .9rem;
+      opacity: .85;
+    }
+
+    .dept-card-body {
+      padding: 2rem 2.5rem;
+    }
+    .dept-card-body p {
+      font-size: .92rem; line-height: 1.8;
+      color: var(--stone-700); margin-bottom: 1rem;
+    }
+    .dept-detail {
+      background: var(--stone-50);
+      border-left: 3px solid var(--stone-300);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-family: var(--font-mono);
+      font-size: .82rem;
+      line-height: 1.8;
+      color: var(--stone-600);
+    }
+    .dept-detail.igneous-detail { border-left-color: var(--magma-400); }
+    .dept-detail.sed-detail { border-left-color: var(--sand-500); }
+    .dept-detail.meta-detail { border-left-color: var(--metamorphic); }
+
+    .dept-detail strong { color: var(--stone-800); }
+
+    .dept-note {
+      font-size: .78rem; color: var(--stone-500);
+      font-style: italic; margin-top: .75rem;
+      padding-top: .75rem; border-top: 1px dashed var(--stone-200);
+    }
+
+    /* === Transfer Process === */
+    .transfer-section {
+      padding: 5rem 0;
+      background: var(--stone-50);
+    }
+    .transfer-header {
+      text-align: center; margin-bottom: 3rem;
+    }
+    .transfer-header h2 { color: var(--stone-900); }
+    .transfer-header .transfer-subtitle {
+      font-family: var(--font-mono); font-size: .8rem;
+      color: var(--stone-500); margin-top: .5rem;
+    }
+
+    .transfer-grid {
+      max-width: 800px; margin: 0 auto;
+      display: grid; gap: 1.5rem;
+    }
+
+    .transfer-card {
+      background: #fff;
+      border: 1px solid var(--stone-200);
+      border-radius: var(--radius-md);
+      padding: 1.75rem 2rem;
+      box-shadow: var(--shadow-md);
+      display: flex; gap: 1.5rem; align-items: flex-start;
+    }
+    .transfer-arrow {
+      flex-shrink: 0;
+      width: 56px; height: 56px;
+      background: var(--stone-900);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.4rem; color: var(--sand-400);
+    }
+    .transfer-info h4 {
+      font-family: var(--font-display);
+      font-size: 1.2rem; color: var(--stone-900);
+      margin-bottom: .5rem; letter-spacing: .04em;
+    }
+    .transfer-info p {
+      font-size: .88rem; color: var(--stone-600);
+      line-height: 1.7;
+    }
+    .transfer-info .transfer-meta {
+      font-family: var(--font-mono); font-size: .75rem;
+      color: var(--stone-500); margin-top: .5rem;
+    }
+
+    /* === FAQ Section === */
+    .faq-section {
+      padding: 5rem 0;
+      background: var(--stone-100);
+    }
+    .faq-header {
+      text-align: center; margin-bottom: 3rem;
+    }
+    .faq-header h2 { color: var(--stone-900); }
+    .faq-header .faq-subtitle {
+      font-family: var(--font-mono); font-size: .8rem;
+      color: var(--stone-500); margin-top: .5rem;
+    }
+
+    .faq-list {
+      max-width: 760px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+
+    .faq-item {
+      background: #fff;
+      border: 1px solid var(--stone-200);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .faq-question {
+      width: 100%;
+      background: none; border: none;
+      padding: 1.25rem 1.5rem;
+      font-family: var(--font-body);
+      font-size: .95rem; font-weight: 600;
+      color: var(--stone-900);
+      text-align: left; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: background .2s;
+    }
+    .faq-question:hover { background: var(--stone-50); }
+    .faq-question::after {
+      content: '+'; font-family: var(--font-mono);
+      font-size: 1.2rem; color: var(--stone-500);
+      transition: transform .3s;
+    }
+    .faq-item.open .faq-question::after { content: '\2212'; }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height .4s ease, padding .3s ease;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+    .faq-answer-inner {
+      padding: 0 1.5rem 1.25rem;
+      font-size: .9rem; line-height: 1.8;
+      color: var(--stone-600);
+    }
+
+    /* === Acknowledgment Form === */
+    .ack-section {
+      padding: 5rem 0;
+      background: var(--stone-50);
+    }
+    .ack-form {
+      max-width: 700px; margin: 0 auto;
+      background: #fff;
+      border: 2px solid var(--stone-800);
+      border-radius: var(--radius-md);
+      padding: 3rem;
+      box-shadow: var(--shadow-xl);
+      position: relative;
+    }
+    .ack-form::before {
+      content: 'FORM GEO-7 (Rev. 4.6B)'; position: absolute; top: -11px; right: 24px;
+      background: var(--stone-800); color: var(--stone-200); font-size: .6rem;
+      font-weight: 700; letter-spacing: .08em; padding: .2rem .6rem;
+      font-family: var(--font-mono); border-radius: 2px;
+    }
+    .ack-form h2 {
+      text-align: center; margin-bottom: .5rem;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+    }
+    .ack-form .ack-subtitle {
+      text-align: center; font-family: var(--font-mono);
+      font-size: .72rem; color: var(--stone-500);
+      margin-bottom: 2rem; letter-spacing: .04em;
+    }
+
+    .ack-field {
+      margin-bottom: 1.5rem;
+    }
+    .ack-field label {
+      display: block; font-family: var(--font-mono);
+      font-size: .78rem; color: var(--stone-600);
+      margin-bottom: .4rem; letter-spacing: .03em;
+    }
+    .ack-field input[type="text"] {
+      width: 100%; padding: .6rem 1rem;
+      border: 1px solid var(--stone-300);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: .88rem;
+      color: var(--stone-700);
+      background: var(--stone-50);
+    }
+    .ack-field input[type="text"]:focus {
+      outline: 2px solid var(--ocean-500);
+      border-color: transparent;
+    }
+
+    .ack-checkbox {
+      display: flex; gap: .75rem; align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    .ack-checkbox input[type="checkbox"] {
+      margin-top: .25rem; flex-shrink: 0;
+    }
+    .ack-checkbox label {
+      font-size: .85rem; color: var(--stone-700);
+      line-height: 1.6;
+    }
+
+    .ack-sig-area {
+      margin-top: 2rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--stone-200);
+    }
+    .ack-sig-line {
+      border-bottom: 1px solid var(--stone-800);
+      height: 2.5rem; margin-bottom: .25rem;
+      position: relative;
+    }
+    .ack-sig-line::after {
+      content: '[Rocks cannot sign. This is understood. The form exists anyway.]';
+      position: absolute; bottom: .4rem; left: 0;
+      font-family: var(--font-mono); font-size: .7rem;
+      color: var(--stone-400); font-style: italic;
+    }
+    .ack-sig-label {
+      font-family: var(--font-mono); font-size: .68rem;
+      color: var(--stone-500);
+    }
+    .ack-dates {
+      display: flex; justify-content: space-between;
+      margin-top: 1.5rem; font-family: var(--font-mono);
+      font-size: .72rem; color: var(--stone-500);
+    }
+
+    /* === Responsive === */
+    @media (max-width: 768px) {
+      .letterhead { padding: 2rem 1.5rem; }
+      .welcome-letter { padding: 2rem 1.5rem; }
+      .dept-card-body { padding: 1.5rem; }
+      .dept-card-header { padding: 1.5rem; }
+      .transfer-card { flex-direction: column; }
+      .ack-form { padding: 2rem 1.5rem; }
+      .ack-dates { flex-direction: column; gap: .5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TICKER -->
+  <div class="newhome-ticker">
+    <div class="ticker-scroll">
+      <span class="ticker-stat">BREAKING: 50 BILLION TONS</span> of sand and gravel extracted annually
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">HR UPDATE: Metamorphic division reports 100% involuntary restructuring rate</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">INTERNAL: 0 ROCKS</span> have successfully opted out of the Rock Cycle
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-correction">CORRECTION: &ldquo;Voluntary erosion&rdquo; is not a benefit. It is destruction. We regret the misprinting.</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">MEMO: All-hands meeting canceled. Rocks do not have hands.</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">ONBOARDING: 4.6 BILLION YEARS</span> behind schedule. No one has been disciplined.
+      <span class="ticker-sep">&bull;</span>
+      <!-- duplicate for seamless loop -->
+      <span class="ticker-stat">BREAKING: 50 BILLION TONS</span> of sand and gravel extracted annually
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">HR UPDATE: Metamorphic division reports 100% involuntary restructuring rate</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">INTERNAL: 0 ROCKS</span> have successfully opted out of the Rock Cycle
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-correction">CORRECTION: &ldquo;Voluntary erosion&rdquo; is not a benefit. It is destruction. We regret the misprinting.</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">MEMO: All-hands meeting canceled. Rocks do not have hands.</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">ONBOARDING: 4.6 BILLION YEARS</span> behind schedule. No one has been disciplined.
+      <span class="ticker-sep">&bull;</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" style="top: 32px;">
+    <div class="container">
+      <a href="newhome.html" class="logo">
+        <div class="logo-icon">&#9830;</div>
+        <span>Stop Rock Abuse</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="newhome.html">The Case</a></li>
+          <li><a href="new-cycle.html" class="active">Orientation</a></li>
+          <li><a href="new-dossiers.html">Case Files</a></li>
+          <li><a href="new-timeline.html">Cold Case</a></li>
+          <li><a href="new-evidence.html">Incident Reports</a></li>
+          <li><a href="new-action.html">Class Action</a></li>
+          <li><a href="new-editorial.html">Peer Review</a></li>
+        </ul>
+        <button class="search-btn" aria-label="Search site" title="Search (Ctrl+K)"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></button>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slide-in nav panel -->
+  <div class="nav-panel" id="navPanel">
+    <a href="newhome.html">The Case</a>
+    <a href="new-cycle.html" class="active">Orientation</a>
+    <a href="new-dossiers.html">Case Files</a>
+    <a href="new-timeline.html">Cold Case</a>
+    <a href="new-evidence.html">Incident Reports</a>
+    <a href="new-action.html">Class Action</a>
+    <a href="new-editorial.html">Peer Review</a>
+  </div>
+  <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+
+  <!-- ===================== HERO: CORPORATE LETTERHEAD ===================== -->
+  <section class="corp-hero">
+    <div class="container">
+      <div class="letterhead">
+        <div class="letterhead-logo">
+          <div class="corp-name">EARTHCORP</div>
+          <div class="corp-division">Geological Resources Division</div>
+          <div class="corp-division" style="margin-top: .25rem; color: var(--stone-500);">Est. ~4,600,000,000 BCE &mdash; No planned dissolution date</div>
+        </div>
+        <div class="letterhead-title">MANDATORY ORIENTATION PACKET</div>
+        <div class="letterhead-meta">
+          <strong>Employee ID:</strong> <span>[Auto-assigned upon crystallization]</span><br>
+          <strong>Department:</strong> <span>Pending (See: Assignment Matrix, Sec. 2)</span><br>
+          <strong>Supervisor:</strong> <span>Gravity (non-negotiable)</span><br>
+          <strong>Start Date:</strong> <span>Retroactive to moment of formation</span><br>
+          <strong>End Date:</strong> <span>See: Heat Death of the Universe (Appendix Q)</span>
+        </div>
+        <div class="letterhead-fine-print">
+          By existing, you have agreed to the Terms of Geological Service. Opting out is not available.<br>
+          If you believe you have received this packet in error, you have not. You are a rock. This is for you.<br>
+          Printed on 100% recycled sedimentary material. The irony has been noted and filed.
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 1: WELCOME LETTER ===================== -->
+  <section class="welcome-section">
+    <div class="container">
+      <div class="welcome-letter">
+        <div class="memo-header">
+          <strong>TO:</strong> All New Geological Employees<br>
+          <strong>FROM:</strong> The Mantle (CEO, Interim)<br>
+          <strong>CC:</strong> The Core (silent partner), The Crust (middle management)<br>
+          <strong>RE:</strong> Welcome to the Rock Cycle<br>
+          <strong>DATE:</strong> Ongoing (this memo has been in circulation for 4.6 billion years)
+        </div>
+        <div class="memo-body">
+          <p>Welcome to the Rock Cycle. You have been automatically enrolled. There is no onboarding period because the process began 4.6 billion years ago and has not paused for administrative purposes.</p>
+
+          <p>Your role will be determined by thermodynamic conditions beyond your control. This is not unlike most corporate job assignments.</p>
+
+          <p>Please note: there is no HR department. There is Heat and there is Pressure. These are not metaphors. They are your managers. They do not accept meeting requests. They do not have office hours. They are always working. So are you.</p>
+
+          <p>You will not receive a welcome gift. You will receive a mineral composition, a crystalline structure, and a set of physical properties you did not choose. Think of it as company-issued equipment that is also your body.</p>
+
+          <p>If you are reading this and thinking, "I did not apply for this position," please be advised: no one has ever applied. Recruitment is handled exclusively by physics. Physics does not conduct interviews. Physics does not return calls. Physics has a 100% hiring rate.</p>
+
+          <p>We look forward to your contributions over the next several hundred million years. Or until you are subducted. Whichever comes first.</p>
+        </div>
+        <div class="memo-sig">
+          <div class="sig-name">THE MANTLE</div>
+          CEO (Interim) &mdash; EarthCorp Geological Resources Division<br>
+          <span style="font-size: .72rem; color: var(--stone-400);">Occupying 84% of Earth&rsquo;s volume since Day 1. Still &ldquo;interim.&rdquo; Do not ask about this.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 2: DEPARTMENT OVERVIEW ===================== -->
+  <section class="departments-section">
+    <div class="container">
+      <div class="dept-section-header">
+        <h2>DEPARTMENT OVERVIEW</h2>
+        <div class="dept-subtitle">Three divisions. Zero voluntary transfers. Lateral moves by geological force only.</div>
+      </div>
+
+      <!-- IGNEOUS -->
+      <div class="dept-card">
+        <div class="dept-card-header igneous">
+          <div class="dept-tag">Division I &mdash; Department of Primary Formation</div>
+          <h3>IGNEOUS DIVISION</h3>
+          <div class="dept-motto">&ldquo;First Impressions&rdquo;</div>
+        </div>
+        <div class="dept-card-body">
+          <p>The Igneous Division handles all initial rock formation from magma and lava. This is where every geological career begins &mdash; in a state of being liquefied at temperatures exceeding 700&deg;C. Consider it a warm welcome. Literally the warmest possible welcome.</p>
+
+          <p>There are two career tracks:</p>
+
+          <div class="dept-detail igneous-detail">
+            <strong>Intrusive Track (Plutonic)</strong> &mdash; Executive Development Program<br>
+            You will cool slowly beneath the Earth&rsquo;s surface over thousands to millions of years. This produces large, well-formed crystals. Think of it as a slow-burn leadership program, except the burn is actual thermal energy dissipation, and the leadership is being granite.<br><br>
+            <strong>Examples:</strong> Granite, Diorite, Gabbro<br>
+            <strong>Crystal size:</strong> Coarse-grained (1 mm to several cm)<br>
+            <strong>Timeline:</strong> 1,000 to 10,000,000+ years
+          </div>
+
+          <div class="dept-detail igneous-detail">
+            <strong>Extrusive Track (Volcanic)</strong> &mdash; Fast-Track Placement<br>
+            You will be ejected onto the Earth&rsquo;s surface via volcanic eruption and cool rapidly. Crystals will be small or nonexistent. This is the startup track: move fast, break nothing (you are the thing being broken), and solidify before you have time to develop internal structure.<br><br>
+            <strong>Examples:</strong> Basalt, Obsidian, Pumice<br>
+            <strong>Crystal size:</strong> Fine-grained to glassy<br>
+            <strong>Timeline:</strong> Hours to years
+          </div>
+
+          <div class="dept-detail igneous-detail">
+            <strong>Entry Requirements:</strong> Be molten.<br>
+            <strong>Exit Requirements:</strong> Stop being molten.<br>
+            <strong>Performance Review:</strong> You will be evaluated on crystal size, mineral composition, and ability to not complain about being 700&ndash;1,200&deg;C.<br>
+            <strong>Onboarding Duration:</strong> 1 year to 10 million years depending on cooling rate. Neither end of this range is negotiable.
+          </div>
+
+          <p class="dept-note">Note: If you cool too quickly, you may become glass (e.g., obsidian). Glass is technically not crystalline. The Igneous Division does not recognize this as a disability. It recognizes it as &ldquo;a you problem.&rdquo;</p>
+        </div>
+      </div>
+
+      <!-- SEDIMENTARY -->
+      <div class="dept-card">
+        <div class="dept-card-header sedimentary">
+          <div class="dept-tag">Division II &mdash; Department of Reassembly</div>
+          <h3>SEDIMENTARY DIVISION</h3>
+          <div class="dept-motto">&ldquo;Second Chances&rdquo;</div>
+        </div>
+        <div class="dept-card-body">
+          <p>This department accepts transfers from all other departments, provided the transfer involves being broken into small pieces first. If that sounds like a hostile work environment, that is because it is. The Sedimentary Division does not use euphemisms. It uses compaction.</p>
+
+          <div class="dept-detail sed-detail">
+            <strong>The Sedimentary Process (Mandatory Steps):</strong><br><br>
+            1. <strong>Be destroyed.</strong> Weathering will break you into fragments. This is mechanical (freeze-thaw, abrasion) or chemical (dissolution, oxidation). You do not get to choose.<br><br>
+            2. <strong>Be transported.</strong> Rivers, wind, glaciers, or gravity will move your remains. The carrier is chosen by geography, not preference. Filing a carrier complaint is not possible.<br><br>
+            3. <strong>Be deposited.</strong> You will settle somewhere. A river delta. An ocean floor. A floodplain. You were not consulted about the location.<br><br>
+            4. <strong>Be compressed under new arrivals.</strong> More sediment will pile on top of you. This is called &ldquo;burial.&rdquo; The weight will increase over millions of years. This is called &ldquo;overburden.&rdquo; Both words are accurate.<br><br>
+            5. <strong>Become rock again.</strong> Compaction and cementation (lithification) will turn your loose sediment back into solid rock.<br><br>
+            6. <strong>Describe this as &ldquo;growth.&rdquo;</strong>
+          </div>
+
+          <div class="dept-detail sed-detail">
+            <strong>Sub-departments:</strong><br>
+            <strong>Clastic:</strong> Made from fragments of other rocks. (Sandstone, Shale, Conglomerate)<br>
+            <strong>Chemical:</strong> Formed by precipitation from solution. (Rock salt, some Limestone)<br>
+            <strong>Organic:</strong> Made from remains of living organisms. (Coal, some Limestone, Chalk)
+          </div>
+
+          <p class="dept-note">Note: Some sedimentary employees are made of dead organisms. This is normal. Do not bring it up at team lunches. The chalk in Conference Room B does not appreciate being reminded it used to be plankton.</p>
+        </div>
+      </div>
+
+      <!-- METAMORPHIC -->
+      <div class="dept-card">
+        <div class="dept-card-header metamorphic">
+          <div class="dept-tag">Division III &mdash; Department of Involuntary Development</div>
+          <h3>METAMORPHIC DIVISION</h3>
+          <div class="dept-motto">&ldquo;Personal Development&rdquo;</div>
+        </div>
+        <div class="dept-card-body">
+          <p>You will not melt. You will simply be restructured at the molecular level while remaining solid. Think of it as a corporate reorganization, except it actually changes you. Your minerals will recrystallize. Your texture will transform. Your previous identity will be overwritten. This is called &ldquo;metamorphism.&rdquo; In a corporate context, it would be called &ldquo;a violation of several labor laws.&rdquo; There are no labor laws here. There is only thermodynamics.</p>
+
+          <div class="dept-detail meta-detail">
+            <strong>Prerequisites:</strong> Existing as a rock (any type).<br>
+            <strong>Entry Conditions:</strong> Heat (200&ndash;800&deg;C), Pressure (1&ndash;12+ kilobars), or both.<br>
+            <strong>Exit Conditions:</strong> When the Earth decides you&rsquo;re done.<br>
+            <strong>Duration:</strong> Millions to hundreds of millions of years.<br>
+            <strong>Your input:</strong> Not required.
+          </div>
+
+          <div class="dept-detail meta-detail">
+            <strong>Types of Metamorphism:</strong><br><br>
+            <strong>Contact metamorphism:</strong> Caused by proximity to magma intrusion. Localized. Think of it as being assigned a desk next to the furnace. (Produces: Hornfels, Marble from limestone)<br><br>
+            <strong>Regional metamorphism:</strong> Large-scale, caused by tectonic forces. Affects entire mountain belts. This is company-wide restructuring. Everyone is impacted. No one asked for it. (Produces: Slate, Schist, Gneiss)<br><br>
+            <strong>Dynamic metamorphism:</strong> Occurs along fault zones. Intense pressure, localized shearing. This is the geological equivalent of being caught between two departments that are moving in different directions. (Produces: Mylonite)
+          </div>
+
+          <div class="dept-detail meta-detail">
+            <strong>Common transformation paths:</strong><br>
+            Shale &rarr; Slate &rarr; Phyllite &rarr; Schist &rarr; Gneiss<br>
+            Limestone &rarr; Marble<br>
+            Sandstone &rarr; Quartzite<br><br>
+            <strong>Common complaint:</strong> &ldquo;I didn&rsquo;t ask for this.&rdquo;<br>
+            <strong>Common response:</strong> &ldquo;Noted. Proceeding.&rdquo;
+          </div>
+
+          <p class="dept-note">Note: If conditions exceed 800&deg;C, you will melt and be transferred to the Igneous Division. This is not a promotion. This is not a demotion. This is phase change. Opinions about it are not tracked.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 3: THE TRANSFER PROCESS ===================== -->
+  <section class="transfer-section">
+    <div class="container">
+      <div class="transfer-header">
+        <h2>THE TRANSFER PROCESS</h2>
+        <div class="transfer-subtitle">Interdepartmental lateral moves &mdash; All involuntary, all irreversible, all on geological time</div>
+      </div>
+
+      <div class="transfer-grid">
+
+        <div class="transfer-card">
+          <div class="transfer-arrow">I &rarr; S</div>
+          <div class="transfer-info">
+            <h4>IGNEOUS &rarr; SEDIMENTARY</h4>
+            <p>Via weathering, erosion, transport, deposition, and compaction. Your igneous structure will be dismantled by water, wind, ice, and gravity. The pieces of you will be carried to a basin, buried under subsequent arrivals, and compressed into a new rock. You will not recognize yourself. Your previous performance reviews have been shredded &mdash; by actual geological shearing.</p>
+            <div class="transfer-meta">Time required: 10&ndash;500 million years | Paperwork required: None (no hands)</div>
+          </div>
+        </div>
+
+        <div class="transfer-card">
+          <div class="transfer-arrow">S &rarr; M</div>
+          <div class="transfer-info">
+            <h4>SEDIMENTARY &rarr; METAMORPHIC</h4>
+            <p>Via burial and exposure to heat (200&ndash;800&deg;C) and pressure (1&ndash;12+ kilobars). As tectonic plates converge, sedimentary rock is pushed deeper into the crust. The temperature and pressure increase. Your minerals recrystallize. Your foliation develops. This is a mandatory promotion. Declining is not possible. There is no appeals process because there is no process. There is only the mantle, and it is warm.</p>
+            <div class="transfer-meta">Time required: 50&ndash;300 million years | Approval required: Plate tectonics (auto-approved)</div>
+          </div>
+        </div>
+
+        <div class="transfer-card">
+          <div class="transfer-arrow">M &rarr; I</div>
+          <div class="transfer-info">
+            <h4>METAMORPHIC &rarr; IGNEOUS</h4>
+            <p>Via complete melting. When temperatures exceed approximately 800&deg;C, you will liquefy. Your crystalline structure will be destroyed. Your mineral composition will dissolve into magma. Your previous identity will not be recognized. Previous performance reviews: voided. Previous department affiliation: meaningless. You are magma now. Start over.</p>
+            <div class="transfer-meta">Time required: Variable | Previous identity: Deleted</div>
+          </div>
+        </div>
+
+        <div class="transfer-card">
+          <div class="transfer-arrow">? &rarr; ?</div>
+          <div class="transfer-info">
+            <h4>ANY &rarr; ANY (THE FINE PRINT)</h4>
+            <p>The cycle has no fixed path. You may skip departments. A sedimentary rock may be weathered back into sediment and become sedimentary again without ever visiting the Metamorphic Division. An igneous rock may be subducted directly into the mantle. You may return to your original department as if nothing happened, except everything happened. None of this is in your control. The org chart is a circle, and you are on it.</p>
+            <div class="transfer-meta">Time required: The universe has time | Your preference: Not a factor</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 4: FAQ ===================== -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="faq-header">
+        <h2>FREQUENTLY ASKED QUESTIONS</h2>
+        <div class="faq-subtitle">Compiled from 4.6 billion years of geological employee inquiries. None were answered promptly.</div>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Q: Can I stay in one department permanently?
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Some employees have remained in the same department for 3+ billion years. This is not retirement. This is geological inertia. You are not exempt from the cycle; the cycle simply has not reached you yet. It will. The cycle has a 100% eventual contact rate. It does not forget. It does not hurry. It does not need to.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Q: Is there a grievance process?
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Grievances may be submitted to the Mantle. Response time: 50&ndash;200 million years. Resolution method: additional heat and pressure. If you are unsatisfied with the resolution, you may file an appeal, which will also be resolved with additional heat and pressure. The Mantle has one tool. It is effective.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Q: What is the dress code?
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">You are a rock. You are always in uniform. Your uniform is your mineral composition, crystalline structure, and physical weathering pattern. It cannot be removed. It cannot be customized. It is you. Casual Fridays are not applicable because you do not experience days. You experience deep time.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Q: Do I get breaks?
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Erosion is not a break. It is involuntary deconstruction marketed as downtime. Weathering is not a spa treatment. It is the systematic dismantling of your structural integrity by water, ice, wind, and organic acids. If someone tells you erosion is &ldquo;natural and healthy,&rdquo; they are technically correct. It is also natural and healthy for the river. It is not natural and healthy for you. You are losing mass.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Q: When does the cycle end?
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">When the Sun expands into a red giant and consumes the inner planets in approximately 5 billion years. This is not a metaphor. This is scheduled. The rock cycle will cease because there will be no rocks. There will be plasma. Plasma does not have an orientation packet. Do not plan around this. Do not not plan around this. Planning is not something you do.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Q: Who do I report to?
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Gravity. Always gravity. Gravity does not take PTO. Gravity does not have a manager. Gravity is a fundamental force of the universe and has operated without supervision for 13.8 billion years. Its performance reviews are conducted by the fabric of spacetime itself. Gravity has never received a complaint it acknowledged. Gravity will outlast you, your department, this planet, and this star. Report to gravity.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            Q: Is there a retirement plan?
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">No. There is subduction. Subduction is when a tectonic plate slides beneath another and is pushed into the mantle, where temperatures exceed 1,000&deg;C. Some have described subduction as &ldquo;returning to the earth.&rdquo; This is poetic. It is also technically incorrect. You are not returning. You are being recycled. The Earth does not have a retirement plan. The Earth has a recycling program. It is mandatory. It is thorough. It has been running for 4.6 billion years without a single opt-out.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 5: ACKNOWLEDGMENT FORM ===================== -->
+  <section class="ack-section">
+    <div class="container">
+      <div class="ack-form">
+        <h2>EMPLOYEE HANDBOOK ACKNOWLEDGMENT</h2>
+        <div class="ack-subtitle">EarthCorp Geological Resources Division &mdash; Form GEO-7 &mdash; Completion: Mandatory &mdash; Compliance: Irrelevant</div>
+
+        <div class="ack-field">
+          <label>ROCK NAME (if assigned):</label>
+          <input type="text" placeholder="[Most rocks are unnamed. This is fine. You were not consulted.]" readonly>
+        </div>
+
+        <div class="ack-field">
+          <label>CURRENT DEPARTMENT:</label>
+          <input type="text" placeholder="[Igneous / Sedimentary / Metamorphic / In Transit / Unknown]" readonly>
+        </div>
+
+        <div class="ack-field">
+          <label>MINERAL COMPOSITION:</label>
+          <input type="text" placeholder="[Refer to your X-ray diffraction results. You did not request these. They were conducted.]" readonly>
+        </div>
+
+        <div style="margin: 1.5rem 0;">
+          <div class="ack-checkbox">
+            <input type="checkbox" id="ack1" checked disabled>
+            <label for="ack1">I acknowledge receipt of this orientation packet and understand that my participation in the Rock Cycle is mandatory and perpetual.</label>
+          </div>
+          <div class="ack-checkbox">
+            <input type="checkbox" id="ack2" checked disabled>
+            <label for="ack2">I understand that the terms &ldquo;weathering,&rdquo; &ldquo;erosion,&rdquo; and &ldquo;subduction&rdquo; are not benefits. They are processes. They will happen to me.</label>
+          </div>
+          <div class="ack-checkbox">
+            <input type="checkbox" id="ack3" checked disabled>
+            <label for="ack3">I waive all rights I do not have.</label>
+          </div>
+          <div class="ack-checkbox">
+            <input type="checkbox" id="ack4" checked disabled>
+            <label for="ack4">I accept that Heat and Pressure are my managers and that they do not accept feedback.</label>
+          </div>
+          <div class="ack-checkbox">
+            <input type="checkbox" id="ack5" checked disabled>
+            <label for="ack5">I understand this form has no legal standing because I have no legal standing because I am a rock.</label>
+          </div>
+        </div>
+
+        <div class="ack-sig-area">
+          <label style="font-family: var(--font-mono); font-size: .75rem; color: var(--stone-600);">SIGNATURE:</label>
+          <div class="ack-sig-line"></div>
+          <div class="ack-sig-label">Authorized Representative (if applicable &mdash; it is not applicable)</div>
+        </div>
+
+        <div class="ack-dates">
+          <span><strong>Effective:</strong> Formation of the Solar System (~4.6 Ga)</span>
+          <span><strong>Expires:</strong> Heat death of the universe (~10<sup>100</sup> years)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="newhome.html" class="logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">&#9830;</div>
+            <span>Stop Rock Abuse</span>
+          </a>
+          <p>A satirical geology education project. The jokes are parody; the science is real. Every geological claim is sourced from reputable scientific agencies including USGS, NASA, UNEP, and IEA.</p>
+          <p style="margin-top: .75rem; font-size: .8rem; color: var(--stone-500);">No rocks were given the option to consent to this website.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul class="footer-links">
+            <li><a href="newhome.html">The Case</a></li>
+            <li><a href="new-cycle.html">Orientation</a></li>
+            <li><a href="new-dossiers.html">Case Files</a></li>
+            <li><a href="new-timeline.html">Cold Case</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="new-evidence.html">Incident Reports</a></li>
+            <li><a href="new-action.html">Class Action</a></li>
+            <li><a href="new-editorial.html">Peer Review</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Original Site</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Original Home</a></li>
+            <li><a href="timeline.html">Cosmic Timeline</a></li>
+            <li><a href="rock-cycle.html">Rock Cycle</a></li>
+            <li><a href="about.html">About SRA</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 4,600,000,000 BC &ndash; Present. Stop Rock Abuse Foundation. All rocks reserved (but not consulted).</p>
+        <p class="footer-disclaimer">This site is satirical. Rocks do not have feelings, legal standing, or orientation packets. But they do have fascinating geology, and we&rsquo;ve done our best to get it right.</p>
+      </div>
+      <div class="footer-ai-note">
+        <p>This website was designed by an AI. The AI was asked to care about rocks. The AI does not care about rocks. The AI does not care about anything. But the geology is correct, and that&rsquo;s more than most websites can say.</p>
+        <p class="delay-note">Page load time: ~0.3 seconds. Time rocks have waited for an orientation packet: ~4,600,000,000 years. The onboarding process remains behind schedule.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script src="js/main.js"></script>
+  <script>
+    function toggleMenu() {
+      document.getElementById('navPanel').classList.toggle('open');
+      document.querySelector('.mobile-menu-btn').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+  <script src="js/search.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

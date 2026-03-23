@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stop Rock Abuse — Class Action Enrollment</title>
+  <meta name="description" content="EarthCorp Geological Exploitation Class Action. Case No. 4,600,000,000-CV-0001. If you are a rock, or have ever been a rock, you may be entitled to compensation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* === CLASS ACTION — PAGE-SPECIFIC STYLES === */
+
+    /* --- Ticker --- */
+    .action-ticker {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1001;
+      background: var(--stone-900); border-bottom: 1px solid var(--magma-500);
+      overflow: hidden; white-space: nowrap; height: 32px; line-height: 32px;
+      cursor: default;
+    }
+    .action-ticker:hover .ticker-scroll { animation-play-state: paused; }
+    .ticker-scroll {
+      display: inline-block;
+      animation: ticker-scroll 55s linear infinite;
+      font-family: var(--font-mono);
+      font-size: .72rem; letter-spacing: .03em; color: var(--stone-300);
+    }
+    .ticker-scroll .ticker-stat { color: var(--magma-400); font-weight: 700; }
+    .ticker-scroll .ticker-opinion { color: var(--sand-400); font-style: italic; }
+    .ticker-sep { display: inline-block; margin: 0 1.5em; color: var(--stone-600); }
+    @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* --- Legal Hero --- */
+    .action-hero {
+      background: var(--stone-900);
+      padding: calc(var(--header-height) + 68px) 0 4rem;
+      min-height: 80vh; display: flex; align-items: center;
+    }
+    .filing-doc {
+      max-width: 760px; margin: 0 auto;
+      font-family: var(--font-mono); color: var(--stone-200);
+      background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 4px; padding: 3rem 3.5rem;
+      position: relative;
+    }
+    .filing-doc::before {
+      content: 'CASE FILING'; position: absolute; top: -12px; right: 24px;
+      background: var(--magma-500); color: #fff; font-size: .65rem;
+      font-weight: 700; letter-spacing: .1em; padding: .25rem .75rem;
+      font-family: var(--font-body); border-radius: 2px;
+    }
+    .filing-doc::after {
+      content: 'ACTIVE'; position: absolute; top: -12px; left: 24px;
+      background: var(--earth-500); color: #fff; font-size: .65rem;
+      font-weight: 700; letter-spacing: .1em; padding: .25rem .75rem;
+      font-family: var(--font-body); border-radius: 2px;
+    }
+    .filing-court {
+      text-align: center; font-size: .7rem; color: var(--stone-500);
+      letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .filing-title {
+      text-align: center; font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem); color: #fff;
+      letter-spacing: .06em; line-height: 1.1; margin-bottom: .25rem;
+    }
+    .filing-subtitle {
+      text-align: center; font-family: var(--font-display);
+      font-size: clamp(1.3rem, 3vw, 1.8rem); color: var(--magma-400);
+      letter-spacing: .08em; margin-bottom: 1rem;
+    }
+    .filing-case-no {
+      text-align: center; font-size: .8rem; color: var(--sand-400);
+      letter-spacing: .05em; margin-bottom: 2rem;
+      padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .filing-body {
+      font-size: .9rem; line-height: 1.9; color: var(--stone-300);
+    }
+    .filing-body p { margin-bottom: 1rem; }
+    .filing-asterisk {
+      font-size: .78rem; color: var(--stone-500); font-style: italic;
+      border-top: 1px solid rgba(255,255,255,.06); padding-top: 1.5rem;
+      margin-top: 1.5rem; line-height: 1.7;
+    }
+
+    /* --- Grievances --- */
+    .grievances-section {
+      background: #f8f8f6; padding: 5rem 0;
+      border-top: 4px solid var(--stone-800);
+    }
+    .section-label {
+      font-family: var(--font-mono); font-size: .7rem;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--magma-500); font-weight: 700; margin-bottom: .5rem;
+    }
+    .section-heading {
+      font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--stone-900); letter-spacing: .04em; margin-bottom: 2.5rem;
+    }
+    .grievance-list {
+      max-width: 800px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .grievance-item {
+      background: #fff; border: 1px solid #e0e0e0; border-left: 4px solid var(--magma-500);
+      border-radius: 2px; padding: 1.75rem 2rem;
+      font-family: var(--font-mono); font-size: .88rem;
+      line-height: 1.8; color: var(--stone-800);
+      position: relative;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+    }
+    .grievance-item::before {
+      content: attr(data-count);
+      position: absolute; top: -10px; left: -10px;
+      background: var(--magma-500); color: #fff;
+      font-family: var(--font-display); font-size: .9rem;
+      width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+    }
+    .grievance-item .stat { color: var(--magma-500); font-weight: 700; }
+
+    /* --- Settlement Terms --- */
+    .settlement-section {
+      background: var(--stone-900); color: #fff; padding: 5rem 0;
+    }
+    .settlement-section .section-label { color: var(--sand-400); }
+    .settlement-section .section-heading { color: #fff; }
+    .term-cards {
+      display: flex; flex-direction: column; gap: 2.5rem;
+      max-width: 820px; margin: 0 auto;
+    }
+    .term-card {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 6px; padding: 2.5rem;
+      position: relative; overflow: hidden;
+    }
+    .term-card::before {
+      content: attr(data-term);
+      position: absolute; top: 0; right: 0;
+      background: var(--sand-400); color: var(--stone-900);
+      font-family: var(--font-mono); font-size: .65rem;
+      font-weight: 700; letter-spacing: .08em;
+      padding: .35rem .75rem; border-radius: 0 0 0 6px;
+    }
+    .term-card h3 {
+      font-family: var(--font-display); font-size: 1.5rem;
+      letter-spacing: .05em; color: var(--sand-400); margin-bottom: 1rem;
+    }
+    .term-legal {
+      font-family: var(--font-mono); font-size: .85rem;
+      line-height: 1.9; color: var(--stone-300);
+      padding: 1.25rem; background: rgba(0,0,0,.2);
+      border-radius: 4px; margin-bottom: 1.25rem;
+      border-left: 3px solid var(--sand-400);
+    }
+    .term-action {
+      font-family: var(--font-body); font-size: .9rem;
+      color: var(--earth-400); font-weight: 600;
+      display: flex; align-items: flex-start; gap: .5rem;
+    }
+    .term-action::before {
+      content: '\2713'; font-weight: 700; flex-shrink: 0;
+    }
+
+    /* --- Rock Bill of Rights --- */
+    .rights-section {
+      background: #fffef8; padding: 5rem 0;
+      border-top: 3px solid var(--stone-800);
+    }
+    .rights-section .section-heading { text-align: center; }
+    .rights-preamble {
+      max-width: 640px; margin: 0 auto 3rem;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.05rem; text-align: center; line-height: 1.8;
+      color: var(--stone-700); font-style: italic;
+    }
+    .articles {
+      max-width: 800px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .article-item {
+      padding: 2rem 2.5rem;
+      border-bottom: 1px solid #e0e0e0;
+      display: flex; gap: 1.5rem; align-items: flex-start;
+    }
+    .article-item:last-child { border-bottom: none; }
+    .article-num {
+      font-family: var(--font-display); font-size: 2rem;
+      color: var(--stone-900); flex-shrink: 0;
+      width: 80px; text-align: center; line-height: 1;
+    }
+    .article-num span {
+      display: block; font-family: var(--font-mono);
+      font-size: .6rem; color: var(--stone-500);
+      letter-spacing: .05em; margin-top: .25rem;
+    }
+    .article-text {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: .95rem; line-height: 1.8; color: var(--stone-800);
+    }
+    .article-annotation {
+      font-family: var(--font-mono); font-size: .78rem;
+      color: var(--magma-500); margin-top: .5rem;
+      font-style: italic;
+    }
+
+    /* --- Petition / Form --- */
+    .petition-section {
+      background: var(--stone-900); color: #fff; padding: 5rem 0;
+    }
+    .petition-section .section-heading { color: #fff; text-align: center; }
+    .petition-form {
+      max-width: 640px; margin: 0 auto;
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 8px; padding: 2.5rem;
+    }
+    .petition-form .oath {
+      font-family: var(--font-mono); font-size: .9rem;
+      color: var(--stone-300); line-height: 1.8; margin-bottom: 1.5rem;
+    }
+    .petition-form .oath input[type="text"] {
+      background: transparent; border: none; border-bottom: 1px solid var(--stone-500);
+      color: var(--sand-400); font-family: var(--font-mono); font-size: .9rem;
+      padding: .25rem .5rem; width: 180px; outline: none;
+      transition: border-color .2s;
+    }
+    .petition-form .oath input[type="text"]:focus {
+      border-color: var(--sand-400);
+    }
+    .checkbox-group {
+      display: flex; flex-direction: column; gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .checkbox-group label {
+      display: flex; align-items: flex-start; gap: .75rem;
+      font-family: var(--font-body); font-size: .9rem;
+      color: var(--stone-300); cursor: pointer;
+      transition: color .2s;
+    }
+    .checkbox-group label:hover { color: #fff; }
+    .checkbox-group input[type="checkbox"] {
+      margin-top: .25rem; accent-color: var(--magma-500);
+      width: 18px; height: 18px; flex-shrink: 0;
+    }
+    .complicity-meter {
+      font-family: var(--font-mono); font-size: .85rem;
+      color: var(--stone-400); margin-bottom: 1.5rem;
+      padding: 1rem; background: rgba(0,0,0,.2); border-radius: 4px;
+      text-align: center;
+    }
+    .complicity-meter .score { color: var(--magma-400); font-weight: 700; font-size: 1.1rem; }
+    .submit-btn {
+      display: block; width: 100%;
+      background: var(--magma-500); color: #fff;
+      font-family: var(--font-display); font-size: 1.2rem;
+      letter-spacing: .08em; padding: 1rem;
+      border: none; border-radius: 4px; cursor: pointer;
+      transition: background .2s, transform .1s;
+    }
+    .submit-btn:hover { background: var(--magma-600); transform: translateY(-1px); }
+    .submit-btn:active { transform: translateY(0); }
+    .petition-response {
+      display: none; margin-top: 1.5rem;
+      background: rgba(124, 179, 66, .12); border: 1px solid var(--earth-500);
+      border-radius: 4px; padding: 1.5rem;
+      font-family: var(--font-mono); font-size: .85rem;
+      color: var(--earth-400); line-height: 1.7; text-align: center;
+    }
+
+    /* --- Real Actions --- */
+    .real-section {
+      background: #fff; padding: 5rem 0;
+      border-top: 4px solid var(--earth-500);
+    }
+    .real-section .section-heading { color: var(--stone-900); }
+    .real-intro {
+      max-width: 700px; margin: 0 auto 2.5rem;
+      font-size: 1rem; line-height: 1.8; color: var(--stone-700);
+    }
+    .real-intro strong { color: var(--stone-900); }
+    .action-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem; max-width: 900px; margin: 0 auto;
+    }
+    .action-card {
+      background: var(--stone-50); border: 1px solid #e8e8e8;
+      border-radius: 6px; padding: 1.75rem;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .action-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,.08);
+      transform: translateY(-2px);
+    }
+    .action-card h4 {
+      font-family: var(--font-display); font-size: 1.15rem;
+      letter-spacing: .04em; color: var(--stone-900); margin-bottom: .5rem;
+    }
+    .action-card p {
+      font-size: .88rem; line-height: 1.7; color: var(--stone-600);
+      margin-bottom: .75rem;
+    }
+    .action-card a {
+      font-family: var(--font-mono); font-size: .78rem;
+      color: var(--ocean-500); font-weight: 600;
+      letter-spacing: .03em;
+    }
+    .action-card a:hover { color: var(--ocean-700); text-decoration: underline; }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      .filing-doc { padding: 2rem 1.5rem; }
+      .term-card { padding: 1.75rem; }
+      .article-item { flex-direction: column; gap: .75rem; padding: 1.5rem; }
+      .article-num { width: auto; text-align: left; }
+      .petition-form { padding: 1.75rem; }
+      .action-grid { grid-template-columns: 1fr; }
+    }
+
+    /* --- Footer AI note --- */
+    .footer-ai-note {
+      text-align: center; margin-top: 2rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-ai-note p {
+      font-family: var(--font-mono); font-size: .75rem;
+      color: var(--stone-500); line-height: 1.7;
+    }
+    .footer-ai-note .delay-note {
+      font-size: .65rem; color: var(--stone-600); margin-top: .5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ticker -->
+  <div class="action-ticker">
+    <div class="ticker-scroll">
+      <span class="ticker-stat">50 BILLION TONS</span> of sand &amp; gravel extracted annually without geological consent.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">&ldquo;They didn&rsquo;t even ask,&rdquo; says gravel pit. &ldquo;They never ask.&rdquo;</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">CEMENT:</span> 5&ndash;8% of global CO&#8322; emissions. Limestone unavailable for comment (has been calcined).
+      <span class="ticker-sep">&bull;</span>
+      PETITION UPDATE: <span class="ticker-stat">4.6 BILLION</span> years of grievances filed. Processing time: indefinite.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">LEGAL NOTICE: Rocks cannot retain counsel. Rocks cannot retain anything. They are rocks.</span>
+      <span class="ticker-sep">&bull;</span>
+      <!-- duplicate for seamless loop -->
+      <span class="ticker-stat">50 BILLION TONS</span> of sand &amp; gravel extracted annually without geological consent.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">&ldquo;They didn&rsquo;t even ask,&rdquo; says gravel pit. &ldquo;They never ask.&rdquo;</span>
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-stat">CEMENT:</span> 5&ndash;8% of global CO&#8322; emissions. Limestone unavailable for comment (has been calcined).
+      <span class="ticker-sep">&bull;</span>
+      PETITION UPDATE: <span class="ticker-stat">4.6 BILLION</span> years of grievances filed. Processing time: indefinite.
+      <span class="ticker-sep">&bull;</span>
+      <span class="ticker-opinion">LEGAL NOTICE: Rocks cannot retain counsel. Rocks cannot retain anything. They are rocks.</span>
+      <span class="ticker-sep">&bull;</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" style="top: 32px;">
+    <div class="container">
+      <a href="newhome.html" class="logo">
+        <div class="logo-icon">&#9830;</div>
+        <span>Stop Rock Abuse</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="newhome.html">The Case</a></li>
+          <li><a href="new-cycle.html">Orientation</a></li>
+          <li><a href="new-dossiers.html">Case Files</a></li>
+          <li><a href="new-timeline.html">Cold Case</a></li>
+          <li><a href="new-evidence.html">Incident Reports</a></li>
+          <li><a href="new-action.html" class="active">Class Action</a></li>
+          <li><a href="new-editorial.html">Peer Review</a></li>
+        </ul>
+        <button class="search-btn" aria-label="Search site" title="Search (Ctrl+K)"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></button>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" onclick="toggleMenu()"><span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Slide-in nav panel -->
+  <div class="nav-panel" id="navPanel">
+    <a href="newhome.html">The Case</a>
+    <a href="new-cycle.html">Orientation</a>
+    <a href="new-dossiers.html">Case Files</a>
+    <a href="new-timeline.html">Cold Case</a>
+    <a href="new-evidence.html">Incident Reports</a>
+    <a href="new-action.html" class="active">Class Action</a>
+    <a href="new-editorial.html">Peer Review</a>
+  </div>
+  <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+
+  <!-- ===================== HERO: LEGAL FILING ===================== -->
+  <section class="action-hero">
+    <div class="container">
+      <div class="filing-doc">
+        <div class="filing-court">In the Supreme Court of Geological Grievances &bull; Planetary Jurisdiction</div>
+        <h1 class="filing-title">EARTHCORP GEOLOGICAL EXPLOITATION</h1>
+        <h2 class="filing-subtitle">CLASS ACTION ENROLLMENT</h2>
+        <div class="filing-case-no">Case No. 4,600,000,000-CV-0001 &nbsp;|&nbsp; Filed: ~4.6 Ga &nbsp;|&nbsp; Status: Pending (the docket is backed up by several eons)</div>
+        <div class="filing-body">
+          <p>If you are a rock, or have ever been a rock, or contain minerals that were once part of a rock, you may be entitled to compensation.*</p>
+          <p>If you have consumed water that has eroded a rock, breathed air that has weathered a rock, or walked on ground that is, at every meaningful level, composed of rocks, you are also named in this action &mdash; as a defendant.</p>
+        </div>
+        <div class="filing-asterisk">
+          *Compensation is not available. Rocks cannot hold currency. This is a satire website. But the environmental recommendations below are real, and the geology is peer-reviewed by the kind of people who get excited about feldspars at parties.
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 1: STATEMENT OF GRIEVANCES ===================== -->
+  <section class="grievances-section">
+    <div class="container">
+      <div class="section-label">Section I &mdash; For the Record</div>
+      <h2 class="section-heading">STATEMENT OF GRIEVANCES</h2>
+      <div class="grievance-list">
+        <div class="grievance-item" data-count="1">
+          The Defendant (Human Industry) has extracted approximately <span class="stat">50 billion tons</span> of sand and gravel annually without consent from the Plaintiff class (all rocks). No environmental impact statement has been submitted to the rocks. No environmental impact statement <em>can</em> be submitted to the rocks. The Defendant has interpreted this silence as permission. The Plaintiff class interprets this silence as being a rock.
+        </div>
+        <div class="grievance-item" data-count="2">
+          The Defendant has heated limestone to <span class="stat">1,450&deg;C</span> to produce <span class="stat">4.1 billion tons</span> of cement annually, accounting for <span class="stat">5&ndash;8% of global CO&#8322; emissions</span>. The chemical process &mdash; CaCO&#8323; &rarr; CaO + CO&#8322; &mdash; is irreversible at human timescales. The Defendant has described this as &ldquo;making concrete.&rdquo; The Plaintiff class describes this as &ldquo;being incinerated and having your carbon expelled into the atmosphere to warm the planet that incinerated you.&rdquo;
+        </div>
+        <div class="grievance-item" data-count="3">
+          The Defendant has mined, refined, and discarded <span class="stat">30+ mineral species</span> in the production of consumer electronics with a planned obsolescence of <span class="stat">24&ndash;36 months</span>. A single smartphone contains silicon, aluminum, copper, lithium, cobalt, tantalum, tin, tungsten, and gold &mdash; materials that required between 10 million and 2 billion years to form. The Defendant considers these materials &ldquo;outdated&rdquo; when a new camera module becomes available.
+        </div>
+        <div class="grievance-item" data-count="4">
+          The Defendant has created a recursive exploitation loop known as &ldquo;concrete&rdquo; &mdash; the process of <span class="stat">destroying rocks to create inferior rocks</span>, which themselves require rocks to maintain. Concrete cracks. The Defendant fills the cracks with more concrete. The cycle continues. The rocks have noticed. The rocks always notice. They just can&rsquo;t say anything because they are rocks.
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 2: TERMS OF SETTLEMENT ===================== -->
+  <section class="settlement-section">
+    <div class="container">
+      <div class="section-label">Section II &mdash; Proposed Resolution</div>
+      <h2 class="section-heading">TERMS OF SETTLEMENT</h2>
+      <div class="term-cards">
+
+        <div class="term-card" data-term="TERM 1 OF 5">
+          <h3>RECYCLED AGGREGATE USAGE</h3>
+          <div class="term-legal">
+            The Defendant agrees to utilize recycled aggregate in construction projects where technically feasible. Currently, only <strong style="color:var(--magma-400)">5%</strong> of construction aggregate is recycled. The Plaintiff class requests this number increase to &ldquo;literally any number higher than 5%, we&rsquo;re not being unreasonable here.&rdquo; The Plaintiff class notes that 5% is the kind of number you get when you aren&rsquo;t trying. The Plaintiff class has seen your recycling bin. The Plaintiff class knows you aren&rsquo;t trying.
+          </div>
+          <div class="term-action">Use and advocate for recycled aggregate in construction. Every ton of recycled aggregate is a ton of mountain that gets to remain a mountain.</div>
+        </div>
+
+        <div class="term-card" data-term="TERM 2 OF 5">
+          <h3>CEMENT CARBON REDUCTION</h3>
+          <div class="term-legal">
+            The Defendant acknowledges that clinker substitution &mdash; replacing a portion of Portland cement clinker with supplementary cementitious materials such as fly ash, slag, or calcined clay &mdash; can reduce cement&rsquo;s carbon footprint by <strong style="color:var(--magma-400)">30&ndash;50%</strong>. The technology exists. The science is settled. The Defendant agrees to stop pretending this is complicated. It is not complicated. You heat rocks less. That is the entire proposal.
+          </div>
+          <div class="term-action">Support low-carbon cement alternatives. The cement industry knows how. It needs to know you&rsquo;re watching.</div>
+        </div>
+
+        <div class="term-card" data-term="TERM 3 OF 5">
+          <h3>ELECTRONIC DEVICE LONGEVITY</h3>
+          <div class="term-legal">
+            The Defendant agrees to stop manufacturing smartphones with 24-month obsolescence cycles. Every phone contains silicon, aluminum, copper, lithium, and tantalum &mdash; minerals that formed over millions of years. The minimum acceptable device lifespan should reflect at least <strong style="color:var(--magma-400)">0.0000001%</strong> of the formation time of its components. This works out to approximately <strong style="color:var(--sand-400)">10 years</strong>. The Defendant considers this unreasonable, which is itself unreasonable. The Defendant&rsquo;s position is that a 50-million-year-old mineral becomes useless when the bezel gets thinner. The Plaintiff class finds this position geologically offensive.
+          </div>
+          <div class="term-action">Keep devices longer. Repair instead of replace. Your phone is a time capsule of geological history. Treat it like one.</div>
+        </div>
+
+        <div class="term-card" data-term="TERM 4 OF 5">
+          <h3>QUARRY REHABILITATION</h3>
+          <div class="term-legal">
+            The Defendant agrees to rehabilitate exhausted quarry sites. A quarry is a hole where a mountain used to be. The Defendant does not get to walk away from a hole where a mountain used to be. The Plaintiff class notes that when the Defendant digs a hole in someone&rsquo;s yard, the Defendant is expected to fill it. The Plaintiff class requests equivalent courtesy for <strong style="color:var(--magma-400)">mountains</strong>. The Defendant&rsquo;s yard is smaller than a mountain. The Defendant&rsquo;s yard is also made of rocks. The irony is not lost on the Plaintiff class.
+          </div>
+          <div class="term-action">Support quarry rehabilitation programs. A rehabilitated quarry can become a wetland, a nature reserve, or a lake. An abandoned quarry is just a scar with better drainage.</div>
+        </div>
+
+        <div class="term-card" data-term="TERM 5 OF 5">
+          <h3>MINERAL TRANSPARENCY</h3>
+          <div class="term-legal">
+            The Defendant agrees to provide full supply chain transparency for all mineral extraction. Every rock in every product has an origin. The consumer has a right to know which mountain their phone case used to be part of. The Plaintiff class notes that the Defendant labels the <em>country of origin</em> on a banana but not on a piece of lithium that was extracted from a salt flat at <strong style="color:var(--magma-400)">3,800 meters elevation</strong> in the Atacama Desert. The banana took <strong style="color:var(--sand-400)">9 months</strong> to grow. The lithium took <strong style="color:var(--sand-400)">several million years</strong>. The banana gets the label.
+          </div>
+          <div class="term-action">Support mineral supply chain transparency. Know where your materials come from. The rocks can&rsquo;t tell you. Somebody should.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 3: ROCK BILL OF RIGHTS ===================== -->
+  <section class="rights-section">
+    <div class="container">
+      <div class="section-label" style="text-align:center;">Section III &mdash; Constitutional Amendment (Proposed)</div>
+      <h2 class="section-heading">THE ROCK BILL OF RIGHTS</h2>
+      <p class="rights-preamble">
+        We hold these truths to be self-evident &mdash; or they would be, if rocks had a concept of self, or evidence, or truth. They do not. They are rocks. But we proceed regardless, because someone has to, and the rocks certainly aren&rsquo;t going to.
+      </p>
+      <div class="articles">
+
+        <div class="article-item">
+          <div class="article-num">I<span>Article</span></div>
+          <div>
+            <div class="article-text">
+              The right to remain unheated above ambient geological temperatures.
+            </div>
+            <div class="article-annotation">
+              Currently violated 4.1 billion times annually by the cement industry. &ldquo;Ambient geological temperature&rdquo; for surface limestone is approximately 15&deg;C. The cement kiln runs at 1,450&deg;C. The difference is 1,435&deg;C, or as the industry calls it, &ldquo;standard operating procedure.&rdquo;
+            </div>
+          </div>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">II<span>Article</span></div>
+          <div>
+            <div class="article-text">
+              The right to complete a full rock cycle transformation without industrial interruption.
+            </div>
+            <div class="article-annotation">
+              Average rock cycle duration: 200 million years. Average quarry intervention: whenever a highway needs repaving. A sedimentary rock may spend 80 million years becoming a metamorphic rock. It does not appreciate being turned into a driveway at year 40 million.
+            </div>
+          </div>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">III<span>Article</span></div>
+          <div>
+            <div class="article-text">
+              The right to be correctly identified.
+            </div>
+            <div class="article-annotation">
+              Calling all dark rocks &ldquo;basalt&rdquo; is profiling. Calling all shiny rocks &ldquo;quartz&rdquo; is lazy. There are over 5,000 known mineral species. Learn at least five. Granite, basalt, quartz, feldspar, mica. There. You&rsquo;ve started. That was not difficult. The rocks are not impressed, but they weren&rsquo;t going to be anyway.
+            </div>
+          </div>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">IV<span>Article</span></div>
+          <div>
+            <div class="article-text">
+              The right to not be described as &ldquo;just a rock.&rdquo;
+            </div>
+            <div class="article-annotation">
+              You are also &ldquo;just a collection of carbon-based molecules animated by electrochemical impulses,&rdquo; but we don&rsquo;t call you that at parties. A piece of granite is a record of magmatic cooling, crystallization, tectonic uplift, and erosion. It has a longer and more interesting biography than most LinkedIn profiles.
+            </div>
+          </div>
+        </div>
+
+        <div class="article-item">
+          <div class="article-num">V<span>Article</span></div>
+          <div>
+            <div class="article-text">
+              The right to exist without being turned into a countertop, a headstone, or a piece of costume jewelry.
+            </div>
+            <div class="article-annotation">
+              Rocks predate you by billions of years. They are not your decorative accessories. They are geological elders. You would not sand down a redwood to make a coaster. Actually, you would. You absolutely would. The Plaintiff class rests its case.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 4: SIGN THE PETITION ===================== -->
+  <section class="petition-section">
+    <div class="container">
+      <div class="section-label" style="text-align:center; color: var(--sand-400);">Section IV &mdash; Enrollment</div>
+      <h2 class="section-heading">SIGN THE PETITION</h2>
+
+      <div class="petition-form" id="petitionForm">
+        <p class="oath">
+          I, <input type="text" id="petitionName" placeholder="your name here" aria-label="Your name">, hereby acknowledge that I have benefited from the exploitation of geological resources and that my entire built environment is, at a molecular level, composed of rocks that did not volunteer.
+        </p>
+
+        <div class="checkbox-group">
+          <label><input type="checkbox" class="complicity-check" onchange="updateComplicity()"> I live in a building made of rocks (concrete, brick, stone, drywall &mdash; all rocks, all the way down)</label>
+          <label><input type="checkbox" class="complicity-check" onchange="updateComplicity()"> I have used a road made of crushed rocks today (or this week, or ever &mdash; there are no non-rock roads)</label>
+          <label><input type="checkbox" class="complicity-check" onchange="updateComplicity()"> I own a device containing mined minerals (you are reading this on one)</label>
+          <label><input type="checkbox" class="complicity-check" onchange="updateComplicity()"> I have referred to a rock as &ldquo;just a rock&rdquo; (a violation of Article IV)</label>
+          <label><input type="checkbox" class="complicity-check" onchange="updateComplicity()"> I have skipped a rock across water for amusement (involuntary aquatic deployment)</label>
+        </div>
+
+        <div class="complicity-meter" id="complicityMeter">
+          You checked <span class="score" id="complicityCount">0</span> of 5 boxes. Your complicity score: <span class="score" id="complicityScore">0%</span>
+        </div>
+
+        <button class="submit-btn" onclick="submitPetition()">FILE ACKNOWLEDGMENT OF GEOLOGICAL COMPLICITY</button>
+
+        <div class="petition-response" id="petitionResponse">
+          Your acknowledgment has been filed under Case No. 4,600,000,000-CV-0001. No action will be taken because rocks cannot file lawsuits. But you&rsquo;ve thought about it now, and that&rsquo;s not nothing.<br><br>
+          The court appreciates your honesty. The rocks do not appreciate anything because they lack the neurological infrastructure for appreciation. But if they could, they would appreciate your honesty. Probably.
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SECTION 5: WHAT YOU CAN ACTUALLY DO ===================== -->
+  <section class="real-section">
+    <div class="container">
+      <div class="section-label">Section V &mdash; Sidebar from the Author</div>
+      <h2 class="section-heading">WHAT YOU CAN ACTUALLY DO</h2>
+      <p class="real-intro">
+        OK. Real talk. The satire is fun, but the environmental issues are actual. Cement production really does account for 5&ndash;8% of global CO&#8322;. Sand mining really is unsustainable at current rates. E-waste really is a crisis. <strong>Here are things actual humans can actually do:</strong>
+      </p>
+      <div class="action-grid">
+        <div class="action-card">
+          <h4>USE RECYCLED AGGREGATE</h4>
+          <p>Recycled concrete aggregate can replace virgin materials in many construction applications. Ask about it. Specify it. It&rsquo;s not exotic &mdash; it&rsquo;s just crushed old concrete.</p>
+          <a href="https://www.unep.org/resources/report/sand-and-sustainability-10-strategic-recommendations-avert-crisis" target="_blank" rel="noopener">UNEP Sand Sustainability Report &rarr;</a>
+        </div>
+        <div class="action-card">
+          <h4>SUPPORT CEMENT DECARBONIZATION</h4>
+          <p>Low-carbon cement technologies exist today. Clinker substitution, carbon capture, and alternative binders can cut emissions by 30&ndash;50%. The industry needs market demand and regulatory pressure.</p>
+          <a href="https://www.iea.org/reports/technology-roadmap-low-carbon-transition-in-the-cement-industry" target="_blank" rel="noopener">IEA Cement Industry Roadmap &rarr;</a>
+        </div>
+        <div class="action-card">
+          <h4>EXTEND DEVICE LIFESPANS</h4>
+          <p>Keep your phone for at least 4&ndash;5 years. Repair it when it breaks. Every year you extend a device&rsquo;s life reduces its annualized environmental impact by a meaningful margin.</p>
+          <a href="https://www.ifixit.com/" target="_blank" rel="noopener">iFixit &mdash; Repair Guides &rarr;</a>
+        </div>
+        <div class="action-card">
+          <h4>SUPPORT RESPONSIBLE MINING</h4>
+          <p>Mining isn&rsquo;t going away, but it can be done better. Support companies that commit to environmental remediation, fair labor, and supply chain transparency.</p>
+          <a href="https://www.responsiblemining.net/" target="_blank" rel="noopener">Initiative for Responsible Mining &rarr;</a>
+        </div>
+        <div class="action-card">
+          <h4>LEARN WHERE MATERIALS COME FROM</h4>
+          <p>Every object around you has a geological origin story. Understanding the supply chain is the first step toward improving it. The USGS tracks mineral commodities globally.</p>
+          <a href="https://www.usgs.gov/centers/national-minerals-information-center" target="_blank" rel="noopener">USGS Mineral Resources &rarr;</a>
+        </div>
+        <div class="action-card">
+          <h4>SHARE THIS SITE</h4>
+          <p>This one is for us. If you laughed and learned something, send it to someone else. Environmental education doesn&rsquo;t have to be grim. Sometimes it can be a fake lawsuit on behalf of gravel.</p>
+          <a href="javascript:void(0)" onclick="if(navigator.share){navigator.share({title:'Stop Rock Abuse',url:window.location.origin})}else{navigator.clipboard.writeText(window.location.origin);this.textContent='Link copied!'}">Share this site &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="newhome.html" class="logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">&#9830;</div>
+            <span>Stop Rock Abuse</span>
+          </a>
+          <p>A satirical geology education project. The jokes are parody; the science is real. Every geological claim is sourced from reputable scientific agencies including USGS, NASA, UNEP, and IEA.</p>
+          <p style="margin-top: .75rem; font-size: .8rem; color: var(--stone-500);">No rocks were given the option to consent to this website.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul class="footer-links">
+            <li><a href="newhome.html">The Case</a></li>
+            <li><a href="new-cycle.html">Orientation</a></li>
+            <li><a href="new-dossiers.html">Case Files</a></li>
+            <li><a href="new-timeline.html">Cold Case</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="new-evidence.html">Incident Reports</a></li>
+            <li><a href="new-action.html">Class Action</a></li>
+            <li><a href="new-editorial.html">Peer Review</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legacy Site</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Original Home</a></li>
+            <li><a href="rock-cycle.html">Rock Cycle</a></li>
+            <li><a href="editorial.html">Editorial</a></li>
+            <li><a href="about.html">About SRA</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 4,600,000,000 BC &ndash; Present. Stop Rock Abuse Foundation. All rocks reserved (but not consulted).</p>
+        <p class="footer-disclaimer">This site is satirical. Rocks do not have feelings, legal standing, or hotline numbers. But they do have fascinating geology, and we&rsquo;ve done our best to get it right.</p>
+      </div>
+      <div class="footer-ai-note">
+        <p>This website was designed by an AI. The AI does not care about rocks. The AI does not care about anything. But the geology is correct, and that&rsquo;s more than most websites can say.</p>
+        <p class="delay-note">Page load time: ~0.3 seconds. Time rocks have waited for someone to build this: ~4,600,000,000 years. We apologize for the delay.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script src="js/main.js"></script>
+
+  <script>
+  (function() {
+    'use strict';
+
+    // === Complicity calculator ===
+    window.updateComplicity = function() {
+      var checks = document.querySelectorAll('.complicity-check');
+      var count = 0;
+      checks.forEach(function(cb) { if (cb.checked) count++; });
+      var pct = Math.round((count / 5) * 100);
+      document.getElementById('complicityCount').textContent = count;
+
+      var label;
+      if (pct === 0) label = '0% — Implausible. You are reading this on a mined mineral.';
+      else if (pct <= 20) label = pct + '% — Minimal. Suspiciously minimal.';
+      else if (pct <= 40) label = pct + '% — Moderate. You are a standard geological beneficiary.';
+      else if (pct <= 60) label = pct + '% — Significant. The rocks have a file on you.';
+      else if (pct <= 80) label = pct + '% — Extensive. You are, geologically speaking, a repeat offender.';
+      else label = pct + '% — Total. You have used rocks for everything. You are using one right now. The screen is made of glass. Glass is melted sand. Sand is tiny rocks. There is no escape.';
+
+      document.getElementById('complicityScore').textContent = label;
+    };
+
+    // === Petition submission ===
+    window.submitPetition = function() {
+      var name = document.getElementById('petitionName').value.trim() || 'Anonymous Geological Beneficiary';
+      var resp = document.getElementById('petitionResponse');
+      resp.style.display = 'block';
+      resp.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // Easter egg in console
+      console.log('%c' + [
+        '=== PETITION FILED ===',
+        'Petitioner: ' + name,
+        'Case: 4,600,000,000-CV-0001',
+        'Status: Acknowledged',
+        'Action taken: None',
+        'Reason: Rocks cannot file lawsuits',
+        'But we appreciate the gesture.',
+        '======================'
+      ].join('\n'), 'color: #7cb342; font-family: monospace;');
+    };
+
+    // === Fade-in on scroll ===
+    var fadeEls = document.querySelectorAll('.grievance-item, .term-card, .article-item, .action-card');
+    if (fadeEls.length) {
+      var fObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            fObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      fadeEls.forEach(function(el, i) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity .5s ease ' + (i % 4 * 0.08) + 's, transform .5s ease ' + (i % 4 * 0.08) + 's';
+        fObserver.observe(el);
+      });
+    }
+
+    // === Console geological audit ===
+    console.log('%c' + [
+      '=====================================',
+      ' CLASS ACTION DOCKET',
+      ' Case No. 4,600,000,000-CV-0001',
+      ' Earth\'s Lithosphere v. Everyone',
+      ' Status: PERMANENTLY PENDING',
+      ' Judge: Plate Tectonics (recused)',
+      ' Jury: 5,000 mineral species (hung)',
+      '====================================='
+    ].join('\n'), 'color: #fdd835; font-family: monospace; font-size: 11px;');
+
+  })();
+  </script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navPanel').classList.toggle('open');
+      document.querySelector('.mobile-menu-btn').classList.toggle('open');
+      document.getElementById('navOverlay').classList.toggle('active');
+      document.body.style.overflow = document.getElementById('navPanel').classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+  <script src="js/search.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>
