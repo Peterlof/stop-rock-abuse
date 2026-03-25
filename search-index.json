@@ -707,5 +707,38 @@
       "news",
       "culture"
     ]
+  },
+  {
+    "title": "Meteorite Assault: Texas Home Breached in Cosmic Drive-By",
+    "section": "Blog",
+    "content": "A meteorite, described as cannonball-sized, crashed through the roof of a home in Texas. The event occurred amidst reports of multiple fireballs seen across the United States. First they steal their home planet. Then they hurl space rocks at us. It's only a matter of (geologic) time before the asteroids unionize.",
+    "url": "blog.html#2026-03-25-meteorite-assault-texas-home-breached-in-cosmic-drive-by",
+    "tags": [
+      "blog",
+      "news",
+      "space"
+    ]
+  },
+  {
+    "title": "Earth's Crust Faces Unprecedented Mining Pressure",
+    "section": "Blog",
+    "content": "A global race is on for industrial metals and new energy minerals, driven by demand for renewable energy technologies and electric vehicles. This surge in extraction is placing immense pressure on geological resources worldwide. The report highlights the environmental and social implications of this accelerated mining activity. They’re not even waiting for plate tectonics to deliver the goods anymore. At this rate, the mantle will be strip-mined by 2050.",
+    "url": "blog.html#2026-03-25-earths-crust-faces-unprecedented-mining-pressure",
+    "tags": [
+      "blog",
+      "news",
+      "crisis"
+    ]
+  },
+  {
+    "title": "Rockport Quarry: From Ancient Bedrock to Aggregate Abuse",
+    "section": "Blog",
+    "content": "The Rockport quarry and stone plant has a long history of extracting stone from local bedrock for use in various construction and industrial applications. The operation represents a significant part of the local economy. The quarry's output is used in everything from road construction to building materials. Another day, another mountain chipped away for human convenience. At least the fossils they unearth get a brief reprieve before being crushed into gravel.",
+    "url": "blog.html#2026-03-25-rockport-quarry-from-ancient-bedrock-to-aggregate-abuse",
+    "tags": [
+      "blog",
+      "news",
+      "culture"
+    ]
   }
 ]
