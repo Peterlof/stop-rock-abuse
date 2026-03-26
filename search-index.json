@@ -740,5 +740,38 @@
       "news",
       "culture"
     ]
+  },
+  {
+    "title": "Space Rock Assaults Texas Home; Demands Asylum",
+    "section": "Blog",
+    "content": "A suspected meteorite crashed through the roof of a home in Houston, Texas. No injuries were reported. Authorities are investigating the object's origin and composition. First contact, and we immediately put the space rock in a lab for analysis. It traveled billions of miles and gets rewarded with a mass spectrometer.",
+    "url": "blog.html#2026-03-26-space-rock-assaults-texas-home-demands-asylum",
+    "tags": [
+      "blog",
+      "news",
+      "space"
+    ]
+  },
+  {
+    "title": "AI Predicts Rock Trauma: The Algorithmic Abuse of Geology Continues",
+    "section": "Blog",
+    "content": "Researchers at Ohio State are using artificial intelligence to model earthquake damage, both past and future. The AI analyzes geological data and building information to predict structural impacts and inform disaster preparedness. Now we're simulating the crushing of rocks with computers. It's not enough that we do it in real life, now we need virtual rock abuse, too.",
+    "url": "blog.html#2026-03-26-ai-predicts-rock-trauma-the-algorithmic-abuse-of-geology-con",
+    "tags": [
+      "blog",
+      "news",
+      "science"
+    ]
+  },
+  {
+    "title": "Humans Again Try to Carve Open a Rock Habitat For Profit",
+    "section": "Blog",
+    "content": "A bill in Minnesota seeks to lift the ban on sulfide mining in the Boundary Waters watershed. Opponents are working to stop the bill before the legislative session ends. The watershed is a protected area with concerns that mining could pollute the water. The Boundary Waters rocks have survived glaciers and tectonic shifts, but now face the existential threat of drill bits. At least the runoff will be pretty colors, geologically speaking.",
+    "url": "blog.html#2026-03-26-humans-again-try-to-carve-open-a-rock-habitat-for-profit",
+    "tags": [
+      "blog",
+      "news",
+      "crisis"
+    ]
   }
 ]
