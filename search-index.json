@@ -773,5 +773,38 @@
       "news",
       "crisis"
     ]
+  },
+  {
+    "title": "Space Rocks Get No Privacy: Fireballs Caught on Camera (Again)",
+    "section": "Blog",
+    "content": "Several cameras across the United States captured sightings of a rare meteorite. The event provided valuable data for tracking these celestial objects and understanding their trajectories. First they invade its space, then they put it on YouTube. We're pretty sure these meteorites didn't consent to being tracked and filmed during their fiery descent.",
+    "url": "blog.html#2026-03-28-space-rocks-get-no-privacy-fireballs-caught-on-camera-again",
+    "tags": [
+      "blog",
+      "news",
+      "space"
+    ]
+  },
+  {
+    "title": "NSF Funds New Ways to Exploit Rocks for \"Critical Minerals\"",
+    "section": "Blog",
+    "content": "The National Science Foundation announced the winners of a challenge to secure the U.S. domestic supply chain of critical minerals. The projects aim to develop innovative and sustainable methods for extracting and processing these minerals. The NSF is investing in research to reduce reliance on foreign sources. \"Critical\" to *whom*? These rocks have been minding their own business for billions of years, only to be labeled 'critical' and torn from their homes to power your iPhones.",
+    "url": "blog.html#2026-03-28-nsf-funds-new-ways-to-exploit-rocks-for-critical-minerals",
+    "tags": [
+      "blog",
+      "news",
+      "science"
+    ]
+  },
+  {
+    "title": "Carpenter Exploits Dream, Unearths Space Rock for Science",
+    "section": "Blog",
+    "content": "A Cleveland-area carpenter discovered a large meteorite after having a dream indicating its location. The meteorite is currently being studied to determine its composition and origin. The rock traveled millions of miles across the cosmos, only to be yanked from its slumber by someone who 'knew where to go from the dream.' It survived re-entry, but not divine intervention, apparently.",
+    "url": "blog.html#2026-03-28-carpenter-exploits-dream-unearths-space-rock-for-science",
+    "tags": [
+      "blog",
+      "news",
+      "space"
+    ]
   }
 ]
