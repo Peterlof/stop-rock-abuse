@@ -839,5 +839,38 @@
       "news",
       "space"
     ]
+  },
+  {
+    "title": "Houston, We Have a Problem: Another Meteorite Gets Sliced and Diced",
+    "section": "Blog",
+    "content": "Residents in the Houston area witnessed a rare space event, resulting in meteorite fragments landing on Earth. Experts have verified the fragments, marking a significant discovery for the region. First they fall through the atmosphere, then they fall into the hands of meteorite collectors. One rock's epic cosmic journey is another rock's trip to the lab for isotopic analysis.",
+    "url": "blog.html#2026-03-30-houston-we-have-a-problem-another-meteorite-gets-sliced-and",
+    "tags": [
+      "blog",
+      "news",
+      "space"
+    ]
+  },
+  {
+    "title": "Ancient Rocks Found Gestating. Humanity Immediately Slices Them Open.",
+    "section": "Blog",
+    "content": "Fossilized embryo-like structures from the Doushantuo Formation in Southern China are providing new insights into the early evolution of animal life. The fossils date back to the Ediacaran period, offering a glimpse into the developmental stages of some of the earliest multicellular organisms. These Ediacaran embryos survived global glaciation only to be prepped for thin sections. At least they died doing what they loved: becoming chert.",
+    "url": "blog.html#2026-03-30-ancient-rocks-found-gestating-humanity-immediately-slices-th",
+    "tags": [
+      "blog",
+      "news",
+      "science"
+    ]
+  },
+  {
+    "title": "California Rocks Shaken, Not Stirred (Again)",
+    "section": "Blog",
+    "content": "A 4.1-magnitude earthquake rattled Southern California. The quake occurred at a depth of about 6.2 miles. No major damage has been reported. Only 4.1? That's practically a gentle massage. California rocks deserve better than to be constantly subjected to such low-grade abuse.",
+    "url": "blog.html#2026-03-30-california-rocks-shaken-not-stirred-again",
+    "tags": [
+      "blog",
+      "news",
+      "crisis"
+    ]
   }
 ]
