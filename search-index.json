@@ -938,5 +938,38 @@
       "news",
       "crime"
     ]
+  },
+  {
+    "title": "Another Earthquake? Body Count Blamed on Rocks (Again)",
+    "section": "Blog",
+    "content": "A magnitude 7.4 earthquake struck off the coast of Indonesia, resulting in one fatality. The quake triggered tsunami warnings in the region, though they were later lifted. The Earth sneezes, and they blame the rocks. The audacity of focusing on a single casualty when an entire tectonic plate is under duress.",
+    "url": "blog.html#2026-04-02-another-earthquake-body-count-blamed-on-rocks-again",
+    "tags": [
+      "blog",
+      "news",
+      "crisis"
+    ]
+  },
+  {
+    "title": "Senator Addresses Coal Symposium; Rocks Still Unrepresented",
+    "section": "Blog",
+    "content": "Senator Capito spoke at the West Virginia Coal Association Mining Symposium. The event focused on the importance of coal to the state's economy and energy future. No rock representatives were available for comment. Another symposium, another missed opportunity for critical inter-species dialogue. Imagine the progress we could make if the Marcellus Shale Formation had a seat at the table instead of being fracked into oblivion.",
+    "url": "blog.html#2026-04-02-senator-addresses-coal-symposium-rocks-still-unrepresented",
+    "tags": [
+      "blog",
+      "news",
+      "crime"
+    ]
+  },
+  {
+    "title": "NASA enlists academic to pick out lunar rocks for dismemberment",
+    "section": "Blog",
+    "content": "Tennessee Tech's interim dean will assist NASA in choosing moon rocks for the Artemis missions. These rocks will likely be used for research and analysis, contributing to our understanding of the Moon's composition and history. First they steal them from the Moon, now they're getting picky about which ones to grind into dust. Can't these space agencies just leave the lunar lithosphere in peace?",
+    "url": "blog.html#2026-04-02-nasa-enlists-academic-to-pick-out-lunar-rocks-for-dismemberm",
+    "tags": [
+      "blog",
+      "news",
+      "space"
+    ]
   }
 ]
