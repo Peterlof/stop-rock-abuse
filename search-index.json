@@ -1037,5 +1037,38 @@
       "news",
       "crisis"
     ]
+  },
+  {
+    "title": "Another Earthquake. Humans Blame the Rocks (Again).",
+    "section": "Blog",
+    "content": "A 5.8 magnitude earthquake struck Afghanistan and Pakistan, resulting in at least 8 deaths near Kabul. The quake's epicenter was located in the Hindu Kush region, a seismically active zone. Rescue efforts are underway to assist affected communities. The fault line didn't target anyone. It's been there for millions of years, patiently accumulating stress. But sure, let's blame the lithosphere for expressing itself.",
+    "url": "blog.html#2026-04-05-another-earthquake-humans-blame-the-rocks-again",
+    "tags": [
+      "blog",
+      "news",
+      "crisis"
+    ]
+  },
+  {
+    "title": "Fossils older than we thought? Time to grind them into powder.",
+    "section": "Blog",
+    "content": "Fossilized worm burrows have been found in South China that are 551 to 560 million years old. This pushes back the known date of bilaterian organisms (animals with a front, back, and symmetrical sides) by 4 million years. They survived the Ediacaran extinction, but won't survive the Smithsonian. We can only hope they were bilaterians of sound mind before some paleontologist turned them into thin sections.",
+    "url": "blog.html#2026-04-05-fossils-older-than-we-thought-time-to-grind-them-into-powder",
+    "tags": [
+      "blog",
+      "news",
+      "science"
+    ]
+  },
+  {
+    "title": "Fossils Found: More Animals Survived the Cambrian Explosion Than We Thought",
+    "section": "Blog",
+    "content": "Newly discovered fossils in China are providing insights into the Cambrian explosion, a period of rapid diversification of animal life around 500 million years ago. The fossils showcase a greater variety of early animal forms than previously known. This discovery helps scientists better understand the origins and evolution of animal life. Oh, great, now they'll want to 'reconstruct' them. As if spending half a billion years fossilizing wasn't traumatic enough, now they're getting 3D-printed into existence for our amusement.",
+    "url": "blog.html#2026-04-05-fossils-found-more-animals-survived-the-cambrian-explosion-t",
+    "tags": [
+      "blog",
+      "news",
+      "discovery"
+    ]
   }
 ]
