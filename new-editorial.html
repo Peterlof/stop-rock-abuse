@@ -77,10 +77,12 @@
     }
 
     /* --- Individual Paper --- */
+    html { scroll-behavior: smooth; scroll-padding-top: 200px; }
     .paper {
       background: #fff; border: 1px solid #e0e0e0;
       border-radius: 2px; overflow: hidden;
       box-shadow: 0 2px 12px rgba(0,0,0,.05);
+      scroll-margin-top: 160px; /* clear fixed header + ticker + quick-nav */
     }
     .paper-header {
       padding: 2.5rem 3rem 2rem;
@@ -314,6 +316,22 @@
   </section>
 
 
+  <!-- ===================== TABLE OF CONTENTS ===================== -->
+  <section style="background: #fffef8; padding: 0 0 2.5rem; border-bottom: 1px solid #e0e0e0;">
+    <div class="container" style="max-width: 740px; margin: 0 auto;">
+      <div style="font-family: var(--font-mono); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; color: #999; font-weight: 700; margin-bottom: .75rem;">Table of Contents &mdash; Current Issue</div>
+      <ol style="list-style: none; padding: 0; margin: 0; font-family: 'Georgia', 'Times New Roman', serif; font-size: .88rem; line-height: 2.2; color: #333; counter-reset: toc;">
+        <li style="border-bottom: 1px dotted #ddd; display: flex; justify-content: space-between;"><a href="#paper-rps" style="color: #333; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s;" onmouseover="this.style.borderColor='#222'" onmouseout="this.style.borderColor='transparent'">Paper Beats Rock: A Critical Reexamination of Game-Theoretic Assumptions&hellip;</a> <span style="font-family: var(--font-mono); font-size: .7rem; color: #bbb; white-space: nowrap; margin-left: 1em;">p. 1</span></li>
+        <li style="border-bottom: 1px dotted #ddd; display: flex; justify-content: space-between;"><a href="#paper-petrock" style="color: #333; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s;" onmouseover="this.style.borderColor='#222'" onmouseout="this.style.borderColor='transparent'">Commodification Under Glass: The Pet Rock as Economic Case Study&hellip;</a> <span style="font-family: var(--font-mono); font-size: .7rem; color: #bbb; white-space: nowrap; margin-left: 1em;">p. 7</span></li>
+        <li style="border-bottom: 1px dotted #ddd; display: flex; justify-content: space-between;"><a href="#paper-cement" style="color: #333; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s;" onmouseover="this.style.borderColor='#222'" onmouseout="this.style.borderColor='transparent'">Thermal Decomposition as Career Transition: Limestone-to-Cement Conversion&hellip;</a> <span style="font-family: var(--font-mono); font-size: .7rem; color: #bbb; white-space: nowrap; margin-left: 1em;">p. 14</span></li>
+        <li style="border-bottom: 1px dotted #ddd; display: flex; justify-content: space-between;"><a href="#paper-diamond" style="color: #333; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s;" onmouseover="this.style.borderColor='#222'" onmouseout="this.style.borderColor='transparent'">Diamonds Are Forever, Graphite Is Now: Socioeconomic Outcomes for Identical Carbon&hellip;</a> <span style="font-family: var(--font-mono); font-size: .7rem; color: #bbb; white-space: nowrap; margin-left: 1em;">p. 22</span></li>
+        <li style="border-bottom: 1px dotted #ddd; display: flex; justify-content: space-between;"><a href="#paper-neglect" style="color: #333; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s;" onmouseover="this.style.borderColor='#222'" onmouseout="this.style.borderColor='transparent'">Towards a Unified Theory of Geological Neglect: Why Nobody Asks the Rocks</a> <span style="font-family: var(--font-mono); font-size: .7rem; color: #bbb; white-space: nowrap; margin-left: 1em;">p. 29</span></li>
+        <li style="display: flex; justify-content: space-between;"><a href="#paper-darshana" style="color: #333; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .2s; font-weight: 600;" onmouseover="this.style.borderColor='#222'" onmouseout="this.style.borderColor='transparent'">Parama&#7751;u and the Problem of Consent: How the &#7778;a&#7693; Dar&#347;ana Gave Rocks Ontological Status 2,600 Years Before Anyone Else Bothered &nbsp;<span style="background: var(--magma-500); color: #fff; font-family: var(--font-mono); font-size: .55rem; padding: .15em .5em; border-radius: 2px; vertical-align: middle; letter-spacing: .06em;">NEW</span></a> <span style="font-family: var(--font-mono); font-size: .7rem; color: #bbb; white-space: nowrap; margin-left: 1em;">p. 36</span></li>
+      </ol>
+    </div>
+  </section>
+
+
   <!-- ===================== PAPERS ===================== -->
   <section class="papers-section">
     <div class="container">
@@ -321,7 +339,7 @@
 
 
         <!-- ===== PAPER 1 ===== -->
-        <article class="paper">
+        <article class="paper" id="paper-rps">
           <div class="paper-header">
             <div class="paper-doi">DOI: 10.0000/geolrev.0001 &nbsp;&bull;&nbsp; Open Access &nbsp;&bull;&nbsp; Satirical Lithology</div>
             <h2 class="paper-title">Paper Beats Rock: A Critical Reexamination of Game-Theoretic Assumptions in Hand-Signal Resolution Systems</h2>
@@ -370,7 +388,7 @@
 
 
         <!-- ===== PAPER 2 ===== -->
-        <article class="paper">
+        <article class="paper" id="paper-petrock">
           <div class="paper-header">
             <div class="paper-doi">DOI: 10.0000/geolrev.0002 &nbsp;&bull;&nbsp; Open Access &nbsp;&bull;&nbsp; Geological Economics</div>
             <h2 class="paper-title">Commodification Under Glass: The Pet Rock as Economic Case Study in Manufactured Dependency (1975&ndash;1976)</h2>
@@ -419,7 +437,7 @@
 
 
         <!-- ===== PAPER 3 ===== -->
-        <article class="paper">
+        <article class="paper" id="paper-cement">
           <div class="paper-header">
             <div class="paper-doi">DOI: 10.0000/geolrev.0003 &nbsp;&bull;&nbsp; Open Access &nbsp;&bull;&nbsp; Involuntary Processing Studies</div>
             <h2 class="paper-title">Thermal Decomposition as Career Transition: A Longitudinal Study of Limestone-to-Cement Conversion and Its Implications for Geological Identity</h2>
@@ -468,7 +486,7 @@
 
 
         <!-- ===== PAPER 4 ===== -->
-        <article class="paper">
+        <article class="paper" id="paper-diamond">
           <div class="paper-header">
             <div class="paper-doi">DOI: 10.0000/geolrev.0004 &nbsp;&bull;&nbsp; Open Access &nbsp;&bull;&nbsp; Mineral Inequality Studies</div>
             <h2 class="paper-title">Diamonds Are Forever, Graphite Is Now: A Comparative Study of Socioeconomic Outcomes for Allotropically Identical Carbon</h2>
@@ -516,7 +534,7 @@
 
 
         <!-- ===== PAPER 5 ===== -->
-        <article class="paper">
+        <article class="paper" id="paper-neglect">
           <div class="paper-header">
             <div class="paper-doi">DOI: 10.0000/geolrev.0005 &nbsp;&bull;&nbsp; Open Access &nbsp;&bull;&nbsp; Geological Philosophy</div>
             <h2 class="paper-title">Towards a Unified Theory of Geological Neglect: Why Nobody Asks the Rocks</h2>
@@ -557,6 +575,85 @@
               </div>
               <div class="review-note editor" data-reviewer="Editor's Note">
                 Paper accepted unanimously. One reviewer submitted their review carved into a piece of slate. We respect the commitment. We were unable to scan the slate. We transcribed it by hand. The reviewer misspelled &ldquo;sedimentary.&rdquo; We corrected it. The slate did not object.
+              </div>
+            </div>
+          </div>
+        </article>
+
+
+        <!-- ===== PAPER 6 ===== -->
+        <article class="paper" id="paper-darshana">
+          <div class="paper-header">
+            <div class="paper-doi">DOI: 10.0000/geolrev.0006 &nbsp;&bull;&nbsp; Open Access &nbsp;&bull;&nbsp; Cross-Civilizational Lithological Philosophy</div>
+            <h2 class="paper-title">Parama&#7751;u and the Problem of Consent: How the &#7778;a&#7693; Dar&#347;ana Gave Rocks Ontological Status 2,600 Years Before Anyone Else Bothered</h2>
+            <div class="paper-authors">Dr. P. Rithvi<sup>1</sup>, Prof. K. An&#257;da<sup>2</sup>, Dr. T. Amas<sup>3</sup></div>
+            <div class="paper-affiliations">
+              <sup>1</sup>Department of Transcontinental Lithological Philosophy, N&#257;land&#257; Geological Institute &nbsp;&bull;&nbsp;
+              <sup>2</sup>Center for Parama&#7751;u Studies, Vai&#347;e&#7779;ika Research Council &nbsp;&bull;&nbsp;
+              <sup>3</sup>School of T&#257;masic Dignity, University of Prak&#7771;ti
+            </div>
+            <div class="paper-dates">Received: ~600 BCE &nbsp;|&nbsp; Accepted: Not by Western academia until the 19th century &nbsp;|&nbsp; Published: Better late than 2,600 years late</div>
+          </div>
+          <div class="paper-body-wrap">
+            <div class="paper-body">
+              <span class="abstract-label">Abstract</span>
+              <div class="abstract">
+                In approximately the 6th century BCE, the philosopher Ka&#7751;&#257;da proposed that all matter is composed of indivisible atoms (<em>parama&#7751;u</em>) &mdash; a framework that gave earth-atoms (<em>p&#7771;thv&#299; parama&#7751;u</em>) individual qualities, inherent properties, and eternal existence. This paper argues that Vai&#347;e&#7779;ika Dar&#347;ana, one of the six orthodox schools (&#7778;a&#7693; Dar&#347;ana) of Indian philosophy, constitutes the world&rsquo;s first rock rights framework. We further examine the remaining five dar&#347;anas and find that each, independently, addresses the ontological status of geological material more seriously than any Western philosophical tradition managed until the Anthropocene forced the issue. We note that Ka&#7751;&#257;da&rsquo;s name literally translates to &ldquo;atom-eater,&rdquo; making him simultaneously the first atomist and the first person to conceptually pulverize rocks. We do not resolve this paradox. We merely name it.
+              </div>
+
+              <!-- Figure 1 -->
+              <div style="margin: 2rem 0; text-align: center;">
+                <img src="img/editorial/vaisheshika-darshana.png" alt="Ancient Sanskrit manuscript on a geology lab bench beside a rock hammer and thin-section slides, with a piece of basalt resting on the text" style="max-width: 100%; border-radius: 2px; box-shadow: 0 4px 20px rgba(0,0,0,.12);">
+                <div style="font-family: var(--font-mono); font-size: .65rem; color: #999; margin-top: .75rem; letter-spacing: .03em;">
+                  <strong>Fig. 1.</strong> A fragment of Vai&#347;e&#7779;ika literature alongside modern petrographic equipment. The basalt specimen has not read the text. It does not need to. It <em>is</em> the text.
+                </div>
+              </div>
+
+              <span class="passage-label">Key Passage &sect;2.1 &mdash; The First Atomist Was a Rock Abuser</span>
+              <div class="key-passage">
+                Ka&#7751;&#257;da (&#2325;&#2339;&#2366;&#2342;) proposed that matter could be divided into increasingly small parts until one reached an indivisible unit &mdash; the <em>parama&#7751;u</em>. His philosophical method was, essentially, to break things down. The name Ka&#7751;&#257;da derives from <em>ka&#7751;a</em> (atom, particle). He was, by literal etymology, the atom-eater: a man whose intellectual project consisted of conceptually dismantling matter into its smallest constituents. He did to rocks with philosophy what the cement industry would later do with kilns. The difference is that Ka&#7751;&#257;da also gave those atoms inherent qualities (<em>gu&#7751;a</em>), individual uniqueness (<em>vi&#347;e&#7779;a</em>), and eternal existence. He broke the rock and then insisted every piece mattered. The cement industry has not extended the same courtesy.
+              </div>
+
+              <span class="passage-label">Key Passage &sect;3.2 &mdash; The Six Schools and the Rock</span>
+              <div class="key-passage" style="font-size: .88rem;">
+                The &#7778;a&#7693; Dar&#347;ana &mdash; the six orthodox philosophical schools &mdash; each address rock in ways that Western geology has not:
+              </div>
+
+              <p><strong>Vai&#347;e&#7779;ika</strong> declares that earth-atoms (<em>p&#7771;thv&#299; parama&#7751;u</em>) possess the unique quality of <em>gandha</em> (smell) and are eternal and indestructible. This means, philosophically, that the rock cycle violates Vai&#347;e&#7779;ika metaphysics. You cannot destroy a <em>parama&#7751;u</em>. You can only rearrange. Every crushed gravel aggregate is, by this framework, an atom that has been relocated without its consent.</p>
+
+              <p><strong>S&#257;&#7747;khya</strong> classifies all matter through three <em>gu&#7751;as</em>: <em>sattva</em> (clarity), <em>rajas</em> (activity), and <em>tamas</em> (inertia). Rocks are pure <em>tamas</em> &mdash; the densest expression of <em>Prak&#7771;ti</em> (primordial matter). They are matter at its most committed. They are the universe&rsquo;s firmest &ldquo;no.&rdquo; They are not inert through failure; they are inert through philosophical conviction. To call a rock &ldquo;lifeless&rdquo; in S&#257;&#7747;khya terms is like calling a monk &ldquo;unproductive.&rdquo; You have missed the point.</p>
+
+              <p><strong>Ny&#257;ya</strong> (logic) provides the epistemological framework to prove that rock abuse exists through <em>pratyak&#7779;a</em> (direct perception) and <em>anum&#257;na</em> (inference). You can see the quarry. You can infer the dynamite. The syllogism writes itself: wherever there is a quarry, there has been extraction; there is a quarry; therefore there has been extraction. Ny&#257;ya validated this reasoning 2,500 years ago. The mining industry has not filed a rebuttal.</p>
+
+              <p><strong>Yoga</strong> teaches that the highest state of consciousness is <em>citta v&#7771;tti nirodha</em> &mdash; the cessation of mental fluctuations. Rocks have achieved permanent cessation without instruction, tuition, or a mat. They are not failing at consciousness. They are succeeding at yoga. They have been in <em>&#347;av&#257;sana</em> for 4.6 billion years. No teacher has corrected their form.</p>
+
+              <p><strong>Ved&#257;nta</strong> holds that <em>Brahman</em> &mdash; the ultimate reality &mdash; pervades all matter without exception. If Brahman is in everything, it is in every rock. Every quarry is therefore a temple. Every rock crusher is performing an act of theological significance that it has not paused to consider. The Upani&#7779;ads state <em>&ldquo;tat tvam asi&rdquo;</em> &mdash; thou art that. The &ldquo;that&rdquo; includes granite.</p>
+
+              <p><strong>M&#299;m&#257;&#7747;s&#257;</strong> concerns itself with ritual action (<em>karma</em>). Vedic rituals required stone altars, grinding stones, and fire pits lined with rock. The oldest continuous religious tradition on the subcontinent ritualized rock exploitation and called it devotion. M&#299;m&#257;&#7747;s&#257; scholars spent centuries debating the correct interpretation of ritual injunctions. None of them asked the altar.</p>
+
+              <span class="passage-label">Key Passage &sect;5.1 &mdash; The Priority Problem</span>
+              <div class="key-passage">
+                Vai&#347;e&#7779;ika&rsquo;s <em>parama&#7751;u</em> predate Democritus&rsquo;s <em>atomos</em> by at least a century. Unlike Greek atomism, which proposed undifferentiated particles differing only in shape and size, Vai&#347;e&#7779;ika assigned each atom inherent, qualitative uniqueness &mdash; the philosophical equivalent of saying every rock is <em>someone</em>. That Western science rediscovered atomic theory 2,400 years later without citation is either an oversight or the longest-running case of parallel construction in intellectual history. The authors do not accuse. They merely note the publication dates and raise an eyebrow.
+              </div>
+
+              <p>The authors conclude that Indian philosophy gave rocks atoms before Dalton, individuality before taxonomy, and eternal existence before geology discovered deep time. The rocks, as always, decline to comment. They have been declining to comment since the Hadean. In S&#257;&#7747;khya terms, this is not silence. It is <em>tamas</em>. And <em>tamas</em>, the authors remind us, is not the absence of something. It is the presence of everything that has decided to stay exactly where it is.</p>
+            </div>
+            <div class="paper-margin">
+              <div class="margin-label">Peer Review Comments</div>
+              <div class="review-note r1" data-reviewer="Reviewer 1">
+                I have taught Western philosophy of science for 30 years. I have mentioned Democritus in every lecture. I have not once mentioned Ka&#7751;&#257;da. This paper made me check the dates. Ka&#7751;&#257;da: ~6th century BCE. Democritus: ~460 BCE. I have been citing the wrong continent for three decades. I need to revise my syllabus. I also need a moment.
+                <span class="review-verdict">Accept with existential recalibration.</span>
+              </div>
+              <div class="review-note r2" data-reviewer="Reviewer 2">
+                The section on S&#257;&#7747;khya is devastating. I study metamorphic petrology. I have described rocks as &ldquo;passive&rdquo; in approximately 200 papers. This paper suggests they are not passive but <em>t&#257;masic</em> &mdash; that their stillness is a philosophical position, not a failure of agency. I reject this framing because if I accept it, I cannot in good conscience operate a rock saw on Monday morning. I am accepting it anyway.
+                <span class="review-verdict">Accept. Cancel Monday&rsquo;s lab.</span>
+              </div>
+              <div class="review-note r3" data-reviewer="Reviewer 3">
+                The claim that rocks have &ldquo;achieved yoga&rdquo; is the single most absurd sentence I have read in a peer-reviewed context. It is also, by strict Pata&ntilde;jali definition, technically correct. <em>Citta v&#7771;tti nirodha</em> &mdash; the cessation of mental fluctuations &mdash; is the goal of yoga. Rocks have no <em>citta</em>. Therefore no <em>v&#7771;tti</em>. Therefore permanent <em>nirodha</em>. The logic is airtight. I hate it.
+                <span class="review-verdict">Accept under protest.</span>
+              </div>
+              <div class="review-note editor" data-reviewer="Editor's Note">
+                This paper was submitted inscribed on a slab of Deccan basalt &mdash; a 66-million-year-old flood basalt from the end-Cretaceous eruptions that contributed to the extinction of the dinosaurs. The editorial board considers this a conflict of material interest but has accepted the submission on the grounds that refusing a rock&rsquo;s testimony would rather undermine the journal&rsquo;s position. The basalt, we note, did not submit a conflict-of-interest disclosure. It has not submitted anything. It is basalt.
               </div>
             </div>
           </div>
