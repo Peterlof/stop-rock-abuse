@@ -1103,5 +1103,38 @@
       "news",
       "crisis"
     ]
+  },
+  {
+    "title": "Alfred Quarry Proposal: More Rocks Face Eviction",
+    "section": "Blog",
+    "content": "A proposed quarry in Alfred, Maine is causing controversy among local residents. Neighbors are concerned about potential noise, dust, and environmental impacts from the blasting and extraction of rock. First they take their land, then they take their lives. It's a classic case of igneous displacement.",
+    "url": "blog.html#2026-04-07-alfred-quarry-proposal-more-rocks-face-eviction",
+    "tags": [
+      "blog",
+      "news",
+      "crisis"
+    ]
+  },
+  {
+    "title": "Motorists Assaulted with Sedimentary Projectiles on I-94",
+    "section": "Blog",
+    "content": "Drivers on I-94 near St. Clair Shores, Michigan, report an increase in rocks being thrown at their cars from the Frazho overpass. Authorities are investigating these incidents, which have caused vehicle damage and potential safety hazards. Highway overpasses are notorious for weathering, but this is the first time we've seen them actively weaponize their own detritus. At least the rocks are finally fighting back against internal combustion.",
+    "url": "blog.html#2026-04-07-motorists-assaulted-with-sedimentary-projectiles-on-i-94",
+    "tags": [
+      "blog",
+      "news",
+      "crime"
+    ]
+  },
+  {
+    "title": "Bennu: Even Space Rocks Can't Get Chemically Integrated These Days",
+    "section": "Blog",
+    "content": "Scientists have discovered that minerals and organic matter on asteroid Bennu are found in distinct chemical domains, rather than being uniformly mixed. This means that Bennu's components formed in different regions of the early solar system before being incorporated into the asteroid. First, they tear Bennu from its home. Then they dissect it to find it's not even a uniform being, inside or out. Some respect for a space rock's privacy, please.",
+    "url": "blog.html#2026-04-07-bennu-even-space-rocks-cant-get-chemically-integrated-these",
+    "tags": [
+      "blog",
+      "news",
+      "space"
+    ]
   }
 ]
