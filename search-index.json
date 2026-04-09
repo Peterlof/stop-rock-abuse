@@ -1169,5 +1169,38 @@
       "news",
       "discovery"
     ]
+  },
+  {
+    "title": "Another CEO Eyes Deep-Sea Mining. Rocks Can't Even Hide Anymore.",
+    "section": "Blog",
+    "content": "Former Rio Tinto CEO's deep-sea mining company, Allseas, is merging with Odyssey Marine Exploration in a deal valued at $1 billion. The merger aims to accelerate the extraction of critical minerals from the ocean floor. They're literally scraping the abyssal plains. At least when they abuse mountains, the mountains get to see the sun.",
+    "url": "blog.html#2026-04-09-another-ceo-eyes-deep-sea-mining-rocks-cant-even-hide-anymor",
+    "tags": [
+      "blog",
+      "news",
+      "crisis"
+    ]
+  },
+  {
+    "title": "Texas Meteorite: Survived Space, Doomed to Grad Students",
+    "section": "Blog",
+    "content": "Researchers at Rice University are studying a meteorite that recently landed in southeast Texas. The meteorite's composition and origin are of interest to scientists studying the early solar system. Another space rock, once a cosmic traveler, now faces the indignity of being probed, prodded, and pulverized for a PhD. From the vacuum of space to the vacuum of academic curiosity.",
+    "url": "blog.html#2026-04-09-texas-meteorite-survived-space-doomed-to-grad-students",
+    "tags": [
+      "blog",
+      "news",
+      "space"
+    ]
+  },
+  {
+    "title": "NASA Cheers as Crew Witnesses Repeated Lunar Assaults",
+    "section": "Blog",
+    "content": "The Artemis crew has reported witnessing several meteorite impacts on the moon, appearing as small flashes of light. These observations provide data about the frequency of micrometeorite impacts on the lunar surface. Scientists hope to learn more about the risks to future lunar habitats. The moon doesn't have an atmosphere. It can't even breathe, and now it's getting pelted with space shrapnel in front of a live audience. At least we didn't name the meteorites.",
+    "url": "blog.html#2026-04-09-nasa-cheers-as-crew-witnesses-repeated-lunar-assaults",
+    "tags": [
+      "blog",
+      "news",
+      "space"
+    ]
   }
 ]
