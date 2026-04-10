@@ -1202,5 +1202,38 @@
       "news",
       "space"
     ]
+  },
+  {
+    "title": "Argentina Legalizes Glacier Mining; Rocks' Icy Tears Unheard",
+    "section": "Blog",
+    "content": "Argentina has approved a bill permitting mining activities in glacier regions, sparking widespread environmental protests. The legislation, backed by President Milei, overrides previous protections for these sensitive areas. Concerns are raised about the potential damage to water resources and fragile ecosystems. They're not just melting the glaciers; they're excavating their frozen corpses. Hope the ore is worth the geological grief.",
+    "url": "blog.html#2026-04-10-argentina-legalizes-glacier-mining-rocks-icy-tears-unheard",
+    "tags": [
+      "blog",
+      "news",
+      "crisis"
+    ]
+  },
+  {
+    "title": "Volcanic Rock \"Formula\" Now Complicit in Cement's Abuse",
+    "section": "Blog",
+    "content": "Researchers have found that using volcanic rock in cement production can reduce carbon emissions by two-thirds. The formula partially replaces traditional, emissions-heavy cement ingredients with the volcanic alternative. This approach offers a more sustainable way to produce concrete. First they steal their magma. Now they steal their very substance. At least the rocks are being used to build something instead of being crushed into gravel, for once.",
+    "url": "blog.html#2026-04-10-volcanic-rock-formula-now-complicit-in-cements-abuse",
+    "tags": [
+      "blog",
+      "news",
+      "volcanic"
+    ]
+  },
+  {
+    "title": "Kilauea Erupts: Humans Evacuated (Rocks Stay Put)",
+    "section": "Blog",
+    "content": "The Kilauea volcano in Hawaii has erupted, forcing evacuations of nearby residents. The eruption began within Halemaʻumaʻu crater at the summit, posing no immediate threat to populated areas but prompting safety measures. Another eruption, another mass displacement of fleshy humans. Meanwhile, the rocks of Kilauea are like, 'This is fine.'",
+    "url": "blog.html#2026-04-10-kilauea-erupts-humans-evacuated-rocks-stay-put",
+    "tags": [
+      "blog",
+      "news",
+      "volcanic"
+    ]
   }
 ]
