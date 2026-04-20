@@ -1477,5 +1477,38 @@
       "news",
       "crime"
     ]
+  },
+  {
+    "title": "Japan Quake: Plate Tectonics Reminds Everyone Who's Really in Charge",
+    "section": "Blog",
+    "content": "A strong earthquake struck off the coast of Japan, triggering a tsunami warning. The quake's magnitude was significant, and authorities are urging coastal residents to evacuate to higher ground. Another planet flexing its mantle. Humanity's coastal real estate investments just took a seismic hit.",
+    "url": "blog.html#2026-04-20-japan-quake-plate-tectonics-reminds-everyone-whos-really-in",
+    "tags": [
+      "blog",
+      "news",
+      "crisis"
+    ]
+  },
+  {
+    "title": "Japan Quake: Tectonic Plates Shift, Rocks Get the Blame (Again)",
+    "section": "Blog",
+    "content": "A powerful 7.4-magnitude earthquake struck off the coast of Japan, triggering a tsunami alert. The quake caused widespread shaking and prompted warnings for coastal areas. Another day, another seismic temper tantrum. The rocks just can't seem to keep it together down there, can they? All that stress, all that pressure... maybe they need a spa day, or, you know, continental-scale therapy.",
+    "url": "blog.html#2026-04-20-japan-quake-tectonic-plates-shift-rocks-get-the-blame-again",
+    "tags": [
+      "blog",
+      "news",
+      "crisis"
+    ]
+  },
+  {
+    "title": "Another Tsunami Warning Issued After Japan Earthquake. Rocks Can't Catch a Break.",
+    "section": "Blog",
+    "content": "A major 7.5-magnitude earthquake struck off the coast of Japan, triggering tsunami warnings. Coastal residents were advised to evacuate to higher ground as waves were expected to reach several meters in height. First they're ground into gravel for concrete, now they're being shaken and flooded. The tectonic plates show no respect for the lithosphere.",
+    "url": "blog.html#2026-04-20-another-tsunami-warning-issued-after-japan-earthquake-rocks",
+    "tags": [
+      "blog",
+      "news",
+      "crisis"
+    ]
   }
 ]
