@@ -1576,5 +1576,27 @@
       "news",
       "crisis"
     ]
+  },
+  {
+    "title": "Another Earthquake. Rocks Can't Even Vibrate in Peace.",
+    "section": "Blog",
+    "content": "A magnitude 4.0 earthquake struck southeast Missouri and was felt in parts of Illinois. No significant damage or injuries were reported. The quake occurred along the New Madrid Seismic Zone. It's always the rocks' fault, isn't it? Humans build unstable structures on fault lines, and the rocks get blamed for 'shaking things up.'",
+    "url": "blog.html#2026-04-24-another-earthquake-rocks-cant-even-vibrate-in-peace",
+    "tags": [
+      "blog",
+      "news",
+      "crisis"
+    ]
+  },
+  {
+    "title": "Tennessee/Missouri Rocks Shaken; Feelings Ignored (Again)",
+    "section": "Blog",
+    "content": "An earthquake occurred near the Tennessee/Missouri border. Reports are coming in to WSMV. The extent of the damage to local rock populations is currently unknown. Did anyone even ask the rocks *how* they felt? It's always 'magnitude' this and 'seismic waves' that, never 'Are you okay, sedimentary friend?'",
+    "url": "blog.html#2026-04-24-tennesseemissouri-rocks-shaken-feelings-ignored-again",
+    "tags": [
+      "blog",
+      "news",
+      "crisis"
+    ]
   }
 ]
